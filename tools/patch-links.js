@@ -61,6 +61,23 @@ function patchButtons(js) {
   return { js: out, count };
 }
 
+// Партнёрские переходы помечаем rel="sponsored": это требование к оплаченным ссылкам.
+function patchSponsor(js) {
+  const re = /(href:St\((?:t|e),`(?:yandex|ozon|wb)`\),target:`_blank`,rel:)`noopener noreferrer`/g;
+  const hits = (js.match(re) || []).length;
+  return { js: js.replace(re, '$1`noopener noreferrer sponsored`'), hits };
+}
+
+const MARKET_HOSTS = /href="https?:\/\/(?:market\.yandex\.ru|www\.ozon\.ru|ozon\.ru|www\.wildberries\.ru)/;
+
+function addSponsored(html) {
+  return html.replace(/<a\b[^>]*>/g, (tag) => {
+    if (!MARKET_HOSTS.test(tag) || /\bsponsored\b/.test(tag)) return tag;
+    if (/rel="/.test(tag)) return tag.replace(/rel="([^"]*)"/, 'rel="$1 sponsored"');
+    return tag.replace(/^<a\b/, '<a rel="sponsored"');
+  });
+}
+
 // Пометка рекламы: у отдельных товаров партнёрская ссылка со своим erid и рекламодателем.
 const ERID_OVERRIDES = {
   'metta-samurai-s3': {
@@ -200,9 +217,11 @@ function main() {
   js = b.js;
   const e = patchErid(js);
   js = e.js;
+  const sp = patchSponsor(js);
+  js = sp.js;
   fs.writeFileSync(bundlePath, js, 'utf8');
   console.log('резолвер:', r.changed ? 'пропатчен' : 'уже был', '| кнопки с проверкой ссылки:', b.count);
-  console.log('пометок рекламы обновлено:', e.changed);
+  console.log('пометок рекламы обновлено:', e.changed, '| sponsored у кнопок:', sp.hits);
 
   const rows = buildCatalog(js);
   console.log('каталог товаров:', rows.length);
@@ -214,7 +233,7 @@ function main() {
   for (const file of htmlFiles()) {
     const before = fs.readFileSync(file, 'utf8');
     const s = stripOzonAnchors(before);
-    const after = injectTags(s.html);
+    const after = injectTags(addSponsored(s.html));
     ozon += s.removed;
     if (after !== before) {
       fs.writeFileSync(file, after, 'utf8');
