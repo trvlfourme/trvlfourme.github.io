@@ -8,3 +8,7 @@ tools/server.log
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# артефакты локальных сборок
+_prodcheck/
+_prerender/
