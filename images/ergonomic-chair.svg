@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bgChair" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1917" />
+      <stop offset="100%" stop-color="#292524" />
+    </linearGradient>
+    <linearGradient id="meshGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3f3f46" />
+      <stop offset="100%" stop-color="#18181b" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgChair)" />
+
+  <!-- Center Stage Spotlight -->
+  <ellipse cx="400" cy="380" rx="260" ry="40" fill="#f59e0b" fill-opacity="0.12" />
+
+  <!-- Ergonomic Chair Detailed Silhouette -->
+  <g transform="translate(300, 40)">
+    <!-- 3D Headrest -->
+    <ellipse cx="100" cy="30" rx="42" ry="20" fill="#292524" stroke="#f59e0b" stroke-width="2.5" />
+    <rect x="94" y="50" width="12" height="24" fill="#78716c" />
+    <!-- Upper Backrest (Thoracic support) -->
+    <path d="M50,74 C45,150 40,210 60,240 C75,255 125,255 140,240 C160,210 155,150 150,74 Z" fill="url(#meshGrad)" stroke="#a8a29e" stroke-width="2.5" />
+    <!-- Dynamic Lumbar Support Cushion -->
+    <rect x="52" y="180" width="96" height="34" rx="10" fill="#f59e0b" stroke="#fef08a" stroke-width="1.5" />
+    <text x="100" y="202" font-family="system-ui, sans-serif" font-size="10" font-weight="800" fill="#1c1917" text-anchor="middle">ПОЯСНИЧНЫЙ ВАЛИК</text>
+    <!-- Armrests 3D -->
+    <rect x="15" y="160" width="26" height="55" rx="6" fill="#44403c" stroke="#a8a29e" stroke-width="1.5" />
+    <rect x="159" y="160" width="26" height="55" rx="6" fill="#44403c" stroke="#a8a29e" stroke-width="1.5" />
+    <rect x="25" y="215" width="8" height="40" fill="#78716c" />
+    <rect x="167" y="215" width="8" height="40" fill="#78716c" />
+    <!-- Waterfall Seat Cushion -->
+    <ellipse cx="100" cy="265" rx="76" ry="24" fill="#292524" stroke="#f59e0b" stroke-width="3" />
+    <!-- Heavy Duty Metal Base -->
+    <rect x="93" y="289" width="14" height="60" fill="#a8a29e" />
+    <path d="M100,349 L20,380 M100,349 L180,380 M100,349 L60,385 M100,349 L140,385" stroke="#78716c" stroke-width="8" stroke-linecap="round" />
+    <circle cx="20" cy="385" r="7" fill="#1c1917" />
+    <circle cx="180" cy="385" r="7" fill="#1c1917" />
+  </g>
+
+  <!-- Feature Callout Cards on Left & Right -->
+  <g transform="translate(40, 70)">
+    <!-- Point 1: 90 deg posture -->
+    <rect x="0" y="0" width="210" height="64" rx="8" fill="#1c1917" stroke="#57534e" stroke-width="1.5" />
+    <text x="15" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f59e0b">ГОСТ 21889-76</text>
+    <text x="15" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#e7e5e4">Угол в коленях и локтях 90°</text>
+    <text x="15" y="58" font-family="system-ui, sans-serif" font-size="9" fill="#a8a29e">Высота сиденья 42–52 см</text>
+
+    <!-- Point 2: Breathable mesh -->
+    <rect x="0" y="80" width="210" height="64" rx="8" fill="#1c1917" stroke="#57534e" stroke-width="1.5" />
+    <text x="15" y="104" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#10b981">Дышащая сетка (Кевлар)</text>
+    <text x="15" y="124" font-family="system-ui, sans-serif" font-size="11" fill="#e7e5e4">Спина не потеет летом</text>
+    <text x="15" y="138" font-family="system-ui, sans-serif" font-size="9" fill="#a8a29e">Не провисает более 7 лет</text>
+  </g>
+
+  <g transform="translate(550, 70)">
+    <!-- Point 3: Synchro-mechanism -->
+    <rect x="0" y="0" width="210" height="64" rx="8" fill="#1c1917" stroke="#57534e" stroke-width="1.5" />
+    <text x="15" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Синхромеханика 3:1</text>
+    <text x="15" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#e7e5e4">Спинка следует за телом</text>
+    <text x="15" y="58" font-family="system-ui, sans-serif" font-size="9" fill="#a8a29e">Снимает нагрузку с поясницы</text>
+
+    <!-- Point 4: Sturdy frame -->
+    <rect x="0" y="80" width="210" height="64" rx="8" fill="#1c1917" stroke="#57534e" stroke-width="1.5" />
+    <text x="15" y="104" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f59e0b">Стальной каркас</text>
+    <text x="15" y="124" font-family="system-ui, sans-serif" font-size="11" fill="#e7e5e4">Нагрузка до 130 кг</text>
+    <text x="15" y="138" font-family="system-ui, sans-serif" font-size="9" fill="#a8a29e">Гарантия до 10 лет в РФ</text>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /tools/
+Disallow: /index.spa.html
+
+Sitemap: https://kabinetdoma.ru/sitemap.xml

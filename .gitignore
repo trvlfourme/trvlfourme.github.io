@@ -1,0 +1,10 @@
+# внутренние инструменты: бэкапы, зависимости и логи не публикуем
+tools/_originals/
+tools/node_modules/
+tools/server.log
+*.log
+
+# служебный мусор ОС
+.DS_Store
+Thumbs.db
+desktop.ini

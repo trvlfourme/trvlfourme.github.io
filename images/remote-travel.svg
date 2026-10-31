@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bgTravel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="50%" stop-color="#312e81" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="accentSunset" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <linearGradient id="laptopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgTravel)" />
+
+  <!-- Window to nature / mountains in travel -->
+  <g opacity="0.35">
+    <circle cx="680" cy="110" r="70" fill="url(#accentSunset)" opacity="0.6" />
+    <path d="M 450 320 L 580 180 L 680 270 L 750 200 L 800 290 L 800 350 L 450 350 Z" fill="#4338ca" />
+    <path d="M 520 350 L 640 220 L 730 300 L 800 240 L 800 350 Z" fill="#6366f1" opacity="0.5" />
+  </g>
+
+  <!-- Hotel/Cafe Desk Surface -->
+  <rect x="0" y="320" width="800" height="130" fill="#1e293b" />
+  <line x1="0" y1="320" x2="800" y2="320" stroke="#475569" stroke-width="2" />
+
+  <!-- Laptop on compact travel stand -->
+  <g transform="translate(240, 140)">
+    <!-- Stand legs (MOFT/compact stand) -->
+    <path d="M 90 190 L 120 160 L 200 160 L 230 190" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round" />
+    
+    <!-- Screen raised up -->
+    <rect x="50" y="20" width="220" height="140" rx="8" fill="url(#laptopGrad)" stroke="#cbd5e1" stroke-width="2" />
+    <rect x="58" y="28" width="204" height="124" rx="4" fill="url(#screenGrad)" />
+    
+    <!-- Code/Document Editor on screen -->
+    <rect x="70" y="40" width="60" height="6" rx="2" fill="#38bdf8" />
+    <rect x="70" y="52" width="120" height="4" rx="2" fill="#94a3b8" opacity="0.7" />
+    <rect x="70" y="62" width="140" height="4" rx="2" fill="#94a3b8" opacity="0.7" />
+    <rect x="70" y="72" width="90" height="4" rx="2" fill="#34d399" opacity="0.8" />
+    
+    <rect x="70" y="90" width="180" height="2" fill="#334155" />
+    <rect x="70" y="98" width="110" height="4" rx="2" fill="#f59e0b" opacity="0.8" />
+    <rect x="70" y="108" width="150" height="4" rx="2" fill="#94a3b8" opacity="0.7" />
+    
+    <!-- Status indicator (Online 2h / Vacation) -->
+    <rect x="180" y="36" width="70" height="14" rx="4" fill="#065f46" />
+    <circle cx="190" cy="43" r="3" fill="#34d399" />
+    <text x="198" y="47" font-family="sans-serif" font-size="8" font-weight="bold" fill="#a7f3d0">VACATION</text>
+
+    <!-- Laptop Base / Keyboard -->
+    <polygon points="30,175 290,175 270,160 50,160" fill="url(#laptopGrad)" />
+    <rect x="70" y="163" width="180" height="9" rx="2" fill="#334155" opacity="0.6" />
+  </g>
+
+  <!-- GaN Fast Charger & Braided Cable -->
+  <g transform="translate(130, 270)">
+    <rect x="0" y="15" width="45" height="35" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="7" y="32" font-family="monospace" font-size="9" font-weight="bold" fill="#38bdf8">100W</text>
+    <text x="12" y="43" font-family="sans-serif" font-size="7" fill="#94a3b8">GaN</text>
+    <!-- USB-C Braided cable to laptop -->
+    <path d="M 45 32 C 80 32, 100 25, 140 30" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="3,2" />
+  </g>
+
+  <!-- Thin Powerbank (Baseus Blade) -->
+  <g transform="translate(560, 310)">
+    <rect x="0" y="0" width="110" height="20" rx="4" fill="#020617" stroke="#475569" stroke-width="1.5" />
+    <circle cx="95" cy="10" r="4" fill="#10b981" />
+    <text x="12" y="14" font-family="monospace" font-size="9" fill="#f8fafc">100% · 65W</text>
+  </g>
+
+  <!-- ANC Travel Headphones / Coffee Cup -->
+  <g transform="translate(140, 320)">
+    <!-- Coffee cup -->
+    <path d="M 20 0 L 26 28 L 44 28 L 50 0 Z" fill="#f8fafc" />
+    <rect x="18" y="0" width="34" height="4" rx="1" fill="#cbd5e1" />
+    <path d="M 50 8 C 58 8, 58 20, 50 20" fill="none" stroke="#cbd5e1" stroke-width="2.5" />
+    <path d="M 30 -6 Q 32 -14, 28 -20" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.6" />
+  </g>
+
+  <!-- Passport / Boarding pass & eSIM card -->
+  <g transform="translate(560, 250)">
+    <rect x="0" y="0" width="70" height="45" rx="4" fill="#1e3a8a" transform="rotate(-8)" stroke="#3b82f6" stroke-width="1" />
+    <text x="10" y="25" font-family="sans-serif" font-size="9" font-weight="bold" fill="#fbbf24" transform="rotate(-8)">PASSPORT</text>
+    <rect x="40" y="15" width="35" height="22" rx="3" fill="#10b981" transform="rotate(10)" stroke="#ffffff" stroke-width="1" />
+    <text x="45" y="29" font-family="sans-serif" font-size="8" font-weight="bold" fill="#ffffff" transform="rotate(10)">eSIM</text>
+  </g>
+
+  <!-- Badge Top Left -->
+  <g transform="translate(30, 30)">
+    <rect width="210" height="32" rx="8" fill="#0f172a" opacity="0.85" stroke="#6366f1" stroke-width="1.5" />
+    <circle cx="20" cy="16" r="6" fill="#38bdf8" />
+    <text x="36" y="21" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff">WORK &amp; TRAVEL 2026</text>
+  </g>
+</svg>
