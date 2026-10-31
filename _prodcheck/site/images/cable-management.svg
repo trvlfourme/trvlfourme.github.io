@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bgCable" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181b" />
+      <stop offset="60%" stop-color="#27272a" />
+      <stop offset="100%" stop-color="#09090b" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgCable)" />
+  <rect x="0" y="380" width="800" height="70" fill="#09090b" />
+  <line x1="0" y1="380" x2="800" y2="380" stroke="#3f3f46" stroke-width="2" />
+
+  <!-- Table Top -->
+  <g transform="translate(100, 120)">
+    <rect x="0" y="0" width="600" height="24" rx="4" fill="#d4d4d8" stroke="#71717a" stroke-width="2" />
+    <!-- Table Legs -->
+    <rect x="30" y="24" width="20" height="236" fill="#3f3f46" />
+    <rect x="550" y="24" width="20" height="236" fill="#3f3f46" />
+
+    <!-- Monitor on top of table -->
+    <rect x="230" y="-80" width="140" height="80" rx="4" fill="#09090b" stroke="#71717a" stroke-width="2" />
+    <rect x="236" y="-74" width="128" height="66" rx="2" fill="#0284c7" fill-opacity="0.2" />
+    <rect x="294" y="0" width="12" height="16" fill="#52525b" />
+
+    <!-- Clamp Hanging Under-Desk Wire Mesh Tray -->
+    <g transform="translate(140, 24)">
+      <!-- Clamps on edge -->
+      <rect x="20" y="-4" width="14" height="28" rx="2" fill="#e4e4e7" stroke="#3f3f46" stroke-width="1.5" />
+      <rect x="280" y="-4" width="14" height="28" rx="2" fill="#e4e4e7" stroke="#3f3f46" stroke-width="1.5" />
+
+      <!-- Steel Mesh Basket -->
+      <path d="M 10 20 L 10 75 Q 10 85 20 85 L 295 85 Q 305 85 305 75 L 305 20" fill="none" stroke="#f59e0b" stroke-width="3.5" />
+      <!-- Grid cross wires -->
+      <line x1="10" y1="45" x2="305" y2="45" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="8 6" />
+      <line x1="10" y1="65" x2="305" y2="65" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="8 6" />
+
+      <!-- Surge Protector inside basket with glowing switch -->
+      <rect x="35" y="45" width="200" height="30" rx="5" fill="#09090b" stroke="#64748b" stroke-width="1.5" />
+      <!-- Glowing Red Switch -->
+      <rect x="45" y="52" width="14" height="16" rx="2" fill="#ef4444" />
+      <!-- Power Plugs inserted neatly -->
+      <rect x="75" y="40" width="16" height="12" rx="2" fill="#e2e8f0" />
+      <rect x="110" y="40" width="16" height="12" rx="2" fill="#e2e8f0" />
+      <rect x="145" y="40" width="16" height="12" rx="2" fill="#e2e8f0" />
+      <rect x="180" y="40" width="16" height="12" rx="2" fill="#e2e8f0" />
+
+      <!-- Tucked Cables in Velcro Ties -->
+      <path d="M 298 -60 Q 290 -10 240 45" fill="none" stroke="#38bdf8" stroke-width="3" />
+      <path d="M 302 -60 Q 305 0 200 50" fill="none" stroke="#a855f7" stroke-width="3" />
+      <!-- Velcro Ties (Yellow bands) -->
+      <rect x="260" y="10" width="12" height="6" rx="1" fill="#f59e0b" />
+
+      <!-- Single clean black power cable going down along the leg -->
+      <path d="M 50 75 Q 45 100 45 236" fill="none" stroke="#e2e8f0" stroke-width="3.5" />
+      <!-- Cable clip on table leg -->
+      <rect x="40" y="140" width="10" height="8" rx="2" fill="#f59e0b" />
+    </g>
+  </g>
+
+  <!-- Clean Floor Label (Zero cables hanging) -->
+  <g transform="translate(400, 395)">
+    <text x="0" y="0" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#10b981" text-anchor="middle">
+      ✓ ЧИСТЫЙ ПОЛ: НИ ОДИН ПРОВОД НЕ КАСАЕТСЯ ПЛИНТУСА И КОЛЕС СТУЛА
+    </text>
+  </g>
+
+  <!-- Header Banner -->
+  <g transform="translate(400, 50)">
+    <rect x="-190" y="-18" width="380" height="34" rx="8" fill="#18181b" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="0" y="4" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#f59e0b" text-anchor="middle" letter-spacing="1">
+      СКРЫТЫЙ КАБЕЛЬ-МЕНЕДЖМЕНТ
+    </text>
+  </g>
+</svg>
