@@ -26,6 +26,12 @@ else
   git clone -q --branch "$PROD_BRANCH" "$PROD_REPO" "$WORK"
 fi
 
+# в свежем клоне нет подписи коммита — берём ту же, что в рабочем репозитории
+if [ -z "$(git -C "$WORK" config user.email)" ]; then
+  git -C "$WORK" config user.email "$(git -C "$ROOT" config user.email || echo dev@kabinetdoma.ru)"
+  git -C "$WORK" config user.name "$(git -C "$ROOT" config user.name || echo kabinetdoma)"
+fi
+
 echo "2/5  запоминаю файлы, которые есть только на проде"
 git -C "$WORK" ls-files | sort > "$ROOT/_prodcheck/prod-files.txt"
 git -C "$ROOT" ls-tree -r main --name-only | sort > "$ROOT/_prodcheck/main-files.txt"

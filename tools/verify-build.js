@@ -87,7 +87,9 @@ for (const page of contentPages) {
     else fail(`${rel}: тег mitgo-verification вне <head>`);
   } else fail(`${rel}: тег mitgo-verification встречается ${tagCount} раз`);
   const canonical = (html.match(/<link rel="canonical" href="([^"]+)"/i) || [])[1];
-  if (canonical && canonical.startsWith(SITE)) canonicalOk++;
+  if (canonical && canonical.startsWith(SITE) && !canonical.endsWith('/')) {
+    fail(`${rel}: canonical без завершающего слеша — GitHub Pages отдаёт страницу со слешем`);
+  } else if (canonical && canonical.startsWith(SITE)) canonicalOk++;
   else fail(`${rel}: canonical не на ${SITE} (${canonical || 'нет'})`);
   if (/name="robots"[^>]*noindex/i.test(html)) fail(`${rel}: стоит noindex`);
   if (/trvlfourme/i.test(html)) fail(`${rel}: осталась ссылка на превью-домен trvlfourme`);
