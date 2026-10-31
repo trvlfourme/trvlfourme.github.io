@@ -1,6 +1,3 @@
+# Тестовая копия сайта: индексация запрещена, чтобы не дублировать прод.
 User-agent: *
-Allow: /
-Disallow: /tools/
-Disallow: /index.spa.html
-
-Sitemap: https://kabinetdoma.ru/sitemap.xml
+Disallow: /
