@@ -37,9 +37,11 @@ if (!exists('assets/kd-admin-links.js')) fail('нет assets/kd-admin-links.js')
 // 2. Карта страниц
 const files = walk(root);
 // служебные страницы: подтверждение Яндекса и страница ошибки живут по своим правилам
-const SERVICE_PAGES = new Set(['404.html', 'yandex_f90ccbe3e80e4f97.html']);
+// 404 и файлы подтверждения поисковиков (yandex_*.html, google*.html) живут по своим правилам
+const SERVICE_PAGES = new Set(['404.html']);
+const isServicePage = (f) => SERVICE_PAGES.has(path.basename(f)) || /^(yandex_|google)[0-9a-f]+\.html$/i.test(path.basename(f));
 const pages = files.filter((f) => f.endsWith('.html') && !f.includes(`${path.sep}tools${path.sep}`));
-const contentPages = pages.filter((f) => !SERVICE_PAGES.has(path.basename(f)));
+const contentPages = pages.filter((f) => !isServicePage(f));
 const bundle = files.find((f) => f.endsWith(path.join('assets', 'index.js')));
 if (!bundle) fail('нет assets/index.js');
 else {
