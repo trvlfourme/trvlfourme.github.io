@@ -37,9 +37,11 @@ if (!exists('assets/kd-admin-links.js')) fail('нет assets/kd-admin-links.js')
 // 2. Карта страниц
 const files = walk(root);
 // служебные страницы: подтверждение Яндекса и страница ошибки живут по своим правилам
-const SERVICE_PAGES = new Set(['404.html', 'yandex_f90ccbe3e80e4f97.html']);
+// 404 и файлы подтверждения поисковиков (yandex_*.html, google*.html) живут по своим правилам
+const SERVICE_PAGES = new Set(['404.html']);
+const isServicePage = (f) => SERVICE_PAGES.has(path.basename(f)) || /^(yandex_|google)[0-9a-f]+\.html$/i.test(path.basename(f));
 const pages = files.filter((f) => f.endsWith('.html') && !f.includes(`${path.sep}tools${path.sep}`));
-const contentPages = pages.filter((f) => !SERVICE_PAGES.has(path.basename(f)));
+const contentPages = pages.filter((f) => !isServicePage(f));
 const bundle = files.find((f) => f.endsWith(path.join('assets', 'index.js')));
 if (!bundle) fail('нет assets/index.js');
 else {
@@ -63,9 +65,21 @@ for (const jsFile of ['assets/kd-admin-links.js', 'data/product-links.js', 'data
 // 3. Метаданные каждой страницы
 let tagged = 0;
 let canonicalOk = 0;
+let redirects = 0;
 for (const page of contentPages) {
   const rel = path.relative(root, page).split(path.sep).join('/');
   const html = fs.readFileSync(page, 'utf8');
+  // страницы-редиректы со старых адресов: проверяем, что цель существует и не петляет
+  const refresh = html.match(/http-equiv="refresh"[^>]*url=([^";\s]+)/i);
+  if (refresh) {
+    redirects++;
+    const target = path.resolve(path.dirname(page), refresh[1] + (refresh[1].endsWith('/') ? 'index.html' : ''));
+    if (!fs.existsSync(target)) fail(`${rel}: редирект ведёт в никуда (${refresh[1]})`);
+    else if (/http-equiv="refresh"/i.test(fs.readFileSync(target, 'utf8'))) fail(`${rel}: редирект на другой редирект (${refresh[1]})`);
+    const canon = (html.match(/<link rel="canonical" href="([^"]+)"/i) || [])[1];
+    if (!canon) fail(`${rel}: у редиректа нет canonical`);
+    continue;
+  }
   const tagCount = (html.match(/name="mitgo-verification"/g) || []).length;
   if (tagCount === 1) {
     const headEnd = html.search(/<\/head>/i);
@@ -114,7 +128,7 @@ if (exists('sitemap.xml')) {
 }
 
 // 6. Итог
-note(`страниц: ${contentPages.length} (с тегом ${tagged}, canonical ${canonicalOk})`);
+note(`страниц: ${contentPages.length - redirects} (с тегом ${tagged}, canonical ${canonicalOk}) + редиректов: ${redirects}`);
 note(`файлов: ${files.length}, объём: ${(files.reduce((s, f) => s + fs.statSync(f).size, 0) / 1048576).toFixed(1)} МБ`);
 
 console.log('--- сводка ---');
