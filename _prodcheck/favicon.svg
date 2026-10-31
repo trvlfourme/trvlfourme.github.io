@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="kdGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1917" />
+      <stop offset="100%" stop-color="#0c0a09" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  <!-- Background squircle -->
+  <rect width="64" height="64" rx="16" fill="url(#kdGrad)" />
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#292524" stroke-width="1.5" />
+  
+  <!-- Stylized Home & Ergonomic Workspace glyph -->
+  <!-- Roof contour -->
+  <path d="M14 26 L32 12 L50 26" fill="none" stroke="url(#amberGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Desk surface line -->
+  <path d="M18 36 L46 36" fill="none" stroke="#f5f5f4" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Desk motorized legs -->
+  <path d="M22 36 L22 48 M42 36 L42 48" fill="none" stroke="#a8a29e" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M19 48 L25 48 M39 48 L45 48" fill="none" stroke="#a8a29e" stroke-width="2.5" stroke-linecap="round" />
+  
+  <!-- Ergonomic monitor / screen with warm glow -->
+  <rect x="27" y="22" width="10" height="8" rx="1.5" fill="url(#amberGrad)" />
+  <path d="M32 30 L32 36" stroke="#f5f5f4" stroke-width="2" stroke-linecap="round" />
+</svg>

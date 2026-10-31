@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bgBudget" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181b" />
+      <stop offset="100%" stop-color="#27272a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgBudget)" />
+  <rect x="0" y="340" width="800" height="110" fill="#09090b" />
+  <line x1="0" y1="340" x2="800" y2="340" stroke="#3f3f46" stroke-width="2" />
+
+  <!-- Regular wooden desk -->
+  <g transform="translate(180, 220)">
+    <rect x="0" y="0" width="440" height="18" rx="3" fill="#d4d4d8" stroke="#a1a1aa" stroke-width="1.5" />
+    <rect x="20" y="18" width="12" height="120" fill="#71717a" />
+    <rect x="408" y="18" width="12" height="120" fill="#71717a" />
+  </g>
+
+  <!-- DIY Hack 1: Stack of 2 Hardcover Books lifting the laptop screen -->
+  <g transform="translate(230, 160)">
+    <!-- Book 1 -->
+    <rect x="0" y="42" width="140" height="18" rx="2" fill="#b91c1c" stroke="#fca5a5" stroke-width="1" />
+    <line x1="12" y1="42" x2="12" y2="60" stroke="#fef2f2" stroke-width="2" />
+    <!-- Book 2 -->
+    <rect x="5" y="24" width="130" height="18" rx="2" fill="#1e3a8a" stroke="#bfdbfe" stroke-width="1" />
+    <line x1="17" y1="24" x2="17" y2="42" stroke="#fef2f2" stroke-width="2" />
+
+    <!-- Open Laptop on top of books -->
+    <!-- Base -->
+    <rect x="15" y="18" width="110" height="6" rx="2" fill="#71717a" />
+    <!-- Screen angled up -->
+    <polygon points="20,18 20,-55 120,-55 120,18" fill="#18181b" stroke="#a1a1aa" stroke-width="1.5" />
+    <rect x="25" y="-50" width="90" height="62" fill="#0284c7" fill-opacity="0.2" />
+    
+    <!-- Annotation Arrow: Screen raised to Eye Level -->
+    <line x1="135" y1="-20" x2="190" y2="-20" stroke="#10b981" stroke-width="2" />
+    <polygon points="135,-20 145,-24 145,-16" fill="#10b981" />
+    <text x="200" y="-16" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#10b981">
+      Экран на уровне глаз (0 ₽)
+    </text>
+  </g>
+
+  <!-- External Compact Keyboard and Mouse on desk surface -->
+  <g transform="translate(250, 222)">
+    <rect x="0" y="2" width="105" height="10" rx="2" fill="#27272a" stroke="#71717a" stroke-width="1" />
+    <rect x="115" y="2" width="22" height="12" rx="4" fill="#27272a" stroke="#f59e0b" stroke-width="1" />
+  </g>
+
+  <!-- DIY Hack 2: Shoe box / firm Footrest under desk -->
+  <g transform="translate(320, 305)">
+    <rect x="0" y="0" width="120" height="35" rx="3" fill="#ca8a04" stroke="#fef08a" stroke-width="1.5" />
+    <line x1="0" y1="12" x2="120" y2="12" stroke="#a16207" stroke-width="1" />
+    <text x="60" y="24" font-family="system-ui, sans-serif" font-size="10" font-weight="800" fill="#422006" text-anchor="middle">
+      ПОДСТАВКА ДЛЯ НОГ (0 ₽)
+    </text>
+  </g>
+
+  <!-- Priority 1 Investment: Good Ergonomic Chair with Mesh -->
+  <g transform="translate(490, 150)">
+    <rect x="10" y="10" width="60" height="90" rx="8" fill="#27272a" stroke="#f59e0b" stroke-width="2.5" />
+    <ellipse cx="40" cy="105" rx="40" ry="14" fill="#3f3f46" stroke="#f59e0b" stroke-width="1.5" />
+    <rect x="37" y="119" width="6" height="50" fill="#71717a" />
+    <path d="M40,169 L5,185 M40,169 L75,185" stroke="#52525b" stroke-width="5" stroke-linecap="round" />
+    <text x="40" y="215" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#f59e0b" text-anchor="middle">
+      ПРИОРИТЕТ №1: КРЕСЛО
+    </text>
+  </g>
+
+  <!-- Budget Breakdown Legend Card -->
+  <g transform="translate(50, 40)">
+    <rect x="0" y="0" width="220" height="150" rx="10" fill="#18181b" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="20" y="26" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#fbbf24">
+      БЮДЖЕТ ДО 18 000 ₽:
+    </text>
+    <text x="20" y="52" font-family="system-ui, sans-serif" font-size="11" fill="#fafafa">
+      • Кресло с сеткой: 14 000 ₽
+    </text>
+    <text x="20" y="74" font-family="system-ui, sans-serif" font-size="11" fill="#fafafa">
+      • Внешняя клавиатура: 1 200 ₽
+    </text>
+    <text x="20" y="96" font-family="system-ui, sans-serif" font-size="11" fill="#10b981">
+      • Книги под ноутбук: 0 ₽
+    </text>
+    <text x="20" y="118" font-family="system-ui, sans-serif" font-size="11" fill="#10b981">
+      • Обувная коробка (ноги): 0 ₽
+    </text>
+    <text x="20" y="136" font-family="system-ui, sans-serif" font-size="11" fill="#10b981">
+      • Биндеры (кабели): 0 ₽
+    </text>
+  </g>
+</svg>
