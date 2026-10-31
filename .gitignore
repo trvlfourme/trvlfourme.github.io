@@ -9,3 +9,4 @@ tools/server.log
 Thumbs.db
 desktop.ini
 deploy/
+_prodcheck/
