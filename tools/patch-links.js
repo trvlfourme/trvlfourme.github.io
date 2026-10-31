@@ -61,6 +61,35 @@ function patchButtons(js) {
   return { js: out, count };
 }
 
+// Пометка рекламы: у отдельных товаров партнёрская ссылка со своим erid и рекламодателем.
+const ERID_OVERRIDES = {
+  'metta-samurai-s3': {
+    erid: '5jtCeReNx12oak2sys499we',
+    advertiser: 'ООО «Яндекс Маркет», ИНН 9704254424',
+  },
+};
+
+// Подпись «Реклама. <рекламодатель>, erid: <erid>» берётся из карточки товара в бандле.
+function patchErid(js) {
+  let out = js;
+  let changed = 0;
+  for (const [id, v] of Object.entries(ERID_OVERRIDES)) {
+    const at = out.indexOf('{id:`' + id + '`');
+    if (at < 0) continue;
+    const adv = out.indexOf('ordAdvertiser:`', at);
+    if (adv < 0 || adv - at > 4000) continue;
+    const end = out.indexOf('}`', adv);
+    if (end < 0) continue;
+    const block = out.slice(at, end);
+    const m = block.match(/erid:`([^`]*)`,ordAdvertiser:`([^`]*)`/);
+    if (!m) continue;
+    if (m[1] === v.erid && m[2] === v.advertiser) continue;
+    out = out.slice(0, at) + block.replace(m[0], 'erid:`' + v.erid + '`,ordAdvertiser:`' + v.advertiser + '`') + out.slice(end);
+    changed++;
+  }
+  return { js: out, changed };
+}
+
 // Каталог товаров для панели редактирования ссылок.
 function buildCatalog(js) {
   const re = /id:`([a-z0-9-]+)`,name:`([^`]+)`,brand:`([^`]*)`/g;
@@ -133,7 +162,8 @@ function htmlFiles() {
       if (fs.existsSync(f)) out.push(f);
     }
   }
-  return out;
+  // страницы-редиректы со старых адресов остаются без тегов скриптов
+  return out.filter((f) => !/http-equiv="refresh"/i.test(fs.readFileSync(f, 'utf8')));
 }
 
 function injectTags(html) {
@@ -168,8 +198,11 @@ function main() {
   js = r.js;
   const b = patchButtons(js);
   js = b.js;
+  const e = patchErid(js);
+  js = e.js;
   fs.writeFileSync(bundlePath, js, 'utf8');
   console.log('резолвер:', r.changed ? 'пропатчен' : 'уже был', '| кнопки с проверкой ссылки:', b.count);
+  console.log('пометок рекламы обновлено:', e.changed);
 
   const rows = buildCatalog(js);
   console.log('каталог товаров:', rows.length);
