@@ -458,7 +458,7 @@ window.KD_CATALOG = {
         {
           "store": "yandex",
           "kind": "card",
-          "url": "https://market.yandex.ru/cc/BSokwG",
+          "url": "https://market.yandex.ru/cc/BSokwG?erid=5jtCeReNx12oak2szCZKNFa",
           "label": "Купить на Яндекс Маркете",
           "erid": "5jtCeReNx12oak2szCZKNFa",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"

@@ -91,7 +91,7 @@ window.KD_PRODUCT_LINKS = {
     "wb": ""
   },
   "laptop-stand-aluminum-folding": {
-    "yandex": "https://market.yandex.ru/cc/BSokwG",
+    "yandex": "https://market.yandex.ru/cc/BSokwG?erid=5jtCeReNx12oak2szCZKNFa",
     "ozon": "",
     "wb": ""
   },

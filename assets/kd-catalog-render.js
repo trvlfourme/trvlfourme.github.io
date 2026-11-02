@@ -61,6 +61,33 @@
 
   // Офферы товара: url из каталога, затем переопределение KD_PRODUCT_LINKS.
   // Пустой url = оффер не показывается. Переопределение '' прячет кнопку.
+  function withErid(url, erid) {
+    var u = (url || '').trim();
+    if (!u || !erid || u.indexOf('erid=') >= 0) return u;
+    return u + (u.indexOf('?') >= 0 ? '&' : '?') + 'erid=' + encodeURIComponent(erid);
+  }
+
+  function money(value) {
+    var raw = String(value).trim();
+    if (!/^\d+$/.test(raw)) return esc(raw);
+    return Number(raw).toLocaleString('ru-RU') + '&nbsp;₽';
+  }
+
+  function ruDate(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ''));
+    if (!m) return '';
+    var months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    return Number(m[3]) + ' ' + months[Number(m[2]) - 1] + ' ' + m[1];
+  }
+
+  function priceDisclaimer(catalog, products) {
+    var hasNote = (products || []).some(function (p) { return p && p.price_mode === 'note' && p.price_note; });
+    if (!hasNote) return '';
+    var date = ruDate(catalog && catalog.updated);
+    return '<div class="kd-cat-disclaimer">Цены — ориентир' + (date ? ' на ' + date : '') +
+      '. На Маркете они меняются каждый день: актуальную смотрите по кнопке у товара.</div>';
+  }
+
   function offersOf(product) {
     var fileLinks = (window.KD_PRODUCT_LINKS && window.KD_PRODUCT_LINKS[product.id]) || {};
     var locLinks = localLinks()[product.id] || {};
@@ -72,6 +99,7 @@
     (product.offers || []).forEach(function (o) {
       if (!o || !o.store) return;
       var url = Object.prototype.hasOwnProperty.call(override, o.store) ? override[o.store] : o.url;
+      url = withErid(url, o.erid);
       out.push({
         store: o.store, kind: o.kind === 'card' ? 'card' : 'search',
         url: (url || '').trim(), label: o.label || '', erid: o.erid || '', advertiser: o.advertiser || '',
@@ -125,7 +153,7 @@
       (product.brand ? '<div class="kd-cat-brand">' + esc(product.brand) + '</div>' : '') + '</div>';
     if (product.summary) html += '<div class="kd-cat-summary">' + esc(product.summary) + '</div>';
     if (product.price_mode === 'note' && product.price_note) {
-      html += '<div class="kd-cat-price-note"><b>Ориентир</b> — ' + esc(product.price_note) + '</div>';
+      html += '<div class="kd-cat-price-note"><b>Ориентир</b> — ' + money(product.price_note) + '</div>';
     }
     if (offers.length) {
       html += '<div class="kd-cat-actions">' + buttonsHtml(offers) + '</div>' + adNotes(offers);
@@ -161,6 +189,7 @@
     (catalog.levels || []).forEach(function (l) { levels[l.level] = l; });
     var setups = (catalog.setups || []).slice().sort(function (a, b) { return (a.level || 0) - (b.level || 0); });
     if (!setups.length) return null;
+    var setupProducts = [];
     var section = node('section', 'kd-cat-block');
     section.id = 'kd-setups-block';
     section.innerHTML = headingHtml('Готовые сетапы', 'Наборы одного уровня: название и состав правятся в каталоге');
@@ -176,8 +205,10 @@
       var products = productsOf(setup.product_ids, catalog);
       products.forEach(function (p) { card.appendChild(productCard(p)); });
       if (!products.length) card.appendChild(node('div', 'kd-cat-empty', 'Состав ещё не заполнен'));
+      setupProducts = setupProducts.concat(products);
       section.appendChild(card);
     });
+    section.insertAdjacentHTML('beforeend', priceDisclaimer(catalog, setupProducts));
     return section;
   }
   function currentSlug() {
