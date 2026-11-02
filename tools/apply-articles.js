@@ -71,6 +71,20 @@ function blockFromBundle(text) {
   return text.slice(i + START.length, j);
 }
 
+// Блок в бандле может быть отформатирован иначе (например, минификатором),
+// поэтому кроме текстового сравнения есть смысловое: одинаковые данные — не расхождение.
+const normAuthor = (a) => Object.assign({}, a, a.author ? { author: 'editorial' } : {});
+function sameData(blockText, articles) {
+  let parsed;
+  try {
+    parsed = new Function('ft', 'return ' + blockText)({ name: 'stub' });
+  } catch (e) {
+    return false;
+  }
+  if (!Array.isArray(parsed) || parsed.length !== articles.length) return false;
+  return JSON.stringify(parsed.map(normAuthor)) === JSON.stringify(articles.map(normAuthor));
+}
+
 function articlesJson(articles) {
   const list = articles.map((a) => ({ id: a.id, slug: a.slug }));
   return JSON.stringify(list, null, 2) + '\n';
@@ -82,7 +96,8 @@ function apply({ root = ROOT, dry = false } = {}) {
   const bundle = fs.readFileSync(bundlePath, 'utf8');
   const current = blockFromBundle(bundle);
   const wanted = renderBlock(articles);
-  const result = { count: articles.length, bundleChanged: current !== wanted, listChanged: false };
+  const differs = current !== wanted && !sameData(current, articles);
+  const result = { count: articles.length, bundleChanged: differs, listChanged: false };
 
   if (!dry) {
     if (result.bundleChanged) {
