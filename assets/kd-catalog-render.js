@@ -2,6 +2,7 @@
 // Источник: /data/catalog.js (window.KD_CATALOG). Ссылки переопределяются
 // через window.KD_PRODUCT_LINKS (data/product-links.js) и localStorage.kd_product_links.
 // Бандл assets/index.js не трогаем: новые товары появляются этим скриптом.
+// Стили — классы .kd-cat-* в assets/index.css.
 (function () {
   'use strict';
   var CATALOG = null;
@@ -13,15 +14,40 @@
     });
   }
 
-  function node(tag, style, html) {
+  function node(tag, cls, html) {
     var n = document.createElement(tag);
-    if (style) n.setAttribute('style', style);
+    if (cls) n.className = cls;
     if (html) n.innerHTML = html;
     return n;
   }
 
+  // Свежий каталог: fetch с ревалидацией, без ожидания кэша GitHub Pages.
+  function fetchFresh(cb) {
+    if (typeof fetch !== 'function') return cb(null);
+    fetch('/data/catalog.js', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.text() : null; })
+      .then(function (text) {
+        if (!text) return cb(null);
+        try {
+          window.eval(text);
+          cb(window.KD_CATALOG || null);
+        } catch (e) { cb(null); }
+      })
+      .catch(function () { cb(null); });
+  }
+
   function loadCatalog(cb) {
-    if (window.KD_CATALOG) return cb(window.KD_CATALOG);
+    if (window.KD_CATALOG) {
+      cb(window.KD_CATALOG);
+      fetchFresh(function (fresh) {
+        if (!fresh || !fresh.products) return;
+        var before = JSON.stringify(window.KD_CATALOG);
+        if (JSON.stringify(fresh) === before) return;
+        window.KD_CATALOG = fresh;
+        render(fresh);
+      });
+      return;
+    }
     var s = document.createElement('script');
     s.src = '/data/catalog.js';
     s.onload = function () { cb(window.KD_CATALOG || null); };
@@ -46,7 +72,10 @@
     (product.offers || []).forEach(function (o) {
       if (!o || !o.store) return;
       var url = Object.prototype.hasOwnProperty.call(override, o.store) ? override[o.store] : o.url;
-      out.push({ store: o.store, kind: o.kind === 'card' ? 'card' : 'search', url: (url || '').trim(), label: o.label || '', erid: o.erid || '', advertiser: o.advertiser || '' });
+      out.push({
+        store: o.store, kind: o.kind === 'card' ? 'card' : 'search',
+        url: (url || '').trim(), label: o.label || '', erid: o.erid || '', advertiser: o.advertiser || '',
+      });
     });
     Object.keys(override).forEach(function (store) {
       if (out.some(function (o) { return o.store === store; })) return;
@@ -69,39 +98,39 @@
       if (!o.erid || seen[o.erid]) return;
       seen[o.erid] = true;
       var who = o.advertiser ? ' ' + esc(o.advertiser) + ',' : '';
-      html += '<div style="font-size:10px;line-height:1.4;color:#78716c;margin-top:6px;font-family:ui-monospace,monospace">' +
-        'Реклама.' + who + ' erid: ' + esc(o.erid) + '</div>';
+      html += '<div class="kd-cat-ad">Реклама.' + who + ' erid: ' + esc(o.erid) + '</div>';
     });
     return html;
   }
 
   function buttonsHtml(offers) {
     return offers.map(function (o) {
-      var primary = o.kind !== 'search';
-      var style = primary
-        ? 'display:inline-block;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;background:#1c1917;color:#fff;border:1px solid #1c1917'
-        : 'display:inline-block;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;background:#fafaf9;color:#292524;border:1px solid #d6d3d1';
-      return '<a href="' + esc(o.url) + '" target="_blank" rel="noopener noreferrer sponsored nofollow" style="' + style + '">' +
-        esc(offerLabel(o)) + '</a>';
+      var buy = o.kind !== 'search';
+      return '<a class="kd-cat-btn' + (buy ? ' kd-cat-btn-buy' : '') + '" href="' + esc(o.url) + '" ' +
+        'target="_blank" rel="noopener noreferrer sponsored nofollow">' + esc(offerLabel(o)) + '</a>';
     }).join('');
   }
 
   function productCard(product) {
     var offers = offersOf(product);
-    var card = node('div', 'border:1px solid #e7e5e4;border-radius:12px;padding:12px 14px;background:#fff;margin-bottom:8px');
+    var card = node('div', 'kd-cat-card');
     card.setAttribute('data-kd-product', product.id);
-    var html = '<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap">' +
-      '<div style="font-size:14px;font-weight:700;color:#1c1917">' + esc(product.name) + '</div>' +
-      (product.brand ? '<div style="font-size:11px;color:#78716c">' + esc(product.brand) + '</div>' : '') +
-      '</div>';
-    if (product.summary) html += '<div style="font-size:12px;line-height:1.55;color:#57534e;margin-top:4px">' + esc(product.summary) + '</div>';
+    var html = '';
+    if (product.image) {
+      html += '<img class="kd-cat-thumb" src="' + esc(product.image) + '" alt="' + esc(product.name) +
+        '" loading="lazy" decoding="async">';
+    }
+    html += '<div class="kd-cat-body">';
+    html += '<div class="kd-cat-title-row"><div class="kd-cat-title">' + esc(product.name) + '</div>' +
+      (product.brand ? '<div class="kd-cat-brand">' + esc(product.brand) + '</div>' : '') + '</div>';
+    if (product.summary) html += '<div class="kd-cat-summary">' + esc(product.summary) + '</div>';
     if (product.price_mode === 'note' && product.price_note) {
-      html += '<div style="display:inline-block;margin-top:8px;padding:3px 8px;border-radius:999px;background:#fffbeb;border:1px solid #fde68a;font-size:11px;color:#92400e">' +
-        '<b>Ориентир</b> — ' + esc(product.price_note) + '</div>';
+      html += '<div class="kd-cat-price-note"><b>Ориентир</b> — ' + esc(product.price_note) + '</div>';
     }
     if (offers.length) {
-      html += '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">' + buttonsHtml(offers) + '</div>' + adNotes(offers);
+      html += '<div class="kd-cat-actions">' + buttonsHtml(offers) + '</div>' + adNotes(offers);
     }
+    html += '</div>';
     card.innerHTML = html;
     return card;
   }
@@ -112,17 +141,17 @@
     return (ids || []).map(function (id) { return byId[id]; }).filter(function (p) { return p && !p.archived; });
   }
 
-  function heading(title, subtitle) {
-    return '<h2 style="font-size:18px;font-weight:700;color:#1c1917;margin:0 0 4px">' + esc(title) + '</h2>' +
-      (subtitle ? '<div style="font-size:12px;color:#78716c;margin-bottom:12px">' + esc(subtitle) + '</div>' : '');
+  function headingHtml(title, subtitle) {
+    return '<h2 class="kd-cat-heading">' + esc(title) + '</h2>' +
+      (subtitle ? '<div class="kd-cat-sub">' + esc(subtitle) + '</div>' : '');
   }
 
   function articleBlock(entry, catalog) {
     var products = productsOf(entry.product_ids, catalog);
     if (!products.length) return null;
-    var section = node('section', 'margin-top:28px;padding:18px;background:#fafaf9;border:1px solid #e7e5e4;border-radius:16px');
+    var section = node('section', 'kd-cat-block');
     section.id = 'kd-catalog-block';
-    section.innerHTML = heading(entry.block_title || 'Товары из этой статьи', 'Подборка каталога «Кабинет Дома»');
+    section.innerHTML = headingHtml(entry.block_title || 'Товары из этой статьи', 'Подборка каталога «Кабинет Дома»');
     products.forEach(function (p) { section.appendChild(productCard(p)); });
     return section;
   }
@@ -132,22 +161,21 @@
     (catalog.levels || []).forEach(function (l) { levels[l.level] = l; });
     var setups = (catalog.setups || []).slice().sort(function (a, b) { return (a.level || 0) - (b.level || 0); });
     if (!setups.length) return null;
-    var section = node('section', 'margin-top:28px');
+    var section = node('section', 'kd-cat-block');
     section.id = 'kd-setups-block';
-    section.innerHTML = heading('Готовые сетапы', 'Наборы одного уровня: название и состав правятся в каталоге');
+    section.innerHTML = headingHtml('Готовые сетапы', 'Наборы одного уровня: название и состав правятся в каталоге');
     setups.forEach(function (setup) {
       var level = levels[setup.level] || {};
-      var card = node('div', 'border:1px solid #e7e5e4;border-radius:14px;padding:14px;background:#fff;margin-bottom:10px');
-      var products = productsOf(setup.product_ids, catalog);
-      var html = '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">' +
-        '<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;background:#fef3c7;color:#92400e">' +
-        esc(level.title || ('Уровень ' + setup.level)) + '</span>' +
-        '<span style="font-size:14px;font-weight:700;color:#1c1917">' + esc(setup.title) + '</span></div>';
-      if (level.note) html += '<div style="font-size:11px;color:#78716c;margin-top:2px">' + esc(level.note) + '</div>';
-      if (setup.description) html += '<div style="font-size:12px;line-height:1.55;color:#57534e;margin-top:6px">' + esc(setup.description) + '</div>';
+      var card = node('div', 'kd-cat-setup');
+      var html = '<div class="kd-cat-setup-head">' +
+        '<span class="kd-cat-level">' + esc(level.title || ('Уровень ' + setup.level)) + '</span>' +
+        '<span class="kd-cat-setup-title">' + esc(setup.title) + '</span></div>';
+      if (level.note) html += '<div class="kd-cat-level-note">' + esc(level.note) + '</div>';
+      if (setup.description) html += '<div class="kd-cat-setup-desc">' + esc(setup.description) + '</div>';
       card.innerHTML = html;
+      var products = productsOf(setup.product_ids, catalog);
       products.forEach(function (p) { card.appendChild(productCard(p)); });
-      if (!products.length) card.appendChild(node('div', 'font-size:12px;color:#a8a29e;margin-top:8px', 'Состав ещё не заполнен'));
+      if (!products.length) card.appendChild(node('div', 'kd-cat-empty', 'Состав ещё не заполнен'));
       section.appendChild(card);
     });
     return section;
@@ -229,4 +257,5 @@
   window.addEventListener('popstate', function () {
     if (window.KD_CATALOG) render(window.KD_CATALOG);
   });
+  window.KD_CATALOG_RENDER = { render: function () { render(window.KD_CATALOG); } };
 })();

@@ -48,6 +48,7 @@
         brand: p.brand || '',
         category: p.category || '',
         summary: p.summary || '',
+        image: p.image || '',
         price_mode: p.price_mode === 'note' ? 'note' : 'hidden',
         price_note: p.price_note || '',
         archived: p.archived === true,
@@ -176,6 +177,9 @@
       if (ids[p.id]) errors.push(where + ': id повторяется');
       ids[p.id] = true;
       if (!p.name) errors.push(where + ': нет названия');
+      if (p.image && p.image.indexOf('https://') !== 0 && p.image.charAt(0) !== '/') {
+        errors.push(where + ': картинка должна быть https:// или путём от корня (/images/...)');
+      }
       if (p.price_mode === 'hidden' && p.price_note) errors.push(where + ': при price_mode "hidden" пометка о цене не выводится');
       if (p.price_mode === 'note' && !p.price_note) errors.push(where + ': price_mode "note" без текста пометки');
       var seen = {};
@@ -282,7 +286,7 @@
     var n = 1;
     while (productById('new-product-' + n)) n++;
     var p = {
-      id: 'new-product-' + n, name: '', brand: '', category: '', summary: '',
+      id: 'new-product-' + n, name: '', brand: '', category: '', summary: '', image: '',
       price_mode: 'hidden', price_note: '', archived: false, offers: [],
     };
     state.products.unshift(p);
@@ -339,6 +343,8 @@
     box.appendChild(field('Бренд', input(p.brand, 'Бренд или мастерская', function (v) { p.brand = v; })));
     box.appendChild(field('Категория', input(p.category, 'Кресла, столы, свет…', function (v) { p.category = v; })));
     box.appendChild(field('Короткое описание', area(p.summary, 'Одна строка для карточки', 2, function (v) { p.summary = v; })));
+    box.appendChild(field('Картинка (https:// или /images/...)', input(p.image, '/images/product.jpg', function (v) { p.image = v.trim(); }),
+      'Необязательно. Локальные пути проверяются сборкой.'));
     var note = input(p.price_note, 'Например: ориентир по рынку — проверьте цену', function (v) { p.price_note = v; });
     note.disabled = p.price_mode === 'hidden';
     note.style.opacity = p.price_mode === 'hidden' ? '0.5' : '1';
@@ -651,6 +657,24 @@
     toast('Файл скачан — положите его в data/catalog.js');
   }
 
+  // Свежий каталог из файла: не затирает несохранённый черновик браузера.
+  function refreshFromFile() {
+    if (readDraft() || typeof fetch !== 'function') return;
+    fetch('/data/catalog.js', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.text() : null; })
+      .then(function (text) {
+        if (!text) return;
+        try {
+          window.eval(text);
+          var fresh = normalize(window.KD_CATALOG);
+          if (JSON.stringify(fresh) === JSON.stringify(state)) return;
+          state = fresh;
+          renderBody();
+        } catch (e) {}
+      })
+      .catch(function () {});
+  }
+
   function closePanel() {
     if (panel) { panel.remove(); panel = null; bodyNode = null; }
   }
@@ -730,6 +754,7 @@
     panel.addEventListener('click', function (e) { if (e.target === panel) closePanel(); });
     document.body.appendChild(panel);
     renderBody();
+    refreshFromFile();
   }
   function isAdmin() {
     try { return sessionStorage.getItem('kd_admin_auth') === 'true'; } catch (e) { return false; }
@@ -811,6 +836,17 @@
     e.preventDefault();
     e.stopImmediatePropagation();
     showPin();
+  }, true);
+
+  // Ctrl+Shift+K — панель каталога: код 2026, если админка ещё закрыта.
+  window.addEventListener('keydown', function (e) {
+    var key = (e.key || '').toLowerCase();
+    var isK = e.code === 'KeyK' || key === 'k' || key === 'л';
+    if (!isK || !(e.ctrlKey || e.metaKey) || !e.shiftKey) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if (isAdmin()) openPanel();
+    else showPin();
   }, true);
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncFab);

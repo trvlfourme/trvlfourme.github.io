@@ -1,8 +1,9 @@
-// Слой редактируемых ссылок на товары.
+// Слой редактируемых ссылок на товары (патч бандла).
 // 1) Учит бандл брать ссылки из /data/product-links.js и localStorage.kd_product_links.
 // 2) Прячет кнопку маркетплейса, если ссылки нет (Ozon — только по введённой ссылке).
-// 3) Генерирует каталог товаров для панели редактирования.
-// Идемпотентно: повторный запуск ничего не дублирует.
+// 3) Каталог товаров не генерируется поверх данных: источник правды — data/catalog.js
+//    (правится в админке). Здесь только первичный перенос, если файла ещё нет.
+// Идемпотентно: повторный запуск ничего не дублирует и не затирает каталог.
 const fs = require('fs');
 const path = require('path');
 
@@ -44,11 +45,17 @@ const ANCHOR = (v, kind) => '(0,A.jsxDEV)(`a`,{href:St(' + v + ',`' + kind + '`)
 const GUARDED = (v, kind) => 'St(' + v + ',`' + kind + '`)&&' + ANCHOR(v, kind);
 
 // Кнопку маркетплейса рисуем только при живой ссылке.
+// Идемпотентно: уже защищённые кнопки не оборачиваются повторно.
 function patchButtons(js) {
   let out = js;
+  const SENT = '';
   for (const v of ['t', 'e']) {
     for (const kind of ['yandex', 'ozon', 'wb']) {
+      const guard = 'St(' + v + ',`' + kind + '`)&&';
+      while (out.includes(guard + guard)) out = out.split(guard + guard).join(guard);
+      out = out.split(guard + ANCHOR(v, kind)).join(SENT);
       out = out.split(ANCHOR(v, kind)).join(GUARDED(v, kind));
+      out = out.split(SENT).join(guard + ANCHOR(v, kind));
     }
   }
   // старые условия вида t.wbUrl&& перед уже защищённой кнопкой убираем целиком
@@ -131,17 +138,47 @@ function buildCatalog(js) {
   return rows;
 }
 
+// Каталог из бандла не перезаписывает data/catalog.js: файл ведётся в админке
+// (товары, офферы, сетапы, привязки статей) и проверяется tools/verify-build.js.
 function writeCatalog(rows) {
   fs.mkdirSync(dataDir, { recursive: true });
+  const target = path.join(dataDir, 'catalog.js');
+  if (fs.existsSync(target)) return false;
+  const catalog = {
+    version: 1,
+    updated: new Date().toISOString().slice(0, 10),
+    levels: [
+      { level: 1, title: 'Старт', note: 'Минимальный рабочий набор без переплаты' },
+      { level: 2, title: 'Оптимум', note: 'Баланс цены и эргономики на каждый день' },
+      { level: 3, title: 'Премиум', note: 'Максимальный ресурс и комфорт' },
+    ],
+    products: rows.map((r) => ({
+      id: r.id,
+      name: r.name,
+      brand: r.brand || '',
+      category: '',
+      summary: '',
+      image: '',
+      price_mode: 'hidden',
+      price_note: '',
+      archived: false,
+      offers: ['yandex', 'ozon', 'wb']
+        .filter((store) => r[store])
+        .map((store) => ({ store, kind: 'search', url: r[store], label: '', erid: '', advertiser: '' })),
+    })),
+    setups: [],
+    articles: [],
+  };
   const body = [
-    '// Каталог товаров сайта (генерируется tools/patch-links.js).',
-    'window.KD_PRODUCT_CATALOG = ' + JSON.stringify(rows, null, 2) + ';',
+    '// Каталог товаров kabinetdoma.ru — единый источник правды.',
+    '// window.KD_CATALOG = { version, updated, levels, products, setups, articles }.',
+    '// Цена на сайте не печатается: price_mode "hidden" | "note".',
+    '// Удаление товара — archived: true, чтобы не ломать привязки.',
+    'window.KD_CATALOG = ' + JSON.stringify(catalog, null, 2) + ';',
     '',
-  ].join('\n');
-  const target = path.join(dataDir, 'product-catalog.js');
-  const prev = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : '';
-  if (prev !== body) fs.writeFileSync(target, body, 'utf8');
-  return prev !== body;
+  ].join(String.fromCharCode(10));
+  fs.writeFileSync(target, body, 'utf8');
+  return true;
 }
 
 function ensureLinksFile() {
@@ -162,7 +199,10 @@ function ensureLinksFile() {
   return true;
 }
 
+const CATALOG_TAG = '<script src="/data/catalog.js"></script>';
 const LINKS_TAG = '<script src="/data/product-links.js"></script>';
+const RENDER_TAG = '<script defer src="/assets/kd-catalog-render.js"></script>';
+const ADMIN_CATALOG_TAG = '<script defer src="/assets/kd-admin-catalog.js"></script>';
 const ADMIN_TAG = '<script defer src="/assets/kd-admin-links.js"></script>';
 
 function htmlFiles() {
@@ -187,9 +227,14 @@ function injectTags(html) {
   let out = html;
   if (!out.includes(LINKS_TAG)) {
     if (out.includes('<script type="module"')) out = out.replace('<script type="module"', LINKS_TAG + '<script type="module"');
-    else out = out.replace('</head>', LINKS_TAG + '\n</head>');
+    else out = out.replace('</head>', LINKS_TAG + String.fromCharCode(10) + '</head>');
   }
-  if (!out.includes(ADMIN_TAG)) out = out.replace('</body>', ADMIN_TAG + '\n</body>');
+  if (!out.includes(CATALOG_TAG)) out = out.replace(LINKS_TAG, CATALOG_TAG + LINKS_TAG);
+  const block = (out.includes(RENDER_TAG) ? '' : RENDER_TAG) + (out.includes(ADMIN_CATALOG_TAG) ? '' : ADMIN_CATALOG_TAG);
+  if (block) {
+    if (out.includes(ADMIN_TAG)) out = out.replace(ADMIN_TAG, block + ADMIN_TAG);
+    else out = out.replace('</body>', block + String.fromCharCode(10) + '</body>');
+  }
   return out;
 }
 
@@ -225,7 +270,7 @@ function main() {
 
   const rows = buildCatalog(js);
   console.log('каталог товаров:', rows.length);
-  console.log('каталог обновлён:', writeCatalog(rows));
+  console.log('каталог создан с нуля:', writeCatalog(rows), '(существующий data/catalog.js не перезаписывается)');
   console.log('product-links.js создан:', ensureLinksFile());
 
   let pages = 0;

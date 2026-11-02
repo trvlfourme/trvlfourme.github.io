@@ -100,6 +100,13 @@ if (exists('data/catalog.js')) {
       if (byId.has(p.id)) fail(`${label}: id повторяется`);
       byId.set(p.id, p);
       if (!p.name) fail(`${label}: нет названия`);
+      if (p.image) {
+        if (!/^https:\/\//.test(p.image) && p.image[0] !== '/') {
+          fail(`${label}: картинка должна быть https:// или путём от корня`);
+        } else if (p.image[0] === '/' && !exists(p.image.slice(1))) {
+          fail(`${label}: картинки нет на диске — ${p.image}`);
+        }
+      }
       if (!['hidden', 'note'].includes(p.price_mode)) fail(`${label}: price_mode только "hidden" или "note"`);
       if ('price' in p || 'priceText' in p || 'price_from' in p || 'priceFrom' in p) {
         fail(`${label}: цена хранится в каталоге, а на сайте её печатать нельзя`);
