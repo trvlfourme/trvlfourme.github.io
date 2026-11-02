@@ -55,7 +55,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 24900,
+      "price_rub": 32693,
       "archived": false,
       "offers": [
         {
@@ -407,7 +407,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 68500,
+      "price_rub": 72835,
       "archived": false,
       "offers": [
         {
@@ -466,14 +466,14 @@ window.KD_CATALOG = {
     },
     {
       "id": "lumbar-cushion-memory",
-      "name": "Анатомическая подушка под поясницу с эффектом памяти (Memory Foam)",
+      "name": "Подушка под спину и поясницу SSY с эффектом памяти, 45×39×12 см",
       "brand": "ErgoSpine",
       "category": "",
       "summary": "",
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 1490,
+      "price_rub": 1090,
       "archived": false,
       "offers": [
         {
