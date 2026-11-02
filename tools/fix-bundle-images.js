@@ -28,7 +28,7 @@ const IMG = {
   'mouse-delux-vertical': '/images/workspace-hero.svg',
   'mouse-logitech-mx-master-3s': '/images/workspace-hero.svg',
   'headphones-anker-space-one': '/images/audio-microphones.svg',
-  'webcam-anker-powerconf-c200': '/images/audio-microphones.svg',
+  'webcam-logitech-c922': '/images/audio-microphones.svg',
   'pomodoro-timer-cube': '/images/workspace-hero.svg',
   'acupressure-mat-pranamat': '/images/ergonomic-chair.svg',
 };

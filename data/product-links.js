@@ -107,7 +107,7 @@ window.KD_PRODUCT_LINKS = {
     "ozon": "",
     "wb": ""
   },
-  "webcam-anker-powerconf-c200": {
+  "webcam-logitech-c922": {
     "ozon": "",
     "wb": ""
   },

@@ -597,7 +597,7 @@ window.KD_CATALOG = {
       ]
     },
     {
-      "id": "webcam-anker-powerconf-c200",
+      "id": "webcam-logitech-c922",
       "name": "Веб-камера Logitech C922 Pro Stream (1080p, 60 fps)",
       "brand": "Logitech",
       "category": "",
@@ -813,7 +813,7 @@ window.KD_CATALOG = {
         "benq-screenbar-halo",
         "jabra-evolve2-65",
         "fifine-k688",
-        "webcam-anker-powerconf-c200",
+        "webcam-logitech-c922",
         "ugreen-gan-100w",
         "cable-management-kit"
       ]
@@ -882,7 +882,7 @@ window.KD_CATALOG = {
         "jabra-evolve2-65",
         "fifine-k688",
         "headphones-anker-space-one",
-        "webcam-anker-powerconf-c200"
+        "webcam-logitech-c922"
       ]
     },
     {
@@ -1028,7 +1028,7 @@ window.KD_CATALOG = {
       "product_ids": [
         "headphones-anker-space-one",
         "pomodoro-timer-cube",
-        "webcam-anker-powerconf-c200"
+        "webcam-logitech-c922"
       ]
     },
     {
