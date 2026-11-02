@@ -88,6 +88,7 @@ function copyStaged(from, to) {
   step('метаданные и разметка', 'seo-fix.js');
   step('локальные картинки, размеры, lazy', 'optimize-html-images.js');
   step('редиректы', 'make-redirects.js');
+  step('трекер целей', 'inject-tracker.js');
   step('sitemap', 'sitemap.js');
   step('проверка', 'verify-build.js');
   console.log('\nсборка завершена');

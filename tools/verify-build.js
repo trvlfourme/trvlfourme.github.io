@@ -50,7 +50,8 @@ if (exists('data/articles/order.json')) {
 const files = walk(root);
 // служебные страницы: подтверждение Яндекса и страница ошибки живут по своим правилам
 // 404 и файлы подтверждения поисковиков (yandex_*.html, google*.html) живут по своим правилам
-const SERVICE_PAGES = new Set(['404.html']);
+// служебные страницы: оболочка 404 для GitHub Pages и подтверждения поисковиков
+const SERVICE_PAGES = new Set(['404.html', 'index.spa.html']);
 const isServicePage = (f) => SERVICE_PAGES.has(path.basename(f)) || /^(yandex_|google)[0-9a-f]+\.html$/i.test(path.basename(f));
 const pages = files.filter((f) => f.endsWith('.html') && !f.includes(`${path.sep}tools${path.sep}`));
 const contentPages = pages.filter((f) => !isServicePage(f));
@@ -269,6 +270,9 @@ for (const page of contentPages) {
   if (/ozon\.ru/i.test(html)) fail(`${rel}: осталась кнопка Ozon без партнёрской ссылки`);
   if (html.includes('/data/product-links.js') && !html.includes('/data/catalog.js')) fail(`${rel}: не подключён data/catalog.js`);
   if (html.includes('/data/product-links.js') && !html.includes('/assets/kd-catalog-render.js')) fail(`${rel}: не подключён assets/kd-catalog-render.js`);
+  const trackers = (html.match(/kd-track\.js/g) || []).length;
+  if (trackers === 0) fail(`${rel}: нет трекера целей /assets/kd-track.js`);
+  else if (trackers > 1) fail(`${rel}: трекер подключён ${trackers} раза`);
 }
 
 // 4. Локальные пути в разметке существуют
