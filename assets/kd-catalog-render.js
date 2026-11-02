@@ -139,7 +139,8 @@
     }).join('');
   }
 
-  function productCard(product) {
+  function productCard(product, opts) {
+    opts = opts || {};
     var offers = offersOf(product);
     var card = node('div', 'kd-cat-card');
     card.setAttribute('data-kd-product', product.id);
@@ -154,6 +155,8 @@
     if (product.summary) html += '<div class="kd-cat-summary">' + esc(product.summary) + '</div>';
     if (product.price_mode === 'note' && product.price_note) {
       html += '<div class="kd-cat-price-note"><b>Ориентир</b> — ' + money(product.price_note) + '</div>';
+    } else if (opts.showPrice && Number(product.price_rub) > 0) {
+      html += '<div class="kd-cat-price-note"><b>Ориентир</b> — ' + money(product.price_rub) + '</div>';
     }
     if (offers.length) {
       html += '<div class="kd-cat-actions">' + buttonsHtml(offers) + '</div>' + adNotes(offers);
@@ -161,6 +164,15 @@
     html += '</div>';
     card.innerHTML = html;
     return card;
+  }
+
+  function setupTotalHtml(products) {
+    var priced = products.filter(function (p) { return Number(p.price_rub) > 0; });
+    if (!priced.length) return '';
+    var total = priced.reduce(function (sum, p) { return sum + Number(p.price_rub); }, 0);
+    var html = '<div class="kd-cat-setup-total"><b>Итого по составу</b> — ' + money(total) +
+      ' <span class="kd-cat-setup-total-hint">(' + priced.length + ' из ' + products.length + ' поз.)</span></div>';
+    return html;
   }
 
   function productsOf(ids, catalog) {
@@ -204,8 +216,9 @@
       if (setup.description) html += '<div class="kd-cat-setup-desc">' + esc(setup.description) + '</div>';
       card.innerHTML = html;
       var products = productsOf(setup.product_ids, catalog);
-      products.forEach(function (p) { card.appendChild(productCard(p)); });
+      products.forEach(function (p) { card.appendChild(productCard(p, { showPrice: true })); });
       if (!products.length) card.appendChild(node('div', 'kd-cat-empty', 'Состав ещё не заполнен'));
+      card.insertAdjacentHTML('beforeend', setupTotalHtml(products));
       setupProducts = setupProducts.concat(products);
       section.appendChild(card);
     });
