@@ -34,6 +34,18 @@ if (!exists('sitemap.xml')) fail('нет sitemap.xml');
 if (!exists('data/product-links.js')) fail('нет data/product-links.js');
 if (!exists('assets/kd-admin-links.js')) fail('нет assets/kd-admin-links.js');
 
+// 1б. Тексты статей: бандл должен быть собран из data/articles, а не правиться руками
+if (exists('data/articles/order.json')) {
+  try {
+    const { apply } = require('./apply-articles');
+    const res = apply({ root, dry: true });
+    if (res.bundleChanged) fail('assets/index.js расходится с data/articles — правьте JSON и запустите node tools/apply-articles.js');
+    else note(`статьи: ${res.count} в data/articles, бандл собран из них`);
+  } catch (e) {
+    fail('data/articles: ' + e.message);
+  }
+}
+
 // 2. Карта страниц
 const files = walk(root);
 // служебные страницы: подтверждение Яндекса и страница ошибки живут по своим правилам

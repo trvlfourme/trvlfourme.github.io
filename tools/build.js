@@ -63,6 +63,8 @@ function copyStaged(from, to) {
 }
 
 (async () => {
+  step('тексты статей', 'apply-articles.js');
+
   if (!skipPrerender) {
     console.log(`\n=== локальный сервер :${PORT} ===`);
     const server = spawn(process.execPath, [path.join(__dirname, 'server.js'), String(PORT)], {
