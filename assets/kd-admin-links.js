@@ -34,10 +34,10 @@
   }
   function loadCatalog(cb) {
     if (catalog) return cb(catalog);
-    if (window.KD_PRODUCT_CATALOG) { catalog = window.KD_PRODUCT_CATALOG; return cb(catalog); }
+    if (window.KD_CATALOG && window.KD_CATALOG.products) { catalog = window.KD_CATALOG.products; return cb(catalog); }
     var s = document.createElement('script');
-    s.src = '/data/product-catalog.js';
-    s.onload = function () { catalog = window.KD_PRODUCT_CATALOG || []; cb(catalog); };
+    s.src = '/data/catalog.js';
+    s.onload = function () { catalog = (window.KD_CATALOG && window.KD_CATALOG.products) || []; cb(catalog); };
     s.onerror = function () { catalog = []; cb(catalog); };
     document.head.appendChild(s);
   }
@@ -68,8 +68,13 @@
       text: item.name + (item.brand ? ' · ' + item.brand : ''),
       style: 'font-size:13px;font-weight:600;color:#1c1917;margin-bottom:8px',
     }));
+    var offerUrl = function (store) {
+      var found = (item.offers || []).filter(function (o) { return o.store === store; })[0];
+      return found ? (found.url || '') : '';
+    };
     var hint = function (kind) {
-      return item[kind] ? 'встроенная: ' + item[kind] : 'ссылка не задана — кнопки не будет';
+      var url = offerUrl(kind);
+      return url ? 'из каталога: ' + url : 'ссылка не задана — кнопки не будет';
     };
     var f = {
       yandex: field({ key: 'yandex', text: 'Яндекс Маркет' }, cur.yandex, hint('yandex')),
@@ -124,7 +129,7 @@
     loadCatalog(function (items) {
       var list = el('div', { id: 'kd-links-list', style: 'overflow:auto;padding-right:4px;flex:1' });
       items.forEach(function (item) { list.appendChild(productRow(item)); });
-      if (!items.length) list.appendChild(el('div', { text: 'Каталог товаров не загрузился (data/product-catalog.js).', style: 'font-size:13px;color:#b91c1c' }));
+      if (!items.length) list.appendChild(el('div', { text: 'Каталог товаров не загрузился (data/catalog.js).', style: 'font-size:13px;color:#b91c1c' }));
 
       var search = el('input', { type: 'search', placeholder: 'Поиск товара', style: STYLE_INPUT + ';max-width:240px' });
       search.addEventListener('input', function () {

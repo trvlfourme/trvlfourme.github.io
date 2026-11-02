@@ -52,13 +52,103 @@ else {
   if (!js.includes('KD_PRODUCT_LINKS')) fail('бандл не знает про слой ссылок KD_PRODUCT_LINKS');
   if ((js.match(/function KdLnk\(/g) || []).length !== 1) fail('в бандле сломан резолвер ссылок KdLnk');
 }
-for (const jsFile of ['assets/kd-admin-links.js', 'data/product-links.js', 'data/product-catalog.js']) {
+for (const jsFile of ['assets/kd-admin-links.js', 'assets/kd-admin-catalog.js', 'assets/kd-catalog-render.js', 'data/product-links.js', 'data/catalog.js']) {
   if (exists(jsFile)) {
     try {
       execFileSync(process.execPath, ['--check', path.join(root, jsFile)], { stdio: 'pipe' });
     } catch (e) {
       fail(`синтаксическая ошибка в ${jsFile}`);
     }
+  }
+}
+
+// 2.5 Каталог товаров: единый источник правды data/catalog.js
+const CATALOG_FILES = ['data/catalog.js', 'assets/kd-admin-catalog.js', 'assets/kd-catalog-render.js'];
+for (const rel of CATALOG_FILES) if (!exists(rel)) fail(`нет ${rel}`);
+
+if (exists('data/catalog.js')) {
+  let catalog = null;
+  try {
+    const sandbox = { window: {} };
+    require('vm').runInNewContext(fs.readFileSync(path.join(root, 'data/catalog.js'), 'utf8'), sandbox, { timeout: 3000 });
+    catalog = sandbox.window.KD_CATALOG;
+  } catch (e) {
+    fail(`data/catalog.js не выполняется: ${e.message}`);
+  }
+  if (!catalog) fail('data/catalog.js не определяет window.KD_CATALOG');
+  else {
+    const products = Array.isArray(catalog.products) ? catalog.products : [];
+    const setups = Array.isArray(catalog.setups) ? catalog.setups : [];
+    const articles = Array.isArray(catalog.articles) ? catalog.articles : [];
+    if (!products.length) fail('каталог пуст: нет товаров');
+    if (!Array.isArray(catalog.products)) fail('catalog.products должен быть массивом');
+    if (!Array.isArray(catalog.setups)) fail('catalog.setups должен быть массивом');
+    if (!Array.isArray(catalog.articles)) fail('catalog.articles должен быть массивом');
+
+    for (const lvl of [1, 2, 3]) {
+      const found = (catalog.levels || []).find((l) => l && l.level === lvl);
+      if (!found) fail(`нет уровня сетапов ${lvl}`);
+      else if (!found.title) fail(`уровень ${lvl} без названия (Старт / Оптимум / Премиум задаются данными)`);
+    }
+
+    const byId = new Map();
+    let offers = 0;
+    for (const p of products) {
+      const label = `каталог/${p && p.id ? p.id : '?'}`;
+      if (!p || !p.id) { fail(`${label}: пустой id`); continue; }
+      if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(p.id)) fail(`${label}: id — строчная латиница, цифры и дефисы`);
+      if (byId.has(p.id)) fail(`${label}: id повторяется`);
+      byId.set(p.id, p);
+      if (!p.name) fail(`${label}: нет названия`);
+      if (!['hidden', 'note'].includes(p.price_mode)) fail(`${label}: price_mode только "hidden" или "note"`);
+      if ('price' in p || 'priceText' in p || 'price_from' in p || 'priceFrom' in p) {
+        fail(`${label}: цена хранится в каталоге, а на сайте её печатать нельзя`);
+      }
+      if (p.price_mode === 'hidden' && p.price_note) fail(`${label}: при price_mode "hidden" пометка о цене не выводится`);
+      if (p.price_mode === 'note' && !p.price_note) fail(`${label}: price_mode "note" без текста пометки`);
+      if (!Array.isArray(p.offers)) { fail(`${label}: offers должен быть массивом`); continue; }
+      offers += p.offers.length;
+      for (const o of p.offers) {
+        if (!['card', 'search'].includes(o.kind)) fail(`${label}: kind оффера "${o.kind}" — только card или search`);
+        if (o.kind === 'card' && /\/search|search\?/.test(o.url || '')) {
+          fail(`${label}: kind "card", но ссылка поисковая (${o.url})`);
+        }
+        if (o.url && !/^https:\/\//.test(o.url)) fail(`${label}: ссылка оффера должна начинаться с https://`);
+        if (o.erid && !o.advertiser) fail(`${label}: у оффера есть erid, но не указан рекламодатель`);
+      }
+    }
+
+    const checkRefs = (ids, label) => {
+      if (!Array.isArray(ids)) { fail(`${label}: product_ids должен быть массивом`); return; }
+      for (const id of ids) {
+        const p = byId.get(id);
+        if (!p) fail(`${label}: привязка на несуществующий товар ${id}`);
+        else if (p.archived) fail(`${label}: товар ${id} в архиве, но остался в привязках`);
+      }
+    };
+
+    const setupIds = new Set();
+    for (const s of setups) {
+      const label = `сетап/${s && s.id ? s.id : '?'}`;
+      if (!s || !s.id) fail(`${label}: пустой id`);
+      else if (setupIds.has(s.id)) fail(`${label}: id повторяется`);
+      else setupIds.add(s.id);
+      if (!s.title) fail(`${label}: нет названия`);
+      if (![1, 2, 3].includes(s.level)) fail(`${label}: level должен быть 1, 2 или 3`);
+      checkRefs(s.product_ids, label);
+    }
+
+    const slugs = new Set();
+    for (const a of articles) {
+      const label = `статья/${a && a.slug ? a.slug : '?'}`;
+      if (!a || !a.slug) fail(`${label}: пустой slug`);
+      else if (slugs.has(a.slug)) fail(`${label}: slug повторяется`);
+      else slugs.add(a.slug);
+      if (a && a.slug && !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(a.slug)) fail(`${label}: slug не в формате latin-with-dashes`);
+      checkRefs(a.product_ids, label);
+    }
+
+    note(`каталог: ${products.length} товаров (архив ${products.filter((p) => p.archived).length}), ${offers} офферов, ${setups.length} сетапов, ${articles.length} привязок статей`);
   }
 }
 
@@ -94,6 +184,8 @@ for (const page of contentPages) {
   if (/name="robots"[^>]*noindex/i.test(html)) fail(`${rel}: стоит noindex`);
   if (/trvlfourme/i.test(html)) fail(`${rel}: осталась ссылка на превью-домен trvlfourme`);
   if (/ozon\.ru/i.test(html)) fail(`${rel}: осталась кнопка Ozon без партнёрской ссылки`);
+  if (html.includes('/data/product-links.js') && !html.includes('/data/catalog.js')) fail(`${rel}: не подключён data/catalog.js`);
+  if (html.includes('/data/product-links.js') && !html.includes('/assets/kd-catalog-render.js')) fail(`${rel}: не подключён assets/kd-catalog-render.js`);
 }
 
 // 4. Локальные пути в разметке существуют
