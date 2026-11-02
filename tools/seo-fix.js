@@ -155,7 +155,9 @@ function rewriteHead(html, meta, schema, isArticle) {
   );
   html = html.replace(/[ \t]*<!-- kd-seo -->[\s\S]*?<!-- \/kd-seo -->/g, '');
   const block = `<!-- kd-seo -->\n    <script type="application/ld+json">${schema}</script>\n    <!-- /kd-seo -->`;
-  return html.replace(/<\/head>/i, `${block}\n  </head>`);
+  // Пустые строки перед </head> убираем: иначе каждый прогон добавляет одну,
+  // файлы вечно «грязные», а sitemap.js видит изменение и сдвигает lastmod.
+  return html.replace(/(?:\r?\n[ \t]*)*<\/head>/i, `\n${block}\n  </head>`);
 }
 
 function tailBlock(meta) {
@@ -209,7 +211,7 @@ for (const file of pages(root)) {
   const schema = buildSchema({ route, meta, h1, dateModified, faq });
   html = rewriteHead(html, meta, schema, isArticle);
   html = html.replace(/[ \t]*<!-- kd-links -->[\s\S]*?<!-- \/kd-links -->/g, '');
-  html = html.replace(/<\/body>/i, `${tailBlock(meta)}\n</body>`);
+  html = html.replace(/(?:\r?\n[ \t]*)*<\/body>/i, `\n${tailBlock(meta)}\n</body>`);
   fs.writeFileSync(file, html, 'utf8');
   report.push(`${route.padEnd(52)} ${meta.title.length} симв. заголовок, ${meta.desc.length} описание, FAQ ${faq.length}`);
 }
