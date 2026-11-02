@@ -25,7 +25,7 @@ for (const key of Object.keys(META)) {
 
 const TOOLS = [
   ['/calculator/', 'Калькулятор высоты стола'],
-  ['/builder/', 'Конструктор набора'],
+  ['/builder/', 'Наборы для рабочего места'],
   ['/tests/', 'Тесты о рабочем месте'],
   ['/checklist/', 'Чек-лист тишины'],
 ];

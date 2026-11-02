@@ -1,4 +1,4 @@
-// Рендер каталога на страницах сайта: товары в статьях и готовые сетапы.
+// Рендер каталога на страницах сайта: товары в статьях.
 // Источник: /data/catalog.js (window.KD_CATALOG). Ссылки переопределяются
 // через window.KD_PRODUCT_LINKS (data/product-links.js) и localStorage.kd_product_links.
 // Бандл assets/index.js не трогаем: новые товары появляются этим скриптом.
@@ -6,7 +6,7 @@
 (function () {
   'use strict';
   var CATALOG = null;
-  var mountIds = ['kd-catalog-block', 'kd-setups-block'];
+  var mountIds = ['kd-catalog-block'];
 
   function esc(value) {
     return String(value == null ? '' : value).replace(/[&<>"']/g, function (c) {
@@ -169,15 +169,6 @@
     return card;
   }
 
-  function setupTotalHtml(products) {
-    var priced = products.filter(function (p) { return Number(p.price_rub) > 0; });
-    if (!priced.length) return '';
-    var total = priced.reduce(function (sum, p) { return sum + Number(p.price_rub); }, 0);
-    var html = '<div class="kd-cat-setup-total"><b>Итого по составу</b> — ' + money(total) +
-      ' <span class="kd-cat-setup-total-hint">(' + priced.length + ' из ' + products.length + ' поз.)</span></div>';
-    return html;
-  }
-
   function productsOf(ids, catalog) {
     var byId = {};
     (catalog.products || []).forEach(function (p) { byId[p.id] = p; });
@@ -200,34 +191,6 @@
     return section;
   }
 
-  function setupsBlock(catalog) {
-    var levels = {};
-    (catalog.levels || []).forEach(function (l) { levels[l.level] = l; });
-    var setups = (catalog.setups || []).slice().sort(function (a, b) { return (a.level || 0) - (b.level || 0); });
-    if (!setups.length) return null;
-    var setupProducts = [];
-    var section = node('section', 'kd-cat-block');
-    section.id = 'kd-setups-block';
-    section.innerHTML = headingHtml('Готовые сетапы', 'Наборы одного уровня: название и состав правятся в каталоге');
-    setups.forEach(function (setup) {
-      var level = levels[setup.level] || {};
-      var card = node('div', 'kd-cat-setup');
-      var html = '<div class="kd-cat-setup-head">' +
-        '<span class="kd-cat-level">' + esc(level.title || ('Уровень ' + setup.level)) + '</span>' +
-        '<span class="kd-cat-setup-title">' + esc(setup.title) + '</span></div>';
-      if (level.note) html += '<div class="kd-cat-level-note">' + esc(level.note) + '</div>';
-      if (setup.description) html += '<div class="kd-cat-setup-desc">' + esc(setup.description) + '</div>';
-      card.innerHTML = html;
-      var products = productsOf(setup.product_ids, catalog);
-      products.forEach(function (p) { card.appendChild(productCard(p, { showPrice: true })); });
-      if (!products.length) card.appendChild(node('div', 'kd-cat-empty', 'Состав ещё не заполнен'));
-      card.insertAdjacentHTML('beforeend', setupTotalHtml(products));
-      setupProducts = setupProducts.concat(products);
-      section.appendChild(card);
-    });
-    section.insertAdjacentHTML('beforeend', priceDisclaimer(catalog, setupProducts));
-    return section;
-  }
   function currentSlug() {
     var m = window.location.pathname.match(/\/article\/([^\/]+)\/?/);
     if (m) return decodeURIComponent(m[1]);
@@ -242,13 +205,6 @@
     return document.querySelector('article [class*="col-span-8"]') ||
       document.querySelector('article') ||
       document.querySelector('main');
-  }
-
-  function setupHost() {
-    var marker = document.querySelector('[data-kd-setups]');
-    if (marker) return marker;
-    if (/\/builder\/?$/.test(window.location.pathname)) return document.querySelector('main') || document.getElementById('root');
-    return null;
   }
 
   function clearBlocks() {
@@ -270,15 +226,10 @@
         if (block) host.appendChild(block);
       }
     }
-    var setupsHost = setupHost();
-    if (setupsHost) {
-      var setups = setupsBlock(catalog);
-      if (setups) setupsHost.appendChild(setups);
-    }
   }
 
   function expectedBlocks() {
-    return !!currentSlug() || !!setupHost();
+    return !!currentSlug();
   }
 
   function boot() {
@@ -292,7 +243,6 @@
         if (tries > 20) return clearInterval(timer);
         if (!expectedBlocks()) return clearInterval(timer);
         if (!document.getElementById('kd-catalog-block') && currentSlug()) render(catalog);
-        else if (setupHost() && !document.getElementById('kd-setups-block')) render(catalog);
       }, 1200);
     });
   }

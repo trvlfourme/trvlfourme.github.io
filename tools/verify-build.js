@@ -91,18 +91,10 @@ if (exists('data/catalog.js')) {
   if (!catalog) fail('data/catalog.js не определяет window.KD_CATALOG');
   else {
     const products = Array.isArray(catalog.products) ? catalog.products : [];
-    const setups = Array.isArray(catalog.setups) ? catalog.setups : [];
     const articles = Array.isArray(catalog.articles) ? catalog.articles : [];
     if (!products.length) fail('каталог пуст: нет товаров');
     if (!Array.isArray(catalog.products)) fail('catalog.products должен быть массивом');
-    if (!Array.isArray(catalog.setups)) fail('catalog.setups должен быть массивом');
     if (!Array.isArray(catalog.articles)) fail('catalog.articles должен быть массивом');
-
-    for (const lvl of [1, 2, 3]) {
-      const found = (catalog.levels || []).find((l) => l && l.level === lvl);
-      if (!found) fail(`нет уровня сетапов ${lvl}`);
-      else if (!found.title) fail(`уровень ${lvl} без названия (Старт / Оптимум / Премиум задаются данными)`);
-    }
 
     const byId = new Map();
     let offers = 0;
@@ -174,21 +166,6 @@ if (exists('data/catalog.js')) {
       }
     };
 
-    const setupIds = new Set();
-    for (const s of setups) {
-      const label = `сетап/${s && s.id ? s.id : '?'}`;
-      if (!s || !s.id) fail(`${label}: пустой id`);
-      else if (setupIds.has(s.id)) fail(`${label}: id повторяется`);
-      else setupIds.add(s.id);
-      if (!s.title) fail(`${label}: нет названия`);
-      if (![1, 2, 3].includes(s.level)) fail(`${label}: level должен быть 1, 2 или 3`);
-      checkRefs(s.product_ids, label);
-      for (const id of s.product_ids || []) {
-        const p = byId.get(id);
-        if (p && !p.archived && !p.price_rub) fail(`${label}: у товара ${id} нет price_rub — итог сетапа не сойдётся`);
-      }
-    }
-
     const slugs = new Set();
     for (const a of articles) {
       const label = `статья/${a && a.slug ? a.slug : '?'}`;
@@ -199,7 +176,7 @@ if (exists('data/catalog.js')) {
       checkRefs(a.product_ids, label);
     }
 
-    note(`каталог: ${products.length} товаров (архив ${products.filter((p) => p.archived).length}), ${offers} офферов, ${setups.length} сетапов, ${articles.length} привязок статей`);
+    note(`каталог: ${products.length} товаров (архив ${products.filter((p) => p.archived).length}), ${offers} офферов, ${articles.length} привязок статей`);
   }
 }
 

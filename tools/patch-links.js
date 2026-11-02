@@ -139,7 +139,7 @@ function buildCatalog(js) {
 }
 
 // Каталог из бандла не перезаписывает data/catalog.js: файл ведётся в админке
-// (товары, офферы, сетапы, привязки статей) и проверяется tools/verify-build.js.
+// (товары, офферы, привязки статей) и проверяется tools/verify-build.js.
 function writeCatalog(rows) {
   fs.mkdirSync(dataDir, { recursive: true });
   const target = path.join(dataDir, 'catalog.js');
@@ -147,11 +147,6 @@ function writeCatalog(rows) {
   const catalog = {
     version: 1,
     updated: new Date().toISOString().slice(0, 10),
-    levels: [
-      { level: 1, title: 'Старт', note: 'Минимальный рабочий набор без переплаты' },
-      { level: 2, title: 'Оптимум', note: 'Баланс цены и эргономики на каждый день' },
-      { level: 3, title: 'Премиум', note: 'Максимальный ресурс и комфорт' },
-    ],
     products: rows.map((r) => ({
       id: r.id,
       name: r.name,
@@ -166,12 +161,11 @@ function writeCatalog(rows) {
         .filter((store) => r[store])
         .map((store) => ({ store, kind: 'search', url: r[store], label: '', erid: '', advertiser: '' })),
     })),
-    setups: [],
     articles: [],
   };
   const body = [
     '// Каталог товаров kabinetdoma.ru — единый источник правды.',
-    '// window.KD_CATALOG = { version, updated, levels, products, setups, articles }.',
+    '// window.KD_CATALOG = { version, updated, products, articles }.',
     '// Цена на сайте не печатается: price_mode "hidden" | "note".',
     '// Удаление товара — archived: true, чтобы не ломать привязки.',
     'window.KD_CATALOG = ' + JSON.stringify(catalog, null, 2) + ';',

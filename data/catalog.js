@@ -1,28 +1,11 @@
 // Каталог товаров kabinetdoma.ru — единый источник правды.
-// window.KD_CATALOG = { version, updated, levels, products, setups, articles }.
+// window.KD_CATALOG = { version, updated, products, articles }.
 // Цена на сайте не печатается: price_mode "hidden" | "note" (при note выводится только пометка «ориентир»).
-// Удаление товара — archived: true, чтобы не ломать привязки статей и сетапов.
+// Удаление товара — archived: true, чтобы не ломать привязки статей.
 // Правки: админка (Ctrl+Shift+A, код 2026) -> кнопка «Каталог» -> «Скачать catalog.js».
 window.KD_CATALOG = {
   "version": 1,
   "updated": "2026-11-02",
-  "levels": [
-    {
-      "level": 1,
-      "title": "Старт",
-      "note": "Минимальный рабочий набор без переплаты"
-    },
-    {
-      "level": 2,
-      "title": "Оптимум",
-      "note": "Баланс цены и эргономики на каждый день"
-    },
-    {
-      "level": 3,
-      "title": "Премиум",
-      "note": "Максимальный ресурс и комфорт"
-    }
-  ],
   "products": [
     {
       "id": "ergostol-terra",
@@ -773,7 +756,6 @@ window.KD_CATALOG = {
       ]
     }
   ],
-  "setups": [],
   "articles": [
     {
       "slug": "balans-raboty-i-lichnoj-zhizni-na-udalenke",
