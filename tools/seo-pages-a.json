@@ -1,4 +1,14 @@
 {
+  "printer-dlya-doma-kompaktno-i-kuda-postavit": {
+    "title": "Компактный принтер для дома: выбор и место в квартире",
+    "desc": "Как выбрать домашний принтер, МФУ или сканер по габаритам и весу, что мерить кроме ширины и куда поставить технику, чтобы она не съела место.",
+    "related": [
+      ["/article/kabel-menedzhment-pod-stolom-svoimi-rukami/", "Кабель-менеджмент под столом"],
+      ["/article/rabochee-mesto-v-odnushke-s-rebenkom/", "Рабочее место в однушке"],
+      ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Куда поставить рабочий стол"],
+      ["/article/domashnij-ofis-s-nulya-nedorogo/", "Домашний офис с нуля"]
+    ]
+  },
   "5-luchshih-ergonomichnyh-kresel-rejting": {
     "title": "5 эргономичных кресел до 35 000 ₽: рейтинг для спины",
     "desc": "Разбор пяти кресел для 8-часовой работы: сетка, поясничный упор, синхромеханизм и цены — от бюджетного Бюрократа до SIHOO M57 и Metta Samurai.",
@@ -36,7 +46,8 @@
       ["/article/5-luchshih-ergonomichnyh-kresel-rejting/", "Рейтинг эргономичных кресел"],
       ["/article/stol-s-elektroprivodom-polza-dlya-spiny/", "Стол с электроприводом"],
       ["/article/kabel-menedzhment-pod-stolom-svoimi-rukami/", "Кабель-менеджмент под столом"],
-      ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Расстановка стола в комнате"]
+      ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Расстановка стола в комнате"],
+      ["/article/printer-dlya-doma-kompaktno-i-kuda-postavit/", "Принтер для дома и место под него"]
     ]
   },
   "kabel-menedzhment-pod-stolom-svoimi-rukami": {
@@ -46,7 +57,8 @@
       ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Карта розеток у рабочего стола"],
       ["/article/stol-s-elektroprivodom-polza-dlya-spiny/", "Стол с электроприводом"],
       ["/article/kronshtejn-dlya-monitora-na-stol-vybor/", "Кронштейн на стол и VESA"],
-      ["/article/domashnij-ofis-s-nulya-nedorogo/", "Собрать офис с нуля"]
+      ["/article/domashnij-ofis-s-nulya-nedorogo/", "Собрать офис с нуля"],
+      ["/article/printer-dlya-doma-kompaktno-i-kuda-postavit/", "Принтер для дома и место под него"]
     ]
   }
 }

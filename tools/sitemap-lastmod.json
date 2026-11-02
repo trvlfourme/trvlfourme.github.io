@@ -1,6 +1,6 @@
 {
   "/": {
-    "hash": "a37ca27dd2e4b45cd20ec7343bb2d0d161981dfe",
+    "hash": "5eb6014059be38f1b853089c784c6efcdd221688",
     "lastmod": "2026-11-02"
   },
   "/articles/": {
@@ -76,7 +76,7 @@
     "lastmod": "2026-11-02"
   },
   "/article/kabel-menedzhment-pod-stolom-svoimi-rukami/": {
-    "hash": "66e84c71ec28a399cd75324d5a597e70a963ac77",
+    "hash": "475657f3a4212f5eba4838ab9b088afcebe2f849",
     "lastmod": "2026-11-02"
   },
   "/article/kronshtejn-dlya-monitora-ergonomika-shei/": {
@@ -112,11 +112,15 @@
     "lastmod": "2026-11-02"
   },
   "/article/domashnij-ofis-s-nulya-nedorogo/": {
-    "hash": "025faf359bed77e47a1f9a00325d3d5aa4892c7f",
+    "hash": "f3bafb1bf9a43f6dc413ec606e75c628a13c1ee5",
     "lastmod": "2026-11-02"
   },
   "/article/udalennaya-rabota-v-poezdke-i-otpuske/": {
     "hash": "c8fe8a4f72198912830f1e3f5e5eda1431f00a92",
+    "lastmod": "2026-11-02"
+  },
+  "/article/printer-dlya-doma-kompaktno-i-kuda-postavit/": {
+    "hash": "3aa49ad15343faff6d3cba86f1bb7d39d7e6de7b",
     "lastmod": "2026-11-02"
   }
 }
