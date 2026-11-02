@@ -61,9 +61,9 @@ window.KD_CATALOG = {
         {
           "store": "yandex",
           "kind": "card",
-          "url": "https://market.yandex.ru/cc/BRxNak?erid=5jtCeReNx12oak2szCZM4CC",
+          "url": "https://market.yandex.ru/cc/BSwU5t?erid=5jtCeReNx12oak2szCiDxyy",
           "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2szCZM4CC",
+          "erid": "5jtCeReNx12oak2szCiDxyy",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
@@ -341,37 +341,37 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 6890,
+      "price_rub": 7474,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
           "kind": "card",
-          "url": "https://market.yandex.ru/cc/BSpCMp?erid=5jtCeReNx12oak2szCZM4CC",
+          "url": "https://market.yandex.ru/cc/BSwVfd?erid=5jtCeReNx12oak2szCiDy8n",
           "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2szCZM4CC",
+          "erid": "5jtCeReNx12oak2szCiDy8n",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
     {
       "id": "chair-chairman-795",
-      "name": "Кресло руководителя Chairman 795 Home (серый)",
+      "name": "Кресло руководителя Chairman 795 (экокожа, бежевый)",
       "brand": "Chairman",
       "category": "",
-      "summary": "Кресло руководителя Chairman 795 Home в сером исполнении",
+      "summary": "Кресло руководителя Chairman 795 в бежевой экокоже на хромированной крестовине",
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 13900,
+      "price_rub": 14997,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
           "kind": "card",
-          "url": "https://market.yandex.ru/cc/BSpDft?erid=5jtCeReNx12oak2szCZM4CC",
+          "url": "https://market.yandex.ru/cc/BSwY57?erid=5jtCeReNx12oak2szCiDyHf",
           "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2szCZM4CC",
+          "erid": "5jtCeReNx12oak2szCiDyHf",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
@@ -391,9 +391,9 @@ window.KD_CATALOG = {
         {
           "store": "yandex",
           "kind": "card",
-          "url": "https://market.yandex.ru/cc/BSpJEH?erid=5jtCeReNx12oak2szCZM4CC",
+          "url": "https://market.yandex.ru/cc/BSwZaQ?erid=5jtCeReNx12oak2szCiDyN4",
           "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2szCZM4CC",
+          "erid": "5jtCeReNx12oak2szCiDyN4",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
@@ -457,9 +457,9 @@ window.KD_CATALOG = {
         {
           "store": "yandex",
           "kind": "card",
-          "url": "https://market.yandex.ru/cc/BSpJqt?erid=5jtCeReNx12oak2szCZM4CC",
+          "url": "https://market.yandex.ru/cc/BSwaGP?erid=5jtCeReNx12oak2szCiDySR",
           "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2szCZM4CC",
+          "erid": "5jtCeReNx12oak2szCiDySR",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
