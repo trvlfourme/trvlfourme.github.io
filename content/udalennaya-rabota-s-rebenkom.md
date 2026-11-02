@@ -8,7 +8,7 @@ category: remote-work
 tags: [Удалёнка, Дети, Режим дня, Продуктивность]
 publishedAt: 2026-11-07
 readTimeMin: 8
-heroImage: /images/editorial/parent-focus.jpg
+heroImage: /images/editorial/family-remote-work.jpg
 primaryKeyword: удаленная работа с ребенком
 secondaryKeywords: [как работать с ребенком дома, режим дня удаленщика с детьми, работа на удаленке с детьми]
 products: [headphones-anker-space-one, pomodoro-timer-cube, webcam-anker-powerconf-c200]

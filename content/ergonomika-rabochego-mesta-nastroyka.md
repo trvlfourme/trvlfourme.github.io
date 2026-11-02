@@ -8,7 +8,7 @@ category: ergonomics
 tags: [Эргономика, Рабочее место, Осанка, Удалёнка]
 publishedAt: 2026-11-08
 readTimeMin: 9
-heroImage: /images/editorial/home-office-ergonomics.jpg
+heroImage: /images/editorial/home-office-cozy.jpg
 primaryKeyword: эргономика рабочего места
 secondaryKeywords: [как настроить рабочее место дома, правильная посадка за компьютером, высота монитора и стола, эргономика рабочего места за 30 минут]
 products: [metta-samurai-s3, onkron-g80, xiaomi-lightbar, ergonomic-footrest-adjustable, cable-management-kit]
