@@ -827,6 +827,39 @@ window.KD_CATALOG = {
         "lumbar-cushion-memory",
         "ergonomic-footrest-adjustable"
       ]
+    },
+    {
+      "slug": "podemnyj-stol-kak-vybrat",
+      "title": "Подъёмный стол: как выбрать привод и высоту под свой рост",
+      "block_title": "Столы и опоры из этого разбора",
+      "product_ids": [
+        "desk-loctek-et114",
+        "desk-loft-wood-budget",
+        "ergonomic-footrest-adjustable",
+        "cable-management-kit"
+      ]
+    },
+    {
+      "slug": "udalennaya-rabota-s-rebenkom",
+      "title": "Удалёнка с ребёнком: как выстроить день, а не пережить его",
+      "block_title": "Что помогает держать день",
+      "product_ids": [
+        "headphones-anker-space-one",
+        "pomodoro-timer-cube",
+        "webcam-anker-powerconf-c200"
+      ]
+    },
+    {
+      "slug": "ergonomika-rabochego-mesta-nastroyka",
+      "title": "Эргономика рабочего места дома: настройка за 30 минут",
+      "block_title": "Что нужно для настройки",
+      "product_ids": [
+        "metta-samurai-s3",
+        "onkron-g80",
+        "xiaomi-lightbar",
+        "ergonomic-footrest-adjustable",
+        "cable-management-kit"
+      ]
     }
   ]
 };

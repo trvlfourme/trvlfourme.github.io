@@ -143,7 +143,8 @@ fs.rmSync(stage, { recursive: true, force: true });
 fs.mkdirSync(stage, { recursive: true });
 
 const ONLY = (process.env.ONLY || '').trim();
-const selected = ONLY ? routes.filter((r) => r.route.includes(ONLY)) : routes;
+const onlyList = ONLY ? ONLY.split(",").map((s) => s.trim()).filter(Boolean) : [];
+const selected = onlyList.length ? routes.filter((r) => onlyList.some((o) => r.route.includes(o))) : routes;
 if (ONLY) console.log();
 const report = [];
 for (const { route, url, article } of selected) {
