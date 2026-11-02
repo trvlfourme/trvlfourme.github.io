@@ -661,6 +661,94 @@ window.KD_CATALOG = {
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
+    },
+    {
+      "id": "printer-pantum-m6500w",
+      "name": "МФУ лазерное Pantum M6500W (ч/б, A4, Wi-Fi)",
+      "brand": "Pantum",
+      "category": "",
+      "summary": "",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "price_rub": 15464,
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BT67SG?erid=5jtCeReNx12oak2tU4s6NdD",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tU4s6NdD",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "printer-canon-pixma-g3430",
+      "name": "МФУ струйное Canon PIXMA G3430 (СНПЧ, цветное, A4, Wi-Fi)",
+      "brand": "Canon",
+      "category": "",
+      "summary": "",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "price_rub": 22689,
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BT69Qa?erid=5jtCeReNx12oak2tU4s6NdM",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tU4s6NdM",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "printer-canon-pixma-ts3751i",
+      "name": "МФУ струйное Canon PIXMA TS3751i (цветное, A4, Wi-Fi)",
+      "brand": "Canon",
+      "category": "",
+      "summary": "",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "price_rub": 9728,
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BT6DiU?erid=5jtCeReNx12oak2tU4s6Nn8",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tU4s6Nn8",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "scanner-canon-canoscan-lide-300",
+      "name": "Сканер планшетный Canon CanoScan LiDE 300 (A4)",
+      "brand": "Canon",
+      "category": "",
+      "summary": "",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "price_rub": 10085,
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BT6J29?erid=5jtCeReNx12oak2tU4s6PAD",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tU4s6PAD",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
     }
   ],
   "setups": [
@@ -931,6 +1019,17 @@ window.KD_CATALOG = {
         "xiaomi-lightbar",
         "ergonomic-footrest-adjustable",
         "cable-management-kit"
+      ]
+    },
+    {
+      "slug": "printer-dlya-doma-kompaktno-i-kuda-postavit",
+      "title": "Компактный принтер для дома: выбор и место в квартире",
+      "block_title": "Принтеры и сканер из этого гайда",
+      "product_ids": [
+        "printer-pantum-m6500w",
+        "printer-canon-pixma-g3430",
+        "printer-canon-pixma-ts3751i",
+        "scanner-canon-canoscan-lide-300"
       ]
     }
   ]
