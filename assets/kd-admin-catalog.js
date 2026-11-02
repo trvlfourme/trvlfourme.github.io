@@ -120,6 +120,42 @@
     return node;
   }
 
+  // Фото товара живёт прямо в catalog.js: сжимаем и встраиваем data URL,
+  // чтобы каталог обновлялся без отдельной папки с картинками.
+  var IMAGE_MAX_SIDE = 640;
+  var IMAGE_MAX_CHARS = 140000;
+
+  function imageToDataUrl(file, done) {
+    var objUrl = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function () {
+      var w = img.naturalWidth || img.width;
+      var h = img.naturalHeight || img.height;
+      if (!w || !h) { URL.revokeObjectURL(objUrl); done(''); return; }
+      var scale = Math.min(1, IMAGE_MAX_SIDE / Math.max(w, h));
+      var quality = 0.72;
+      var data = '';
+      for (var i = 0; i < 7; i++) {
+        var cw = Math.max(1, Math.round(w * scale));
+        var ch = Math.max(1, Math.round(h * scale));
+        var canvas = document.createElement('canvas');
+        canvas.width = cw;
+        canvas.height = ch;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0, 0, cw, ch);
+        ctx.drawImage(img, 0, 0, cw, ch);
+        data = canvas.toDataURL('image/jpeg', quality);
+        if (data.length <= IMAGE_MAX_CHARS) break;
+        if (quality > 0.5) quality -= 0.1; else scale *= 0.8;
+      }
+      URL.revokeObjectURL(objUrl);
+      done(data);
+    };
+    img.onerror = function () { URL.revokeObjectURL(objUrl); done(''); };
+    img.src = objUrl;
+  }
+
   function field(label, node, hint) {
     return el('label', { style: STYLE_LABEL }, [
       el('span', { text: label, style: STYLE_CAP }), node,
@@ -177,8 +213,14 @@
       if (ids[p.id]) errors.push(where + ': id повторяется');
       ids[p.id] = true;
       if (!p.name) errors.push(where + ': нет названия');
-      if (p.image && p.image.indexOf('https://') !== 0 && p.image.charAt(0) !== '/') {
-        errors.push(where + ': картинка должна быть https:// или путём от корня (/images/...)');
+      var img = p.image || '';
+      if (img) {
+        var isData = /^data:image\/(jpeg|png|webp|gif);base64,/.test(img);
+        if (isData) {
+          if (img.length > IMAGE_MAX_CHARS * 1.6) errors.push(where + ': фото слишком большое — загрузите файл заново (лимит ~150 КБ)');
+        } else if (img.indexOf('https://') !== 0 && img.charAt(0) !== '/') {
+          errors.push(where + ': картинка должна быть https://, путём от корня (/images/...) или загруженным фото');
+        }
       }
       if (p.price_mode === 'hidden' && p.price_note) errors.push(where + ': при price_mode "hidden" пометка о цене не выводится');
       if (p.price_mode === 'note' && !p.price_note) errors.push(where + ': price_mode "note" без текста пометки');
@@ -343,8 +385,7 @@
     box.appendChild(field('Бренд', input(p.brand, 'Бренд или мастерская', function (v) { p.brand = v; })));
     box.appendChild(field('Категория', input(p.category, 'Кресла, столы, свет…', function (v) { p.category = v; })));
     box.appendChild(field('Короткое описание', area(p.summary, 'Одна строка для карточки', 2, function (v) { p.summary = v; })));
-    box.appendChild(field('Картинка (https:// или /images/...)', input(p.image, '/images/product.jpg', function (v) { p.image = v.trim(); }),
-      'Необязательно. Локальные пути проверяются сборкой.'));
+    box.appendChild(imageField(p));
     var note = input(p.price_note, 'Например: ориентир по рынку — проверьте цену', function (v) { p.price_note = v; });
     note.disabled = p.price_mode === 'hidden';
     note.style.opacity = p.price_mode === 'hidden' ? '0.5' : '1';
@@ -374,16 +415,78 @@
     });
   }
 
+  function imageField(p) {
+    var wrap = el('div', { style: STYLE_LABEL + ';grid-column:1/-1' });
+    wrap.appendChild(el('span', { text: 'Картинка товара', style: STYLE_CAP }));
+    var urlInput = input(p.image, 'https://… или /images/… (можно оставить пустым)');
+    urlInput.addEventListener('input', function () { p.image = urlInput.value.trim(); refresh(); });
+    wrap.appendChild(urlInput);
+
+    var preview = el('img', {
+      alt: '',
+      style: 'width:48px;height:48px;object-fit:cover;border-radius:8px;border:1px solid #e7e5e4;background:#fafaf9;display:none',
+    });
+    var file = el('input', { type: 'file', accept: 'image/*', style: 'display:none' });
+    var sizeLabel = el('span', { style: STYLE_HINT });
+    var pick = btn('Загрузить фото…', function () { file.click(); });
+    var clear = btn('Убрать', function () {
+      p.image = '';
+      urlInput.value = '';
+      refresh();
+    });
+
+    file.addEventListener('change', function () {
+      var f = file.files && file.files[0];
+      file.value = '';
+      if (!f) return;
+      sizeLabel.textContent = 'Сжимаю фото…';
+      imageToDataUrl(f, function (data) {
+        if (!data) { sizeLabel.textContent = 'Не удалось прочитать файл — подойдёт JPG, PNG или WebP.'; return; }
+        p.image = data;
+        urlInput.value = data;
+        refresh();
+      });
+    });
+
+    function refresh() {
+      var v = p.image || '';
+      if (v) {
+        preview.src = v;
+        preview.style.display = '';
+        sizeLabel.textContent = v.indexOf('data:') === 0
+          ? 'Фото встроено в catalog.js: ' + Math.round(v.length / 1024) + ' КБ (сжато до ' + IMAGE_MAX_SIDE + ' px).'
+          : v;
+      } else {
+        preview.removeAttribute('src');
+        preview.style.display = 'none';
+        sizeLabel.textContent = 'Файл сожмётся до ' + IMAGE_MAX_SIDE + ' px по длинной стороне и уедет в catalog.js. Можно вставить и ссылку.';
+      }
+      clear.disabled = !v;
+      clear.style.opacity = v ? '1' : '0.5';
+    }
+
+    wrap.appendChild(el('div', { style: 'display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap' }, [preview, pick, clear, file]));
+    wrap.appendChild(sizeLabel);
+    refresh();
+    return wrap;
+  }
+
   function productCard(p) {
     var card = el('div', { style: STYLE_CARD + (p.archived ? ';background:#fafaf9;opacity:.85' : '') });
     card.dataset.id = p.id;
-    var title = el('div', { style: 'font-size:13px;font-weight:600;color:#1c1917' }, [
-      el('span', { text: p.name || '(без названия)' }),
-      p.brand ? el('span', { text: ' · ' + p.brand, style: 'font-weight:400;color:#78716c' }) : null,
-      badge(p.id, 'muted'),
-      p.archived ? badge('архив', 'bad') : null,
-      p.price_mode === 'note' ? badge('ориентир', 'warn') : null,
-      el('span', { text: 'офферов: ' + p.offers.length, style: STYLE_HINT + ';margin-left:6px' }),
+    var title = el('div', { style: 'display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#1c1917' }, [
+      p.image ? el('img', {
+        src: p.image, alt: '',
+        style: 'width:32px;height:32px;border-radius:7px;object-fit:cover;border:1px solid #e7e5e4;background:#fafaf9;flex:0 0 auto',
+      }) : null,
+      el('div', {}, [
+        el('span', { text: p.name || '(без названия)' }),
+        p.brand ? el('span', { text: ' · ' + p.brand, style: 'font-weight:400;color:#78716c' }) : null,
+        badge(p.id, 'muted'),
+        p.archived ? badge('архив', 'bad') : null,
+        p.price_mode === 'note' ? badge('ориентир', 'warn') : null,
+        el('span', { text: 'офферов: ' + p.offers.length, style: STYLE_HINT + ';margin-left:6px' }),
+      ]),
     ]);
     var actions = el('div', { style: 'display:flex;gap:6px;flex-wrap:wrap' }, [
       btn(ui.editing === p.id ? 'Свернуть' : 'Править', function () {

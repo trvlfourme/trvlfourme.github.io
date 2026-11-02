@@ -101,8 +101,14 @@ if (exists('data/catalog.js')) {
       byId.set(p.id, p);
       if (!p.name) fail(`${label}: нет названия`);
       if (p.image) {
-        if (!/^https:\/\//.test(p.image) && p.image[0] !== '/') {
-          fail(`${label}: картинка должна быть https:// или путём от корня`);
+        if (/^data:image\//.test(p.image)) {
+          if (!/^data:image\/(jpeg|png|webp|gif);base64,[A-Za-z0-9+/=]+$/.test(p.image)) {
+            fail(`${label}: битая картинка в base64 — загрузите фото заново`);
+          } else if (p.image.length > 230000) {
+            fail(`${label}: фото слишком тяжёлое для catalog.js (${Math.round(p.image.length / 1024)} КБ base64)`);
+          }
+        } else if (!/^https:\/\//.test(p.image) && p.image[0] !== '/') {
+          fail(`${label}: картинка должна быть https://, путём от корня или загруженным фото`);
         } else if (p.image[0] === '/' && !exists(p.image.slice(1))) {
           fail(`${label}: картинки нет на диске — ${p.image}`);
         }
