@@ -1,0 +1,62 @@
+{
+  "kronshtejn-dlya-monitora-ergonomika-shei": {
+    "title": "Кронштейн для монитора и шея: причины боли и настройка",
+    "desc": "Почему 5 см ниже уровня глаз дают 12 кг нагрузки на шею, как помогает кронштейн с газлифтом и подставка для ног. Настройка экрана по шагам.",
+    "related": [
+      ["/article/kronshtejn-dlya-monitora-na-stol-vybor/", "Как выбрать кронштейн на стол"],
+      ["/article/podstavka-dlya-nog-pod-stol-ergonomika/", "Подставка для ног"],
+      ["/article/stol-s-elektroprivodom-polza-dlya-spiny/", "Работа сидя и стоя"],
+      ["/article/skrinbar-na-monitor-vybor-zashchita-glaz/", "Свет для монитора"]
+    ]
+  },
+  "kronshtejn-dlya-monitora-na-stol-vybor": {
+    "title": "Кронштейн для монитора на стол: газлифт, VESA, струбцина",
+    "desc": "Грузоподъёмность, стандарт VESA, крепление струбционное или через люверс и типичные ошибки при выборе кронштейна для домашнего стола.",
+    "related": [
+      ["/article/kronshtejn-dlya-monitora-ergonomika-shei/", "Высота экрана и эргономика шеи"],
+      ["/article/kabel-menedzhment-pod-stolom-svoimi-rukami/", "Скрыть провода под столом"],
+      ["/article/podstavka-dlya-nog-pod-stol-ergonomika/", "Подставка под ноги"],
+      ["/article/5-luchshih-ergonomichnyh-kresel-rejting/", "Кресло для спины"]
+    ]
+  },
+  "kuda-postavit-rabochij-stol-v-komnate": {
+    "title": "Куда поставить рабочий стол: окно, батарея, розетки",
+    "desc": "Пять правил расстановки: боковой свет, защита коленей от радиатора, вечерний свет без бликов и карта розеток с одним проводом до стены.",
+    "related": [
+      ["/article/v-kakoj-komnate-luchshe-rabotat-na-udalenke/", "Выбор комнаты для работы"],
+      ["/article/skrinbar-na-monitor-vybor-zashchita-glaz/", "Освещение рабочего места"],
+      ["/article/kabel-menedzhment-pod-stolom-svoimi-rukami/", "Провода и розетки"],
+      ["/article/rabochee-mesto-v-odnushke-s-rebenkom/", "Стол в однушке"]
+    ]
+  },
+  "metod-svetofor-udalenka-s-detmi": {
+    "title": "Метод «Светофор»: как работать дома с ребёнком",
+    "desc": "Визуальные маркеры вместо фразы «я работаю»: наушники и флажки, техника 25/5 с предсказуемым возвращением и ритуал конца рабочего дня.",
+    "related": [
+      ["/article/rabochee-mesto-v-odnushke-s-rebenkom/", "Рабочее место в однушке с ребёнком"],
+      ["/article/rabochee-mesto-dlya-dvoih-v-komnate/", "Двое за столами в одной комнате"],
+      ["/article/balans-raboty-i-lichnoj-zhizni-na-udalenke/", "Закрыть рабочий день вовремя"],
+      ["/article/mikrofon-s-shumopodavleniem-dlya-zvonkov/", "Чистый звук на созвонах"]
+    ]
+  },
+  "mikrofon-s-shumopodavleniem-dlya-zvonkov": {
+    "title": "Микрофон с шумоподавлением для созвонов: что выбрать",
+    "desc": "Динамический или конденсаторный, гарнитура Jabra, FIFINE K688 и фильтры Krisp: как получить чистый голос в жилой комнате без студии.",
+    "related": [
+      ["/article/akusticheskie-paneli-dlya-domashnego-kabineta/", "Убрать эхо в комнате"],
+      ["/article/rabochee-mesto-dlya-dvoih-v-komnate/", "Созвоны вдвоём в одной комнате"],
+      ["/article/rabochee-mesto-v-odnushke-s-rebenkom/", "Тишина при ребёнке дома"],
+      ["/article/udalennaya-rabota-v-poezdke-i-otpuske/", "Связь в поездке"]
+    ]
+  },
+  "podstavka-dlya-nog-pod-stol-ergonomika": {
+    "title": "Подставка для ног под стол: кому нужна и как выбрать",
+    "desc": "Стол 75 см против роста ниже 175 см: наклонные и массажные подставки, балансировочные доски и разгрузка поясницы при сидячей работе.",
+    "related": [
+      ["/article/kronshtejn-dlya-monitora-ergonomika-shei/", "Кронштейн и шея"],
+      ["/article/stol-s-elektroprivodom-polza-dlya-spiny/", "Стол с электроприводом"],
+      ["/article/5-luchshih-ergonomichnyh-kresel-rejting/", "Сетчатое кресло для спины"],
+      ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Высота и место стола"]
+    ]
+  }
+}

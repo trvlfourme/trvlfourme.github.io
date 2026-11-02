@@ -97,17 +97,21 @@ const escapeAttr = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').repla
 // после монтирования возвращаем чистый URL. Краулер при этом видит готовый HTML.
 const shim = (article) => `<script>
     (function () {
-      if (!/^\\/article\\/[a-z0-9-]+\\/?$/.test(location.pathname)) return;
+      var m = /^\\/article\\/[a-z0-9-]+\\/?$/.exec(location.pathname);
+      if (!m) return;
       var pretty = location.pathname + location.hash;
       try { history.replaceState(null, '', '/?article=${article.id}'); } catch (e) {}
-      document.addEventListener('DOMContentLoaded', function () {
+      function restore() {
         try { history.replaceState(null, '', pretty); } catch (e) {}
-      });
+      }
+      if (document.readyState === 'complete') setTimeout(restore, 80);
+      else window.addEventListener('load', function () { setTimeout(restore, 80); });
     })();
     </script>`;
 
 function rewriteHead(html, route, title, description) {
-  const canonical = SITE + route;
+  // канонический адрес со слешем в конце — как у уже выложенных страниц
+  const canonical = SITE + (route !== '/' && !/\.[a-z0-9]+$/i.test(route) ? route + '/' : route);
   let out = html
     .replace(/<title>[\s\S]*?<\/title>\s*/i, '')
     .replace(/<link rel="canonical"[^>]*>\s*/gi, '')
@@ -138,8 +142,11 @@ function rewriteHead(html, route, title, description) {
 fs.rmSync(stage, { recursive: true, force: true });
 fs.mkdirSync(stage, { recursive: true });
 
+const ONLY = (process.env.ONLY || '').trim();
+const selected = ONLY ? routes.filter((r) => r.route.includes(ONLY)) : routes;
+if (ONLY) console.log();
 const report = [];
-for (const { route, url, article } of routes) {
+for (const { route, url, article } of selected) {
   let html;
   try {
     html = dump(url);

@@ -10,6 +10,7 @@ const articles = JSON.parse(fs.readFileSync(path.join(__dirname, 'articles.json'
 
 const pages = [
   { url: '/', priority: '1.0', changefreq: 'weekly' },
+  { url: '/articles', priority: '0.7', changefreq: 'monthly' },
   { url: '/calculator', priority: '0.9', changefreq: 'monthly' },
   { url: '/builder', priority: '0.8', changefreq: 'monthly' },
   { url: '/tests', priority: '0.8', changefreq: 'monthly' },

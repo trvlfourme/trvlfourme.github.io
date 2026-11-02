@@ -1,0 +1,82 @@
+{
+  "/": {
+    "title": "Эргономика домашнего офиса: столы, кресла, свет — Кабинет Дома",
+    "desc": "Гайды по эргономике рабочего места, подъёмным столам, креслам для спины, скринбарам и тишине на удалёнке с детьми. Калькулятор по ГОСТ.",
+    "related": [
+      ["/article/stol-s-elektroprivodom-polza-dlya-spiny/", "Подъёмный стол: польза для спины"],
+      ["/article/5-luchshih-ergonomichnyh-kresel-rejting/", "Кресло для спины: рейтинг"],
+      ["/article/skrinbar-na-monitor-vybor-zashchita-glaz/", "Скринбар на монитор"],
+      ["/article/rabochee-mesto-v-odnushke-s-rebenkom/", "Офис в однушке с ребёнком"]
+    ]
+  },
+  "/calculator/": {
+    "title": "Калькулятор высоты стола и стула под рост — ГОСТ",
+    "desc": "Расчёт высоты столешницы, сиденья и монитора по росту и нормативам ГОСТ 13025.3-85. Бесплатный калькулятор эргономики без регистрации.",
+    "related": [
+      ["/article/podstavka-dlya-nog-pod-stol-ergonomika/", "Высота стола и подставка для ног"],
+      ["/article/kronshtejn-dlya-monitora-ergonomika-shei/", "Как поднять монитор до уровня глаз"],
+      ["/article/5-luchshih-ergonomichnyh-kresel-rejting/", "Кресло под ваш рост"],
+      ["/article/stol-s-elektroprivodom-polza-dlya-spiny/", "Подъёмный стол и позы"]
+    ]
+  },
+  "/builder/": {
+    "title": "Конструктор рабочего места: сетап под бюджет",
+    "desc": "Соберите домашний офис по шагам: стол, кресло, свет и звук. Готовые наборы трёх уровней — от минимального до премиального.",
+    "related": [
+      ["/article/domashnij-ofis-s-nulya-nedorogo/", "С чего начать офис с нуля"],
+      ["/article/5-luchshih-ergonomichnyh-kresel-rejting/", "Кресло для спины"],
+      ["/article/skrinbar-na-monitor-vybor-zashchita-glaz/", "Свет для работы"],
+      ["/article/rabochee-mesto-dlya-dvoih-v-komnate/", "Сетап для двоих"]
+    ]
+  },
+  "/tests/": {
+    "title": "Тесты: осанка, выгорание и психотип удалёнщика",
+    "desc": "Четыре бесплатных теста об организации рабочего места: аудит тела и мебели, готовность к 100% удалёнке, сенсорный перегруз и выгода удалёнки.",
+    "related": [
+      ["/article/balans-raboty-i-lichnoj-zhizni-na-udalenke/", "Баланс работы и личной жизни"],
+      ["/article/kronshtejn-dlya-monitora-ergonomika-shei/", "Шея и высота монитора"],
+      ["/article/metod-svetofor-udalenka-s-detmi/", "Работа с ребёнком дома"],
+      ["/article/v-kakoj-komnate-luchshe-rabotat-na-udalenke/", "Выбор комнаты для работы"]
+    ]
+  },
+  "/checklist/": {
+    "title": "Чек-лист тишины: как работать дома с детьми",
+    "desc": "Интерактивный чек-лист правил фокуса: метод «Светофор», звукоизоляция и ENC-микрофон. Отмечайте пункты и сохраняйте прогресс в браузере.",
+    "related": [
+      ["/article/metod-svetofor-udalenka-s-detmi/", "Метод «Светофор»"],
+      ["/article/rabochee-mesto-v-odnushke-s-rebenkom/", "Офис в однушке с ребёнком"],
+      ["/article/mikrofon-s-shumopodavleniem-dlya-zvonkov/", "Микрофон для созвонов"],
+      ["/article/akusticheskie-paneli-dlya-domashnego-kabineta/", "Акустика комнаты"]
+    ]
+  },
+  "/about/": {
+    "title": "О проекте «Кабинет Дома»: редакция и принципы",
+    "desc": "Кто делает KabinetDoma.ru, на каких источниках основаны рекомендации (ГОСТ и ISO 9241-5), как мы маркируем рекламу и не собираем персональные данные.",
+    "related": [
+      ["/article/domashnij-ofis-s-nulya-nedorogo/", "Собрать домашний офис"],
+      ["/article/5-luchshih-ergonomichnyh-kresel-rejting/", "Рейтинг кресел"],
+      ["/calculator/", "Калькулятор по ГОСТ"],
+      ["/tests/", "Тесты и диагностика"]
+    ]
+  },
+  "/privacy/": {
+    "title": "Политика конфиденциальности — Кабинет Дома",
+    "desc": "Как сайт соблюдает 152-ФЗ: какие данные не собираются, что хранится в браузере и как работают Яндекс.Метрика и партнёрские ссылки с erid.",
+    "related": [
+      ["/about/", "О проекте и принципах"],
+      ["/terms/", "Пользовательское соглашение"],
+      ["/", "На главную"],
+      ["/articles/", "Все гайды"]
+    ]
+  },
+  "/terms/": {
+    "title": "Пользовательское соглашение — Кабинет Дома",
+    "desc": "Условия использования материалов, ограничение ответственности, правила цитирования и статус партнёрских ссылок с маркировкой рекламы и erid.",
+    "related": [
+      ["/privacy/", "Политика конфиденциальности"],
+      ["/about/", "О проекте"],
+      ["/articles/", "Все гайды"],
+      ["/", "На главную"]
+    ]
+  }
+}

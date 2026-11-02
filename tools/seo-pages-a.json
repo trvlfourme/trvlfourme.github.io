@@ -1,0 +1,52 @@
+{
+  "5-luchshih-ergonomichnyh-kresel-rejting": {
+    "title": "5 эргономичных кресел до 35 000 ₽: рейтинг для спины",
+    "desc": "Разбор пяти кресел для 8-часовой работы: сетка, поясничный упор, синхромеханизм и цены от бюджетных до премиальных моделей.",
+    "related": [
+      ["/article/stol-s-elektroprivodom-polza-dlya-spiny/", "Подъёмный стол и нагрузка на позвоночник"],
+      ["/article/kronshtejn-dlya-monitora-ergonomika-shei/", "Высота монитора и шея"],
+      ["/article/podstavka-dlya-nog-pod-stol-ergonomika/", "Подставка для ног под стол"],
+      ["/article/domashnij-ofis-s-nulya-nedorogo/", "Домашний офис с нуля недорого"]
+    ]
+  },
+  "akusticheskie-paneli-dlya-domashnego-kabineta": {
+    "title": "Акустические панели в кабинет: убрать эхо на созвонах",
+    "desc": "Флаттер-эхо, PET-войлок против поролона и бесплатные бытовые способы сделать голос разборчивым в обычной комнате без студии.",
+    "related": [
+      ["/article/mikrofon-s-shumopodavleniem-dlya-zvonkov/", "Микрофон с шумоподавлением для созвонов"],
+      ["/article/rabochee-mesto-dlya-dvoih-v-komnate/", "Два рабочих места с созвонами в одной комнате"],
+      ["/article/rabochee-mesto-v-odnushke-s-rebenkom/", "Кабинет в однушке с ребёнком"],
+      ["/article/skrinbar-na-monitor-vybor-zashchita-glaz/", "Скринбар и здоровье глаз"]
+    ]
+  },
+  "balans-raboty-i-lichnoj-zhizni-na-udalenke": {
+    "title": "Баланс работы и личной жизни на удалёнке: 5 ритуалов",
+    "desc": "Почему дома работают на 2,4 часа дольше и как закрывать рабочий день: зонирование, «виртуальная дорога домой», свет 2700K и тайм-боксинг.",
+    "related": [
+      ["/article/metod-svetofor-udalenka-s-detmi/", "Метод «Светофор» с детьми"],
+      ["/article/v-kakoj-komnate-luchshe-rabotat-na-udalenke/", "В какой комнате работать дома"],
+      ["/article/udalennaya-rabota-v-poezdke-i-otpuske/", "Удалёнка в поездке и отпуске"],
+      ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Куда поставить рабочий стол"]
+    ]
+  },
+  "domashnij-ofis-s-nulya-nedorogo": {
+    "title": "Домашний офис с нуля недорого: порядок покупок",
+    "desc": "Что купить в первую очередь, бесплатные лайфхаки и апгрейд за три месяца: от кресла до готовых наборов под разный бюджет.",
+    "related": [
+      ["/article/5-luchshih-ergonomichnyh-kresel-rejting/", "Рейтинг эргономичных кресел"],
+      ["/article/stol-s-elektroprivodom-polza-dlya-spiny/", "Стол с электроприводом"],
+      ["/article/kabel-menedzhment-pod-stolom-svoimi-rukami/", "Кабель-менеджмент под столом"],
+      ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Расстановка стола в комнате"]
+    ]
+  },
+  "kabel-menedzhment-pod-stolom-svoimi-rukami": {
+    "title": "Кабель-менеджмент под столом: гайд на один вечер",
+    "desc": "Корзина, липучки и кабель-каналы: как убрать провода, закрепить удлинитель под столешницей и не испортить мебель. Список материалов.",
+    "related": [
+      ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Карта розеток у рабочего стола"],
+      ["/article/stol-s-elektroprivodom-polza-dlya-spiny/", "Стол с электроприводом"],
+      ["/article/kronshtejn-dlya-monitora-na-stol-vybor/", "Кронштейн на стол и VESA"],
+      ["/article/domashnij-ofis-s-nulya-nedorogo/", "Собрать офис с нуля"]
+    ]
+  }
+}
