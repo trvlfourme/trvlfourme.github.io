@@ -1,7 +1,7 @@
 // Пререндер SPA в статический HTML по фактической схеме приложения:
 // табы — по pathname, статьи — по параметру ?article=<id> (в приложении поиск идёт по id).
 // На выходе: <route>/index.html с уникальными метаданными и полным текстом в разметке.
-const { execFileSync } = require('child_process');
+const { execFileSync, spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
@@ -41,7 +41,106 @@ function dumpOnce(url) {
   );
 }
 
-function dump(url) {
+// Chrome падает в SIGILL на части тяжёлых статей под --virtual-time-budget (воспроизводится
+// и в Edge, и на любом бюджете). Запасной путь — DevTools-протокол: рендер без виртуального
+// времени, с реальной паузой после load, иначе --dump-dom отдаёт пустую оболочку приложения.
+function dumpCdp(url) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(
+      CHROME,
+      [
+        '--headless=new',
+        '--disable-gpu',
+        '--no-first-run',
+        '--no-default-browser-check',
+        '--hide-scrollbars',
+        '--remote-debugging-pipe',
+        `--user-data-dir=${profile}-cdp`,
+        'about:blank',
+      ],
+      { stdio: ['ignore', 'ignore', 'ignore', 'pipe', 'pipe'] }
+    );
+    const toBrowser = child.stdio[3];
+    const fromBrowser = child.stdio[4];
+    let buffer = '';
+    let nextId = 0;
+    let settled = false;
+    const pending = new Map();
+    const waiters = new Map();
+
+    const finish = (error, html) => {
+      if (settled) return;
+      settled = true;
+      try { child.kill(); } catch (e) {}
+      if (error) reject(error);
+      else resolve(html);
+    };
+
+    const send = (method, params, sessionId) =>
+      new Promise((res, rej) => {
+        const id = ++nextId;
+        pending.set(id, { res, rej, method });
+        const msg = { id, method, params: params || {} };
+        if (sessionId) msg.sessionId = sessionId;
+        toBrowser.write(JSON.stringify(msg) + '\0');
+      });
+
+    const once = (name, sessionId) =>
+      new Promise((res) => waiters.set(sessionId ? `${sessionId}:${name}` : name, res));
+
+    fromBrowser.on('data', (chunk) => {
+      buffer += chunk.toString('utf8');
+      let at;
+      while ((at = buffer.indexOf('\0')) !== -1) {
+        const raw = buffer.slice(0, at);
+        buffer = buffer.slice(at + 1);
+        let msg;
+        try { msg = JSON.parse(raw); } catch (e) { continue; }
+        if (msg.id && pending.has(msg.id)) {
+          const p = pending.get(msg.id);
+          pending.delete(msg.id);
+          if (msg.error) p.rej(new Error(`${p.method}: ${msg.error.message}`));
+          else p.res(msg.result || {});
+        } else if (msg.method) {
+          const key = msg.sessionId ? `${msg.sessionId}:${msg.method}` : msg.method;
+          const res = waiters.get(key);
+          if (res) { waiters.delete(key); res(msg.params || {}); }
+        }
+      }
+    });
+    child.on('exit', (code) => finish(new Error(`браузер закрылся раньше времени (код ${code})`)));
+    const timer = setTimeout(() => finish(new Error('CDP не ответил за 90 секунд')), 90000);
+    timer.unref();
+
+    (async () => {
+      const { targetId } = await send('Target.createTarget', { url: 'about:blank' });
+      const { sessionId } = await send('Target.attachToTarget', { targetId, flatten: true });
+      await send('Page.enable', {}, sessionId);
+      const loaded = once('Page.loadEventFired', sessionId);
+      await send('Page.navigate', { url: BASE + url }, sessionId);
+      await loaded;
+      const read = async () => {
+        const { result } = await send(
+          'Runtime.evaluate',
+          { expression: 'document.documentElement.outerHTML', returnByValue: true },
+          sessionId
+        );
+        return (result && result.value) || '';
+      };
+      await new Promise((r) => setTimeout(r, 1500));
+      let html = await read();
+      if (html.length < 20000) {
+        await new Promise((r) => setTimeout(r, 2500));
+        html = await read();
+      }
+      if (!html || html.length < 2000) throw new Error('пустой ответ через CDP');
+      try { await send('Browser.close'); } catch (e) {}
+      finish(null, '<!doctype html>\n' + html);
+    })().catch((e) => finish(e));
+  });
+}
+
+async function dump(url) {
   let lastError;
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
@@ -53,7 +152,8 @@ function dump(url) {
     }
     if (attempt < 3) console.warn(`  повтор ${attempt} для ${url}`);
   }
-  throw lastError;
+  console.warn(`  виртуальное время не сработало (${String((lastError && lastError.message) || lastError).slice(0, 80)}) — снимаю через CDP`);
+  return dumpCdp(url);
 }
 
 const stripTags = (s) =>
@@ -136,7 +236,10 @@ function rewriteHead(html, route, title, description) {
     .filter(Boolean)
     .join('\n    ');
 
-  return out.replace(/<\/head>/i, `    ${head}\n  </head>`);
+  return out
+    .replace(/<\/head>/i, `    ${head}\n  </head>`)
+    // отступ перед <title> копился с каждым прогоном: блок вставляется заново
+    .replace(/[ \t]*<title>/i, '    <title>');
 }
 
 fs.rmSync(stage, { recursive: true, force: true });
@@ -147,10 +250,12 @@ const onlyList = ONLY ? ONLY.split(",").map((s) => s.trim()).filter(Boolean) : [
 const selected = onlyList.length ? routes.filter((r) => onlyList.some((o) => r.route.includes(o))) : routes;
 if (ONLY) console.log();
 const report = [];
+
+(async () => {
 for (const { route, url, article } of selected) {
   let html;
   try {
-    html = dump(url);
+      html = await dump(url);
   } catch (e) {
     report.push({ route, ok: false, error: String(e.message || e).slice(0, 160) });
     continue;
@@ -172,6 +277,7 @@ for (const { route, url, article } of selected) {
       ? path.join(stage, 'index.html')
       : path.join(stage, route.replace(/^\//, ''), 'index.html');
   fs.mkdirSync(path.dirname(target), { recursive: true });
+  out = out.replace(/\r?\n/g, '\r\n'); // страницы исторически с CRLF — держим одинаково
   fs.writeFileSync(target, out, 'utf8');
   report.push({ route, ok: true, title, text, kb: Math.round(out.length / 1024) });
   console.log(`${route}  ${Math.round(out.length / 1024)}KB  text=${text}  "${title.slice(0, 70)}"`);
@@ -184,3 +290,8 @@ const dup = {};
 for (const r of report.filter((r) => r.ok)) dup[r.title] = (dup[r.title] || 0) + 1;
 for (const [t, n] of Object.entries(dup)) if (n > 1) console.log(`DUPTITLE x${n}: ${t}`);
 console.log(`готово: ${report.filter((r) => r.ok).length}/${report.length}`);
+if (report.some((r) => !r.ok)) {
+  console.log('не все страницы сняты — останавливаю сборку, иначе в сайт уедет прошлый HTML');
+  process.exit(1);
+}
+})();

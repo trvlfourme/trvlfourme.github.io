@@ -93,6 +93,7 @@ if (exists('data/catalog.js')) {
 
     const byId = new Map();
     let offers = 0;
+    const eridUse = new Map();
     for (const p of products) {
       const label = `каталог/${p && p.id ? p.id : '?'}`;
       if (!p || !p.id) { fail(`${label}: пустой id`); continue; }
@@ -134,6 +135,20 @@ if (exists('data/catalog.js')) {
         if (o.erid && !/erid=/.test(o.url || '')) fail(`${label}: erid есть в данных, но не в ссылке (${o.url})`);
         if (o.kind === 'card' && !o.erid) fail(`${label}: партнёрская ссылка без erid — реклама не маркирована`);
         if (o.kind === 'search' && o.erid) fail(`${label}: у поисковой ссылки не должно быть erid`);
+        if (o.erid) {
+          if (!eridUse.has(o.erid)) eridUse.set(o.erid, new Map());
+          const perLink = eridUse.get(o.erid);
+          const link = ((o.url || '').match(/\/cc\/([A-Za-z0-9_-]+)/) || [])[1] || o.url || label;
+          perLink.set(link, label);
+        }
+      }
+    }
+
+    // один токен erid обычно маркирует один креатив: разные /cc/-ссылки с общим erid — повод сверить кабинет
+    for (const [erid, links] of eridUse) {
+      if (links.size > 1) {
+        const list = [...links.entries()].slice(0, 6).map(([link, label]) => `${label} (${link})`).join(', ');
+        note(`erid ${erid} стоит на ${links.size} разных ссылках: ${list}`);
       }
     }
 
