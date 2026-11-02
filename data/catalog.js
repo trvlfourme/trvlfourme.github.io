@@ -69,28 +69,6 @@ window.KD_CATALOG = {
       ]
     },
     {
-      "id": "sihoo-doro-c300",
-      "name": "SIHOO Doro C300 Ergonomic Chair",
-      "brand": "SIHOO",
-      "category": "",
-      "summary": "",
-      "image": "",
-      "price_mode": "hidden",
-      "price_note": "",
-      "price_rub": 34500,
-      "archived": false,
-      "offers": [
-        {
-          "store": "yandex",
-          "kind": "card",
-          "url": "https://market.yandex.ru/cc/BSpGLS?erid=5jtCeReNx12oak2szCZM4CC",
-          "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2szCZM4CC",
-          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
-        }
-      ]
-    },
-    {
       "id": "hbada-e3-pro",
       "name": "Hbada E3 Pro 4.0 E301WPH",
       "brand": "HBADA",
