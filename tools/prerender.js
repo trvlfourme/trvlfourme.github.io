@@ -158,6 +158,11 @@ for (const { route, url, article } of selected) {
   const title = pickTitle(html, route);
   const description = pickDescription(html);
   let out = html.replace(/(href|src)="\.\//g, '$1="/');
+  // В снятом DOM остаются блоки главной страницы (её JSON-LD и перелинковка) —
+  // их на каждой странице заново строит tools/seo-fix.js, иначе статья унаследует @id главной.
+  out = out
+    .replace(/[ 	]*<!-- kd-seo -->[\s\S]*?<!-- \/kd-seo -->/g, '')
+    .replace(/[ 	]*<!-- kd-links -->[\s\S]*?<!-- \/kd-links -->/g, '');
   out = rewriteHead(out, route, title, description);
   if (article) out = out.replace(/<\/head>/i, `    ${shim(article)}\n  </head>`);
 

@@ -1,0 +1,19 @@
+# Правила для Cloudflare Pages/Workers: настоящие 301 вместо meta refresh.
+# GitHub Pages этот файл игнорирует, там работают страницы-редиректы.
+/article/rabochij-ugolok-v-odnushke-s-rebenkom/ /article/rabochee-mesto-v-odnushke-s-rebenkom/ 301
+/article/stol-s-elektroprivodom-vs-obychnyj/ /article/stol-s-elektroprivodom-polza-dlya-spiny/ 301
+/article/5-luchshih-ergonomichnyh-kresel-do-35000/ /article/5-luchshih-ergonomichnyh-kresel-rejting/ 301
+/article/skrinbar-na-monitor-pochemu-nastolnaya-lampa-portit-zrenie/ /article/skrinbar-na-monitor-vybor-zashchita-glaz/ 301
+/article/kristalnyj-zvuk-na-sozvonah-bez-krikov-detej/ /article/mikrofon-s-shumopodavleniem-dlya-zvonkov/ 301
+/article/kabel-menedzhment-pod-stolom-za-1-chas-i-2500-rublej/ /article/kabel-menedzhment-pod-stolom-svoimi-rukami/ 301
+/article/kronshtejn-dlya-monitora-i-podstavka-dlya-nog/ /article/kronshtejn-dlya-monitora-ergonomika-shei/ 301
+/article/metod-svetofor-tajm-menedzhment-dlya-roditelej/ /article/metod-svetofor-udalenka-s-detmi/ 301
+/article/rabochee-mesto-dlya-dvoih-v-odnoj-komnate/ /article/rabochee-mesto-dlya-dvoih-v-komnate/ 301
+/article/podstavki-dlya-nog-ergonomika-oteki/ /article/podstavka-dlya-nog-pod-stol-ergonomika/ 301
+/article/vybor-kronshtejna-dlya-monitora-gazlift/ /article/kronshtejn-dlya-monitora-na-stol-vybor/ 301
+/article/akusticheskie-paneli-peregorodki-dlya-kvartiry/ /article/akusticheskie-paneli-dlya-domashnego-kabineta/ 301
+/article/v-kakoj-komnate-luchshe-rabotat-doma/ /article/v-kakoj-komnate-luchshe-rabotat-na-udalenke/ 301
+/article/kuda-postavit-rabochij-stol-okno-batareya-rozetki/ /article/kuda-postavit-rabochij-stol-v-komnate/ 301
+/article/domashnij-ofis-s-nulya-chto-kupit-srazu-a-chto-zaminit/ /article/domashnij-ofis-s-nulya-nedorogo/ 301
+/article/kak-podgotovitsya-k-udalennoj-rabote-v-poezdke/ /article/udalennaya-rabota-v-poezdke-i-otpuske/ 301
+/catalog/ / 301

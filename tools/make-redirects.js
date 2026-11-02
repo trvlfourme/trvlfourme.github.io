@@ -80,7 +80,28 @@ for (const [oldSection, newPath] of Object.entries(SECTION_MAP)) {
   ));
 }
 
-console.log(`страниц-редиректов записано: ${made.length}`);
+// Cloudflare Pages/Workers понимает статические 301 через _redirects.
+// На GitHub Pages файл просто лежит рядом и никому не мешает: переключение
+// на Cloudflare даст настоящие 301 без переписывания адресов.
+const rules = [];
+for (const [oldSlug, newSlug] of Object.entries(ARTICLE_MAP)) {
+  if (!fs.existsSync(path.join(root, 'article', newSlug, 'index.html'))) continue;
+  rules.push(`/article/${oldSlug}/ /article/${newSlug}/ 301`);
+}
+for (const [oldSection, newPath] of Object.entries(SECTION_MAP)) {
+  rules.push(`/${oldSection}/ ${newPath ? `/${newPath}/` : '/'} 301`);
+}
+const header = [
+  '# Правила для Cloudflare Pages/Workers: настоящие 301 вместо meta refresh.',
+  '# GitHub Pages этот файл игнорирует, там работают страницы-редиректы.',
+];
+fs.writeFileSync(
+  path.join(root, '_redirects'),
+  header.concat(rules).join('\n') + '\n',
+  'utf8'
+);
+
+console.log(`страниц-редиректов записано: ${made.length}, правил 301 для Cloudflare: ${rules.length}`);
 if (skipped.length) {
   console.log('пропущено (проверьте вручную):');
   skipped.forEach((s) => console.log('  ! ' + s));

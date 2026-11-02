@@ -3,60 +3,220 @@
     "title": "Рабочее место для двоих в одной комнате: схемы и тишина",
     "desc": "Три схемы расстановки столов, защита микрофона от голоса партнёра, календарный этикет и набор мебели для двух удалёнщиков в одной комнате.",
     "related": [
-      ["/article/akusticheskie-paneli-dlya-domashnego-kabineta/", "Акустика и перегородки"],
-      ["/article/mikrofon-s-shumopodavleniem-dlya-zvonkov/", "Микрофон для созвонов"],
-      ["/article/rabochee-mesto-v-odnushke-s-rebenkom/", "Кабинет в однушке с ребёнком"],
-      ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Расстановка стола"]
+      [
+        "/article/akusticheskie-paneli-dlya-domashnego-kabineta/",
+        "Акустика и перегородки"
+      ],
+      [
+        "/article/mikrofon-s-shumopodavleniem-dlya-zvonkov/",
+        "Микрофон для созвонов"
+      ],
+      [
+        "/article/rabochee-mesto-v-odnushke-s-rebenkom/",
+        "Кабинет в однушке с ребёнком"
+      ],
+      [
+        "/article/kuda-postavit-rabochij-stol-v-komnate/",
+        "Расстановка стола"
+      ]
     ]
   },
   "rabochee-mesto-v-odnushke-s-rebenkom": {
     "title": "Рабочее место в однушке с ребёнком: гид по обустройству",
     "desc": "Зонирование ширмой или шторой Blackout, защита созвонов от детских мультиков, метод «Светофор» и готовый комплект для компактного угла.",
     "related": [
-      ["/article/metod-svetofor-udalenka-s-detmi/", "Метод «Светофор» для ребёнка"],
-      ["/article/akusticheskie-paneli-dlya-domashnego-kabineta/", "Акустические панели в кабинет"],
-      ["/article/mikrofon-s-shumopodavleniem-dlya-zvonkov/", "Микрофон с шумоподавлением"],
-      ["/article/rabochee-mesto-dlya-dvoih-v-komnate/", "Рабочее место для двоих"]
+      [
+        "/article/metod-svetofor-udalenka-s-detmi/",
+        "Метод «Светофор» для ребёнка"
+      ],
+      [
+        "/article/akusticheskie-paneli-dlya-domashnego-kabineta/",
+        "Акустические панели в кабинет"
+      ],
+      [
+        "/article/mikrofon-s-shumopodavleniem-dlya-zvonkov/",
+        "Микрофон с шумоподавлением"
+      ],
+      [
+        "/article/rabochee-mesto-dlya-dvoih-v-komnate/",
+        "Рабочее место для двоих"
+      ]
     ]
   },
   "skrinbar-na-monitor-vybor-zashchita-glaz": {
     "title": "Скринбар на монитор: как выбрать и защитить глаза",
     "desc": "Почему к вечеру сохнут глаза, как работает асимметричный луч, Xiaomi Mi Light Bar против BenQ ScreenBar Halo и нормы освещённости стола.",
     "related": [
-      ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Свет при расстановке стола"],
-      ["/article/balans-raboty-i-lichnoj-zhizni-na-udalenke/", "Вечерний свет и сон"],
-      ["/article/kronshtejn-dlya-monitora-ergonomika-shei/", "Положение монитора"],
-      ["/article/5-luchshih-ergonomichnyh-kresel-rejting/", "Кресло для долгой работы"]
+      [
+        "/article/kuda-postavit-rabochij-stol-v-komnate/",
+        "Свет при расстановке стола"
+      ],
+      [
+        "/article/balans-raboty-i-lichnoj-zhizni-na-udalenke/",
+        "Вечерний свет и сон"
+      ],
+      [
+        "/article/kronshtejn-dlya-monitora-ergonomika-shei/",
+        "Положение монитора"
+      ],
+      [
+        "/article/5-luchshih-ergonomichnyh-kresel-rejting/",
+        "Кресло для долгой работы"
+      ]
     ]
   },
   "stol-s-elektroprivodom-polza-dlya-spiny": {
     "title": "Стол с электроприводом: польза для спины, правило 40/20",
     "desc": "Что происходит с позвоночником за шесть часов сидения, как чередовать позы, один мотор или два и когда подъёмный стол окупается.",
     "related": [
-      ["/article/5-luchshih-ergonomichnyh-kresel-rejting/", "Кресло к подъёмному столу"],
-      ["/article/podstavka-dlya-nog-pod-stol-ergonomika/", "Подставка для ног"],
-      ["/article/kronshtejn-dlya-monitora-ergonomika-shei/", "Монитор на уровне глаз"],
-      ["/article/domashnij-ofis-s-nulya-nedorogo/", "Собрать офис недорого"]
+      [
+        "/article/5-luchshih-ergonomichnyh-kresel-rejting/",
+        "Кресло к подъёмному столу"
+      ],
+      [
+        "/article/podstavka-dlya-nog-pod-stol-ergonomika/",
+        "Подставка для ног"
+      ],
+      [
+        "/article/kronshtejn-dlya-monitora-ergonomika-shei/",
+        "Монитор на уровне глаз"
+      ],
+      [
+        "/article/domashnij-ofis-s-nulya-nedorogo/",
+        "Собрать офис недорого"
+      ]
     ]
   },
   "udalennaya-rabota-v-poezdke-i-otpuske": {
     "title": "Удалённая работа в поездке: техника, связь и границы",
     "desc": "Договорённости с командой, компактный набор техники, защита ноутбука, eSIM и роуминг — как не испортить отпуск себе и семье.",
     "related": [
-      ["/article/balans-raboty-i-lichnoj-zhizni-na-udalenke/", "Границы рабочего дня"],
-      ["/article/mikrofon-s-shumopodavleniem-dlya-zvonkov/", "Звук на созвонах из отеля"],
-      ["/article/metod-svetofor-udalenka-s-detmi/", "Работа с детьми дома"],
-      ["/article/domashnij-ofis-s-nulya-nedorogo/", "Базовый набор для офиса"]
+      [
+        "/article/balans-raboty-i-lichnoj-zhizni-na-udalenke/",
+        "Границы рабочего дня"
+      ],
+      [
+        "/article/mikrofon-s-shumopodavleniem-dlya-zvonkov/",
+        "Звук на созвонах из отеля"
+      ],
+      [
+        "/article/metod-svetofor-udalenka-s-detmi/",
+        "Работа с детьми дома"
+      ],
+      [
+        "/article/domashnij-ofis-s-nulya-nedorogo/",
+        "Базовый набор для офиса"
+      ]
     ]
   },
   "v-kakoj-komnate-luchshe-rabotat-na-udalenke": {
     "title": "В какой комнате лучше работать: кухня, спальня, лоджия",
     "desc": "Почему кухня — худший вариант, спальня — психологический капкан, а утеплённая лоджия — лучший мини-кабинет. Матрица выбора комнаты.",
     "related": [
-      ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Куда поставить стол"],
-      ["/article/rabochee-mesto-v-odnushke-s-rebenkom/", "Офис в однушке"],
-      ["/article/skrinbar-na-monitor-vybor-zashchita-glaz/", "Свет в рабочей зоне"],
-      ["/article/balans-raboty-i-lichnoj-zhizni-na-udalenke/", "Граница работы и дома"]
+      [
+        "/article/kuda-postavit-rabochij-stol-v-komnate/",
+        "Куда поставить стол"
+      ],
+      [
+        "/article/rabochee-mesto-v-odnushke-s-rebenkom/",
+        "Офис в однушке"
+      ],
+      [
+        "/article/skrinbar-na-monitor-vybor-zashchita-glaz/",
+        "Свет в рабочей зоне"
+      ],
+      [
+        "/article/balans-raboty-i-lichnoj-zhizni-na-udalenke/",
+        "Граница работы и дома"
+      ]
+    ]
+  },
+  "kak-vybrat-kreslo-dlya-spiny": {
+    "title": "Как выбрать кресло для спины: 5 параметров и проверка по росту",
+    "desc": "Мягкое сиденье не спасает поясницу: 5 параметров примерки кресла, проверка по росту и ошибки выбора «анатомических» моделей.",
+    "related": [
+      [
+        "/article/5-luchshih-ergonomichnyh-kresel-rejting/",
+        "Рейтинг 5 эргономичных кресел"
+      ],
+      [
+        "/article/kronshtejn-dlya-monitora-ergonomika-shei/",
+        "Кронштейн и нагрузка на шею"
+      ],
+      [
+        "/article/podstavka-dlya-nog-pod-stol-ergonomika/",
+        "Подставка для ног и поясница"
+      ],
+      [
+        "/article/ergonomika-rabochego-mesta-nastroyka/",
+        "Настройка места за 30 минут"
+      ]
+    ]
+  },
+  "podemnyj-stol-kak-vybrat": {
+    "title": "Подъёмный стол: как выбрать привод и высоту под свой рост",
+    "desc": "Какой диапазон высоты нужен именно вам, зачем два мотора вместо одного и как проверить устойчивость стола до оплаты.",
+    "related": [
+      [
+        "/article/stol-s-elektroprivodom-polza-dlya-spiny/",
+        "Польза стола с электроприводом"
+      ],
+      [
+        "/article/podstavka-dlya-nog-pod-stol-ergonomika/",
+        "Подставка для ног под стол"
+      ],
+      [
+        "/article/kabel-menedzhment-pod-stolom-svoimi-rukami/",
+        "Убрать провода под столом"
+      ],
+      [
+        "/article/ergonomika-rabochego-mesta-nastroyka/",
+        "Порядок настройки места"
+      ]
+    ]
+  },
+  "ergonomika-rabochego-mesta-nastroyka": {
+    "title": "Эргономика рабочего места дома: настройка за 30 минут",
+    "desc": "Семь шагов в правильном порядке: кресло, монитор, стол, свет и режим. Расчёты по росту и то, что чаще всего делают не так.",
+    "related": [
+      [
+        "/article/kuda-postavit-rabochij-stol-v-komnate/",
+        "Куда поставить стол"
+      ],
+      [
+        "/article/kak-vybrat-kreslo-dlya-spiny/",
+        "Как выбрать кресло"
+      ],
+      [
+        "/article/podemnyj-stol-kak-vybrat/",
+        "Выбор подъёмного стола"
+      ],
+      [
+        "/article/v-kakoj-komnate-luchshe-rabotat-na-udalenke/",
+        "В какой комнате работать"
+      ]
+    ]
+  },
+  "udalennaya-rabota-s-rebenkom": {
+    "title": "Удалёнка с ребёнком: как выстроить день, а не пережить его",
+    "desc": "Якоря, рабочие блоки и буферы: расписание удалёнки, которое выдерживает садик, каникулы и больничный ребёнка.",
+    "related": [
+      [
+        "/article/metod-svetofor-udalenka-s-detmi/",
+        "Метод «Светофор» для детей"
+      ],
+      [
+        "/article/rabochee-mesto-v-odnushke-s-rebenkom/",
+        "Рабочий уголок в однушке"
+      ],
+      [
+        "/article/akusticheskie-paneli-dlya-domashnego-kabineta/",
+        "Убрать эхо в комнате"
+      ],
+      [
+        "/article/balans-raboty-i-lichnoj-zhizni-na-udalenke/",
+        "Баланс работы и жизни"
+      ]
     ]
   }
 }

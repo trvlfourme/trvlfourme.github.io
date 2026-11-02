@@ -131,6 +131,9 @@ if (exists('data/catalog.js')) {
         }
         if (o.url && !/^https:\/\//.test(o.url)) fail(`${label}: ссылка оффера должна начинаться с https://`);
         if (o.erid && !o.advertiser) fail(`${label}: у оффера есть erid, но не указан рекламодатель`);
+        if (o.erid && !/erid=/.test(o.url || '')) fail(`${label}: erid есть в данных, но не в ссылке (${o.url})`);
+        if (o.kind === 'card' && !o.erid) fail(`${label}: партнёрская ссылка без erid — реклама не маркирована`);
+        if (o.kind === 'search' && o.erid) fail(`${label}: у поисковой ссылки не должно быть erid`);
       }
     }
 
@@ -176,6 +179,36 @@ if (exists('data/catalog.js')) {
 let tagged = 0;
 let canonicalOk = 0;
 let redirects = 0;
+const canonicalSet = new Set();
+
+// Разметка статьи должна описывать саму статью, а не главную:
+// Article и WebPage получают @id от собственного canonical, FAQPage — обязателен.
+function checkArticleSchema(rel, html, canonical) {
+  const block = html.match(/<!-- kd-seo -->\s*<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  if (!block) {
+    fail(`${rel}: нет разметки kd-seo`);
+    return;
+  }
+  let graph;
+  try {
+    graph = JSON.parse(block[1])['@graph'] || [];
+  } catch (e) {
+    fail(`${rel}: битый JSON-LD в kd-seo`);
+    return;
+  }
+  const byType = (t) => graph.find((n) => n && n['@type'] === t);
+  const article = byType('Article');
+  const webpage = byType('WebPage');
+  const faq = byType('FAQPage');
+  const crumbs = byType('BreadcrumbList');
+  if (!article) fail(`${rel}: в разметке нет Article`);
+  else if (article['@id'] !== canonical + '#article') fail(`${rel}: Article @id не совпадает с адресом страницы (${article['@id']})`);
+  if (!webpage) fail(`${rel}: в разметке нет WebPage`);
+  else if (webpage['@id'] !== canonical + '#webpage') fail(`${rel}: WebPage @id не совпадает с адресом страницы (${webpage['@id']})`);
+  if (!faq) fail(`${rel}: в разметке нет FAQPage`);
+  else if (faq['@id'] !== canonical + '#faq') fail(`${rel}: FAQPage @id не совпадает с адресом страницы (${faq['@id']})`);
+  if (!crumbs) fail(`${rel}: в разметке нет BreadcrumbList`);
+}
 for (const page of contentPages) {
   const rel = path.relative(root, page).split(path.sep).join('/');
   const html = fs.readFileSync(page, 'utf8');
@@ -199,8 +232,11 @@ for (const page of contentPages) {
   const canonical = (html.match(/<link rel="canonical" href="([^"]+)"/i) || [])[1];
   if (canonical && canonical.startsWith(SITE) && !canonical.endsWith('/')) {
     fail(`${rel}: canonical без завершающего слеша — GitHub Pages отдаёт страницу со слешем`);
-  } else if (canonical && canonical.startsWith(SITE)) canonicalOk++;
-  else fail(`${rel}: canonical не на ${SITE} (${canonical || 'нет'})`);
+  } else if (canonical && canonical.startsWith(SITE)) {
+    canonicalOk++;
+    canonicalSet.add(canonical);
+  } else fail(`${rel}: canonical не на ${SITE} (${canonical || 'нет'})`);
+  if (rel.startsWith('article/') && canonical) checkArticleSchema(rel, html, canonical);
   if (/name="robots"[^>]*noindex/i.test(html)) fail(`${rel}: стоит noindex`);
   if (/trvlfourme/i.test(html)) fail(`${rel}: осталась ссылка на превью-домен trvlfourme`);
   if (/ozon\.ru/i.test(html)) fail(`${rel}: осталась кнопка Ozon без партнёрской ссылки`);
@@ -239,6 +275,11 @@ if (exists('sitemap.xml')) {
     if (!fs.existsSync(path.join(root, target))) fail(`sitemap: страницы нет на диске — ${u}`);
   }
   note(`sitemap: ${urls.length} адресов`);
+  const sitemapSet = new Set(urls);
+  const notInSitemap = [...canonicalSet].filter((u) => !sitemapSet.has(u));
+  const extraInSitemap = [...sitemapSet].filter((u) => !canonicalSet.has(u));
+  if (notInSitemap.length) fail(`sitemap: нет адреса со страницы — ${notInSitemap.slice(0, 6).join(', ')}`);
+  if (extraInSitemap.length) fail(`sitemap: адрес без такой canonical — ${extraInSitemap.slice(0, 6).join(', ')}`);
 }
 
 // 6. Итог

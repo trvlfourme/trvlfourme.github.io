@@ -137,3 +137,26 @@ const literal = ser(article).replace("'__FT__'", 'ft');
 bundle = bundle.slice(0, insertAt) + literal + ',' + bundle.slice(insertAt);
 fs.writeFileSync(BUNDLE, bundle, 'utf8');
 console.log('вставлено:', ID, '| разделов', sections.length, '| FAQ', faqList.length, '| знаков', literal.length);
+
+// Метаданные для постпроцессора: без записи в seo-pages-*.json tools/seo-fix.js
+// не тронет страницу и оставит ей описание, обрезанное пререндером с «…».
+// Запись дописывается только если её ещё нет, поэтому повторный запуск безопасен.
+const SEO_FILE = path.join(__dirname, 'seo-pages-c.json');
+const seoPages = JSON.parse(fs.readFileSync(SEO_FILE, 'utf8'));
+if (!seoPages[SLUG]) {
+  const DEFAULT_RELATED = [
+    ['/article/5-luchshih-ergonomichnyh-kresel-rejting/', 'Рейтинг 5 эргономичных кресел'],
+    ['/article/ergonomika-rabochego-mesta-nastroyka/', 'Настройка места за 30 минут'],
+    ['/article/podstavka-dlya-nog-pod-stol-ergonomika/', 'Подставка для ног и поясница'],
+    ['/article/kronshtejn-dlya-monitora-ergonomika-shei/', 'Кронштейн и нагрузка на шею'],
+  ];
+  seoPages[SLUG] = {
+    title: article.seo.metaTitle,
+    desc: article.seo.metaDescription,
+    // Тематические соседи важнее «случайных»: при сборке новой статьи
+    // список стоит поправить вручную, если тема другая.
+    related: article.related || DEFAULT_RELATED,
+  };
+  fs.writeFileSync(SEO_FILE, JSON.stringify(seoPages, null, 2) + String.fromCharCode(10), 'utf8');
+  console.log('метаданные для seo-fix добавлены:', SLUG);
+}

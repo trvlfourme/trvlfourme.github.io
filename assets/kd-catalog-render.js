@@ -133,9 +133,12 @@
 
   function buttonsHtml(offers) {
     return offers.map(function (o) {
-      var buy = o.kind !== 'search';
-      return '<a class="kd-cat-btn' + (buy ? ' kd-cat-btn-buy' : '') + '" href="' + esc(o.url) + '" ' +
-        'target="_blank" rel="noopener noreferrer sponsored nofollow">' + esc(offerLabel(o)) + '</a>';
+      // Рекламой считается только партнёрская ссылка: у неё есть erid и рекламодатель.
+      // Поисковая ссылка — обычная навигация, помечать её sponsored нельзя.
+      var ad = o.kind !== 'search' && !!o.erid;
+      var rel = ad ? 'noopener noreferrer sponsored nofollow' : 'noopener noreferrer nofollow';
+      return '<a class="kd-cat-btn' + (o.kind !== 'search' ? ' kd-cat-btn-buy' : '') + '" href="' + esc(o.url) + '" ' +
+        'target="_blank" rel="' + rel + '">' + esc(offerLabel(o)) + '</a>';
     }).join('');
   }
 
