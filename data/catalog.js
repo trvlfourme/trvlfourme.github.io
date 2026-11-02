@@ -91,6 +91,28 @@ window.KD_CATALOG = {
       ]
     },
     {
+      "id": "hbada-e3-pro",
+      "name": "Hbada E3 Pro 4.0 E301WPH",
+      "brand": "HBADA",
+      "category": "Кресла",
+      "summary": "Поясничная опора 4D с плавающими крыльями на 40°, подлокотники 6D с синхронизацией наклона, слайдер сиденья 5 см и подставка для ног.",
+      "image": "/images/ergonomic-chair.svg",
+      "price_mode": "hidden",
+      "price_note": "",
+      "price_rub": 60488,
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSr9mc?erid=5jtCeReNx12oak2szCcHMCL",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCcHMCL",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
       "id": "xiaomi-lightbar",
       "name": "Xiaomi Mi Computer Monitor Light Bar (1S)",
       "brand": "Xiaomi",
@@ -849,7 +871,7 @@ window.KD_CATALOG = {
         "chair-budget-burokrat",
         "chair-chairman-795",
         "metta-samurai-s3",
-        "sihoo-doro-c300",
+        "hbada-e3-pro",
         "chair-ergohuman-plus",
         "lumbar-cushion-memory",
         "ergonomic-footrest-adjustable"
