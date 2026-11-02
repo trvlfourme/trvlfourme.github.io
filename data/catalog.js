@@ -749,6 +749,28 @@ window.KD_CATALOG = {
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
+    },
+    {
+      "id": "printer-hp-officejet-202",
+      "name": "Принтер портативный HP OfficeJet 202 Mobile (A4, аккумулятор)",
+      "brand": "HP",
+      "category": "",
+      "summary": "",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "price_rub": 40512,
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BT6hQf?erid=5jtCeReNx12oak2tU4s7PDr",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tU4s7PDr",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
     }
   ],
   "setups": [
@@ -1029,6 +1051,7 @@ window.KD_CATALOG = {
         "printer-pantum-m6500w",
         "printer-canon-pixma-g3430",
         "printer-canon-pixma-ts3751i",
+        "printer-hp-officejet-202",
         "scanner-canon-canoscan-lide-300"
       ]
     }
