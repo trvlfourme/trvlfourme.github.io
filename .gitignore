@@ -13,3 +13,6 @@ desktop.ini
 _prodcheck/
 _prerender/
 deploy/
+
+# временные скрипты и выгрузки чатов
+.tmp-work/

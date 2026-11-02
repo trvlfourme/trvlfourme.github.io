@@ -33,16 +33,16 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 38900,
+      "price_rub": 57545,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=стол+с+электроприводом+Ergostol+Terra",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BStUXB?erid=5jtCeReNx12oak2szCfFKgb",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCfFKgb",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -113,6 +113,28 @@ window.KD_CATALOG = {
       ]
     },
     {
+      "id": "hbada-p2-pro-plus",
+      "name": "Hbada P2 Pro+ E216BVD (с подставкой для ног)",
+      "brand": "HBADA",
+      "category": "Кресла",
+      "summary": "Сетчатое кресло с 3D-опорой поясницы и 3D-подлокотниками, спинка до 135°, подставка для ног в комплекте; нагрузка до 150 кг, рост 155–190 см.",
+      "image": "/images/ergonomic-chair.svg",
+      "price_mode": "hidden",
+      "price_note": "",
+      "price_rub": 30348,
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BStKTM?erid=5jtCeReNx12oak2szCdpMfG",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdpMfG",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
       "id": "xiaomi-lightbar",
       "name": "Xiaomi Mi Computer Monitor Light Bar (1S)",
       "brand": "Xiaomi",
@@ -121,16 +143,16 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 4290,
+      "price_rub": 4998,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=Xiaomi+Monitor+Light+Bar+1S+скринбар",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSsnwv?erid=5jtCeReNx12oak2szCdoLzB",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdoLzB",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -143,16 +165,16 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 19800,
+      "price_rub": 20896,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=BenQ+ScreenBar+Halo",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSsqaS?erid=5jtCeReNx12oak2szCdoM9A",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdoM9A",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -165,16 +187,16 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 23500,
+      "price_rub": 26627,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=Jabra+Evolve2+65+гарнитура",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSsrnQ?erid=5jtCeReNx12oak2szCdoMHu",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdoMHu",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -187,16 +209,16 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 6490,
+      "price_rub": 5705,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=Fifine+K688+микрофон",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSssY6?erid=5jtCeReNx12oak2szCdoMSf",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdoMSf",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -209,16 +231,16 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 3290,
+      "price_rub": 3375,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=ONKRON+G80+кронштейн+для+монитора",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSstQ2?erid=5jtCeReNx12oak2szCdoMX5",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdoMX5",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -231,60 +253,60 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 1850,
+      "price_rub": 1693,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=кабель+канал+под+стол+сетка+органайзер",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSsuNC?erid=5jtCeReNx12oak2szCdoMXE",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdoMXE",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
     {
       "id": "ugreen-gan-100w",
-      "name": "GaN-зарядка Ugreen Nexode 100W (4 порта USB-C / USB-A)",
+      "name": "GaN-зарядка Ugreen Nexode Pro 100W (3 порта)",
       "brand": "Ugreen",
       "category": "",
       "summary": "",
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 4890,
+      "price_rub": 3647,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=ugreen+nexode+100w+gan",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSsvKG?erid=5jtCeReNx12oak2szCdogKQ",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdogKQ",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
     {
       "id": "baseus-blade-powerbank",
-      "name": "Тонкий пауэрбанк для ноутбука Baseus Blade 100W (20 000 мАч)",
+      "name": "Пауэрбанк Baseus EnerCore 20 000 мАч 100 Вт",
       "brand": "Baseus",
       "category": "",
       "summary": "",
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 6490,
+      "price_rub": 3381,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=baseus+blade+100w+powerbank",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSswpv?erid=5jtCeReNx12oak2szCdogUD",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdogUD",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -297,38 +319,38 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 2490,
+      "price_rub": 2887,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=подставка+для+ноутбука+moft",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSszBr?erid=5jtCeReNx12oak2szCdoghR",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdoghR",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
     {
       "id": "travel-adapter-universal",
-      "name": "Универсальный дорожный адаптер с розетками всего мира + USB-C PD 35W",
+      "name": "Универсальный дорожный адаптер с вилками EU/UK/US/AU, 45 Вт",
       "brand": "Lencent",
       "category": "",
       "summary": "",
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 1990,
+      "price_rub": 2505,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=универсальный+дорожный+адаптер+переходник",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BStYfy?erid=5jtCeReNx12oak2szCfFenT",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCfFenT",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -422,23 +444,23 @@ window.KD_CATALOG = {
     },
     {
       "id": "desk-loctek-et114",
-      "name": "Подъемный стол Loctek / Eureka Basic (1 мотор, память)",
-      "brand": "Loctek",
+      "name": "Подъёмный стол с электроприводом 1500×1000 (1 мотор)",
+      "brand": "",
       "category": "",
       "summary": "",
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 21900,
+      "price_rub": 16659,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=подъемный+стол+Loctek+электропривод",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSt9TT?erid=5jtCeReNx12oak2szCdp22W",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdp22W",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -517,16 +539,16 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 1990,
+      "price_rub": 1895,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=вертикальная+мышь+Delux+M618DB",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BStAnW?erid=5jtCeReNx12oak2szCdp26v",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdp26v",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -539,16 +561,16 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 10900,
+      "price_rub": 6618,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=Logitech+MX+Master+3S+мышь",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BStBXe?erid=5jtCeReNx12oak2szCdp2BL",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdp2BL",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -561,38 +583,38 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 7490,
+      "price_rub": 6898,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=Anker+Soundcore+Space+One",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BStCtM?erid=5jtCeReNx12oak2szCdp2LE",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdp2LE",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
     {
       "id": "webcam-anker-powerconf-c200",
-      "name": "Веб-камера Anker PowerConf C200 2K (Физическая шторка)",
-      "brand": "Anker",
+      "name": "Веб-камера Logitech C922 Pro Stream (1080p, 60 fps)",
+      "brand": "Logitech",
       "category": "",
       "summary": "",
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 5890,
+      "price_rub": 5596,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=веб-камера+Anker+PowerConf+C200",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BStF8W?erid=5jtCeReNx12oak2szCdpMH9",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdpMH9",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -605,16 +627,16 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 2890,
+      "price_rub": 2683,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=TickTime+cube+таймер",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BStH2B?erid=5jtCeReNx12oak2szCdpMS5",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdpMS5",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
@@ -627,16 +649,16 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 2390,
+      "price_rub": 3320,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=акупунктурный+коврик+для+спины",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BStJEV?erid=5jtCeReNx12oak2szCdpMWY",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCdpMWY",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     }
@@ -727,7 +749,7 @@ window.KD_CATALOG = {
         "chair-budget-burokrat",
         "chair-chairman-795",
         "metta-samurai-s3",
-        "sihoo-doro-c300",
+        "hbada-p2-pro-plus",
         "chair-ergohuman-plus",
         "lumbar-cushion-memory"
       ]
