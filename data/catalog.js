@@ -425,43 +425,43 @@ window.KD_CATALOG = {
     },
     {
       "id": "ergonomic-footrest-adjustable",
-      "name": "Анатомическая подставка для ног с массажной поверхностью",
-      "brand": "ErgoFeet Pro",
-      "category": "",
-      "summary": "",
+      "name": "Подставка для ног с массажными роликами",
+      "brand": "",
+      "category": "Подставка для ног",
+      "summary": "Подставка под ноги с массажным роликом от бренда WMC TOOLS сделает место для работы более комфортным, снизит нагрузку на позвоночник, поможет выровнять осанку. Размер 38х27,5х12,5 см. Массажная подставка для ног предупредит отеки, улучшит кровообращение, увеличить производительность и снизить усталость.",
       "image": "",
-      "price_mode": "hidden",
-      "price_note": "",
+      "price_mode": "note",
+      "price_note": "2397",
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=подставка+для+ног+ортопедическая+офисная",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSorwi?erid=5jtCeReNx12oak2szCZKhjd",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCZKhjd",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
     {
       "id": "laptop-stand-aluminum-folding",
-      "name": "Алюминиевая складная подставка для ноутбука Ugreen / Baseus",
+      "name": "Подставка для ноутбука UGreen LP339 для устройств с диагональю до 17.3, металлическая, серебристая",
       "brand": "Ugreen",
-      "category": "",
-      "summary": "",
+      "category": "Техника для удаленной работы",
+      "summary": "Подставка складная Ugreen Foldable Laptop Riser подходит для всех устройств с диагональю до 17.3\" и весом до 5 кг. Складная конструкция позволит расположить гаджет под удобным углом, поможет сохранить осанку и оптимизировать рабочее место.",
       "image": "",
-      "price_mode": "hidden",
-      "price_note": "",
+      "price_mode": "note",
+      "price_note": "2263",
       "archived": false,
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=подставка+для+ноутбука+алюминиевая+складная",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSokwG",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCZKNFa",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },

@@ -86,10 +86,12 @@ window.KD_PRODUCT_LINKS = {
     "wb": ""
   },
   "ergonomic-footrest-adjustable": {
+    "yandex": "https://market.yandex.ru/cc/BSorwi?erid=5jtCeReNx12oak2szCZKhjd",
     "ozon": "",
     "wb": ""
   },
   "laptop-stand-aluminum-folding": {
+    "yandex": "https://market.yandex.ru/cc/BSokwG",
     "ozon": "",
     "wb": ""
   },
