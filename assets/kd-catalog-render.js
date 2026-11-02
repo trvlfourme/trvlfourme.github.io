@@ -181,6 +181,7 @@
     section.id = 'kd-catalog-block';
     section.innerHTML = headingHtml(entry.block_title || 'Товары из этой статьи', 'Подборка каталога «Кабинет Дома»');
     products.forEach(function (p) { section.appendChild(productCard(p)); });
+    section.insertAdjacentHTML('beforeend', priceDisclaimer(catalog, products));
     return section;
   }
 
