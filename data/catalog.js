@@ -377,6 +377,28 @@ window.KD_CATALOG = {
       ]
     },
     {
+      "id": "chair-sihoo-m57",
+      "name": "SIHOO M57 (сетка, 2D-поясничный упор)",
+      "brand": "SIHOO",
+      "category": "Кресла",
+      "summary": "Синхромеханика с фиксацией в трёх положениях, спинка до 126°, регулировки высоты и глубины сиденья, подголовника и подлокотников; нагрузка 150 кг.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "price_rub": 27554,
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BSzF5T?erid=5jtCeReNx12oak2szCmBGjg",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2szCmBGjg",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
       "id": "chair-ergohuman-plus",
       "name": "Ergohuman Elite 2 ST (Чёрный каркас, подлокотники 5D)",
       "brand": "Ergohuman",
@@ -726,6 +748,7 @@ window.KD_CATALOG = {
       "product_ids": [
         "chair-budget-burokrat",
         "chair-chairman-795",
+        "chair-sihoo-m57",
         "metta-samurai-s3",
         "hbada-p2-pro-plus",
         "chair-ergohuman-plus",
