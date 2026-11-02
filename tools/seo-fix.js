@@ -25,7 +25,7 @@ for (const key of Object.keys(META)) {
 
 const TOOLS = [
   ['/calculator/', 'Калькулятор высоты стола'],
-  ['/builder/', 'Конструктор сетапа'],
+  ['/builder/', 'Конструктор набора'],
   ['/tests/', 'Тесты о рабочем месте'],
   ['/checklist/', 'Чек-лист тишины'],
 ];
@@ -185,7 +185,7 @@ function tailBlock(meta) {
     <h2>Читайте также</h2>
     <ul>${links}</ul>
     <div class="kd-tools">${tools}</div>
-    <p class="kd-all">Все материалы по кластерам — <a href="/articles/">база знаний из 17 гайдов</a>.</p>
+    <p class="kd-all">Все материалы по кластерам — <a href="/articles/">база знаний из 22 гайдов</a>.</p>
   </div>
 </section>
 <!-- /kd-links -->`;

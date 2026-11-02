@@ -20,13 +20,13 @@
     ]
   },
   "/builder/": {
-    "title": "Конструктор рабочего места: сетап под бюджет",
+    "title": "Конструктор рабочего места: набор под бюджет",
     "desc": "Соберите домашний офис по шагам: стол, кресло, свет и звук. Готовые наборы трёх уровней — от минимального до премиального.",
     "related": [
       ["/article/domashnij-ofis-s-nulya-nedorogo/", "С чего начать офис с нуля"],
       ["/article/5-luchshih-ergonomichnyh-kresel-rejting/", "Кресло для спины"],
       ["/article/skrinbar-na-monitor-vybor-zashchita-glaz/", "Свет для работы"],
-      ["/article/rabochee-mesto-dlya-dvoih-v-komnate/", "Сетап для двоих"]
+      ["/article/rabochee-mesto-dlya-dvoih-v-komnate/", "Набор для двоих"]
     ]
   },
   "/tests/": {

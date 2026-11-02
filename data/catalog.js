@@ -773,52 +773,7 @@ window.KD_CATALOG = {
       ]
     }
   ],
-  "setups": [
-    {
-      "id": "setup-start",
-      "level": 1,
-      "title": "Рабочий минимум: кресло, стол, подставка",
-      "description": "Старт с нуля: кресло с поясничным упором, письменный стол 120×60, подставка для ноутбука и подставка для ног. Закрывает спину, шею и геометрию посадки; монитор и отдельный свет — следующий уровень.",
-      "product_ids": [
-        "chair-budget-burokrat",
-        "desk-loft-wood-budget",
-        "laptop-stand-aluminum-folding",
-        "ergonomic-footrest-adjustable",
-        "cable-management-kit"
-      ]
-    },
-    {
-      "id": "setup-optimum",
-      "level": 2,
-      "title": "Сидя-стоя и экран на уровне глаз",
-      "description": "Электропривод вводит смену позы, кресло с сеткой держит поясницу, кронштейн ставит экран на уровень глаз и освобождает столешницу, скринбар снимает блики вечером, гарнитура закрывает созвоны.",
-      "product_ids": [
-        "desk-loctek-et114",
-        "metta-samurai-s3",
-        "onkron-g80",
-        "xiaomi-lightbar",
-        "jabra-evolve2-65",
-        "cable-management-kit"
-      ]
-    },
-    {
-      "id": "setup-premium",
-      "level": 3,
-      "title": "Двухмоторный стол и алюминиевое кресло",
-      "description": "Максимальный ресурс: запас по весу под два экрана, алюминиевая конструкция кресла, свет с регулировкой и полный набор для созвонов, записи и питания.",
-      "product_ids": [
-        "ergostol-terra",
-        "chair-ergohuman-plus",
-        "onkron-g80",
-        "benq-screenbar-halo",
-        "jabra-evolve2-65",
-        "fifine-k688",
-        "webcam-logitech-c922",
-        "ugreen-gan-100w",
-        "cable-management-kit"
-      ]
-    }
-  ],
+  "setups": [],
   "articles": [
     {
       "slug": "balans-raboty-i-lichnoj-zhizni-na-udalenke",
@@ -975,7 +930,7 @@ window.KD_CATALOG = {
     {
       "slug": "domashnij-ofis-s-nulya-nedorogo",
       "title": "Домашний офис с нуля недорого: что купить в первую очередь",
-      "block_title": "Бюджетный сетап по шагам",
+      "block_title": "Бюджетный набор по шагам",
       "product_ids": [
         "desk-loft-wood-budget",
         "chair-budget-burokrat",
