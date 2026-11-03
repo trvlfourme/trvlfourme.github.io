@@ -124,6 +124,20 @@ function parse(text) {
     }
   }
 
+  // одна задача в работе на роль: следующую берут только после закрытия текущей
+  const inWork = new Map();
+  for (const it of items) {
+    if (it.kind !== 'T' || it.status !== 'в работе') continue;
+    const who = it.to || it.from;
+    if (who === OWNER) continue;
+    inWork.set(who, [...(inWork.get(who) || []), it.id]);
+  }
+  for (const [who, ids] of inWork) {
+    if (ids.length > 1) {
+      errors.push(`у роли «${who}» в работе ${ids.length} задачи (${ids.join(', ')}) — берите по одной: закройте текущую и перечитайте доску`);
+    }
+  }
+
   return { items, errors };
 }
 
