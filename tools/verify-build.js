@@ -127,6 +127,24 @@ if (adminDirect.length) {
 } else {
   note('админ-скрипты не грузятся на публичных страницах');
 
+// 1ж. Кандидаты srcset существуют (иначе на телефоне будет битая картинка)
+const brokenSrc = [];
+for (const f of contentPages) {
+  const html = fs.readFileSync(f, 'utf8');
+  for (const m of html.matchAll(/srcset="([^"]+)"/g)) {
+    for (const cand of m[1].split(',')) {
+      const url = cand.trim().split(/\s+/)[0];
+      if (!url || /^https?:/.test(url)) continue;
+      if (!fs.existsSync(path.join(root, url))) brokenSrc.push(`${path.relative(root, f)} → ${url}`);
+    }
+  }
+}
+if (brokenSrc.length) {
+  fail(`srcset ссылается на отсутствующие файлы (${brokenSrc.length}): ${brokenSrc.slice(0, 3).join(', ')}`);
+} else {
+  note('все кандидаты srcset на месте');
+}
+
 // 1е. og:image ведёт на существующий файл
 const brokenOg = [];
 for (const f of contentPages) {

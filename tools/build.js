@@ -90,6 +90,7 @@ function copyStaged(from, to) {
   step('редиректы', 'make-redirects.js');
   step('трекер целей', 'inject-tracker.js');
   step('хаб статей', 'build-hub.js');
+  step('адаптивные картинки и preload', 'responsive-images.js');
   step('sitemap', 'sitemap.js');
   step('проверка', 'verify-build.js');
   console.log('\nсборка завершена');
