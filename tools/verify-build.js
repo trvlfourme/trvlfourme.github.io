@@ -117,6 +117,16 @@ const SERVICE_PAGES = new Set(['404.html', 'index.spa.html']);
 const isServicePage = (f) => SERVICE_PAGES.has(path.basename(f)) || /^(yandex_|google)[0-9a-f]+\.html$/i.test(path.basename(f));
 const pages = files.filter((f) => f.endsWith('.html') && !f.includes(`${path.sep}tools${path.sep}`));
 const contentPages = pages.filter((f) => !isServicePage(f));
+
+// 1д. Админские скрипты не грузятся на публичных страницах напрямую
+const adminDirect = contentPages.filter((f) => /kd-admin-(catalog|links)\.js/.test(fs.readFileSync(f, 'utf8')));
+if (adminDirect.length) {
+  fail(
+    `админ-скрипты подключены напрямую (${adminDirect.length} стр.): ${adminDirect.slice(0, 3).map((f) => path.relative(root, f)).join(', ')} — нужен kd-admin-loader.js`
+  );
+} else {
+  note('админ-скрипты не грузятся на публичных страницах');
+}
 const bundle = files.find((f) => f.endsWith(path.join('assets', 'index.js')));
 if (!bundle) fail('нет assets/index.js');
 else {
