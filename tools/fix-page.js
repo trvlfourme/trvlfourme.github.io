@@ -4,7 +4,7 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const SITE = 'https://kabinetdoma.ru';
-const OG_IMAGE = `${SITE}/og-image.png`;
+const OG_IMAGE = `${SITE}/og-image.jpg`;
 
 const [slug, id] = process.argv.slice(2);
 if (!slug || !id) {

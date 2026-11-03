@@ -126,6 +126,19 @@ if (adminDirect.length) {
   );
 } else {
   note('админ-скрипты не грузятся на публичных страницах');
+
+// 1е. og:image ведёт на существующий файл
+const brokenOg = [];
+for (const f of contentPages) {
+  const m = fs.readFileSync(f, 'utf8').match(/property="og:image" content="https:\/\/kabinetdoma\.ru([^"]+)"/);
+  if (!m) continue;
+  if (!fs.existsSync(path.join(root, m[1]))) brokenOg.push(`${path.relative(root, f)} → ${m[1]}`);
+}
+if (brokenOg.length) {
+  fail(`og:image ссылается на отсутствующий файл (${brokenOg.length}): ${brokenOg.slice(0, 3).join(', ')}`);
+} else {
+  note('og:image указывает на существующие файлы');
+}
 }
 const bundle = files.find((f) => f.endsWith(path.join('assets', 'index.js')));
 if (!bundle) fail('нет assets/index.js');

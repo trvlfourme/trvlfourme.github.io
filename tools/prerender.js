@@ -11,7 +11,7 @@ const CHROME = process.env.CHROME || 'C:\\Program Files\\Google\\Chrome\\Applica
 const PORT = Number(process.env.PORT || 8080);
 const BASE = `http://127.0.0.1:${PORT}`;
 const SITE = 'https://kabinetdoma.ru';
-const OG_IMAGE = `${SITE}/og-image.png`;
+const OG_IMAGE = `${SITE}/og-image.jpg`;
 const stage = path.join(root, '_prerender');
 const profile = path.join(os.tmpdir(), 'kd-prerender-profile');
 

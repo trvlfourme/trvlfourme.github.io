@@ -23,6 +23,25 @@ const ARTICLES = (() => {
   return map;
 })();
 
+// Размеры картинок: og:image:width/height должны совпадать с файлом, иначе
+// мессенджеры сами обрезают превью по своему усмотрению.
+const imageSize = (rel) => {
+  try {
+    const b = fs.readFileSync(path.join(root, rel.replace(/^\//, '')));
+    for (let i = 2; i < b.length; ) {
+      if (b[i] !== 0xff) { i += 1; continue; }
+      const marker = b[i + 1];
+      const len = b.readUInt16BE(i + 2);
+      if (marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc) {
+        return { width: b.readUInt16BE(i + 7), height: b.readUInt16BE(i + 5) };
+      }
+      i += 2 + len;
+    }
+  } catch (e) { /* файла нет — останется общая картинка */ }
+  return null;
+};
+const DEFAULT_OG = { url: SITE + '/og-image.jpg', width: 1200, height: 630 };
+
 const plural = (n, [one, few, many]) => {
   const a = Math.abs(n) % 100;
   const b = a % 10;
@@ -110,7 +129,8 @@ function breadcrumbs(route, name) {
   };
 }
 
-function buildSchema({ route, meta, h1, datePublished, dateModified, faq }) {
+function buildSchema({ route, meta, h1, datePublished, dateModified, faq, og }) {
+  og = og || DEFAULT_OG;
   const url = SITE + route;
   const isTool = ['/calculator/', '/builder/', '/tests/', '/checklist/'].includes(route);
   const graph = [];
@@ -127,7 +147,7 @@ function buildSchema({ route, meta, h1, datePublished, dateModified, faq }) {
       dateModified,
       author: { '@type': 'Organization', name: 'Редакция KabinetDoma.ru', url: SITE + '/about/' },
       publisher: { '@id': SITE + '/#organization' },
-      image: { '@type': 'ImageObject', url: SITE + '/og-image.png', width: 1200, height: 630 },
+      image: { '@type': 'ImageObject', url: og.url, width: og.width, height: og.height },
       articleSection: 'Эргономика домашнего офиса',
     });
     graph.push({
@@ -165,7 +185,17 @@ function buildSchema({ route, meta, h1, datePublished, dateModified, faq }) {
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
 }
 
-function rewriteHead(html, meta, schema, isArticle) {
+function rewriteHead(html, meta, schema, isArticle, og) {
+  og = og || DEFAULT_OG;
+  // Превью в мессенджерах: у статьи — её собственная картинка, у остальных — общая.
+  const setImg = (re, value) => {
+    if (re.test(html)) html = html.replace(re, (m) => m.replace(/content="[^"]*"/, `content="${attr(value)}"`));
+    else html = html.replace(/(<meta property="og:type"[^>]*>)/i, `$1\n    <meta property="og:image" content="${attr(value)}">`);
+  };
+  setImg(/<meta property="og:image" content="[^"]*"[^>]*>/i, og.url);
+  setImg(/<meta name="twitter:image" content="[^"]*"[^>]*>/i, og.url);
+  html = html.replace(/<meta property="og:image:width" content="[^"]*"[^>]*>/i, `<meta property="og:image:width" content="${og.width}">`);
+  html = html.replace(/<meta property="og:image:height" content="[^"]*"[^>]*>/i, `<meta property="og:image:height" content="${og.height}">`);
   const set = (re, value) => {
     html = html.replace(re, value);
   };
@@ -246,8 +276,11 @@ for (const file of pages(root)) {
   const art = slug ? ARTICLES.get(slug) : null;
   const datePublished = art ? toISO(art.publishedAt) || toISO(art.updatedAt) || mtime : '';
   const dateModified = art ? toISO(art.updatedAt) || toISO(art.publishedAt) || mtime : mtime;
-  const schema = buildSchema({ route, meta, h1, datePublished, dateModified, faq });
-  html = rewriteHead(html, meta, schema, isArticle);
+  const hero = art && art.heroImage ? art.heroImage : null;
+  const heroDims = hero ? imageSize(hero) : null;
+  const og = hero && heroDims ? { url: SITE + hero, width: heroDims.width, height: heroDims.height } : DEFAULT_OG;
+  const schema = buildSchema({ route, meta, h1, datePublished, dateModified, faq, og });
+  html = rewriteHead(html, meta, schema, isArticle, og);
   html = html.replace(/[ \t]*<!-- kd-links -->[\s\S]*?<!-- \/kd-links -->/g, '');
   html = html.replace(/(?:\r?\n[ \t]*)*<\/body>/i, `\n${tailBlock(meta, ARTICLES.size)}\n</body>`);
   fs.writeFileSync(file, html, 'utf8');
