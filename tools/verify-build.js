@@ -46,6 +46,46 @@ if (exists('data/articles/order.json')) {
   }
 }
 
+// 1в. Хаб /articles/ — артефакт сборки: карточки и numberOfItems сверяются с data/articles
+if (exists('articles/index.html') && exists('data/articles/order.json')) {
+  try {
+    const hubHtml = fs.readFileSync(path.join(root, 'articles', 'index.html'), 'utf8');
+    const cardSlugs = [...hubHtml.matchAll(/<a class="card" href="\/article\/([^/"]+)\/">/g)].map((m) => m[1]);
+    const articlesDir = path.join(root, 'data', 'articles');
+    const articleSlugs = fs
+      .readdirSync(articlesDir)
+      .filter((f) => f.endsWith('.json') && f !== 'order.json')
+      .map((f) => JSON.parse(fs.readFileSync(path.join(articlesDir, f), 'utf8')).slug)
+      .filter(Boolean);
+    const cards = new Set(cardSlugs);
+    if (cards.size !== cardSlugs.length) fail('хаб /articles/: одна статья выведена дважды');
+    for (const slug of articleSlugs) {
+      if (!cards.has(slug)) fail(`хаб /articles/: нет карточки статьи ${slug} — запустите node tools/build-hub.js`);
+    }
+    for (const slug of cards) {
+      if (!articleSlugs.includes(slug)) fail(`хаб /articles/: карточка на несуществующую статью ${slug}`);
+    }
+    const ld = hubHtml.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+    if (!ld) fail('хаб /articles/: нет разметки ld+json');
+    else {
+      const graph = JSON.parse(ld[1])['@graph'] || [];
+      const list = graph.find((x) => x['@type'] === 'ItemList');
+      if (!list) fail('хаб /articles/: нет ItemList');
+      else {
+        if (list.numberOfItems !== cardSlugs.length) {
+          fail(`хаб /articles/: numberOfItems ${list.numberOfItems}, а карточек ${cardSlugs.length}`);
+        }
+        if ((list.itemListElement || []).length !== cardSlugs.length) {
+          fail('хаб /articles/: itemListElement расходится с карточками');
+        }
+      }
+    }
+    note(`хаб: ${cardSlugs.length} карточек, все из data/articles`);
+  } catch (e) {
+    fail('хаб /articles/: ' + e.message);
+  }
+}
+
 // 2. Карта страниц
 const files = walk(root);
 // служебные страницы: подтверждение Яндекса и страница ошибки живут по своим правилам

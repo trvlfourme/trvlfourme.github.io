@@ -31,7 +31,7 @@
 | `assets/kd-admin-catalog.js` | админка каталога (правки в localStorage + экспорт `catalog.js`) |
 | `tools/*.js` | генераторы и проверки, `package.json` нет — всё через `node tools/<файл>.js` |
 | `article/<slug>/index.html`, `index.html`, `builder/`, `calculator/` … | артефакты пререндера |
-| `articles/index.html` | хаб со своей ручной разметкой, не пререндерится (`TABS` в `prerender.js` его не содержит) |
+| `articles/index.html` | хаб `/articles/`: артефакт `tools/build-hub.js` (карточки из `data/articles`, раскладка — `data/hub.js`), не пререндерится (`TABS` его не содержит) |
 | `sitemap.xml`, `_redirects`, `404.html` | генерируются/обслуживают обход |
 
 ## Источники правды и артефакты
@@ -93,9 +93,12 @@ node tools/build.js --skip-prerender     # только постобработк
   разметки, решение осознанное).
 - Страницы: `/`, `/calculator`, `/builder`, `/tests`, `/checklist`, `/catalog`, `/articles`,
   `/about`, `/privacy`, `/terms`, `/article/<slug>/`. Пререндерятся только `TABS` из
-  `prerender.js` плюс статьи; хаб `/articles/` — ручная страница.
-- Быстрый просмотр статьи: `/?article=<id>` (`ArticleView`). Статическая страница
-  `/article/<slug>/` — канонический вход.
+  `prerender.js` плюс статьи; хаб `/articles/` — отдельная статическая страница, которую
+  собирает `tools/build-hub.js`.
+- Быстрый просмотр статьи: открывается из ленты, меняет адрес на канонический
+  `/article/<slug>/` и `document.title`, «назад» закрывает статью. Старые ссылки
+  `/?article=<id>` нормализуются на тот же адрес. Статическая страница `/article/<slug>/` —
+  канонический вход, на неё же ведут карточки и `sitemap.xml`.
 - Карточка в ленте — `<a href="/article/<slug>/">`: левый клик без модификаторов перехватывается
   и открывает быстрый просмотр, всё остальное (средняя кнопка, Ctrl/Cmd, краулер) идёт на
   каноническую страницу. Клик по тегу внутри карточки гасит переход и фильтрует ленту.
