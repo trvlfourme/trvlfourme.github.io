@@ -53,6 +53,15 @@ if [ -d "$ROOT/_prodcheck/keep" ]; then
   cp -r "$ROOT/_prodcheck/keep/." "$WORK/"
 fi
 
+# Файлы, которые мы удалили у себя, но которые остались на проде: иначе шаг «сохранить
+# файлы только прода» будет тащить их вечно. Verification-файлы поисковиков сюда не пишем.
+for f in ${PROD_DELETE:-og-image.png}; do
+  if [ -e "$WORK/$f" ] && ! git -C "$ROOT" ls-tree -r main --name-only | grep -qx "$f"; then
+    echo "     удаляю с прода: $f"
+    rm -f "$WORK/$f"
+  fi
+done
+
 echo "4/5  проверяю то, что уедет на прод"
 node "$ROOT/tools/verify-build.js" "$WORK"
 
