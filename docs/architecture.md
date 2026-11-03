@@ -21,7 +21,7 @@
 
 | Путь | Что это |
 |---|---|
-| `data/articles/<slug>.json` | источник правды по тексту статьи: `title`, `sections`, `faqList`, `seo`, `featuredProductIds` (устарело), `id`/`slug` |
+| `data/articles/<slug>.json` | источник правды по тексту статьи: `title`, `sections`, `faqList`, `seo`, `id`/`slug`; поля `featuredProductIds` нет (удалено в `4d087eb`) |
 | `data/articles/order.json` | порядок и состав статей в бандле |
 | `data/catalog.js` | каталог: `products[]` с `offers[]`, `articles[]` с `product_ids`; грузится как `window.KD_CATALOG` |
 | `tools/articles.json` | компактный список `{id, slug}` для пререндера (генерируется/обновляется сборкой) |
@@ -104,8 +104,9 @@ node tools/build.js --skip-prerender     # только постобработк
   `window.KD_CATALOG_RENDER.mount(host, slug|id)`; рендерер принимает и слаг, и id, ставит
   `data-kd-rendered`, чтобы не дублировать блок, и не вставляет ничего в ленту. На статической
   странице тот же слот уже есть в HTML, поэтому второй блок не появляется.
-- Товары в блоке — `articles[].product_ids` каталога. `featuredProductIds` из
-  `data/articles/*.json` — устаревшее поле, блок по нему не строится.
+- Товары в блоке — `articles[].product_ids` каталога. Других полей подборок нет:
+  `featuredProductIds` удалён (`4d087eb`), а `apply-articles.js` вырезает его, если он появится
+  в JSON снова.
 
 ## Локальная проверка
 

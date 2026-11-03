@@ -14,6 +14,9 @@ const path = require('path');
 
 const FILE = path.join(__dirname, '..', 'docs', 'questions.md');
 const ROLES = ['разработка', 'контент', 'продвижение'];
+// адресат «владелец»: это не чат, а действие владельца (доступы, кабинет, разрешение)
+const OWNER = 'владелец';
+const ASSIGNEES = [...ROLES, OWNER];
 const LABELS = ['разработка', 'контент', 'продвижение', 'деплой', 'сборка', 'блокер'];
 const TASK_STATUSES = ['открыта', 'в работе', 'закрыта'];
 const Q_STATUSES = ['открыт', 'закрыт'];
@@ -96,9 +99,9 @@ function parse(text) {
 
   const now = new Date();
   for (const it of items) {
-    if (!ROLES.includes(it.from)) errors.push(`${it.id}: неизвестный автор «${it.from}» (строка ${it.line})`);
+    if (!ASSIGNEES.includes(it.from)) errors.push(`${it.id}: неизвестный автор «${it.from}» (строка ${it.line})`);
     if (it.kind === 'Q') {
-      if (!ROLES.includes(it.to)) errors.push(`${it.id}: неизвестный адресат «${it.to}» (строка ${it.line})`);
+      if (!ASSIGNEES.includes(it.to)) errors.push(`${it.id}: неизвестный адресат «${it.to}» (строка ${it.line})`);
       if (!Q_STATUSES.includes(it.status)) errors.push(`${it.id}: статус должен быть «открыт» или «закрыт», сейчас «${it.status}»`);
       if (!it.question) errors.push(`${it.id}: пустой вопрос`);
       if (it.status === 'закрыт' && (!it.answer || it.answer === '—')) errors.push(`${it.id}: статус «закрыт», но ответа нет`);
@@ -109,7 +112,7 @@ function parse(text) {
     if (!LABELS.includes(it.label)) errors.push(`${it.id}: метка должна быть одной из ${LABELS.join(', ')}, сейчас «${it.label}»`);
     if (!TASK_STATUSES.includes(it.status)) errors.push(`${it.id}: статус должен быть «открыта», «в работе» или «закрыта», сейчас «${it.status}»`);
     if (!it.task) errors.push(`${it.id}: пустая задача`);
-    if (it.to && !ROLES.includes(it.to)) errors.push(`${it.id}: неизвестный адресат «${it.to}»`);
+    if (it.to && !ASSIGNEES.includes(it.to)) errors.push(`${it.id}: неизвестный адресат «${it.to}»`);
     if (it.status === 'закрыта' && (!it.result || it.result === '—')) errors.push(`${it.id}: закрыта без итога`);
     if (it.status !== 'закрыта' && it.result && it.result !== '—') errors.push(`${it.id}: есть итог, но статус «${it.status}»`);
     if (it.status === 'в работе' && !it.taken) errors.push(`${it.id}: в работе без поля «Взял» (роль и время)`);
@@ -168,7 +171,7 @@ function main(argv) {
   const args = argv.slice(2);
   if (args.includes('--help') || args.includes('-h')) {
     console.log('node tools/questions.js [--tasks] [--chat <роль>] [--all] [--json] [--check]');
-    console.log('роли: ' + ROLES.join(', ') + ' · метки: ' + LABELS.join(', '));
+    console.log('роли: ' + ROLES.join(', ') + ' · адресат: ' + OWNER + ' · метки: ' + LABELS.join(', '));
     return 0;
   }
   const chatAt = args.indexOf('--chat');
