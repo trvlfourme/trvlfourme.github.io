@@ -40,6 +40,9 @@ function loadArticles(root = ROOT) {
     slugs.add(a.slug);
     ids.add(a.id);
     if (JSON.stringify(a).includes('ozon.ru')) throw new Error(`${file}: в тексте есть ozon.ru — правилом проекта запрещено`);
+    // Поле устарело: подборки товаров живут только в data/catalog.js (articles[].product_ids).
+    // Если его вернут в JSON, в бандл оно всё равно не попадёт.
+    delete a.featuredProductIds;
     return a;
   });
 
