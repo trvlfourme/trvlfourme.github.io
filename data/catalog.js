@@ -412,7 +412,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 5990,
+      "price_rub": 8800,
       "archived": false,
       "offers": [
         {
