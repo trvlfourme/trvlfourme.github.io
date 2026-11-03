@@ -23,6 +23,19 @@ const Q_STATUSES = ['открыт', 'закрыт'];
 const Q_HEAD = /^###\s+(Q-\d{3,})\s*·\s*(.+?)\s*→\s*(.+?)\s*·\s*(\d{4}-\d{2}-\d{2})\s*$/;
 const T_HEAD = /^###\s+(T-\d{3,})\s*·\s*(.+?)\s*·\s*(\d{4}-\d{2}-\d{2})\s*$/;
 const DUE = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/;
+const DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+// сегодняшняя дата в местном времени, ГГГГ-ММ-ДД
+function today() {
+  const d = new Date();
+  const p = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+
+// дата выпуска: задача доступна, когда она уже наступила (или не задана)
+function ready(it) {
+  return !it.release || it.release === '—' || it.release <= today();
+}
 const FIELD = {
   статус: 'status',
   метка: 'label',
@@ -30,6 +43,7 @@ const FIELD = {
   задача: 'task',
   итог: 'result',
   до: 'due',
+  выпуск: 'release',
   взял: 'taken',
   вопрос: 'question',
   ответ: 'answer',
@@ -71,6 +85,7 @@ function parse(text) {
         result: '',
         context: '',
         due: '',
+        release: '',
         taken: '',
         line: i + 1,
       };
@@ -86,7 +101,7 @@ function parse(text) {
     }
     if (!cur) return;
 
-    const f = line.match(/^\*\*(Статус|Метка|Кому|Задача|Итог|До|Взял|Вопрос|Ответ|Контекст):\*\*\s*(.*)$/);
+    const f = line.match(/^\*\*(Статус|Метка|Кому|Задача|Итог|До|Выпуск|Взял|Вопрос|Ответ|Контекст):\*\*\s*(.*)$/);
     if (f) {
       field = FIELD[f[1].toLowerCase()];
       cur[field] = f[2].trim();
@@ -116,6 +131,12 @@ function parse(text) {
     if (it.status === 'закрыта' && (!it.result || it.result === '—')) errors.push(`${it.id}: закрыта без итога`);
     if (it.status !== 'закрыта' && it.result && it.result !== '—') errors.push(`${it.id}: есть итог, но статус «${it.status}»`);
     if (it.status === 'в работе' && !it.taken) errors.push(`${it.id}: в работе без поля «Взял» (роль и время)`);
+    if (it.release && it.release !== '—') {
+      if (!DATE.test(it.release)) errors.push(`${it.id}: поле «Выпуск» должно быть «ГГГГ-ММ-ДД» или «—»`);
+      else if (it.status === 'в работе' && it.release > today()) {
+        errors.push(`${it.id}: запланирована на ${it.release} — брать в работу раньше нельзя`);
+      }
+    }
     if (it.due && it.due !== '—') {
       if (!DUE.test(it.due)) errors.push(`${it.id}: поле «До» должно быть «ГГГГ-ММ-ДД ЧЧ:ММ» или «—»`);
       else if (it.status !== 'закрыта' && new Date(it.due.replace(' ', 'T') + ':00') < now) {
@@ -167,6 +188,7 @@ function head(it) {
   if (it.to && it.kind === 'T') bits.push(`кому: ${it.to}`);
   if (it.status === 'в работе' && it.taken) bits.push(`взял: ${it.taken}`);
   if (it.due && it.due !== '—') bits.push(`до ${it.due}`);
+  if (it.release && it.release !== '—') bits.push(ready(it) ? `выпуск с ${it.release}` : `ждёт ${it.release}`);
   return bits.filter(Boolean).join(' · ');
 }
 
@@ -247,6 +269,15 @@ function main(argv) {
   if (!shownTasks.length && !shownQuestions.length) {
     console.log('  нет');
     return 0;
+  }
+  if (chat && !all) {
+    const free = shownTasks.filter((it) => it.status === 'открыта' && ready(it));
+    const later = shownTasks.filter((it) => it.status === 'открыта' && !ready(it));
+    if (free.length) console.log(`можно брать сейчас: ${free.map((it) => it.id).join(', ')}`);
+    else if (later.length) {
+      const next = later.slice().sort((a, b) => (a.release < b.release ? -1 : 1))[0];
+      console.log(`на сегодня задач нет: ближайшая ${next.id} с ${next.release}`);
+    }
   }
   show(shownTasks);
   if (shownQuestions.length) {
