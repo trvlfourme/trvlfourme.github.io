@@ -4,6 +4,7 @@
 //         node tools/apply-articles.js --check — только сверить, код выхода 1 при расхождении
 const fs = require('fs');
 const path = require('path');
+const { sortKey } = require('./article-dates');
 
 const ROOT = path.resolve(__dirname, '..');
 const START = '/*kd:articles:start*/';
@@ -20,13 +21,20 @@ const field = (a, name, file) => {
 function loadArticles(root = ROOT) {
   const dir = path.join(root, 'data', 'articles');
   const orderFile = path.join(dir, 'order.json');
-  if (!fs.existsSync(orderFile)) throw new Error('нет data/articles/order.json — список статей в порядке вывода');
-  const order = JSON.parse(fs.readFileSync(orderFile, 'utf8'));
-  if (!Array.isArray(order) || !order.length) throw new Error('data/articles/order.json должен быть непустым массивом slug');
+  // order.json больше не обязателен: порядок задаёт дата публикации.
+  // Файл остался только для спорных случаев — одинаковые даты.
+  const order = fs.existsSync(orderFile) ? JSON.parse(fs.readFileSync(orderFile, 'utf8')) : [];
+  if (!Array.isArray(order)) throw new Error('data/articles/order.json должен быть массивом slug');
 
   const slugs = new Set();
   const ids = new Set();
-  const articles = order.map((slug) => {
+  const files = fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith('.json') && f !== 'order.json')
+    .map((f) => f.replace(/\.json$/, ''));
+  if (!files.length) throw new Error('в data/articles нет ни одной статьи');
+
+  const articles = files.map((slug) => {
     const file = `data/articles/${slug}.json`;
     if (!fs.existsSync(path.join(dir, slug + '.json'))) throw new Error(`нет файла статьи: ${file}`);
     const a = JSON.parse(fs.readFileSync(path.join(dir, slug + '.json'), 'utf8'));
@@ -46,12 +54,19 @@ function loadArticles(root = ROOT) {
     return a;
   });
 
-  const unused = fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith('.json') && f !== 'order.json')
-    .map((f) => f.replace(/\.json$/, ''))
-    .filter((s) => !slugs.has(s));
-  if (unused.length) throw new Error(`файлы не перечислены в order.json: ${unused.join(', ')}`);
+  // Свежие сверху: дата публикации, затем позиция в order.json (tie-break), затем slug.
+  // Так выпуск статьи не требует ручной правки order.json.
+  const pos = (slug) => {
+    const i = order.indexOf(slug);
+    return i < 0 ? Number.MAX_SAFE_INTEGER : i;
+  };
+  articles.sort((a, b) => {
+    const d = sortKey(b.publishedAt).localeCompare(sortKey(a.publishedAt));
+    if (d !== 0) return d;
+    const p = pos(a.slug) - pos(b.slug);
+    if (p !== 0) return p;
+    return a.slug.localeCompare(b.slug);
+  });
 
   return articles;
 }

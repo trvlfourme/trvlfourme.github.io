@@ -79,8 +79,11 @@ function pages(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.name.startsWith('.') || SKIP_DIRS.includes(e.name)) continue;
     const full = path.join(dir, e.name);
-    if (e.isDirectory()) pages(full, out);
-    else if (e.name.endsWith('.html')) out.push(full);
+    if (e.isDirectory()) {
+      // чужие проекты (исходники приложения) не наша зона
+      if (fs.existsSync(path.join(full, 'package.json'))) continue;
+      pages(full, out);
+    } else if (e.name.endsWith('.html')) out.push(full);
   }
   return out;
 }

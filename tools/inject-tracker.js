@@ -11,7 +11,11 @@ function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === '_prodcheck' || e.name === '_prerender') continue;
     const full = path.join(dir, e.name);
-    if (e.isDirectory()) walk(full, out);
+    // чужие проекты (например, исходники приложения) не трогаем
+    if (e.isDirectory()) {
+      if (fs.existsSync(path.join(full, 'package.json'))) continue;
+      walk(full, out);
+    }
     else if (e.name === 'index.html') out.push(full);
   }
   return out;

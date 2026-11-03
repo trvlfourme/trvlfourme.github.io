@@ -1,10 +1,15 @@
 // Сборка страницы «Все гайды» (/articles/) из data/articles/*.json и кураторской
 // раскладки data/hub.js. articles/index.html — артефакт: руками не правим.
-// Статья, которой нет в data/hub.js, не теряется: она попадает в блок «Свежие материалы»
-// с заголовком и описанием из JSON. Удалённая статья убирается из хаба сама.
+// Блок «Свежие материалы» собирается сам: 5 последних статей по publishedAt —
+// независимо от того, есть ли они в data/hub.js. В тематических блоках они не
+// дублируются: выпав из свежих, статья возвращается в свой блок по data/hub.js.
+// Статья, которой в data/hub.js нет, не теряется — её тоже показываем в свежих.
 // Запуск: node tools/build-hub.js
 const fs = require('fs');
 const path = require('path');
+const { sortKey } = require('./article-dates');
+
+const FRESH_COUNT = 5;
 
 const root = path.resolve(__dirname, '..');
 const articlesDir = path.join(root, 'data', 'articles');
@@ -50,43 +55,60 @@ function main() {
   const order = readOrder();
   const hub = require(path.join(root, 'data', 'hub.js'));
 
-  const used = new Set();
+  // Кураторские карточки: из них берём короткие подписи, а порядок в тематических блоках
+  // остаётся ручным. Сами статьи приходят из data/articles.
+  const curated = new Map();
+  for (const cluster of hub.clusters) {
+    for (const card of cluster.cards) {
+      if (curated.has(card.slug)) throw new Error(`карточка повторяется в data/hub.js: ${card.slug}`);
+      curated.set(card.slug, card);
+    }
+  }
+
+  const byPos = (a, b) => {
+    const ia = order.indexOf(a);
+    const ib = order.indexOf(b);
+    const pa = ia < 0 ? Number.MAX_SAFE_INTEGER : ia;
+    const pb = ib < 0 ? Number.MAX_SAFE_INTEGER : ib;
+    return pa - pb || a.localeCompare(b);
+  };
+  const byDate = (a, b) => {
+    const d = sortKey(articles.get(b).publishedAt).localeCompare(sortKey(articles.get(a).publishedAt));
+    return d !== 0 ? d : byPos(a, b);
+  };
+
+  const sorted = [...articles.keys()].filter((slug) => sortKey(articles.get(slug).publishedAt)).sort(byDate);
+  const fresh = sorted.slice(0, FRESH_COUNT);
+  const freshSet = new Set(fresh);
+  const leftovers = [...articles.keys()].filter((slug) => !freshSet.has(slug) && !curated.has(slug)).sort(byDate);
+  const freshSlugs = fresh.concat(leftovers);
+
+  const cardOf = (slug) => {
+    const cur = curated.get(slug);
+    const a = articles.get(slug);
+    return { slug, title: cur ? cur.title : a.title, note: cur ? cur.note : a.excerpt || '' };
+  };
+
   const blocks = [];
+  if (freshSlugs.length) {
+    blocks.push({
+      title: 'Свежие материалы',
+      note: 'Последние гайды — те же, что первыми в ленте на главной.',
+      cards: freshSlugs.map(cardOf),
+    });
+  }
   for (const cluster of hub.clusters) {
     const cards = [];
     for (const card of cluster.cards) {
-      if (used.has(card.slug)) throw new Error(`карточка повторяется в data/hub.js: ${card.slug}`);
       const article = articles.get(card.slug);
       if (!article) {
         console.warn(`хаб: статьи ${card.slug} нет в базе — карточка пропущена`);
         continue;
       }
-      used.add(card.slug);
+      if (freshSet.has(card.slug)) continue; // свежие уже сверху, дублей не нужно
       cards.push({ slug: card.slug, title: card.title, note: card.note });
     }
     if (cards.length) blocks.push({ title: cluster.title, note: cluster.note, cards });
-  }
-
-  const fresh = [...articles.keys()].filter((slug) => !used.has(slug));
-  if (fresh.length) {
-    const pos = (slug) => {
-      const i = order.indexOf(slug);
-      return i < 0 ? Number.MAX_SAFE_INTEGER : i;
-    };
-    fresh.sort((a, b) => {
-      const d = pos(a) - pos(b);
-      if (d !== 0) return d;
-      return String(articles.get(b).publishedAt || '').localeCompare(String(articles.get(a).publishedAt || ''));
-    });
-    blocks.unshift({
-      title: 'Свежие материалы',
-      note: 'Новые гайды: ещё не разложены по темам, но уже в базе.',
-      cards: fresh.map((slug) => ({
-        slug,
-        title: articles.get(slug).title,
-        note: articles.get(slug).excerpt || '',
-      })),
-    });
   }
 
   const cards = blocks.flatMap((b) => b.cards);

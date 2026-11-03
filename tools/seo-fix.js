@@ -4,10 +4,33 @@
 // Запуск: node tools/seo-fix.js
 const fs = require('fs');
 const path = require('path');
+const { toISO } = require('./article-dates');
 
 const root = path.resolve(__dirname, '..');
 const SITE = 'https://kabinetdoma.ru';
 const TODAY = new Date().toISOString().slice(0, 10);
+
+// Статьи по slug: оттуда берём настоящие даты публикации и обновления.
+const ARTICLES = (() => {
+  const dir = path.join(root, 'data', 'articles');
+  const map = new Map();
+  if (!fs.existsSync(dir)) return map;
+  for (const f of fs.readdirSync(dir)) {
+    if (!f.endsWith('.json') || f === 'order.json') continue;
+    const a = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+    if (a.slug) map.set(a.slug, a);
+  }
+  return map;
+})();
+
+const plural = (n, [one, few, many]) => {
+  const a = Math.abs(n) % 100;
+  const b = a % 10;
+  if (a > 10 && a < 20) return many;
+  if (b > 1 && b < 5) return few;
+  if (b === 1) return one;
+  return many;
+};
 
 const META = Object.assign(
   {},
@@ -52,7 +75,11 @@ function pages(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.name.startsWith('.') || ['node_modules', 'tools', '_prodcheck', '_prerender'].includes(e.name)) continue;
     const full = path.join(dir, e.name);
-    if (e.isDirectory()) pages(full, out);
+    if (e.isDirectory()) {
+      // чужие проекты (исходники приложения) не наша зона
+      if (fs.existsSync(path.join(full, 'package.json'))) continue;
+      pages(full, out);
+    }
     else if (e.name === 'index.html') out.push(full);
   }
   return out;
@@ -83,7 +110,7 @@ function breadcrumbs(route, name) {
   };
 }
 
-function buildSchema({ route, meta, h1, dateModified, faq }) {
+function buildSchema({ route, meta, h1, datePublished, dateModified, faq }) {
   const url = SITE + route;
   const isTool = ['/calculator/', '/builder/', '/tests/', '/checklist/'].includes(route);
   const graph = [];
@@ -96,7 +123,7 @@ function buildSchema({ route, meta, h1, dateModified, faq }) {
       inLanguage: 'ru-RU',
       isAccessibleForFree: true,
       mainEntityOfPage: { '@id': url + '#webpage' },
-      datePublished: '2026-10-13',
+      datePublished: datePublished || dateModified,
       dateModified,
       author: { '@type': 'Organization', name: 'Редакция KabinetDoma.ru', url: SITE + '/about/' },
       publisher: { '@id': SITE + '/#organization' },
@@ -160,7 +187,7 @@ function rewriteHead(html, meta, schema, isArticle) {
   return html.replace(/(?:\r?\n[ \t]*)*<\/head>/i, `\n${block}\n  </head>`);
 }
 
-function tailBlock(meta) {
+function tailBlock(meta, count) {
   const links = (meta.related || [])
     .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`)
     .join('');
@@ -185,7 +212,7 @@ function tailBlock(meta) {
     <h2>Читайте также</h2>
     <ul>${links}</ul>
     <div class="kd-tools">${tools}</div>
-    <p class="kd-all">Все материалы по кластерам — <a href="/articles/">база знаний из 22 гайдов</a>.</p>
+    <p class="kd-all">Все материалы по кластерам — <a href="/articles/">база знаний: ${count} ${plural(count, ['гайд', 'гайда', 'гайдов'])}</a>.</p>
   </div>
 </section>
 <!-- /kd-links -->`;
@@ -207,11 +234,17 @@ for (const file of pages(root)) {
   const h1 = h1m ? text(h1m[1]) : '';
   const isArticle = route.startsWith('/article/');
   const faq = isArticle ? faqPairs(html) : [];
-  const dateModified = new Date(fs.statSync(file).mtime).toISOString().slice(0, 10);
-  const schema = buildSchema({ route, meta, h1, dateModified, faq });
+  const mtime = new Date(fs.statSync(file).mtime).toISOString().slice(0, 10);
+  // Даты берём из JSON статьи — одинаковые «2026-10-13» у всех статей и mtime сборки
+  // вводили поисковики в заблуждение.
+  const slug = route.startsWith('/article/') ? route.replace(/^\/article\//, '').replace(/\/$/, '') : '';
+  const art = slug ? ARTICLES.get(slug) : null;
+  const datePublished = art ? toISO(art.publishedAt) || toISO(art.updatedAt) || mtime : '';
+  const dateModified = art ? toISO(art.updatedAt) || toISO(art.publishedAt) || mtime : mtime;
+  const schema = buildSchema({ route, meta, h1, datePublished, dateModified, faq });
   html = rewriteHead(html, meta, schema, isArticle);
   html = html.replace(/[ \t]*<!-- kd-links -->[\s\S]*?<!-- \/kd-links -->/g, '');
-  html = html.replace(/(?:\r?\n[ \t]*)*<\/body>/i, `\n${tailBlock(meta)}\n</body>`);
+  html = html.replace(/(?:\r?\n[ \t]*)*<\/body>/i, `\n${tailBlock(meta, ARTICLES.size)}\n</body>`);
   fs.writeFileSync(file, html, 'utf8');
   report.push(`${route.padEnd(52)} ${meta.title.length} симв. заголовок, ${meta.desc.length} описание, FAQ ${faq.length}`);
 }
