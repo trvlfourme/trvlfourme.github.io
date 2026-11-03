@@ -44,7 +44,7 @@
         var before = JSON.stringify(window.KD_CATALOG);
         if (JSON.stringify(fresh) === before) return;
         window.KD_CATALOG = fresh;
-        render(fresh);
+        render(fresh, true);
       });
       return;
     }
@@ -201,10 +201,48 @@
     return '';
   }
 
+  // Статья каталога по слагу или id: у статической страницы слаг, у SPA id.
+  function entryOf(key, catalog) {
+    var k = String(key || '');
+    if (!k) return null;
+    var list = (catalog && catalog.articles) || [];
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].slug === k || list[i].id === k) return list[i];
+    }
+    return null;
+  }
+
+  // Только страница статьи: в ленте article — карточка материала, туда блок не ставим.
   function articleHost() {
+    if (!/\/article\//.test(window.location.pathname)) return null;
     return document.querySelector('article [class*="col-span-8"]') ||
-      document.querySelector('article') ||
-      document.querySelector('main');
+      document.querySelector('article');
+  }
+
+  // Слот, который рисует SPA-просмотр: <div data-kd-article-slug="...">.
+  function mountInto(host, key, force) {
+    if (!host) return;
+    var slug = String(key || '');
+    var catalog = window.KD_CATALOG;
+    if (!catalog) {
+      setTimeout(function () { mountInto(host, slug); }, 200);
+      return;
+    }
+    if (!force && host.getAttribute('data-kd-rendered') === slug && host.firstChild) return;
+    host.innerHTML = '';
+    var entry = entryOf(slug, catalog);
+    if (!entry) return;
+    var block = articleBlock(entry, catalog);
+    if (!block) return;
+    host.appendChild(block);
+    host.setAttribute('data-kd-rendered', slug);
+  }
+
+  function mountSlots(force) {
+    var slots = document.querySelectorAll('[data-kd-article-slug]');
+    for (var i = 0; i < slots.length; i++) {
+      mountInto(slots[i], slots[i].getAttribute('data-kd-article-slug'), force);
+    }
   }
 
   function clearBlocks() {
@@ -214,26 +252,28 @@
     });
   }
 
-  function render(catalog) {
+  function render(catalog, force) {
     clearBlocks();
     if (!catalog) return;
+    mountSlots(force);
+    // Просмотр статьи на React сам держит слот — второй блок в контейнер не нужен.
+    if (document.querySelector('[data-kd-article-slug]')) return;
     var slug = currentSlug();
-    if (slug) {
-      var entry = (catalog.articles || []).filter(function (a) { return a.slug === slug; })[0];
-      var host = articleHost();
-      if (entry && host) {
-        var block = articleBlock(entry, catalog);
-        if (block) host.appendChild(block);
-      }
-    }
+    var host = articleHost();
+    if (!slug || !host) return;
+    var entry = entryOf(slug, catalog);
+    if (!entry) return;
+    var block = articleBlock(entry, catalog);
+    if (block) host.appendChild(block);
   }
 
   function expectedBlocks() {
-    return !!currentSlug();
+    return !!currentSlug() && !!articleHost();
   }
 
   function boot() {
     loadCatalog(function (catalog) {
+      mountSlots();
       if (!catalog || !expectedBlocks()) return;
       render(catalog);
       // Страховка на случай, если гидрация React перерисовала контейнер.
@@ -245,6 +285,16 @@
         if (!document.getElementById('kd-catalog-block') && currentSlug()) render(catalog);
       }, 1200);
     });
+    // Слот SPA появляется позже, чем грузится каталог.
+    var slotTries = 0;
+    var slotTimer = setInterval(function () {
+      slotTries++;
+      if (slotTries > 30) return clearInterval(slotTimer);
+      if (document.querySelector('[data-kd-article-slug]')) {
+        mountSlots();
+        clearInterval(slotTimer);
+      }
+    }, 400);
   }
 
   if (document.readyState === 'loading') {
@@ -255,5 +305,8 @@
   window.addEventListener('popstate', function () {
     if (window.KD_CATALOG) render(window.KD_CATALOG);
   });
-  window.KD_CATALOG_RENDER = { render: function () { render(window.KD_CATALOG); } };
+  window.KD_CATALOG_RENDER = {
+    render: function () { render(window.KD_CATALOG); },
+    mount: function (host, slug) { mountInto(host, slug); },
+  };
 })();
