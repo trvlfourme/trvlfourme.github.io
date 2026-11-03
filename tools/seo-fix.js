@@ -169,6 +169,11 @@ function rewriteHead(html, meta, schema, isArticle) {
   const set = (re, value) => {
     html = html.replace(re, value);
   };
+  // Цвет адресной строки в мобильных браузерах: фон страниц #fafaf9.
+  if (!/name="theme-color"/i.test(html)) {
+    const anchor = html.match(/<meta name="viewport"[^>]*>/i);
+    if (anchor) html = html.replace(anchor[0], `${anchor[0]}\n    <meta name="theme-color" content="#fafaf9">`);
+  }
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${attr(meta.title)}</title>`);
   const swap = (re, v) => html.replace(re, (m) => m.replace(/content="[^"]*"/, `content="${attr(v)}"`));
   html = swap(/<meta name="description" content="[^"]*"[^>]*>/i, meta.desc);
