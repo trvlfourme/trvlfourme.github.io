@@ -73,6 +73,7 @@ window.KD_PRODUCT_LINKS = {
     "wb": ""
   },
   "desk-loft-wood-budget": {
+    "yandex": "https://market.yandex.ru/cc/BTHze2?erid=5jtCeReNx12oak2tU521zLG",
     "ozon": "",
     "wb": ""
   },

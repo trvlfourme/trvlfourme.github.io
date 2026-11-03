@@ -405,10 +405,10 @@ window.KD_CATALOG = {
     },
     {
       "id": "desk-loft-wood-budget",
-      "name": "Письменный стол Hoff Loft Wood 120х60",
-      "brand": "Hoff Loft",
+      "name": "Стол письменный с ящиками Лофт Меркурия 120х60, дуб вотан/чёрный",
+      "brand": "Лофт Меркурия",
       "category": "",
-      "summary": "",
+      "summary": "Стол 120×60 с ящиками: глубина 60 см — верхняя граница для узкого балкона",
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
@@ -417,11 +417,11 @@ window.KD_CATALOG = {
       "offers": [
         {
           "store": "yandex",
-          "kind": "search",
-          "url": "https://market.yandex.ru/search?text=стол+письменный+лофт+120х60",
-          "label": "",
-          "erid": "",
-          "advertiser": ""
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BTHze2?erid=5jtCeReNx12oak2tU521zLG",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tU521zLG",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
     },
