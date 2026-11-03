@@ -5,7 +5,7 @@
 // Правки: админка (Ctrl+Shift+A, код 2026) -> кнопка «Каталог» -> «Скачать catalog.js».
 window.KD_CATALOG = {
   "version": 1,
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "products": [
     {
       "id": "ergostol-terra",
@@ -896,7 +896,8 @@ window.KD_CATALOG = {
       "product_ids": [
         "xiaomi-lightbar",
         "ergonomic-footrest-adjustable",
-        "cable-management-kit"
+        "cable-management-kit",
+        "jabra-evolve2-65"
       ]
     },
     {
@@ -905,6 +906,7 @@ window.KD_CATALOG = {
       "block_title": "Свет и провода на новом месте",
       "product_ids": [
         "xiaomi-lightbar",
+        "benq-screenbar-halo",
         "cable-management-kit",
         "onkron-g80"
       ]
@@ -916,8 +918,11 @@ window.KD_CATALOG = {
       "product_ids": [
         "desk-loft-wood-budget",
         "chair-budget-burokrat",
+        "chair-chairman-795",
+        "metta-samurai-s3",
         "laptop-stand-aluminum-folding",
         "lumbar-cushion-memory",
+        "ergonomic-footrest-adjustable",
         "xiaomi-lightbar"
       ]
     },
