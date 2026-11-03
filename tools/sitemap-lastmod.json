@@ -1,11 +1,11 @@
 {
   "/": {
-    "hash": "633bf15fea03f225f7379c3d0a46f14a017ca6da",
+    "hash": "4701615543047ca9eda59162672a17b3fcb780e7",
     "lastmod": "2026-11-03"
   },
   "/articles/": {
-    "hash": "bda1e8a2335666e8b8c01325e865c1d8832416f2",
-    "lastmod": "2026-11-02"
+    "hash": "816e080991c2942c58bd1c7e16b6cce3d8d682d2",
+    "lastmod": "2026-11-03"
   },
   "/calculator/": {
     "hash": "c5e15563a8bcb515d514fa0ce2884725fae52b37",
@@ -34,6 +34,10 @@
   "/terms/": {
     "hash": "86ebd921e8e6f436ac55b017f697f7e18a77cd9a",
     "lastmod": "2026-11-02"
+  },
+  "/article/rabochee-mesto-na-balkone/": {
+    "hash": "f9cd35a4f748b51ca9812fc982ccfed6f980e397",
+    "lastmod": "2026-11-03"
   },
   "/article/printer-dlya-doma-kompaktno-i-kuda-postavit/": {
     "hash": "85ec61bb298b47ab13e00d200e6c8060aae53ddc",

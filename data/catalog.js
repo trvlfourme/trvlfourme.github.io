@@ -758,6 +758,18 @@ window.KD_CATALOG = {
   ],
   "articles": [
     {
+      "slug": "rabochee-mesto-na-balkone",
+      "title": "Рабочее место на балконе: инженерия, а не картинка",
+      "block_title": "Компактный набор на балкон",
+      "product_ids": [
+        "desk-loft-wood-budget",
+        "chair-budget-burokrat",
+        "ergonomic-footrest-adjustable",
+        "cable-management-kit",
+        "xiaomi-lightbar"
+      ]
+    },
+    {
       "slug": "balans-raboty-i-lichnoj-zhizni-na-udalenke",
       "title": "Баланс работы и личной жизни на удаленке: как перестать перерабатывать в 2026 году",
       "block_title": "Инструменты для границ рабочего дня",

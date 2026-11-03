@@ -218,5 +218,27 @@
         "Баланс работы и жизни"
       ]
     ]
+  },
+  "rabochee-mesto-na-balkone": {
+    "title": "Рабочее место на балконе: инженерия, а не картинка",
+    "desc": "Плита, остекление, конденсат, перегрев и одна розетка: что проверить до покупки стола, чтобы балкон стал рабочим местом, а не складом.",
+    "related": [
+      [
+        "/article/v-kakoj-komnate-luchshe-rabotat-na-udalenke/",
+        "В какой комнате работать"
+      ],
+      [
+        "/article/domashnij-ofis-s-nulya-nedorogo/",
+        "Домашний офис с нуля"
+      ],
+      [
+        "/article/skrinbar-na-monitor-vybor-zashchita-glaz/",
+        "Скринбар на монитор"
+      ],
+      [
+        "/article/kabel-menedzhment-pod-stolom-svoimi-rukami/",
+        "Убрать провода под столом"
+      ]
+    ]
   }
 }
