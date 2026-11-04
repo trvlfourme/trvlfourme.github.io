@@ -1,9 +1,5 @@
 [
   {
-    "id": "guide-balcony-workspace",
-    "slug": "rabochee-mesto-na-balkone"
-  },
-  {
     "id": "guide-standing-desk",
     "slug": "podemnyj-stol-kak-vybrat"
   },
@@ -14,6 +10,10 @@
   {
     "id": "guide-ergonomics-setup",
     "slug": "ergonomika-rabochego-mesta-nastroyka"
+  },
+  {
+    "id": "guide-balcony-workspace",
+    "slug": "rabochee-mesto-na-balkone"
   },
   {
     "id": "guide-home-printer-placement",
