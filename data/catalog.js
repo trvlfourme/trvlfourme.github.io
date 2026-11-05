@@ -5,7 +5,7 @@
 // Правки: админка (Ctrl+Shift+A, код 2026) -> кнопка «Каталог» -> «Скачать catalog.js».
 window.KD_CATALOG = {
   "version": 1,
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "products": [
     {
       "id": "ergostol-terra",
@@ -751,6 +751,363 @@ window.KD_CATALOG = {
           "url": "https://market.yandex.ru/cc/BT6hQf?erid=5jtCeReNx12oak2tU4s7PDr",
           "label": "Купить на Яндекс Маркете",
           "erid": "5jtCeReNx12oak2tU4s7PDr",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "dok-stanciya-thunderbolt-4",
+      "name": "Док-станция Thunderbolt 4 (USB-C)",
+      "brand": "",
+      "category": "Док-станции",
+      "summary": "Одна кабельная линия на ноутбук: Thunderbolt 4, внешние мониторы и питание.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJcfG?erid=5jtCeReNx12oak2tUX3FihD",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3FihD",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "ugreen-cm681-revodok-pro",
+      "name": "Ugreen CM681 Revodok Pro 13 в 1",
+      "brand": "Ugreen",
+      "category": "Док-станции",
+      "summary": "PD 100 Вт, HDMI 4K/60, RJ45: 13 портов через один USB-C.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJdpD?erid=5jtCeReNx12oak2tUX3Fime",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3Fime",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "lenovo-40ay0090cn",
+      "name": "Док-станция Lenovo 40AY0090CN (USB-C)",
+      "brand": "Lenovo",
+      "category": "Док-станции",
+      "summary": "USB-C-док под ноутбуки ThinkPad: питание, сеть и внешний монитор.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJfFy?erid=5jtCeReNx12oak2tUX3G3Zr",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3G3Zr",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "kvm-hdmi-4k60-2x1",
+      "name": "KVM-переключатель HDMI 4K/60, USB 2 в 1",
+      "brand": "",
+      "category": "KVM и свитчеры",
+      "summary": "Два компьютера на один монитор: USB 3.0 на периферию, выносная кнопка и пульт.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJgWB?erid=5jtCeReNx12oak2tUX3G3eH",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3G3eH",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "ugreen-cm332-hdmi-switcher",
+      "name": "Ugreen CM332, HDMI-свитчер 3 в 1",
+      "brand": "Ugreen",
+      "category": "KVM и свитчеры",
+      "summary": "Три источника на один экран, 4K/30: только видео, без USB-периферии.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJhFs?erid=5jtCeReNx12oak2tUX3G3ig",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3G3ig",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "onkron-g160",
+      "name": "Кронштейн ONKRON G160 для двух мониторов 13–32″",
+      "brand": "ONKRON",
+      "category": "Кронштейны",
+      "summary": "Газлифт, два экрана до 8 кг каждый: независимая регулировка по высоте.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJhu4?erid=5jtCeReNx12oak2tUX3G3o8",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3G3o8",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "onkron-g120",
+      "name": "Настенный кронштейн ONKRON G120 13–32″",
+      "brand": "ONKRON",
+      "category": "Кронштейны",
+      "summary": "Настенное крепление до 8 кг: когда стол не выдержит струбцину.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJjGn?erid=5jtCeReNx12oak2tUX3G3wv",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3G3wv",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "onkron-g200",
+      "name": "Кронштейн ONKRON G200 для двух мониторов 13–32″",
+      "brand": "ONKRON",
+      "category": "Кронштейны",
+      "summary": "Газлифт, два экрана до 9 кг каждый: запас под тяжёлые панели.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJjk9?erid=5jtCeReNx12oak2tUX3G3x4",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3G3x4",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "trekbol-logitech-mx-ergo",
+      "name": "Трекбол Logitech MX Ergo (графит)",
+      "brand": "Logitech",
+      "category": "Трекболы",
+      "summary": "Наклон 0–20°, 2048 dpi, Bluetooth и USB-приёмник: кисть не двигается по столу.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJzYJ?erid=5jtCeReNx12oak2tUX3Gic8",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3Gic8",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "trekbol-logitech-m575s",
+      "name": "Трекбол Logitech M575s",
+      "brand": "Logitech",
+      "category": "Трекболы",
+      "summary": "Бюджетный трекбол 2000 dpi: Bluetooth и приёмник, корпус без наклона.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJzp2?erid=5jtCeReNx12oak2tUX3Gic9",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3Gic9",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "shokz-openfit-pro",
+      "name": "Наушники Shokz OpenFit Pro",
+      "brand": "Shokz",
+      "category": "Наушники",
+      "summary": "Открытое ухо, заушное крепление, Bluetooth 6.1: слышно и собеседника, и комнату.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJuXL?erid=5jtCeReNx12oak2tUX3GPah",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3GPah",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "sony-linkbuds-clip",
+      "name": "Наушники Sony LinkBuds Clip (WF-LC900)",
+      "brand": "Sony",
+      "category": "Наушники",
+      "summary": "Open-ear с зажимом на ушную раковину: не перекрывают слух на созвонах.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJy7k?erid=5jtCeReNx12oak2tUX3GiXj",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3GiXj",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "godox-es30",
+      "name": "Осветитель Godox ES30 Kit1",
+      "brand": "Godox",
+      "category": "Свет для видеозвонков",
+      "summary": "Настольная LED-панель с креплением на стол: ровный свет в лицо на созвонах.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUJwaX?erid=5jtCeReNx12oak2tUX3GPjX",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3GPjX",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "rozetka-vydvizhnaya-2eu-2usb",
+      "name": "Выдвижной розеточный блок 2×EU + 2×USB",
+      "brand": "",
+      "category": "Розеточные блоки",
+      "summary": "Врезной блок в столешницу: две розетки и два USB, прячется заподлицо.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUK7vQ?erid=5jtCeReNx12oak2tUX3GizG",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3GizG",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "rozetka-inrior-3eu",
+      "name": "Выдвижной блок Inrior 3×EU (RUFH 80)",
+      "brand": "Inrior",
+      "category": "Розеточные блоки",
+      "summary": "Три розетки на 45° в корпусе под врезку: кабели не упираются в столешницу.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUK9Da?erid=5jtCeReNx12oak2tUX3Gj4g",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3Gj4g",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "umnyy-udlinitel-ekf-connect",
+      "name": "Умный удлинитель EKF Connect Wi-Fi",
+      "brand": "EKF",
+      "category": "Умный дом",
+      "summary": "Wi-Fi-удлинитель с USB: сценарии включения и учёт нагрузки со смартфона.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUKB7v?erid=5jtCeReNx12oak2tUX3Gj9A",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3Gj9A",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-power-strip-2c1a",
+      "name": "Сетевой фильтр Xiaomi Power Strip 2C1A 20 Вт",
+      "brand": "Xiaomi",
+      "category": "Умный дом",
+      "summary": "Три розетки, два USB-C и USB-A, кабель 1,8 м: питание всей связки за столом.",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BUKBWu?erid=5jtCeReNx12oak2tUX3GjDV",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "5jtCeReNx12oak2tUX3GjDV",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
