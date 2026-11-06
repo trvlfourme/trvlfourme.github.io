@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Доска координации чатов: читает и проверяет docs/questions.md.
-// Формат описан в шапке файла: записи T-NNN (задачи), Q-NNN (вопросы), поля **Метка:**/**Статус:**.
+// Формат описан в шапке docs/questions.md: записи T-NNN (задачи), Q-NNN (вопросы), поля
+// **Метка:**/**Статус:**/**Приоритет:**; критичное показывается сверху.
 //
 //   node tools/questions.js                 — доска: активные задачи и открытые вопросы
 //   node tools/questions.js --tasks         — только задачи
@@ -18,6 +19,8 @@ const ROLES = ['разработка', 'контент', 'продвижение
 const OWNER = 'владелец';
 const ASSIGNEES = [...ROLES, OWNER];
 const LABELS = ['разработка', 'контент', 'продвижение', 'иб', 'деплой', 'сборка', 'блокер'];
+// приоритет активной задачи: от «горит» до «потом», порядок здесь — это и порядок показа
+const PRIORITIES = ['критичный', 'важный', 'стандартный', 'дополнительный'];
 const TASK_STATUSES = ['открыта', 'в работе', 'закрыта'];
 const Q_STATUSES = ['открыт', 'закрыт'];
 const Q_HEAD = /^###\s+(Q-\d{3,})\s*·\s*(.+?)\s*→\s*(.+?)\s*·\s*(\d{4}-\d{2}-\d{2})\s*$/;
@@ -36,9 +39,16 @@ function today() {
 function ready(it) {
   return !it.release || it.release === '—' || it.release <= today();
 }
+// для показа: критичное сверху, внутри приоритета — по сроку
+function rank(it) {
+  const i = PRIORITIES.indexOf(it.priority);
+  return i < 0 ? PRIORITIES.length : i;
+}
+
 const FIELD = {
   статус: 'status',
   метка: 'label',
+  приоритет: 'priority',
   кому: 'to',
   задача: 'task',
   итог: 'result',
@@ -79,6 +89,7 @@ function parse(text) {
         date: (q ? q[4] : t[3]).trim(),
         status: '',
         label: '',
+        priority: '',
         task: '',
         question: '',
         answer: '',
@@ -101,7 +112,7 @@ function parse(text) {
     }
     if (!cur) return;
 
-    const f = line.match(/^\*\*(Статус|Метка|Кому|Задача|Итог|До|Выпуск|Взял|Вопрос|Ответ|Контекст):\*\*\s*(.*)$/);
+    const f = line.match(/^\*\*(Статус|Метка|Приоритет|Кому|Задача|Итог|До|Выпуск|Взял|Вопрос|Ответ|Контекст):\*\*\s*(.*)$/);
     if (f) {
       field = FIELD[f[1].toLowerCase()];
       cur[field] = f[2].trim();
@@ -126,6 +137,12 @@ function parse(text) {
 
     if (!LABELS.includes(it.label)) errors.push(`${it.id}: метка должна быть одной из ${LABELS.join(', ')}, сейчас «${it.label}»`);
     if (!TASK_STATUSES.includes(it.status)) errors.push(`${it.id}: статус должен быть «открыта», «в работе» или «закрыта», сейчас «${it.status}»`);
+    if (it.priority && !PRIORITIES.includes(it.priority)) {
+      errors.push(`${it.id}: приоритет должен быть одним из ${PRIORITIES.join(', ')}, сейчас «${it.priority}»`);
+    }
+    if (it.status !== 'закрыта' && !it.priority) {
+      errors.push(`${it.id}: нет поля «Приоритет» — у незакрытой задачи оно обязательно: ${PRIORITIES.join(', ')}`);
+    }
     if (!it.task) errors.push(`${it.id}: пустая задача`);
     if (it.to && !ASSIGNEES.includes(it.to)) errors.push(`${it.id}: неизвестный адресат «${it.to}»`);
     if (it.status === 'закрыта' && (!it.result || it.result === '—')) errors.push(`${it.id}: закрыта без итога`);
@@ -184,7 +201,7 @@ function wrap(text, width, indent) {
 
 function head(it) {
   const bits = [it.id, it.kind === 'Q' ? `${it.from} → ${it.to}` : it.from];
-  bits.push(it.date, it.label ? `метка «${it.label}»` : '', it.status);
+  bits.push(it.date, it.label ? `метка «${it.label}»` : '', it.priority ? `приоритет ${it.priority}` : '', it.status);
   if (it.to && it.kind === 'T') bits.push(`кому: ${it.to}`);
   if (it.status === 'в работе' && it.taken) bits.push(`взял: ${it.taken}`);
   if (it.due && it.due !== '—') bits.push(`до ${it.due}`);
@@ -208,6 +225,7 @@ function main(argv) {
   if (args.includes('--help') || args.includes('-h')) {
     console.log('node tools/questions.js [--tasks] [--chat <роль>] [--all] [--json] [--check]');
     console.log('роли: ' + ROLES.join(', ') + ' · адресат: ' + OWNER + ' · метки: ' + LABELS.join(', '));
+    console.log('приоритеты (только у незакрытых задач): ' + PRIORITIES.join(', '));
     return 0;
   }
   const chatAt = args.indexOf('--chat');
@@ -252,12 +270,16 @@ function main(argv) {
       for (const e of errors) console.log('  - ' + e);
       return 1;
     }
+    const byPriority = PRIORITIES.map((p) => `${p} ${activeTasks.filter((it) => it.priority === p).length}`).join(', ');
     console.log(`формат в порядке: задач ${tasks.length} (активных ${activeTasks.length}), вопросов ${questions.length} (открытых ${openQuestions.length})`);
+    console.log(`активные по приоритету: ${byPriority}`);
     return 0;
   }
 
   const mine = (it) => !chat || it.to === chat || (it.kind === 'T' && !it.to && it.from === chat) || isLock(it);
-  const shownTasks = (all ? tasks : activeTasks).filter(mine);
+  const shownTasks = (all ? tasks : activeTasks)
+    .filter(mine)
+    .sort((a, b) => rank(a) - rank(b) || String(a.due || '9999').localeCompare(String(b.due || '9999')));
   const shownQuestions = onlyTasks ? [] : (all ? questions : openQuestions).filter(mine);
 
   const scope = chat ? ` · адресату «${chat}»` : '';
