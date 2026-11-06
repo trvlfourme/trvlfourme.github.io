@@ -11,7 +11,7 @@ import {
 import { ErgonomicsProfile } from '../types';
 import { calculateErgonomics } from '../utils/ergonomics';
 import { PRODUCTS_CATALOG } from '../data/products';
-import { buildPartnerUrl, getLegalDisclosure } from '../utils/affiliate';
+import { disclosureFor, priceText, OfferLinks } from './ProductOffers';
 
 interface ErgonomicsCalculatorViewProps {
   onSelectProduct?: (productId: string) => void;
@@ -302,33 +302,18 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
                     <div>
                       <div className="font-bold text-xs sm:text-sm text-stone-900">{prod.name}</div>
                       <div className="text-[11px] text-stone-500">{prod.shortDesc}</div>
-                      <div className="text-[10px] text-stone-700 font-mono mt-0.5">{getLegalDisclosure(prod)}</div>
+                      <div className="text-[10px] text-stone-700 font-mono mt-0.5">{disclosureFor(prod.id)}</div>
                     </div>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <div className="font-bold text-xs sm:text-sm text-stone-900">
-                      {prod.priceRub.toLocaleString('ru-RU')} ₽
-                    </div>
-                    <div className="mt-1 flex items-center gap-1.5 justify-end">
-                      <a
-                        href={buildPartnerUrl(prod, 'yandex')}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-0.5 text-[11px] font-semibold text-stone-900 hover:text-stone-700"
-                      >
-                        Я.Маркет
-                        <ExternalLink className="w-2.5 h-2.5 text-amber-500" />
-                      </a>
-                      <a
-                        href={buildPartnerUrl(prod, 'ozon')}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-0.5 text-[11px] font-semibold text-blue-600 hover:text-blue-800"
-                      >
-                        Ozon
-                        <ExternalLink className="w-2.5 h-2.5" />
-                      </a>
-                    </div>
+                    {priceText(prod) && (
+                      <div className="font-bold text-xs sm:text-sm text-stone-900">{priceText(prod)}</div>
+                    )}
+                    <OfferLinks
+                      productId={prod.id}
+                      className="mt-1 flex items-center gap-1.5 justify-end"
+                      linkClassName="inline-flex items-center gap-0.5 text-[11px] font-semibold text-stone-900 hover:text-stone-700"
+                    />
                   </div>
                 </div>
               ))}

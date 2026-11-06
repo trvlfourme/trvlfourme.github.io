@@ -3,6 +3,7 @@ import { ArrowUpRight, Clock, Eye, Sparkles, Tag } from 'lucide-react';
 import { Article } from '../types';
 import { CATEGORIES, getTagsForArticle } from '../data/contentData';
 import { handleImageError } from '../utils/imageFallback';
+import { CARD_SIZES, HERO_SIZES, imageSrcSet } from '../utils/images';
 
 interface ArticleCardProps {
   article: Article;
@@ -34,10 +35,13 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, onSelect, onS
       <div className="relative aspect-16/9 overflow-hidden bg-stone-100">
         <img 
           src={article.heroImage} 
+          srcSet={imageSrcSet(article.heroImage)}
+          sizes={CARD_SIZES}
           alt={article.title}
           onError={handleImageError}
           className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
           loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent transition-colors" />
         {isAi && (

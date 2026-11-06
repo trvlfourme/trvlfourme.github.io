@@ -25,20 +25,23 @@ export interface ProductItem {
   shortDesc: string;
   fullDesc: string;
   priceRub: number;
+  priceMode?: 'hidden' | 'note';
+  priceNote?: string;
   rating: number; // 1-5
   reviewsCount: number;
   pros: string[];
   cons: string[];
   specs: Record<string, string>;
   imageUrl: string;
+  // Партнёрские ссылки и erid приходят из каталога сайта (data/catalog.js),
+  // в редакционных текстах их не держим.
   admitadUrl?: string;
   gdeSlonUrl?: string;
-  ozonUrl?: string;
   wbUrl?: string;
   yandexMarketUrl?: string;
-  bestMerchant: string;
-  erid: string;
-  ordAdvertiser: string; // e.g. "ООО «Яндекс», ИНН 7736207543"
+  bestMerchant?: string;
+  erid?: string;
+  ordAdvertiser?: string; // e.g. "ООО «Яндекс», ИНН 7736207543"
 }
 
 export interface ArticleSection {
@@ -130,17 +133,6 @@ export interface ChecklistTask {
   proTip?: string;
 }
 
-export interface AffiliateConfig {
-  admitadSubId: string;
-  gdeSlonId: string;
-  saleadsId: string;
-  ozonReferralCode: string;
-  wbReferralCode: string;
-  yandexMarketAffiliateId: string;
-  eridEnabled: boolean;
-  customDomain: string;
-  selfEmployedInn: string;
-}
 
 export interface LaunchChecklistItem {
   id: string;

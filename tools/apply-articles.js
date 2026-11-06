@@ -1,7 +1,9 @@
 // Источник текстов статей — data/articles/*.json, а не бандл.
-// Скрипт собирает массив статей и вставляет его в assets/index.js между маркерами.
-// Запуск: node tools/apply-articles.js        — применить (пишет бандл и tools/articles.json)
-//         node tools/apply-articles.js --check — только сверить, код выхода 1 при расхождении
+// Бандл собирается из app/ production-сборкой, а данные в него попадают через
+// app/src/data/site.generated.ts — его пишет tools/sync-app-data.js.
+// Запуск: node tools/apply-articles.js        — проверить JSON и перегенерировать данные app
+//         node tools/apply-articles.js --check — только проверить JSON и состав бандла
+//         node tools/apply-articles.js --bundle — ещё и собрать бандл (vite build в app/)
 const fs = require('fs');
 const path = require('path');
 const { sortKey } = require('./article-dates');
@@ -108,26 +110,36 @@ function articlesJson(articles) {
   return JSON.stringify(list, null, 2) + '\n';
 }
 
+// Бандл теперь собирается из app/: в нём нечего «вставлять», но он обязан содержать
+// каждую статью из data/articles — иначе пререндер потеряет страницы.
+function missingInBundle(root, articles) {
+  const bundlePath = path.join(root, 'assets', 'index.js');
+  if (!fs.existsSync(bundlePath)) return articles.map((a) => a.slug);
+  const bundle = fs.readFileSync(bundlePath, 'utf8');
+  return articles.filter((a) => !bundle.includes(a.slug)).map((a) => a.slug);
+}
+
 function apply({ root = ROOT, dry = false } = {}) {
   const articles = loadArticles(root);
-  const bundlePath = path.join(root, 'assets', 'index.js');
-  const bundle = fs.readFileSync(bundlePath, 'utf8');
-  const current = blockFromBundle(bundle);
-  const wanted = renderBlock(articles);
-  const differs = current !== wanted && !sameData(current, articles);
-  const result = { count: articles.length, bundleChanged: differs, listChanged: false };
+  const result = { count: articles.length, bundleChanged: false, listChanged: false };
 
-  if (!dry) {
-    if (result.bundleChanged) {
-      const i = bundle.indexOf(START) + START.length;
-      fs.writeFileSync(bundlePath, bundle.slice(0, i) + wanted + bundle.slice(i + current.length));
-    }
-    const listPath = path.join(root, 'tools', 'articles.json');
-    if (fs.existsSync(path.dirname(listPath))) {
-      const next = articlesJson(articles);
-      result.listChanged = !fs.existsSync(listPath) || fs.readFileSync(listPath, 'utf8') !== next;
-      if (result.listChanged) fs.writeFileSync(listPath, next);
-    }
+  if (dry) {
+    const missing = missingInBundle(root, articles);
+    result.bundleChanged = missing.length > 0;
+    result.missing = missing;
+    return result;
+  }
+
+  require('child_process').execFileSync(process.execPath, [path.join(__dirname, 'sync-app-data.js')], {
+    cwd: root,
+    stdio: 'inherit',
+  });
+
+  const listPath = path.join(root, 'tools', 'articles.json');
+  if (fs.existsSync(path.dirname(listPath))) {
+    const next = articlesJson(articles);
+    result.listChanged = !fs.existsSync(listPath) || fs.readFileSync(listPath, 'utf8') !== next;
+    if (result.listChanged) fs.writeFileSync(listPath, next);
   }
   return result;
 }
@@ -139,13 +151,15 @@ if (require.main === module) {
   const res = apply({ dry: check });
   if (check) {
     if (res.bundleChanged) {
-      console.error(`бандл расходится с data/articles (${res.count} статей): правьте JSON, а не assets/index.js`);
+      console.error(
+        `в бандле нет статей (${res.count} в data/articles): ${res.missing.join(', ')} — соберите app/ и замените assets/index.js`
+      );
       process.exit(1);
     }
-    console.log(`статьи: ${res.count}, бандл совпадает с data/articles`);
+    console.log(`статьи: ${res.count}, все есть в бандле`);
   } else {
-    const bits = [res.bundleChanged ? 'бандл обновлён' : 'бандл без изменений'];
+    const bits = [];
     if (res.listChanged) bits.push('tools/articles.json обновлён');
-    console.log(`статьи: ${res.count}, ${bits.join(', ')}`);
+    console.log(`статьи: ${res.count}, данные для app обновлены${bits.length ? ', ' + bits.join(', ') : ''}`);
   }
 }

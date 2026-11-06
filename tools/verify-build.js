@@ -167,10 +167,13 @@ if (!bundle) fail('нет assets/index.js');
 else {
   execFileSync(process.execPath, ['--check', bundle], { stdio: 'pipe' });
   const size = fs.statSync(bundle).size;
-  if (size < 200000) fail(`бандл подозрительно мал: ${size} байт (живой бандл ~1,4 МБ)`);
+  if (size < 200000) fail(`бандл подозрительно мал: ${size} байт (production-сборка ~760 КБ)`);
   const js = fs.readFileSync(bundle, 'utf8');
-  if (!js.includes('KD_PRODUCT_LINKS')) fail('бандл не знает про слой ссылок KD_PRODUCT_LINKS');
-  if ((js.match(/function KdLnk\(/g) || []).length !== 1) fail('в бандле сломан резолвер ссылок KdLnk');
+  // Бандл теперь production-сборка из app/: проверяем, что в нём нет того, что правилами запрещено.
+  if (js.includes('ozon.ru')) fail('в бандле есть ссылки на ozon.ru — правилом проекта запрещено');
+  if (/код:\s*2026/.test(js)) fail('в бандле есть PIN редакторской панели');
+  if (js.includes('kd_gemini_api_key')) fail('в бандле есть чтение ключа Gemini');
+  if (js.includes('@google/genai') || js.includes('GoogleGenAI')) fail('в бандле остался Google GenAI SDK');
 }
 for (const jsFile of ['tools/admin/loader.js', 'tools/admin/links.js', 'tools/admin/catalog.js', 'assets/kd-catalog-render.js', 'data/product-links.js', 'data/catalog.js']) {
   if (exists(jsFile)) {

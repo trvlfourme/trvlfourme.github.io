@@ -51,6 +51,8 @@ function toProductItem(site: SiteProduct): ProductItem {
     shortDesc: editorial?.shortDesc || '',
     fullDesc: editorial?.fullDesc || '',
     priceRub: site.priceRub || editorial?.priceRub || 0,
+    priceMode: site.priceMode,
+    priceNote: site.priceNote,
     rating: editorial?.rating || 0,
     reviewsCount: editorial?.reviewsCount || 0,
     pros: editorial?.pros || [],

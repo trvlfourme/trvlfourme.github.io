@@ -99,12 +99,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Гарантия': '5 лет'
     },
     imageUrl: 'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=стол+с+электроприводом+Ergostol+Terra',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=стол+с+электроприводом+Ergostol+Terra',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Стол+с+электроприводом+Ergostol+Terra&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=стол+с+электроприводом+Ergostol',
-    erid: '2VtzquvX8fP',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -126,12 +126,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Крестовина': 'Литой хромированный металл'
     },
     imageUrl: 'https://images.unsplash.com/photo-1580481077195-c328a37db71a?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'ВсеИнструменты / Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=кресло+Метта+Самурай+S-3',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=кресло+Метта+Самурай+S-3',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Кресло+Метта+Самурай+S-3&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=Метта+Самурай+S-3',
-    erid: '2VtzquwY9aK',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -152,12 +152,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Газлифт': 'Class 4 (TUV сертифицирован)'
     },
     imageUrl: 'https://images.unsplash.com/photo-1505797149-43b0069ec26b?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Ozon / Алиэкспресс РФ',
-    admitadUrl: 'https://market.yandex.ru/search?text=эргономичное+кресло+SIHOO+Doro+C300',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=эргономичное+кресло+SIHOO+Doro+C300',
-    ozonUrl: 'https://www.ozon.ru/search/?text=SIHOO+Doro+C300&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=SIHOO+Doro+C300',
-    erid: '2VtzqumN5xB',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Интернет Решения», ИНН 7704217370'
   },
   {
@@ -179,12 +179,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Управление': 'Беспроводная 2.4 GHz шайба'
     },
     imageUrl: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет / Ozon',
-    admitadUrl: 'https://market.yandex.ru/search?text=Xiaomi+Monitor+Light+Bar+1S+скринбар',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=Xiaomi+Monitor+Light+Bar+1S+скринбар',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Xiaomi+Mi+Computer+Monitor+Light+Bar&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=Xiaomi+Monitor+Light+Bar',
-    erid: '2VtzqukJ8vP',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -205,12 +205,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Совместимость': 'Плоские и изогнутые экраны 1000R-1800R'
     },
     imageUrl: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Ozon / Ситилинк',
-    admitadUrl: 'https://market.yandex.ru/search?text=BenQ+ScreenBar+Halo',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=BenQ+ScreenBar+Halo',
-    ozonUrl: 'https://www.ozon.ru/search/?text=BenQ+ScreenBar+Halo&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=BenQ+ScreenBar',
-    erid: '2VtzqurB4bY',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Интернет Решения», ИНН 7704217370'
   },
   {
@@ -232,12 +232,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Индикатор занятости': 'Красный круговой LED светодиод'
     },
     imageUrl: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Ситилинк / Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=Jabra+Evolve2+65+гарнитура',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=Jabra+Evolve2+65+гарнитура',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Jabra+Evolve2+65&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=Jabra+Evolve2+65',
-    erid: '2VtzqupL3kQ',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Ситилинк», ИНН 7718979307'
   },
   {
@@ -259,12 +259,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Кнопка глушения': 'Сенсорная на верхней крышке'
     },
     imageUrl: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет / WB',
-    admitadUrl: 'https://market.yandex.ru/search?text=Fifine+K688+микрофон',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=Fifine+K688+микрофон',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Fifine+K688&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=Fifine+K688',
-    erid: '2VtzqucD1mZ',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -286,12 +286,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Вращение (Pivot)': '360° (портретный режим)'
     },
     imageUrl: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'ВсеИнструменты / Ozon',
-    admitadUrl: 'https://market.yandex.ru/search?text=ONKRON+G80+кронштейн+для+монитора',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=ONKRON+G80+кронштейн+для+монитора',
-    ozonUrl: 'https://www.ozon.ru/search/?text=ONKRON+G80&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=ONKRON+G80',
-    erid: '2VtzquvF8tK',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Интернет Решения», ИНН 7704217370'
   },
   {
@@ -312,12 +312,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Материал': 'Углеродистая сталь с порошковой покраской'
     },
     imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Wildberries / Ozon',
-    admitadUrl: 'https://market.yandex.ru/search?text=кабель+канал+под+стол+сетка+органайзер',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=кабель+канал+под+стол+сетка+органайзер',
-    wbUrl: 'https://www.wildberries.ru/search?query=кабель+канал+под+стол',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Лоток+для+кабель+менеджмента+под+стол&from_global=true',
-    erid: '2VtzquwQ4zR',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Вайлдберриз», ИНН 7721546864'
   },
   {
@@ -339,12 +339,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Вес': '235 г'
     },
     imageUrl: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Ozon / Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=ugreen+nexode+100w+gan',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=ugreen+nexode+100w+gan',
-    ozonUrl: 'https://www.ozon.ru/search/?text=ugreen+nexode+100w+gan&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=ugreen+100w+gan',
-    erid: '2VtzquvX8fP',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -366,12 +366,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Быстрая зарядка': 'QC 4.0, PD 3.0'
     },
     imageUrl: 'https://images.unsplash.com/photo-1609592424368-c115712e09b5?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=baseus+blade+100w+powerbank',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=baseus+blade+100w+powerbank',
-    ozonUrl: 'https://www.ozon.ru/search/?text=baseus+blade+100w+powerbank&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=baseus+blade+100w',
-    erid: '2VtzquvX8fP',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -393,12 +393,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Материал': 'Стекловолокно и премиальная экокожа'
     },
     imageUrl: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Ozon / Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=подставка+для+ноутбука+moft',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=подставка+для+ноутбука+moft',
-    ozonUrl: 'https://www.ozon.ru/search/?text=moft+подставка+для+ноутбука&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=moft+подставка',
-    erid: '2VtzquvX8fP',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -419,12 +419,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Порты': '2x USB-C + 2x USB-A + универсальная розетка'
     },
     imageUrl: 'https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет / Ozon',
-    admitadUrl: 'https://market.yandex.ru/search?text=универсальный+дорожный+адаптер+переходник',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=универсальный+дорожный+адаптер+переходник',
-    ozonUrl: 'https://www.ozon.ru/search/?text=дорожный+адаптер+переходник&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=дорожный+адаптер+переходник',
-    erid: '2VtzquvX8fP',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -446,12 +446,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Высота сиденья': '46–56 см'
     },
     imageUrl: 'https://images.unsplash.com/photo-1580481077195-c328a37db71a?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет / Ozon',
-    admitadUrl: 'https://market.yandex.ru/search?text=кресло+Бюрократ+KB-8',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=кресло+Бюрократ+KB-8',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Бюрократ+KB-8&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=Бюрократ+KB-8',
-    erid: '2VtzquvKB8B',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -473,12 +473,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Гарантия': '2 года'
     },
     imageUrl: 'https://images.unsplash.com/photo-1505797149-43b0069ec26b?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Ozon / Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=кресло+Chairman+795',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=кресло+Chairman+795',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Chairman+795&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=Chairman+795',
-    erid: '2VtzquvCH79',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Интернет Решения», ИНН 7704217370'
   },
   {
@@ -500,12 +500,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Гарантия': '5 лет в РФ'
     },
     imageUrl: 'https://images.unsplash.com/photo-1580481077195-c328a37db71a?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет / Салоны Эргономики',
-    admitadUrl: 'https://market.yandex.ru/search?text=кресло+Ergohuman+Plus+Elite',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=кресло+Ergohuman+Plus+Elite',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Ergohuman+Plus+Elite&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=Ergohuman+Plus',
-    erid: '2VtzquvEH88',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -527,12 +527,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Макс. нагрузка': '90 кг'
     },
     imageUrl: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет / Hoff',
-    admitadUrl: 'https://market.yandex.ru/search?text=стол+письменный+лофт+120х60',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=стол+письменный+лофт+120х60',
-    ozonUrl: 'https://www.ozon.ru/search/?text=стол+письменный+лофт+120+60&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=стол+лофт+120+60',
-    erid: '2VtzquvHL12',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -554,12 +554,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Уровень шума': '< 50 дБ'
     },
     imageUrl: 'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Ozon / Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=подъемный+стол+Loctek+электропривод',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=подъемный+стол+Loctek+электропривод',
-    ozonUrl: 'https://www.ozon.ru/search/?text=подъемный+стол+Loctek&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=подъемный+стол+Loctek',
-    erid: '2VtzquvLT14',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Интернет Решения», ИНН 7704217370'
   },
   {
@@ -581,12 +581,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Размеры': '42 x 38 x 12 см'
     },
     imageUrl: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Wildberries / Ozon',
-    admitadUrl: 'https://market.yandex.ru/search?text=подушка+под+поясницу+ортопедическая+memory+foam',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=подушка+под+поясницу+ортопедическая+memory+foam',
-    ozonUrl: 'https://www.ozon.ru/search/?text=подушка+под+поясницу+ортопедическая+память&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=подушка+под+поясницу+ортопедическая',
-    erid: '2VtzquvMF90',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Вайлдберриз», ИНН 7721546864'
   },
   {
@@ -607,12 +607,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Материал': 'Ударопрочный ABS-пластик с резиновыми вставками'
     },
     imageUrl: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Ozon / Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=подставка+для+ног+ортопедическая+офисная',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=подставка+для+ног+ортопедическая+офисная',
-    ozonUrl: 'https://www.ozon.ru/search/?text=подставка+для+ног+офисная+массажная&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=подставка+для+ног+офисная',
-    erid: '2VtzquvFR89',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Интернет Решения», ИНН 7704217370'
   },
   {
@@ -633,12 +633,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Вес': '240 г'
     },
     imageUrl: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет / Ozon',
-    admitadUrl: 'https://market.yandex.ru/search?text=подставка+для+ноутбука+алюминиевая+складная',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=подставка+для+ноутбука+алюминиевая+складная',
-    ozonUrl: 'https://www.ozon.ru/search/?text=подставка+для+ноутбука+алюминиевая+складная&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=подставка+для+ноутбука+алюминиевая',
-    erid: '2VtzquvLS69',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -659,12 +659,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Аккумулятор': '500 мАч (до 30 дней автономности)'
     },
     imageUrl: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Ozon / Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=вертикальная+мышь+Delux+M618DB',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=вертикальная+мышь+Delux+M618DB',
-    ozonUrl: 'https://www.ozon.ru/search/?text=вертикальная+мышь+Delux+M618DB&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=Delux+M618DB',
-    erid: '2VtzquvVM19',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Интернет Решения», ИНН 7704217370'
   },
   {
@@ -686,12 +686,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Зарядка': 'USB-C быстрая (1 минута дает 3 часа)'
     },
     imageUrl: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет / Ситилинк',
-    admitadUrl: 'https://market.yandex.ru/search?text=Logitech+MX+Master+3S+мышь',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=Logitech+MX+Master+3S+мышь',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Logitech+MX+Master+3S&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=Logitech+MX+Master+3S',
-    erid: '2VtzquvMX3S',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -713,12 +713,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Связь': 'Bluetooth 5.3 + AUX 3.5 мм'
     },
     imageUrl: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Ozon / Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=Anker+Soundcore+Space+One',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=Anker+Soundcore+Space+One',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Anker+Soundcore+Space+One&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=Anker+Space+One',
-    erid: '2VtzquvAS01',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Интернет Решения», ИНН 7704217370'
   },
   {
@@ -740,12 +740,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Крепление': 'Универсальное на монитор + штативная резьба 1/4"'
     },
     imageUrl: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет / Ozon',
-    admitadUrl: 'https://market.yandex.ru/search?text=веб-камера+Anker+PowerConf+C200',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=веб-камера+Anker+PowerConf+C200',
-    ozonUrl: 'https://www.ozon.ru/search/?text=Anker+PowerConf+C200&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=Anker+PowerConf+C200',
-    erid: '2VtzquvAC20',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   },
   {
@@ -766,12 +766,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Зарядка': 'USB-C (до 3 месяцев от одной зарядки)'
     },
     imageUrl: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Ozon / Яндекс Маркет',
-    admitadUrl: 'https://market.yandex.ru/search?text=TickTime+cube+таймер',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=TickTime+cube+таймер',
-    ozonUrl: 'https://www.ozon.ru/search/?text=TickTime+cube&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=TickTime+cube',
-    erid: '2VtzquvTC01',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Интернет Решения», ИНН 7704217370'
   },
   {
@@ -792,12 +792,12 @@ export const PRODUCTS_EDITORIAL: ProductItem[] = [
       'Элементы': 'Медицинский гипоаллергенный пластик HIPS'
     },
     imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
-    bestMerchant: 'Яндекс Маркет / Ozon',
-    admitadUrl: 'https://market.yandex.ru/search?text=акупунктурный+коврик+для+спины',
-    yandexMarketUrl: 'https://market.yandex.ru/search?text=акупунктурный+коврик+для+спины',
-    ozonUrl: 'https://www.ozon.ru/search/?text=акупунктурный+коврик+для+спины&from_global=true',
-    wbUrl: 'https://www.wildberries.ru/search?query=акупунктурный+коврик',
-    erid: '2VtzquvAM02',
+
+
+
+
+
+
     ordAdvertiser: 'ООО «Яндекс», ИНН 7736207543'
   }
 ];

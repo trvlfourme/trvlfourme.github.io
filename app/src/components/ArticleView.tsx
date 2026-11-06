@@ -18,9 +18,10 @@ import {
 import { Article, ProductItem } from '../types';
 import { CATEGORIES, getTagsForArticle } from '../data/contentData';
 import { PRODUCTS_CATALOG } from '../data/products';
-import { buildPartnerUrl, getLegalDisclosure } from '../utils/affiliate';
+import { disclosureFor, priceText, OfferLinks } from './ProductOffers';
 import { handleImageError } from '../utils/imageFallback';
 import { MarkdownRenderer } from './MarkdownRenderer';
+import { HERO_SIZES, imageSrcSet } from '../utils/images';
 
 interface ArticleViewProps {
   article: Article;
@@ -48,6 +49,12 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
       setTimeout(() => setCopiedLink(false), 2000);
     }
   };
+
+  // Подборка каталога на статической странице одна: товары, уже показанные в блоках
+  // разделов, второй раз не выводим.
+  const catalogExtras = (article.featuredProductIds || []).filter(
+    (id) => !article.sections.some((s) => (s.productIds || []).includes(id))
+  );
 
   const getProduct = (id: string): ProductItem | undefined => {
     return PRODUCTS_CATALOG.find(p => p.id === id);
@@ -252,9 +259,12 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
           <div className="aspect-16/9 rounded-2xl overflow-hidden mb-10 bg-stone-100 border border-stone-200 shadow-xs">
             <img 
               src={article.heroImage} 
+              srcSet={imageSrcSet(article.heroImage)}
+              sizes={HERO_SIZES}
               alt={article.title}
               onError={handleImageError}
               className="w-full h-full object-cover" 
+              fetchPriority="high"
             />
           </div>
 
@@ -321,7 +331,7 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
                                 <h4 className="font-bold text-base text-stone-900">{prod.name}</h4>
                                 <div className="text-right">
                                   <div className="text-base font-extrabold text-stone-900">
-                                    от {prod.priceRub.toLocaleString('ru-RU')} ₽
+                                    {priceText(prod) || 'Цена в каталоге'}
                                   </div>
                                   <div className="text-[10px] text-stone-700">на маркетплейсах</div>
                                 </div>
@@ -348,45 +358,11 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
                                 </div>
                               </div>
 
-                              {/* Affiliate Actions with Law 347-FZ compliance badge */}
+                              {/* Магазины и маркировка рекламы — из офферов каталога */}
                               <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-stone-200">
-                                <div className="flex items-center flex-wrap gap-2">
-                                  <a 
-                                    href={buildPartnerUrl(prod, 'yandex')}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-stone-900 hover:bg-stone-800 text-white transition-colors inline-flex items-center gap-1.5"
-                                  >
-                                    Яндекс Маркет
-                                    <ExternalLink className="w-3 h-3 text-amber-400" />
-                                  </a>
-
-                                  <a 
-                                    href={buildPartnerUrl(prod, 'ozon')}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-colors inline-flex items-center gap-1"
-                                  >
-                                    Ozon
-                                    <ExternalLink className="w-3 h-3" />
-                                  </a>
-
-                                  {prod.wbUrl && (
-                                    <a 
-                                      href={buildPartnerUrl(prod, 'wb')}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-purple-50 text-purple-900 hover:bg-purple-100 transition-colors inline-flex items-center gap-1"
-                                    >
-                                      WB
-                                      <ExternalLink className="w-3 h-3" />
-                                    </a>
-                                  )}
-                                </div>
-
-                                {/* Mandatory Legal ERID tag */}
+                                <OfferLinks productId={prod.id} />
                                 <div className="text-[10px] text-stone-700 font-mono">
-                                  {getLegalDisclosure(prod)}
+                                  {disclosureFor(prod.id)}
                                 </div>
                               </div>
                             </div>
@@ -433,6 +409,34 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
               )}
             </div>
           </div>
+
+          {/* Подборка каталога: те же товары, что в блоке на статической странице */}
+          {catalogExtras.length > 0 && (
+            <div className="mb-10 p-6 bg-white rounded-2xl border border-stone-200">
+              <h3 className="text-lg font-bold text-stone-900 mb-1">Подборка каталога «Кабинет Дома»</h3>
+              <p className="text-xs text-stone-500 mb-4">Собрано под сценарий из этой статьи</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {catalogExtras.map((id) => {
+                  const prod = getProduct(id);
+                  if (!prod) return null;
+                  return (
+                    <div key={id} className="p-3 rounded-xl border border-stone-200 bg-stone-50">
+                      <div className="font-semibold text-sm text-stone-900 leading-snug">{prod.name}</div>
+                      <div className="text-[11px] text-stone-500 mb-2">{prod.brand}</div>
+                      {priceText(prod) && (
+                        <div className="text-xs font-mono text-stone-700 mb-2">{priceText(prod)}</div>
+                      )}
+                      <OfferLinks
+                        productId={prod.id}
+                        linkClassName="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-stone-900 hover:bg-stone-800 text-white inline-flex items-center gap-1"
+                      />
+                      <div className="text-[10px] text-stone-600 font-mono mt-1.5">{disclosureFor(prod.id)}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {/* Conclusion */}
           <div className="p-6 bg-white rounded-2xl border border-stone-200 mb-10">

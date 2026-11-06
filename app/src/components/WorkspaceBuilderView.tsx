@@ -13,7 +13,7 @@ import {
 import { SETUP_PRESETS } from '../data/contentData';
 import { PRODUCTS_CATALOG } from '../data/products';
 import { ProductItem } from '../types';
-import { buildPartnerUrl, getLegalDisclosure } from '../utils/affiliate';
+import { firstOfferUrl, disclosureFor, priceText, OfferLinks } from './ProductOffers';
 
 export const WorkspaceBuilderView: React.FC = () => {
   const [selectedPresetId, setSelectedPresetId] = useState<string>(SETUP_PRESETS[0].id);
@@ -53,7 +53,7 @@ export const WorkspaceBuilderView: React.FC = () => {
     const textLines = [
       `🛒 Готовый сетап рабочего места Home4Work:`,
       `Общий бюджет: ${totalPrice.toLocaleString('ru-RU')} ₽\n`,
-      ...selectedProducts.map((p, i) => `${i + 1}. ${p.name} — ${p.priceRub.toLocaleString('ru-RU')} ₽ (${buildPartnerUrl(p, 'yandex')})`),
+      ...selectedProducts.map((p, i) => `${i + 1}. ${p.name}${priceText(p) ? ' — ' + priceText(p) : ''} (${firstOfferUrl(p.id)})`),
       `\nСобрано на https://home4work.ru`
     ];
 
@@ -164,35 +164,20 @@ export const WorkspaceBuilderView: React.FC = () => {
                     <div className="min-w-0">
                       <div className="font-bold text-sm text-stone-900 truncate">{prod.name}</div>
                       <div className="text-xs text-stone-500 line-clamp-1">{prod.shortDesc}</div>
-                      <div className="text-[10px] text-stone-700 font-mono mt-0.5">{getLegalDisclosure(prod)}</div>
+                      <div className="text-[10px] text-stone-700 font-mono mt-0.5">{disclosureFor(prod.id)}</div>
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto flex-shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-stone-100">
                     <div className="text-right">
-                      <div className="font-bold text-sm sm:text-base text-stone-900 font-mono">
-                        от {prod.priceRub.toLocaleString('ru-RU')} ₽
-                      </div>
-                      <div className="flex items-center gap-2 justify-end pt-0.5">
-                        <a 
-                          href={buildPartnerUrl(prod, 'yandex')}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[11px] font-semibold text-stone-900 hover:text-stone-700 inline-flex items-center gap-0.5"
-                        >
-                          Я.Маркет
-                          <ExternalLink className="w-2.5 h-2.5 text-amber-500" />
-                        </a>
-                        <a 
-                          href={buildPartnerUrl(prod, 'ozon')}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[11px] font-semibold text-blue-600 hover:text-blue-800 inline-flex items-center gap-0.5"
-                        >
-                          Ozon
-                          <ExternalLink className="w-2.5 h-2.5" />
-                        </a>
-                      </div>
+                      {priceText(prod) && (
+                        <div className="font-bold text-sm sm:text-base text-stone-900 font-mono">{priceText(prod)}</div>
+                      )}
+                      <OfferLinks
+                        productId={prod.id}
+                        className="flex items-center gap-2 justify-end pt-0.5"
+                        linkClassName="text-[11px] font-semibold text-stone-900 hover:text-stone-700 inline-flex items-center gap-0.5"
+                      />
                     </div>
 
                     <button

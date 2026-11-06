@@ -9,12 +9,11 @@ import { ParentChecklistView } from './components/ParentChecklistView';
 import { AboutView } from './components/AboutView';
 import { PrivacyPolicyView } from './components/PrivacyPolicyView';
 import { TermsView } from './components/TermsView';
-import { PublisherAdminModal } from './components/PublisherAdminModal';
 import { InteractiveDiagnosticView } from './components/InteractiveDiagnosticView';
 import { Footer } from './components/Footer';
 import { ARTICLES_DATA, CATEGORIES, getTagsForArticle, POPULAR_TAGS, findArticleBySlugOrId } from './data/contentData';
 import { Article, Category, NavTab } from './types';
-import { Sliders, Compass, BookOpen, Layers, Lock, KeyRound, X, Activity, Tag } from 'lucide-react';
+import { Sliders, Compass, BookOpen, Layers, Activity, Tag, X } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<NavTab>('articles');
@@ -22,48 +21,9 @@ export default function App() {
   const [selectedTag, setSelectedTag] = useState<string>('all');
   const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [isAdminModalOpen, setIsAdminModalOpen] = useState<boolean>(false);
-  const [isPinModalOpen, setIsPinModalOpen] = useState<boolean>(false);
-  const [pinInput, setPinInput] = useState<string>('');
-  const [pinError, setPinError] = useState<string | null>(null);
 
-  // Dynamic reactive articles state with localStorage persistence
-  const [articlesList, setArticlesList] = useState<Article[]>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = localStorage.getItem('kd_custom_articles');
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length > 0) {
-            // Ensure newly added default articles (like travel guide under 'other') are merged
-            const existingIds = new Set(parsed.map((a: Article) => a.id));
-            const missingBaseline = ARTICLES_DATA.filter(a => !existingIds.has(a.id));
-            if (missingBaseline.length > 0) {
-              const merged = [...parsed, ...missingBaseline];
-              localStorage.setItem('kd_custom_articles', JSON.stringify(merged));
-              return merged;
-            }
-            return parsed;
-          }
-        }
-      } catch {}
-    }
-    return ARTICLES_DATA;
-  });
-
-  const handleSaveArticles = (updated: Article[]) => {
-    setArticlesList(updated);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('kd_custom_articles', JSON.stringify(updated));
-    }
-  };
-
-  const handleResetArticles = () => {
-    setArticlesList(ARTICLES_DATA);
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('kd_custom_articles');
-    }
-  };
+  // Статьи приходят из data/ через site.generated.ts: локальных копий больше нет.
+  const articlesList: Article[] = ARTICLES_DATA;
 
   // Initialize and sync route with browser URL / redirect from 404.html
   useEffect(() => {
@@ -92,11 +52,6 @@ export default function App() {
       if (cleanPath === 'privacy') { setActiveTab('privacy'); setSelectedArticleId(null); return; }
       if (cleanPath === 'terms') { setActiveTab('terms'); setSelectedArticleId(null); return; }
       if (cleanPath === 'articles') { setActiveTab('articles'); setSelectedArticleId(null); return; }
-      if (cleanPath === 'kd-admin-panel-2026' || cleanPath === 'admin') {
-        setTimeout(() => handleRequestAdmin(), 100);
-        return;
-      }
-
       // 3. Check query parameters: ?article= or ?tab= or ?kd_redirect=
       const searchStr = queryPart !== undefined ? queryPart : window.location.search.replace(/^\?/, '');
       const params = new URLSearchParams(searchStr);
@@ -135,22 +90,6 @@ export default function App() {
       resolveAndApplyRoute(window.location.pathname + window.location.search);
     }
 
-    // Keyboard shortcut Ctrl+Shift+A (or Russian layout / ?admin=1)
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const isKeyA = e.code === 'KeyA' || e.key.toLowerCase() === 'a' || e.key.toLowerCase() === 'ф';
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && isKeyA) {
-        e.preventDefault();
-        handleRequestAdmin();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-
-    const curParams = new URLSearchParams(window.location.search);
-    if (curParams.get('admin') === '1' || curParams.get('admin') === 'true' || curParams.get('admin') === '2026') {
-      sessionStorage.setItem('kd_admin_auth', 'true');
-      setIsAdminModalOpen(true);
-    }
-
     // Handle browser back/forward buttons
     const handlePopState = () => {
       resolveAndApplyRoute(window.location.pathname + window.location.search);
@@ -158,32 +97,9 @@ export default function App() {
     window.addEventListener('popstate', handlePopState);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('popstate', handlePopState);
     };
   }, [articlesList]);
-
-  const handleRequestAdmin = () => {
-    if (sessionStorage.getItem('kd_admin_auth') === 'true') {
-      setIsAdminModalOpen(true);
-    } else {
-      setPinInput('');
-      setPinError(null);
-      setIsPinModalOpen(true);
-    }
-  };
-
-  const handleVerifyPin = (e: React.FormEvent) => {
-    e.preventDefault();
-    const clean = pinInput.trim().toLowerCase();
-    if (clean === '2026' || clean === 'admin' || clean === 'kabinetdoma') {
-      sessionStorage.setItem('kd_admin_auth', 'true');
-      setIsPinModalOpen(false);
-      setIsAdminModalOpen(true);
-    } else {
-      setPinError('Неверный код доступа (по умолчанию: 2026)');
-    }
-  };
 
   // Dynamic tag counts across all articles
   const tagCounts = useMemo(() => {
@@ -519,89 +435,6 @@ export default function App() {
       <Footer
         onNav={handleNav}
       />
-
-      {/* Publisher / Client Admin Control Center */}
-      {isAdminModalOpen && (
-        <PublisherAdminModal
-          isOpen={isAdminModalOpen}
-          onClose={() => setIsAdminModalOpen(false)}
-          articles={articlesList}
-          onSaveArticles={handleSaveArticles}
-          onResetArticles={handleResetArticles}
-        />
-      )}
-
-      {/* Owner PIN Verification Modal */}
-      {isPinModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="relative w-full max-w-sm bg-white rounded-2xl shadow-2xl border border-stone-200 p-6 space-y-4">
-            
-            <button
-              onClick={() => setIsPinModalOpen(false)}
-              className="absolute top-4 right-4 text-stone-400 hover:text-stone-700 p-1 rounded-lg hover:bg-stone-100 transition-colors"
-            >
-              <X className="w-4 h-4" />
-            </button>
-
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-stone-900 text-amber-400 flex items-center justify-center shadow-xs">
-                <Lock className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-bold text-stone-900 text-base">Доступ владельца</h3>
-                <p className="text-xs text-stone-500">Панель управления KabinetDoma.ru</p>
-              </div>
-            </div>
-
-            <form onSubmit={handleVerifyPin} className="space-y-3">
-              <div>
-                <div className="flex items-center justify-between mb-1">
-                  <label className="block text-xs font-semibold text-stone-700">
-                    Введите PIN-код доступа:
-                  </label>
-                  <span className="text-[10px] text-amber-800 font-mono bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
-                    код: 2026
-                  </span>
-                </div>
-                <div className="relative">
-                  <input
-                    type="password"
-                    autoFocus
-                    value={pinInput}
-                    onChange={(e) => {
-                      setPinInput(e.target.value);
-                      setPinError(null);
-                    }}
-                    placeholder="••••"
-                    className="w-full pl-9 pr-3 py-2 text-sm bg-stone-50 border border-stone-300 rounded-xl focus:bg-white focus:border-stone-900 focus:outline-hidden tracking-widest text-center font-mono font-bold text-lg"
-                  />
-                  <KeyRound className="w-4 h-4 text-stone-400 absolute left-3 top-3 pointer-events-none" />
-                </div>
-                {pinError && (
-                  <p className="text-xs text-rose-600 font-medium mt-1.5">{pinError}</p>
-                )}
-              </div>
-
-              <div className="pt-2 flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setIsPinModalOpen(false)}
-                  className="w-1/2 px-3 py-2 text-xs font-semibold text-stone-600 bg-stone-100 hover:bg-stone-200 rounded-xl transition-colors"
-                >
-                  Отмена
-                </button>
-                <button
-                  type="submit"
-                  className="w-1/2 px-3 py-2 text-xs font-bold text-stone-950 bg-amber-400 hover:bg-amber-500 rounded-xl transition-colors shadow-xs"
-                >
-                  Войти
-                </button>
-              </div>
-            </form>
-
-          </div>
-        </div>
-      )}
 
     </div>
   );
