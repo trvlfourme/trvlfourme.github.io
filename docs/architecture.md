@@ -85,10 +85,10 @@ production-сборкой из исходников, это T-028.
 
 ## Источники правды и артефакты
 
-1. **Тексты** — только JSON. `tools/apply-articles.js` собирает массив и вставляет его в бандл
-   между маркерами `/*kd:articles:start*/` и `/*kd:articles:end*/`. Сборка запускает этот шаг
-   первым, `verify-build.js` падает, если бандл разошёлся с JSON. Проверка без сборки:
-   `node tools/apply-articles.js --check`.
+1. **Тексты** — только JSON. `tools/apply-articles.js` проверяет JSON и перегенерирует
+   `app/src/data/site.generated.ts` (через `tools/sync-app-data.js`); бандл собирается из `app/`
+   и обязан содержать slug каждой статьи — это проверяет `node tools/apply-articles.js --check`.
+   Маркеров `/*kd:articles:start*/` в бандле больше нет: массив в него не вставляется руками.
 2. **Каталог** — `data/catalog.js`. Админка умеет отдать готовый файл на скачивание, но живые
    правки в ней лежат в браузере: на сайт попадает только закоммиченный файл.
 3. **SEO-метаданные** — `tools/seo-pages-*.json` (`title`, `description`, `related`), их
@@ -122,7 +122,7 @@ node tools/build.js --skip-prerender     # только постобработк
 
 Порядок шагов (`tools/build.js`), менять местами нельзя:
 
-1. `apply-articles.js` — JSON статей → бандл.
+1. `apply-articles.js` — JSON статей → `app/src/data/site.generated.ts` (бандл при этом не правится).
 2. `server.js` на `PORT` + `prerender.js` — headless Chrome снимает DOM каждой страницы в
    `_prerender/` (`--dump-dom`; при падении Chrome на тяжёлых статьях — запасной путь через
    DevTools-протокол с реальной паузой).
