@@ -50,12 +50,6 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
     }
   };
 
-  // Подборка каталога на статической странице одна: товары, уже показанные в блоках
-  // разделов, второй раз не выводим.
-  const catalogExtras = (article.featuredProductIds || []).filter(
-    (id) => !article.sections.some((s) => (s.productIds || []).includes(id))
-  );
-
   const getProduct = (id: string): ProductItem | undefined => {
     return PRODUCTS_CATALOG.find(p => p.id === id);
   };
@@ -410,33 +404,8 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
             </div>
           </div>
 
-          {/* Подборка каталога: те же товары, что в блоке на статической странице */}
-          {catalogExtras.length > 0 && (
-            <div className="mb-10 p-6 bg-white rounded-2xl border border-stone-200">
-              <h3 className="text-lg font-bold text-stone-900 mb-1">Подборка каталога «Кабинет Дома»</h3>
-              <p className="text-xs text-stone-500 mb-4">Собрано под сценарий из этой статьи</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {catalogExtras.map((id) => {
-                  const prod = getProduct(id);
-                  if (!prod) return null;
-                  return (
-                    <div key={id} className="p-3 rounded-xl border border-stone-200 bg-stone-50">
-                      <div className="font-semibold text-sm text-stone-900 leading-snug">{prod.name}</div>
-                      <div className="text-[11px] text-stone-500 mb-2">{prod.brand}</div>
-                      {priceText(prod) && (
-                        <div className="text-xs font-mono text-stone-700 mb-2">{priceText(prod)}</div>
-                      )}
-                      <OfferLinks
-                        productId={prod.id}
-                        linkClassName="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-stone-900 hover:bg-stone-800 text-white inline-flex items-center gap-1"
-                      />
-                      <div className="text-[10px] text-stone-600 font-mono mt-1.5">{disclosureFor(prod.id)}</div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
+'          {/* Подборку каталога на статической странице рисует assets/kd-catalog-render.js
+              по data/catalog.js: второй блок здесь дал бы дубли товаров. */}
 
           {/* Conclusion */}
           <div className="p-6 bg-white rounded-2xl border border-stone-200 mb-10">
