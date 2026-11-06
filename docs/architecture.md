@@ -96,6 +96,22 @@ production-сборкой из исходников, это T-028.
 4. **HTML, sitemap, бандл** — артефакты. Руками не правятся, кроме описанных точечных вставок
    в бандл.
 
+## Исходники приложения (`app/`)
+
+Бандл `assets/index.js` собирается из React-исходников в `app/` (React 19 + Vite + TypeScript).
+В git входят `src/`, `scripts/`, конфиги и `README-DATA.md`; `app/node_modules`, `app/dist`
+и `app/public` — нет. Цифры и тексты в `app/` не живут: `node tools/sync-app-data.js`
+переписывает `app/src/data/site.generated.ts` из `data/articles/*.json`, `data/catalog.js`
+и `data/product-links.js`, а `app/src/data/products.ts` склеивает каталог с редакционными
+описаниями из `contentData.ts`. Сгенерированный файл править нельзя — как и HTML-артефакты.
+
+Сборка: `cd app && npx vite build` → `app/dist/assets/index.js`. Перед подменой бандла на сайте
+проверить гейты из T-028: в сборке не должно быть админки, `@google/genai`, выдуманных
+партнёрских ссылок (`ozon.ru/search`, `ref=WBR_KD`), а `srcSet`, canonical и `kd-track.js`
+должны быть перенесены из текущего бандла. Установка зависимостей требует
+`npm install --legacy-peer-deps`: в `package.json` нет lockfile под vite 8 и esbuild
+разъезжается по peer-зависимостям.
+
 ## Сборка
 
 ```
