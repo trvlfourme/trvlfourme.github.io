@@ -53,6 +53,41 @@ if [ -d "$ROOT/_prodcheck/keep" ]; then
   cp -r "$ROOT/_prodcheck/keep/." "$WORK/"
 fi
 
+# Состав публикации. На сайт уезжают только страницы и их ресурсы: всё остальное
+# (docs/, tools/, content/, *.md, исходники, архивы) остаётся в репозитории и на сайт не попадает.
+# Новый раздел сайта или файл в корне — добавьте сюда, иначе он не выложится (prune скажет об этом).
+PUBLIC="index.html 404.html CNAME .nojekyll robots.txt sitemap.xml _redirects \
+article articles about builder calculator catalog checklist privacy terms tests \
+assets data images \
+favicon.svg favicon-32.png apple-touch-icon.png logo.png logo-64.png logo-128.png og-image.jpg"
+
+is_public() {
+  local name="$1"
+  case "$name" in
+    google*.html|yandex*.html) return 0 ;;
+  esac
+  local item
+  for item in $PUBLIC; do
+    [ "$name" = "$item" ] && return 0
+  done
+  return 1
+}
+
+echo "3/5  оставляю только публикуемый состав"
+DROPPED=""
+while IFS= read -r entry; do
+  name="$(basename "$entry")"
+  if ! is_public "$name"; then
+    DROPPED="$DROPPED $name"
+    rm -rf "$entry"
+  fi
+done < <(find "$WORK" -mindepth 1 -maxdepth 1 ! -name .git | sort)
+if [ -n "$DROPPED" ]; then
+  echo "     не публикую:$DROPPED"
+fi
+# Внутри публикуемых каталогов не должно остаться markdown-заметок и черновиков.
+find "$WORK" -name '*.md' -type f -delete 2>/dev/null || true
+
 # Файлы, которые мы удалили у себя, но которые остались на проде: иначе шаг «сохранить
 # файлы только прода» будет тащить их вечно. Verification-файлы поисковиков сюда не пишем.
 for f in ${PROD_DELETE:-og-image.png}; do
@@ -63,6 +98,17 @@ for f in ${PROD_DELETE:-og-image.png}; do
 done
 
 echo "4/5  проверяю то, что уедет на прод"
+for f in docs tools content AGENTS.md README.md HANDOFF.md PROMO-PLAN.md DEV-CHANGES.md \
+         index.spa.html archive-info.json CNAME.md; do
+  if [ -e "$WORK/$f" ]; then
+    echo "ОШИБКА: в публикации остался служебный путь $f" >&2
+    exit 1
+  fi
+done
+if [ -n "$(find "$WORK" -name '*.md' -type f -print -quit)" ]; then
+  echo "ОШИБКА: в публикации остались .md-файлы" >&2
+  exit 1
+fi
 node "$ROOT/tools/verify-build.js" "$WORK"
 
 echo "5/5  итог"
