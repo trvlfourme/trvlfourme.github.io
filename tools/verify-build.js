@@ -35,7 +35,8 @@ if (!exists('robots.txt')) fail('нет robots.txt');
 else if (/Disallow:\s*\/\s*$/m.test(fs.readFileSync(path.join(root, 'robots.txt'), 'utf8'))) fail('robots.txt закрывает сайт от индексации (Disallow: /)');
 if (!exists('sitemap.xml')) fail('нет sitemap.xml');
 if (!exists('data/product-links.js')) fail('нет data/product-links.js');
-if (!exists('tools/admin/loader.js')) fail('нет tools/admin/loader.js — редакторская панель должна жить вне публикации');
+// В публикацию tools/ не входит: проверяем состав панели только в рабочем дереве.
+if (exists('tools') && !exists('tools/admin/loader.js')) fail('нет tools/admin/loader.js — редакторская панель должна жить вне публикации');
 if (exists('assets/kd-admin-loader.js') || exists('assets/kd-admin-catalog.js') || exists('assets/kd-admin-links.js')) {
   fail('админ-скрипты лежат в assets и уедут на сайт — перенесите их в tools/admin');
 }
