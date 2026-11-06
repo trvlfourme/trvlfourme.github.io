@@ -859,8 +859,9 @@
     renderBody();
     refreshFromFile();
   }
+  // Панель — локальный инструмент: на боевом домене она просто не запускается.
   function isAdmin() {
-    try { return sessionStorage.getItem('kd_admin_auth') === 'true'; } catch (e) { return false; }
+    return /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
   }
 
   var fab = null;
@@ -894,13 +895,12 @@
     var err = el('div', { style: 'font-size:11px;color:#b91c1c;margin-top:6px;min-height:14px' });
     function submit() {
       var code = (inputNode.value || '').trim().toLowerCase();
-      if (code === '2026' || code === 'admin' || code === 'kabinetdoma') {
-        try { sessionStorage.setItem('kd_admin_auth', 'true'); } catch (e) {}
+      if (isAdmin()) {
         closePin();
         syncFab();
         openPanel();
       } else {
-        err.textContent = 'Неверный код (подсказка: 2026)';
+        err.textContent = 'Панель работает только на локальной копии сайта';
         inputNode.value = '';
         inputNode.focus();
       }

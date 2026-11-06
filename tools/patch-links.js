@@ -196,9 +196,9 @@ function ensureLinksFile() {
 const CATALOG_TAG = '<script src="/data/catalog.js"></script>';
 const LINKS_TAG = '<script src="/data/product-links.js"></script>';
 const RENDER_TAG = '<script defer src="/assets/kd-catalog-render.js"></script>';
-// Админские скрипты больше не подключаются тегами на каждой странице:
-// их лениво грузит kd-admin-loader.js по ?admin=1, открытой сессии или Ctrl+Shift+A.
-const ADMIN_LOADER_TAG = '<script defer src="/assets/kd-admin-loader.js"></script>';
+// Редакторская панель вынесена из публичной сборки в tools/admin и на сайте не подключается:
+// её скрипты остаются локальным инструментом и в публикацию не попадают.
+const ADMIN_LOADER_TAG_RE = /[ \t]*<script[^>]*kd-admin-(loader|catalog|links)\.js[^>]*><\/script>/gi;
 
 function htmlFiles() {
   const out = [path.join(root, 'index.html')];
@@ -225,8 +225,8 @@ function injectTags(html) {
     else out = out.replace('</head>', LINKS_TAG + String.fromCharCode(10) + '</head>');
   }
   if (!out.includes(CATALOG_TAG)) out = out.replace(LINKS_TAG, CATALOG_TAG + LINKS_TAG);
+  out = out.replace(ADMIN_LOADER_TAG_RE, '');
   let block = out.includes(RENDER_TAG) ? '' : RENDER_TAG;
-  if (!out.includes(ADMIN_LOADER_TAG)) block += ADMIN_LOADER_TAG;
   if (block) out = out.replace('</body>', block + String.fromCharCode(10) + '</body>');
   return out;
 }

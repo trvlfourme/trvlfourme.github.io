@@ -1,12 +1,17 @@
-// Загружает админские скрипты только тому, кому они нужны.
-// Раньше kd-admin-catalog.js (13,6 КБ gzip) и kd-admin-links.js (3,8 КБ gzip)
-// подключались на каждой странице обычными тегами: два лишних запроса и вес
-// у всех посетителей. Теперь теги одни, а сами скрипты приходят:
-//   — сразу, если адрес содержит ?admin=1 или сессия админа уже открыта;
-//   — по Ctrl+Shift+A, как и раньше.
-// Скрипты сами дожидаются DOM (проверяют readyState), поэтому поздняя загрузка безопасна.
+// Локальный запуск редакторской панели. На сайте этот файл не подключается:
+// публичная сборка ссылок на админку не содержит (см. tools/admin/README.md).
+//
+// Как пользоваться: открыть локальную копию сайта (`node tools/server.js`, адрес из лога),
+// затем в консоли браузера выполнить одну строку:
+//   var s=document.createElement('script');s.src='/tools/admin/loader.js';document.head.appendChild(s);
+// После этого админка работает как раньше: Ctrl+Shift+A открывает панель.
 (function () {
-  var FILES = ['/assets/kd-admin-catalog.js', '/assets/kd-admin-links.js'];
+  var LOOPBACK = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+  if (!LOOPBACK) {
+    console.warn('Админка доступна только на локальной копии сайта: ' + location.hostname);
+    return;
+  }
+  var FILES = ['/tools/admin/catalog.js', '/tools/admin/links.js'];
   var started = false;
 
   function load() {
@@ -20,16 +25,6 @@
     }
   }
 
-  function wanted() {
-    if (/[?&]admin=1(?:&|$)/.test(location.search)) return true;
-    try {
-      if (sessionStorage.getItem('kd_admin_auth') === 'true') return true;
-    } catch (e) {
-      /* приватный режим — просто не грузим заранее */
-    }
-    return false;
-  }
-
   document.addEventListener(
     'keydown',
     function (e) {
@@ -37,6 +32,5 @@
     },
     true
   );
-
-  if (wanted()) load();
+  load();
 })();

@@ -18,8 +18,9 @@
     var local = readLocal()[id];
     return local ? Object.assign(base, local) : base;
   }
+  // Панель — локальный инструмент: на боевом домене она просто не запускается.
   function isAdmin() {
-    try { return sessionStorage.getItem('kd_admin_auth') === 'true'; } catch (e) { return false; }
+    return /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
   }
   function el(tag, props, children) {
     var node = document.createElement(tag);

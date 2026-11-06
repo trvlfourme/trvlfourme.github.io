@@ -35,7 +35,10 @@ if (!exists('robots.txt')) fail('нет robots.txt');
 else if (/Disallow:\s*\/\s*$/m.test(fs.readFileSync(path.join(root, 'robots.txt'), 'utf8'))) fail('robots.txt закрывает сайт от индексации (Disallow: /)');
 if (!exists('sitemap.xml')) fail('нет sitemap.xml');
 if (!exists('data/product-links.js')) fail('нет data/product-links.js');
-if (!exists('assets/kd-admin-links.js')) fail('нет assets/kd-admin-links.js');
+if (!exists('tools/admin/loader.js')) fail('нет tools/admin/loader.js — редакторская панель должна жить вне публикации');
+if (exists('assets/kd-admin-loader.js') || exists('assets/kd-admin-catalog.js') || exists('assets/kd-admin-links.js')) {
+  fail('админ-скрипты лежат в assets и уедут на сайт — перенесите их в tools/admin');
+}
 
 // 1б. Тексты статей: бандл должен быть собран из data/articles, а не правиться руками
 if (exists('data/articles/order.json')) {
@@ -118,14 +121,14 @@ const isServicePage = (f) => SERVICE_PAGES.has(path.basename(f)) || /^(yandex_|g
 const pages = files.filter((f) => f.endsWith('.html') && !f.includes(`${path.sep}tools${path.sep}`));
 const contentPages = pages.filter((f) => !isServicePage(f));
 
-// 1д. Админские скрипты не грузятся на публичных страницах напрямую
-const adminDirect = contentPages.filter((f) => /kd-admin-(catalog|links)\.js/.test(fs.readFileSync(f, 'utf8')));
+// 1д. Админские скрипты не грузятся на публичных страницах вообще (панель — локальный инструмент)
+const adminDirect = contentPages.filter((f) => /kd-admin-|\.js[^>]*tools\/admin/.test(fs.readFileSync(f, 'utf8')));
 if (adminDirect.length) {
   fail(
-    `админ-скрипты подключены напрямую (${adminDirect.length} стр.): ${adminDirect.slice(0, 3).map((f) => path.relative(root, f)).join(', ')} — нужен kd-admin-loader.js`
+    `на публичных страницах есть ссылки на админку (${adminDirect.length} стр.): ${adminDirect.slice(0, 3).map((f) => path.relative(root, f)).join(', ')} — запустите node tools/patch-links.js`
   );
 } else {
-  note('админ-скрипты не грузятся на публичных страницах');
+  note('админ-скрипты на публичных страницах не упоминаются');
 
 // 1ж. Кандидаты srcset существуют (иначе на телефоне будет битая картинка)
 const brokenSrc = [];
@@ -168,7 +171,7 @@ else {
   if (!js.includes('KD_PRODUCT_LINKS')) fail('бандл не знает про слой ссылок KD_PRODUCT_LINKS');
   if ((js.match(/function KdLnk\(/g) || []).length !== 1) fail('в бандле сломан резолвер ссылок KdLnk');
 }
-for (const jsFile of ['assets/kd-admin-links.js', 'assets/kd-admin-catalog.js', 'assets/kd-catalog-render.js', 'data/product-links.js', 'data/catalog.js']) {
+for (const jsFile of ['tools/admin/loader.js', 'tools/admin/links.js', 'tools/admin/catalog.js', 'assets/kd-catalog-render.js', 'data/product-links.js', 'data/catalog.js']) {
   if (exists(jsFile)) {
     try {
       execFileSync(process.execPath, ['--check', path.join(root, jsFile)], { stdio: 'pipe' });
@@ -179,7 +182,7 @@ for (const jsFile of ['assets/kd-admin-links.js', 'assets/kd-admin-catalog.js', 
 }
 
 // 2.5 Каталог товаров: единый источник правды data/catalog.js
-const CATALOG_FILES = ['data/catalog.js', 'assets/kd-admin-catalog.js', 'assets/kd-catalog-render.js'];
+const CATALOG_FILES = ['data/catalog.js', 'assets/kd-catalog-render.js'];
 for (const rel of CATALOG_FILES) if (!exists(rel)) fail(`нет ${rel}`);
 
 if (exists('data/catalog.js')) {
