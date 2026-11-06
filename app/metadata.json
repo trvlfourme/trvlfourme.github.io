@@ -1,0 +1,7 @@
+{
+  "name": "Home4Work – Продуктивность и домашний офис",
+  "description": "Автоматизированный нишевой SEO-affiliate портал по эргономике, обустройству домашнего офиса и продуктивной удаленной работе для родителей и специалистов.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
