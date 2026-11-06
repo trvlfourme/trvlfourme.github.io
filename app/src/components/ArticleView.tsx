@@ -404,8 +404,9 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
             </div>
           </div>
 
-'          {/* Подборку каталога на статической странице рисует assets/kd-catalog-render.js
-              по data/catalog.js: второй блок здесь дал бы дубли товаров. */}
+'          {/* Слот для блока каталога: его наполняет assets/kd-catalog-render.js
+              по data/catalog.js, поэтому товары попадают и в статический HTML. */}
+          <div data-kd-article-slug={article.slug} />
 
           {/* Conclusion */}
           <div className="p-6 bg-white rounded-2xl border border-stone-200 mb-10">
