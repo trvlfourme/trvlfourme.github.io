@@ -112,6 +112,20 @@ production-сборкой из исходников, это T-028.
 `npm install --legacy-peer-deps`: в `package.json` нет lockfile под vite 8 и esbuild
 разъезжается по peer-зависимостям.
 
+## Бэкапы
+
+Бэкап — архив ветки `main` плюс проверка, что из него всё восстанавливается:
+
+    bash tools/backup.sh          # архив в .backup/ и проверка распаковкой
+    bash tools/backup.sh --check  # проверить последний архив, новый не делать
+
+`.backup/` в `.gitignore`: архив лежит на диске (и синхронизируется в OneDrive), в git и на
+прод не попадает. Скрипт сверяет число файлов с деревом ветки, прогоняет `node --check` по
+бандлу, `apply-articles.js --check` и проверяет наличие ключевых файлов
+(`index.html`, `articles/index.html`, `sitemap.xml`, `robots.txt`, `404.html`,
+`_redirects`, `data/catalog.js`, `app/package.json`). Архив, который не прошёл проверку,
+бэкапом не считается.
+
 ## Сборка
 
 ```

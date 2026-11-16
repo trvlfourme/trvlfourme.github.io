@@ -25,3 +25,6 @@ kabinetdoma-sources-*/
 app/node_modules/
 app/dist/
 app/public/
+
+# бэкапы и распаковка для проверки восстановления
+.backup/
