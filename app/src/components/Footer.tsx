@@ -104,11 +104,11 @@ export const Footer: React.FC<FooterProps> = ({ onNav }) => {
             <div className="text-[11px] text-stone-400 leading-relaxed space-y-2">
               <div className="flex items-center gap-1.5 text-emerald-400">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Маркировка по ст. 18.1 ФЗ-347</span>
+                <span>Маркировка по ст. 18.1 ФЗ «О рекламе»</span>
               </div>
               <p>
-                Материалы содержат партнерские ссылки на проверенные маркетплейсы (Яндекс Маркет, Ozon, Wildberries). 
-                Каждый рекламный материал снабжен токеном ERID от аккредитованного ОРД.
+                Материалы содержат партнерские ссылки на маркетплейсы (Яндекс Маркет, Ozon, Wildberries). 
+                Рекламные материалы маркируются токенами erid; сведения о креативах в ЕРИР передает ОРД «Яндекс».
               </p>
               <div className="pt-1 flex flex-col gap-1">
                 <button onClick={() => onNav('privacy')} className="text-left text-stone-400 hover:text-white transition-colors underline">
