@@ -42,7 +42,6 @@ const articles = files.map((file) => {
     publishedAt: a.publishedAt,
     updatedAt: a.updatedAt || a.publishedAt,
     readTimeMin: a.readTimeMin,
-    views: a.views || 0,
     heroImage: a.heroImage,
     // В оглавлении иногда лежит лишний erid от старого генератора — берём только id и label.
     tableOfContents: (a.tableOfContents || []).map((t) => ({ id: t.id, label: t.label })),

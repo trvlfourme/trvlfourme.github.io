@@ -6,7 +6,6 @@ import { SITE_PRODUCTS, SiteProduct } from './site.generated';
 
 const STORE_FIELD: Record<string, keyof ProductItem> = {
   yandex: 'yandexMarketUrl',
-  wb: 'wbUrl',
   admitad: 'admitadUrl',
   gdeslon: 'gdeSlonUrl',
 };
@@ -41,7 +40,6 @@ function toProductItem(site: SiteProduct): ProductItem {
 
   // Прямые ссылки из data/product-links.js (если для магазина оффера нет).
   if (site.links.yandex && !links.yandexMarketUrl) links.yandexMarketUrl = site.links.yandex;
-  if (site.links.wb && !links.wbUrl) links.wbUrl = site.links.wb;
 
   return {
     id: site.id,

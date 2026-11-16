@@ -44,7 +44,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-03",
     "updatedAt": "2026-11-03",
     "readTimeMin": 9,
-    "views": 0,
     "heroImage": "/images/editorial/compact-apartment-nook.jpg",
     "tableOfContents": [
       {
@@ -149,7 +148,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-06",
     "updatedAt": "2026-11-04",
     "readTimeMin": 5,
-    "views": 5240,
     "heroImage": "/images/editorial/work-life-balance.jpg",
     "tableOfContents": [
       {
@@ -277,7 +275,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-05",
     "updatedAt": "2026-10-05",
     "readTimeMin": 4,
-    "views": 4820,
     "heroImage": "/images/editorial/family-remote-work.jpg",
     "tableOfContents": [
       {
@@ -385,7 +382,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-04",
     "updatedAt": "2026-10-04",
     "readTimeMin": 2,
-    "views": 6190,
     "heroImage": "/images/editorial/home-office-cozy.jpg",
     "tableOfContents": [
       {
@@ -490,7 +486,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-04",
     "updatedAt": "2026-10-04",
     "readTimeMin": 4,
-    "views": 9230,
     "heroImage": "/images/editorial/ergonomic-chair-desk.jpg",
     "tableOfContents": [
       {
@@ -603,7 +598,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-03",
     "updatedAt": "2026-11-04",
     "readTimeMin": 3,
-    "views": 5410,
     "heroImage": "/images/editorial/screenbar-evening-light.jpg",
     "tableOfContents": [
       {
@@ -699,7 +693,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-03",
     "updatedAt": "2026-10-03",
     "readTimeMin": 2,
-    "views": 4120,
     "heroImage": "/images/editorial/audio-podcasting-desk.jpg",
     "tableOfContents": [
       {
@@ -790,7 +783,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-02",
     "updatedAt": "2026-11-04",
     "readTimeMin": 5,
-    "views": 8940,
     "heroImage": "/images/editorial/realistic-workspace-scandinavian.jpg",
     "tableOfContents": [
       {
@@ -902,7 +894,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-02",
     "updatedAt": "2026-11-04",
     "readTimeMin": 5,
-    "views": 5720,
     "heroImage": "/images/editorial/ergonomic-chair-desk.jpg",
     "tableOfContents": [
       {
@@ -1043,7 +1034,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-01",
     "updatedAt": "2026-11-02",
     "readTimeMin": 1,
-    "views": 6710,
     "heroImage": "/images/editorial/family-remote-work.jpg",
     "tableOfContents": [
       {
@@ -1162,7 +1152,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-01",
     "updatedAt": "2026-10-01",
     "readTimeMin": 2,
-    "views": 3120,
     "heroImage": "/images/editorial/compact-apartment-nook.jpg",
     "tableOfContents": [
       {
@@ -1251,7 +1240,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-09-30",
     "updatedAt": "2026-11-04",
     "readTimeMin": 6,
-    "views": 2890,
     "heroImage": "/images/editorial/standing-desk-health.jpg",
     "tableOfContents": [
       {
@@ -1383,7 +1371,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-09-29",
     "updatedAt": "2026-11-04",
     "readTimeMin": 5,
-    "views": 3450,
     "heroImage": "/images/editorial/ergonomic-chair-desk.jpg",
     "tableOfContents": [
       {
@@ -1513,7 +1500,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-09-28",
     "updatedAt": "2026-11-02",
     "readTimeMin": 1,
-    "views": 2640,
     "heroImage": "/images/editorial/audio-podcasting-desk.jpg",
     "tableOfContents": [
       {
@@ -1622,7 +1608,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-05",
     "updatedAt": "2026-10-05",
     "readTimeMin": 3,
-    "views": 3840,
     "heroImage": "/images/editorial/compact-apartment-nook.jpg",
     "tableOfContents": [
       {
@@ -1723,7 +1708,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-04",
     "updatedAt": "2026-11-04",
     "readTimeMin": 5,
-    "views": 4210,
     "heroImage": "/images/editorial/realistic-workspace-scandinavian.jpg",
     "tableOfContents": [
       {
@@ -1872,7 +1856,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-03",
     "updatedAt": "2026-10-03",
     "readTimeMin": 7,
-    "views": 5120,
     "heroImage": "/images/editorial/budget-clean-desk.jpg",
     "tableOfContents": [
       {
@@ -1980,7 +1963,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-06",
     "updatedAt": "2026-10-06",
     "readTimeMin": 7,
-    "views": 3120,
     "heroImage": "/images/editorial/remote-travel-work.jpg",
     "tableOfContents": [
       {
@@ -2088,7 +2070,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-02",
     "updatedAt": "2026-11-02",
     "readTimeMin": 10,
-    "views": 0,
     "heroImage": "/images/editorial/ergonomic-chair-desk.jpg",
     "tableOfContents": [
       {
@@ -2194,7 +2175,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-02",
     "updatedAt": "2026-11-02",
     "readTimeMin": 8,
-    "views": 0,
     "heroImage": "/images/editorial/standing-desk-health.jpg",
     "tableOfContents": [
       {
@@ -2297,7 +2277,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-02",
     "updatedAt": "2026-11-02",
     "readTimeMin": 8,
-    "views": 0,
     "heroImage": "/images/editorial/family-remote-work.jpg",
     "tableOfContents": [
       {
@@ -2407,7 +2386,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-02",
     "updatedAt": "2026-11-02",
     "readTimeMin": 9,
-    "views": 0,
     "heroImage": "/images/editorial/home-office-cozy.jpg",
     "tableOfContents": [
       {
@@ -2529,7 +2507,6 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-02",
     "updatedAt": "2026-11-02",
     "readTimeMin": 7,
-    "views": 0,
     "heroImage": "/images/editorial/budget-clean-desk.jpg",
     "tableOfContents": [
       {

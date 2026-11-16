@@ -179,6 +179,13 @@ export default function App() {
     <div className="min-h-screen flex flex-col bg-stone-50 text-stone-900 selection:bg-amber-100 selection:text-amber-900">
       
       {/* Main Header */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-stone-900 focus:text-white focus:rounded-lg focus:font-semibold"
+      >
+        Перейти к содержанию
+      </a>
+
       <Header
         activeTab={activeTab}
         setActiveTab={handleNav}
@@ -190,7 +197,7 @@ export default function App() {
       />
 
       {/* Main Body Router */}
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         {activeTab === 'articles' && (
           <>
             {selectedArticle ? (

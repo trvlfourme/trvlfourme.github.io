@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Clock, Eye, Sparkles, Tag } from 'lucide-react';
+import { ArrowUpRight, Clock, Sparkles, Tag } from 'lucide-react';
 import { Article } from '../types';
 import { CATEGORIES, getTagsForArticle } from '../data/contentData';
 import { handleImageError } from '../utils/imageFallback';
@@ -62,11 +62,6 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, onSelect, onS
             <span className="flex items-center gap-1">
               <Clock className="w-3 h-3 text-stone-700" />
               {article.readTimeMin} мин
-            </span>
-            <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="flex items-center gap-1">
-              <Eye className="w-3 h-3 text-stone-700" />
-              {article.views}
             </span>
             {isAi && (
               <>

@@ -131,6 +131,27 @@ if (adminDirect.length) {
 } else {
   note('админ-скрипты на публичных страницах не упоминаются');
 
+// 1е. Режим «сайт без ПДн»: ни счётчиков, ни чужих шрифтов, ни трекера целей (T-056, T-058)
+const thirdParty = [];
+for (const f of contentPages) {
+  const html = fs.readFileSync(f, 'utf8');
+  for (const [needle, label] of [
+    ['mc.yandex', 'счётчик Метрики'],
+    ['fonts.googleapis.com', 'таблица стилей Google Fonts'],
+    ['fonts.gstatic.com', 'файлы Google Fonts'],
+    ['kd-track.js', 'трекер целей'],
+  ]) {
+    if (html.includes(needle)) thirdParty.push(`${path.relative(root, f)} → ${label}`);
+  }
+}
+if (thirdParty.length) {
+  fail(
+    `на страницах остались внешние вставки (${thirdParty.length}): ${thirdParty.slice(0, 3).join(', ')} — запустите node tools/strip-third-party.js`
+  );
+} else {
+  note('внешних счётчиков и чужих шрифтов нет: режим «сайт без ПДн»');
+}
+
 // 1ж. Кандидаты srcset существуют (иначе на телефоне будет битая картинка)
 const brokenSrc = [];
 for (const f of contentPages) {
@@ -357,9 +378,7 @@ for (const page of contentPages) {
   if (/ozon\.ru/i.test(html)) fail(`${rel}: осталась кнопка Ozon без партнёрской ссылки`);
   if (html.includes('/data/product-links.js') && !html.includes('/data/catalog.js')) fail(`${rel}: не подключён data/catalog.js`);
   if (html.includes('/data/product-links.js') && !html.includes('/assets/kd-catalog-render.js')) fail(`${rel}: не подключён assets/kd-catalog-render.js`);
-  const trackers = (html.match(/kd-track\.js/g) || []).length;
-  if (trackers === 0) fail(`${rel}: нет трекера целей /assets/kd-track.js`);
-  else if (trackers > 1) fail(`${rel}: трекер подключён ${trackers} раза`);
+  // Трекер целей снят вместе с Метрикой: режим «сайт без ПДн» (T-056).
 }
 
 // 4. Локальные пути в разметке существуют

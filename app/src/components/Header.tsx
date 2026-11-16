@@ -46,9 +46,10 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center justify-between h-16 gap-4">
           
           {/* Logo */}
-          <div 
-            onClick={() => handleNav('articles')}
-            className="flex items-center gap-3 cursor-pointer group select-none flex-shrink-0"
+          <a
+            href="/"
+            onClick={(e) => { e.preventDefault(); handleNav('articles'); }}
+            className="flex items-center gap-3 cursor-pointer group select-none flex-shrink-0 no-underline"
           >
             <div className="w-10 h-10 rounded-xl overflow-hidden bg-stone-900 border border-stone-800 shadow-sm flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
               <img src="/logo.png" alt="Кабинет Дома" className="w-full h-full object-cover" />
@@ -60,13 +61,13 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
               <p className="text-xs text-stone-700 hidden sm:block">Домашний офис, мебель и тишина</p>
             </div>
-          </div>
+          </a>
 
           {/* Search bar */}
           <div className="hidden md:flex items-center relative flex-1 max-w-xs lg:max-w-sm">
             <Search className="w-4 h-4 text-stone-700 absolute left-3 pointer-events-none" />
             <input 
-              type="text"
+              type="search"
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
@@ -75,6 +76,7 @@ export const Header: React.FC<HeaderProps> = ({
                 }
               }}
               placeholder="Поиск гайдов, столов, кресел..."
+              aria-label="Поиск по статьям"
               className="w-full pl-9 pr-3 py-1.5 text-sm bg-stone-100 hover:bg-stone-150 focus:bg-white border border-transparent focus:border-amber-400 rounded-lg outline-none transition-all placeholder:text-stone-700"
             />
           </div>
@@ -161,10 +163,11 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="lg:hidden py-3 border-t border-stone-200 space-y-1">
             <div className="mb-2 px-1">
               <input 
-                type="text"
+                type="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Поиск по статьям и материалам..."
+                aria-label="Поиск по статьям"
                 className="w-full px-3 py-2 text-sm bg-stone-100 border border-stone-200 rounded-lg outline-none"
               />
             </div>

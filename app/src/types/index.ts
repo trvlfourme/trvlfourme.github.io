@@ -37,7 +37,6 @@ export interface ProductItem {
   // в редакционных текстах их не держим.
   admitadUrl?: string;
   gdeSlonUrl?: string;
-  wbUrl?: string;
   yandexMarketUrl?: string;
   bestMerchant?: string;
   erid?: string;
@@ -73,7 +72,6 @@ export interface Article {
   publishedAt: string;
   updatedAt: string;
   readTimeMin: number;
-  views: number;
   heroImage: string;
   tableOfContents: { id: string; label: string }[];
   sections: ArticleSection[];

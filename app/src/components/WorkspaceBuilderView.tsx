@@ -51,10 +51,10 @@ export const WorkspaceBuilderView: React.FC = () => {
 
   const copyCartToClipboard = () => {
     const textLines = [
-      `🛒 Готовый сетап рабочего места Home4Work:`,
+      `🛒 Готовый сетап рабочего места «Кабинет Дома»:`,
       `Общий бюджет: ${totalPrice.toLocaleString('ru-RU')} ₽\n`,
       ...selectedProducts.map((p, i) => `${i + 1}. ${p.name}${priceText(p) ? ' — ' + priceText(p) : ''} (${firstOfferUrl(p.id)})`),
-      `\nСобрано на https://home4work.ru`
+      `\nСобрано на https://kabinetdoma.ru`
     ];
 
     if (navigator.clipboard) {

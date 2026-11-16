@@ -188,7 +188,6 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
               <span aria-hidden="true">·</span>
               <span className="flex items-center gap-1">
                 <Eye className="w-3 h-3" />
-                {article.views} просмотров
               </span>
             </div>
 
