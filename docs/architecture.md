@@ -107,10 +107,19 @@ production-сборкой из исходников, это T-028.
 
 Сборка: `cd app && npx vite build` → `app/dist/assets/index.js`. Перед подменой бандла на сайте
 проверить гейты из T-028: в сборке не должно быть админки, `@google/genai`, выдуманных
-партнёрских ссылок (`ozon.ru/search`, `ref=WBR_KD`), а `srcSet`, canonical и `kd-track.js`
+партнёрских ссылок (`ozon.ru/search`, `ref=WBR_KD`), а `srcSet` и canonical
 должны быть перенесены из текущего бандла. Установка зависимостей требует
 `npm install --legacy-peer-deps`: в `package.json` нет lockfile под vite 8 и esbuild
 разъезжается по peer-зависимостям.
+
+## Режим «сайт без ПДн»
+
+Владелец выбрал режим без обработки персональных данных: на сайте нет счётчиков, Вебвизора,
+чужих шрифтов и любых сторонних запросов. Держится это двумя вещами: `tools/strip-third-party.js`
+в сборке и проверкой в `verify-build.js` — если на странице появится `mc.yandex`,
+`fonts.googleapis.com`, `fonts.gstatic.com` или `kd-track.js`, сборка падает. Новые интеграции
+(аналитика, шрифты, виджеты) в этот режим не добавляются без отдельного решения владельца и
+правки политики (T-054). Шрифты — системные: `--font-sans` в `assets/index.css`.
 
 ## Бэкапы
 
@@ -148,7 +157,8 @@ node tools/build.js --skip-prerender     # только постобработк
    `fetchpriority="high"` у первой.
 6. `make-redirects.js` — 17 страниц на meta-refresh (GitHub Pages не умеет 301) + `_redirects`
    для Cloudflare.
-7. `inject-tracker.js` — `assets/kd-track.js` на канонические страницы, кроме редиректов.
+7. `strip-third-party.js` — снимает внешние вставки (Метрика, Google Fonts, трекер целей);
+   запускается дважды: до пререндера (чистит оболочку) и финально — по всем страницам.
 8. `sitemap.js` — адреса ровно как в canonical (со слешем), `lastmod` меняется только при
    изменении содержимого (`tools/sitemap-lastmod.json` хранит хэши и коммитится).
 9. `verify-build.js` — правила ниже.
