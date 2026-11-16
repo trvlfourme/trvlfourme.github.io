@@ -90,7 +90,7 @@ find "$WORK" -name '*.md' -type f -delete 2>/dev/null || true
 
 # Файлы, которые мы удалили у себя, но которые остались на проде: иначе шаг «сохранить
 # файлы только прода» будет тащить их вечно. Verification-файлы поисковиков сюда не пишем.
-for f in ${PROD_DELETE:-og-image.png assets/kd-admin-loader.js assets/kd-admin-catalog.js assets/kd-admin-links.js}; do
+for f in ${PROD_DELETE:-og-image.png assets/kd-admin-loader.js assets/kd-admin-catalog.js assets/kd-admin-links.js assets/kd-track.js}; do
   if [ -e "$WORK/$f" ] && ! git -C "$ROOT" ls-tree -r main --name-only | grep -qx "$f"; then
     echo "     удаляю с прода: $f"
     rm -f "$WORK/$f"
