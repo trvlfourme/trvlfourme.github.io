@@ -64,7 +64,8 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNav }) => {
         <section>
           <h2 className="text-base sm:text-lg font-bold text-stone-900 mb-2">4. Обратная связь</h2>
           <p>
-            По всем юридическим вопросам и претензиям правообладателей просьба обращаться по официальному электронному адресу: <a href="mailto:info@kabinetdoma.ru" className="text-amber-700 underline font-medium">info@kabinetdoma.ru</a>.
+            Форм обратной связи, регистрации и публичного почтового ящика на сайте нет: сайт не принимает и не хранит
+            обращения посетителей. Канал для юридически значимых сообщений публикуется отдельно, когда он появится.
           </p>
         </section>
 

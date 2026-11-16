@@ -31,9 +31,6 @@ export const Footer: React.FC<FooterProps> = ({ onNav }) => {
                   О проекте
                 </button>
               </div>
-              <div className="text-[11px] text-stone-400 pt-1">
-                Вопросы и пожелания: <a href="mailto:info@kabinetdoma.ru" className="text-amber-400 hover:text-amber-300 transition-colors">info@kabinetdoma.ru</a>
-              </div>
             </div>
           </div>
 

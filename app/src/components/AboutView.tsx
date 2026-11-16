@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, Users, BookOpen, CheckCircle2, Mail, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Award, Users, BookOpen, CheckCircle2, ArrowRight } from 'lucide-react';
 import { NavTab } from '../types';
 
 interface AboutViewProps {
@@ -132,16 +132,16 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNav }) => {
       {/* Call to action */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 bg-amber-50 border border-amber-200 rounded-2xl">
         <div>
-          <h3 className="font-bold text-stone-900 text-sm mb-1">Вопросы и пожелания по проекту?</h3>
-          <p className="text-xs text-stone-600">Напишите нам на электронную почту редакции.</p>
+          <h3 className="font-bold text-stone-900 text-sm mb-1">Как читать наши материалы</h3>
+          <p className="text-xs text-stone-600">Ссылки ведут в каталог с характеристиками, ценами и офферами маркетплейсов.</p>
         </div>
-        <a 
-          href="mailto:info@kabinetdoma.ru" 
+        <button
+          onClick={() => onNav('articles')}
           className="inline-flex items-center gap-2 px-5 py-2.5 bg-stone-900 text-white rounded-xl text-xs font-semibold hover:bg-stone-800 transition-colors flex-shrink-0"
         >
-          <Mail className="w-4 h-4 text-amber-400" />
-          info@kabinetdoma.ru
-        </a>
+          <ArrowRight className="w-4 h-4 text-amber-400" />
+          К статьям
+        </button>
       </div>
 
     </div>
