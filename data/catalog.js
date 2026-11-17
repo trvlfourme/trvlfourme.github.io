@@ -1115,6 +1115,22 @@ window.KD_CATALOG = {
   ],
   "articles": [
     {
+      "slug": "chto-podarit-udelenshchiku",
+      "title": "Что подарить удалёнщику: 9 вещей, которые не лягут в ящик",
+      "block_title": "Девять подарков для домашнего кабинета",
+      "product_ids": [
+        "lumbar-cushion-memory",
+        "ergonomic-footrest-adjustable",
+        "acupressure-mat-pranamat",
+        "laptop-stand-aluminum-folding",
+        "xiaomi-lightbar",
+        "cable-management-kit",
+        "shokz-openfit-pro",
+        "pomodoro-timer-cube",
+        "ugreen-gan-100w"
+      ]
+    },
+    {
       "slug": "vertikalnaya-mysh-polza",
       "title": "Вертикальная мышь: кому помогает, а кому делает хуже",
       "block_title": "От вертикального хвата до трекбола",
