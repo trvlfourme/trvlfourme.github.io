@@ -1115,6 +1115,16 @@ window.KD_CATALOG = {
   ],
   "articles": [
     {
+      "slug": "rabota-za-noutbukom-bez-boli-v-shee",
+      "title": "Работа за ноутбуком без боли в шее: 4 аксессуара и один навык",
+      "block_title": "Поднять экран, опустить руки",
+      "product_ids": [
+        "laptop-stand-aluminum-folding",
+        "moft-laptop-stand",
+        "onkron-g80"
+      ]
+    },
+    {
       "slug": "rabochee-mesto-na-balkone",
       "title": "Рабочее место на балконе: инженерия, а не картинка",
       "block_title": "Компактный набор на балкон",

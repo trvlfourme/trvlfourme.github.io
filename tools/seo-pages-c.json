@@ -1,4 +1,14 @@
 {
+  "rabota-za-noutbukom-bez-boli-v-shee": {
+    "title": "Работа за ноутбуком без боли в шее: 4 аксессуара и навык",
+    "desc": "Почему за ноутбуком всегда наклонена голова, как поднять экран до уровня глаз и почему подставка без внешней клавиатуры бесполезна.",
+    "related": [
+      ["/article/kronshtejn-dlya-monitora-ergonomika-shei/", "Кронштейн и нагрузка на шею"],
+      ["/article/ergonomika-rabochego-mesta-nastroyka/", "Настройка места за 30 минут"],
+      ["/article/podstavka-dlya-nog-pod-stol-ergonomika/", "Подставка для ног и поясница"],
+      ["/article/kak-vybrat-kreslo-dlya-spiny/", "Кресло и поясница"]
+    ]
+  },
   "rabochee-mesto-dlya-dvoih-v-komnate": {
     "title": "Рабочее место для двоих в одной комнате: схемы и тишина",
     "desc": "Три схемы расстановки столов, защита микрофона от голоса партнёра, календарный этикет и набор мебели для двух удалёнщиков в одной комнате.",
