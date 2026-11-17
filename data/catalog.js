@@ -1115,6 +1115,17 @@ window.KD_CATALOG = {
   ],
   "articles": [
     {
+      "slug": "vertikalnaya-mysh-polza",
+      "title": "Вертикальная мышь: кому помогает, а кому делает хуже",
+      "block_title": "От вертикального хвата до трекбола",
+      "product_ids": [
+        "mouse-delux-vertical",
+        "trekbol-logitech-mx-ergo",
+        "trekbol-logitech-m575s",
+        "mouse-logitech-mx-master-3s"
+      ]
+    },
+    {
       "slug": "rabota-za-noutbukom-bez-boli-v-shee",
       "title": "Работа за ноутбуком без боли в шее: 4 аксессуара и один навык",
       "block_title": "Поднять экран, опустить руки",
