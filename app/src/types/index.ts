@@ -23,13 +23,11 @@ export interface ProductItem {
   brand: string;
   category: 'chair' | 'desk' | 'lighting' | 'audio' | 'accessory' | 'kids-zone' | 'organization' | 'wellness';
   shortDesc: string;
-  fullDesc: string;
   priceRub: number;
   priceMode?: 'hidden' | 'note';
   priceNote?: string;
   pros: string[];
   cons: string[];
-  specs: Record<string, string>;
   imageUrl: string;
   // Партнёрские ссылки и erid приходят из каталога сайта (data/catalog.js),
   // в редакционных текстах их не держим.
