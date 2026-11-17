@@ -12,11 +12,24 @@ interface MarkdownRendererProps {
  */
 export function formatInlineText(text: string): React.ReactNode[] {
   // Regex pattern matching **bold**, *italic*, and `code`
-  const tokenRegex = /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g;
+  const tokenRegex = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g;
   const parts = text.split(tokenRegex);
 
   return parts.map((part, index) => {
     if (!part) return null;
+
+    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (linkMatch) {
+      return (
+        <a
+          key={index}
+          href={linkMatch[2]}
+          className="text-amber-800 font-medium underline decoration-amber-300 underline-offset-2 hover:text-amber-900"
+        >
+          {linkMatch[1]}
+        </a>
+      );
+    }
 
     if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
       const boldContent = part.slice(2, -2);
