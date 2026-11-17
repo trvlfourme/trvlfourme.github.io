@@ -1,142 +1,146 @@
 {
   "/": {
-    "hash": "6c7121f09bdffa076898bac120c179dc649325f5",
+    "hash": "734d789c3df9bf92be5076e06563caf65a549daa",
     "lastmod": "2026-11-17"
   },
   "/articles/": {
-    "hash": "6894b5048d728c5fd45c01b8338dbbc5ae43dee7",
+    "hash": "385f1c34425adf6e1c20e9dc7456145d519f5f5f",
     "lastmod": "2026-11-17"
   },
   "/calculator/": {
-    "hash": "0812ce2286d4c436606b7645af26c7a9f68fca89",
+    "hash": "8c8cf225a75af3f4d9d26f7b90c89435ddd0b2ff",
     "lastmod": "2026-11-17"
   },
   "/builder/": {
-    "hash": "004283a206529f4fbf81b599b53ba21924b4dba0",
+    "hash": "ad0aea2bdc14ae5e028fc46f6c5471ad24b2f34d",
     "lastmod": "2026-11-17"
   },
   "/tests/": {
-    "hash": "f1270e91289d8e684bab6c58c0d39bd3c7d3875e",
+    "hash": "a0ed4032804a984ae6be2f1e1e1218b19955b637",
     "lastmod": "2026-11-17"
   },
   "/checklist/": {
-    "hash": "173b889d8f38e873eb989cca5a16642895b82135",
+    "hash": "fe9047d656907103b0908673b2f27e66d147d2d9",
     "lastmod": "2026-11-17"
   },
   "/about/": {
-    "hash": "f4c7ca3d06b79843f88ba32db3cdc5048211218a",
+    "hash": "b15ae573b4186669b677d82077aac300e41a3597",
     "lastmod": "2026-11-17"
   },
   "/privacy/": {
-    "hash": "60535a220c1c3a36d994ba63414d3dbf14ca2851",
+    "hash": "c5d822af342e710079c389d1ced223eb82dc3117",
     "lastmod": "2026-11-17"
   },
   "/terms/": {
-    "hash": "f6cb28b1cddb60d98fec33d0c8b56d2ad28c7f11",
+    "hash": "5dd756effa61ebb9084b06a91bcdf083861ce60c",
     "lastmod": "2026-11-17"
   },
   "/article/chto-podarit-udelenshchiku/": {
-    "hash": "7bf1d2c5148b8c1a6808f4c0f261ee7b395e3e64",
+    "hash": "bb58779e479cb7b6ee8cafa9fc4b991d95f252da",
+    "lastmod": "2026-11-17"
+  },
+  "/article/rabochee-mesto-v-semnoy-kvartire/": {
+    "hash": "78552214901300421cd016104208e934d4a5a49a",
     "lastmod": "2026-11-17"
   },
   "/article/rabota-za-noutbukom-bez-boli-v-shee/": {
-    "hash": "9f72ee7372dc194935799b1c207094c4e9b54e07",
+    "hash": "a81927187acca4c88f6dc2eb5b191c7e345dfea4",
     "lastmod": "2026-11-17"
   },
   "/article/vertikalnaya-mysh-polza/": {
-    "hash": "3b9dff6b9521387e56e7593a18706a789774e9b0",
+    "hash": "5f60ec6e56d667329160ea7774d548a721905bbc",
     "lastmod": "2026-11-17"
   },
   "/article/rabochee-mesto-na-balkone/": {
-    "hash": "3190770d5daad2fac2012c63d0c31dc326e6bc73",
+    "hash": "f26192d300675c33f238f1cb582cf09457cc4bbe",
     "lastmod": "2026-11-17"
   },
   "/article/printer-dlya-doma-kompaktno-i-kuda-postavit/": {
-    "hash": "fcfff83880d5cbe6cb0e1d0452aab50b7e4beddd",
+    "hash": "6c3f07e14cb83e61af6ddb4297ae47210a5b172e",
     "lastmod": "2026-11-17"
   },
   "/article/kak-vybrat-kreslo-dlya-spiny/": {
-    "hash": "d91a30c2bab591fc1eb7617f5d65498916db2712",
+    "hash": "5117e972da23449f31d4688cf0f37e883ece58d8",
     "lastmod": "2026-11-17"
   },
   "/article/podemnyj-stol-kak-vybrat/": {
-    "hash": "989f5742a89de28daad60eed2d5ad961c503aee4",
+    "hash": "018e490518764acc17270cc4d93ee29ee3ea43a0",
     "lastmod": "2026-11-17"
   },
   "/article/udalennaya-rabota-s-rebenkom/": {
-    "hash": "a7894d2a3cc92bdf7b039d2cf7d8eb1d16337e41",
+    "hash": "60412bb48b299d472d27fd645d64cbd0e2084b2a",
     "lastmod": "2026-11-17"
   },
   "/article/ergonomika-rabochego-mesta-nastroyka/": {
-    "hash": "b62355c7dcfe2a730d73e8bf8b340debdc2766d1",
+    "hash": "821c1e2773b5551ae9a239c510ab7a3e3c8ba551",
     "lastmod": "2026-11-17"
   },
   "/article/udalennaya-rabota-v-poezdke-i-otpuske/": {
-    "hash": "af6f5991b11584c8a5941009f659dc793392acbb",
+    "hash": "c226efee25070d58150c7516317cc5d481725e78",
     "lastmod": "2026-11-17"
   },
   "/article/balans-raboty-i-lichnoj-zhizni-na-udalenke/": {
-    "hash": "24d0a29e6541980a3ec9980afeb1c0b83d5911d2",
+    "hash": "f4632f0bd3c2b4115c3187d8523b2228e285c7eb",
     "lastmod": "2026-11-17"
   },
   "/article/v-kakoj-komnate-luchshe-rabotat-na-udalenke/": {
-    "hash": "4b8bd410b9b57e621a0ec6ec7acd94ffd7d3c96a",
+    "hash": "f935169ad239d0a0823bb8ea61d189076c365d42",
     "lastmod": "2026-11-17"
   },
   "/article/rabochee-mesto-v-odnushke-s-rebenkom/": {
-    "hash": "b66a1b68b93df27e6a83712c29e415e1b9dad458",
+    "hash": "278693aeba4bcfcf386933c29a85ed1ce01671be",
     "lastmod": "2026-11-17"
   },
   "/article/kuda-postavit-rabochij-stol-v-komnate/": {
-    "hash": "19c2bedf3c71a75b404dd27db738eee101017c73",
+    "hash": "81602fe1042ccf88292c38806bd4136c8932a1b5",
     "lastmod": "2026-11-17"
   },
   "/article/5-luchshih-ergonomichnyh-kresel-rejting/": {
-    "hash": "66cadeb0ef0c1094d922a50e1aff2f4a798e8f85",
+    "hash": "8ef7cabc859fc4098721cb6f975623471426d62b",
     "lastmod": "2026-11-17"
   },
   "/article/stol-s-elektroprivodom-polza-dlya-spiny/": {
-    "hash": "7e1b6d17f64e2333ebe3822b60c3724f23023ebc",
+    "hash": "6cb827f3715b8824a74df304a3a42c549607ae8d",
     "lastmod": "2026-11-17"
   },
   "/article/domashnij-ofis-s-nulya-nedorogo/": {
-    "hash": "35cb3a07e4d2dd7de9062bcfb93a99efe0379108",
+    "hash": "67476fa779af9585ad2c7c81912abaf2b8917416",
     "lastmod": "2026-11-17"
   },
   "/article/mikrofon-s-shumopodavleniem-dlya-zvonkov/": {
-    "hash": "f3ae3734e47b78b8e44c1b79030a6e650695e92a",
+    "hash": "044e2e0ff06149a63de65f386cde75b4cab017b9",
     "lastmod": "2026-11-17"
   },
   "/article/skrinbar-na-monitor-vybor-zashchita-glaz/": {
-    "hash": "39b703c1a7a8be5a2adacfa80f8301718cb427c6",
+    "hash": "3a8835664a955d61e3f5730fc26ad3a47902a513",
     "lastmod": "2026-11-17"
   },
   "/article/kronshtejn-dlya-monitora-ergonomika-shei/": {
-    "hash": "88480e5906e08bec5d690c139ed829fbeeb717fa",
+    "hash": "18f117df20c5d982ae581f52b1638358bb22c6fd",
     "lastmod": "2026-11-17"
   },
   "/article/kabel-menedzhment-pod-stolom-svoimi-rukami/": {
-    "hash": "80f992e48097d9714935dd21ad76c5f43719b8df",
+    "hash": "2b304712f8d56c2a895d01f4bcf7cb62efa4d477",
     "lastmod": "2026-11-17"
   },
   "/article/rabochee-mesto-dlya-dvoih-v-komnate/": {
-    "hash": "78e54c3b985fdd3055a4712a28d76b403a71ff07",
+    "hash": "27c1d8ca0454f37dd0516738044b18f1568cae42",
     "lastmod": "2026-11-17"
   },
   "/article/metod-svetofor-udalenka-s-detmi/": {
-    "hash": "8d5cadbb703d7ed8eda1e91be26ac1ad80dd266c",
+    "hash": "b1542b3533395a5436f06bea598dc0387f73f4de",
     "lastmod": "2026-11-17"
   },
   "/article/podstavka-dlya-nog-pod-stol-ergonomika/": {
-    "hash": "9e4f8dc56f4f8d9d81d4875ebd3f3d17b245eb0e",
+    "hash": "cdffd626a3cba00aa8968ec9f685e2b44b360bf6",
     "lastmod": "2026-11-17"
   },
   "/article/kronshtejn-dlya-monitora-na-stol-vybor/": {
-    "hash": "7a9e52db202bdf0956bdcf27b9bd205275539c15",
+    "hash": "5451377d7fca2913b54fe1bb11b382348146d0af",
     "lastmod": "2026-11-17"
   },
   "/article/akusticheskie-paneli-dlya-domashnego-kabineta/": {
-    "hash": "8890833db623b8121dfe3d2e4eb40d0b6e1f44c5",
+    "hash": "da4e0f5e82c7ce69a80c0fb65337ac0e9b6f7f5e",
     "lastmod": "2026-11-17"
   }
 }

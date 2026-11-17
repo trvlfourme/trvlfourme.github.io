@@ -1115,6 +1115,17 @@ window.KD_CATALOG = {
   ],
   "articles": [
     {
+      "slug": "rabochee-mesto-v-semnoy-kvartire",
+      "title": "Рабочее место в съёмной квартире: без сверления и следов",
+      "block_title": "Без отверстий в стенах",
+      "product_ids": [
+        "onkron-g80",
+        "xiaomi-lightbar",
+        "cable-management-kit",
+        "umnyy-udlinitel-ekf-connect"
+      ]
+    },
+    {
       "slug": "chto-podarit-udelenshchiku",
       "title": "Что подарить удалёнщику: 9 вещей, которые не лягут в ящик",
       "block_title": "Девять подарков для домашнего кабинета",

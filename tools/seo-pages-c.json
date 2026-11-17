@@ -1,4 +1,14 @@
 {
+  "rabochee-mesto-v-semnoy-kvartire": {
+    "title": "Рабочее место в съёмной квартире: без сверления и следов",
+    "desc": "Как собрать домашний кабинет в съёмной квартире: кронштейн на струбцине, съёмный свет, акустика без клея, одна точка питания и договорённости с собственником.",
+    "related": [
+      ["/article/kuda-postavit-rabochij-stol-v-komnate/", "Куда поставить стол"],
+      ["/article/kronshtejn-dlya-monitora-na-stol-vybor/", "Кронштейн на стол"],
+      ["/article/kabel-menedzhment-pod-stolom-svoimi-rukami/", "Кабель-менеджмент"],
+      ["/article/akusticheskie-paneli-dlya-domashnego-kabineta/", "Акустические панели"]
+    ]
+  },
   "chto-podarit-udelenshchiku": {
     "title": "Что подарить удалёнщику: 9 вещей для рабочего места",
     "desc": "Девять подарков для домашнего кабинета, которые не лягут в ящик: подушка под поясницу, подставка для ног, скринбар, таймер и зарядка — без цен и «топ-10».",
