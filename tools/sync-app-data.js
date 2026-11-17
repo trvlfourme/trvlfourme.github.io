@@ -73,6 +73,11 @@ articles.sort((x, y) => {
   return ox - oy;
 });
 
+// Группы каталога: один товар — ровно одна группа (data/catalog-groups.json).
+const groupsFile = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'catalog-groups.json'), 'utf8'));
+const groupById = groupsFile.byId || {};
+const productGroups = groupsFile.groups || [];
+
 const products = (catalog.products || [])
   .filter((p) => !p.archived)
   .map((p) => ({
@@ -81,6 +86,7 @@ const products = (catalog.products || [])
     brand: p.brand || '',
     category: p.category || '',
     summary: p.summary || '',
+    group: groupById[p.id] || '',
     priceMode: p.price_mode === 'note' ? 'note' : 'hidden',
     priceNote: p.price_note || '',
     priceRub: p.price_rub || 0,
@@ -116,6 +122,7 @@ export interface SiteProduct {
   brand: string;
   category: string;
   summary: string;
+  group: string;
   priceMode: 'hidden' | 'note';
   priceNote: string;
   priceRub: number;
@@ -130,6 +137,8 @@ export const SITE_ARTICLES: Article[] = ${JSON.stringify(articles, null, 2)
   .replace(/\n/g, '\n')};
 
 export const SITE_PRODUCTS: SiteProduct[] = ${JSON.stringify(products, null, 2)};
+
+export const SITE_CATALOG_GROUPS: string[] = ${JSON.stringify(productGroups)};
 
 export const SITE_UPDATED = ${JSON.stringify(catalog.updated || '')};
 `;

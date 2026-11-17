@@ -308,6 +308,30 @@ if (exists('data/catalog.js')) {
     }
 
     note(`каталог: ${products.length} товаров (архив ${products.filter((p) => p.archived).length}), ${offers} офферов, ${articles.length} привязок статей`);
+
+    // 2.6 Группы каталога: один активный товар — ровно одна группа из общего списка (T-050).
+    // Иначе фильтр на /catalog/ снова расползётся на «Свет» и «Свет для видеозвонков».
+    try {
+      const groupsFile = JSON.parse(fs.readFileSync(path.join(root, 'data', 'catalog-groups.json'), 'utf8'));
+      const declared = groupsFile.groups || [];
+      const byId = groupsFile.byId || {};
+      if (declared.length < 5 || declared.length > 7) {
+        fail(`групп каталога ${declared.length}: должно быть 5–7`);
+      }
+      const active = products.filter((p) => !p.archived);
+      const missing = active.filter((p) => !byId[p.id]);
+      const unknown = active.filter((p) => byId[p.id] && !declared.includes(byId[p.id]));
+      const stray = Object.keys(byId).filter((id) => !active.some((p) => p.id === id));
+      if (missing.length) fail(`без группы в data/catalog-groups.json: ${missing.slice(0, 5).map((p) => p.id).join(', ')}`);
+      if (unknown.length) fail(`группа не из списка: ${unknown.slice(0, 5).map((p) => `${p.id} → ${byId[p.id]}`).join(', ')}`);
+      if (stray.length) fail(`группа у несуществующего товара: ${stray.slice(0, 5).join(', ')}`);
+      if (!missing.length && !unknown.length && !stray.length) {
+        const perGroup = declared.map((g) => `${g} ${active.filter((p) => byId[p.id] === g).length}`).join(', ');
+        note(`группы каталога: ${declared.length} (${perGroup})`);
+      }
+    } catch (e) {
+      fail(`data/catalog-groups.json: ${e.message}`);
+    }
   }
 }
 

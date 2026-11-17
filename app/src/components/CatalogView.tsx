@@ -1,23 +1,12 @@
 import React, { useMemo, useState } from 'react';
 import { ShoppingBag, ArrowDownAZ, Info } from 'lucide-react';
 import { PRODUCTS_CATALOG } from '../data/products';
-import { SITE_PRODUCTS } from '../data/site.generated';
+import { SITE_PRODUCTS, SITE_CATALOG_GROUPS } from '../data/site.generated';
 import { OfferLinks, disclosureFor } from './ProductOffers';
 
 // Каталог — витрина того, что реально есть в data/catalog.js: у каждого товара хотя бы один
 // оффер с партнёрской ссылкой. Цены не печатаем (price_mode в каталоге), «рейтингов» не выдумываем:
 // карточка показывает категорию, бренд, короткое пояснение и кнопки магазинов с маркировкой.
-
-const CATEGORY_LABELS: Record<string, string> = {
-  chair: 'Кресла',
-  desk: 'Столы',
-  lighting: 'Свет',
-  audio: 'Звук и микрофоны',
-  accessory: 'Аксессуары',
-  'kids-zone': 'Детская зона',
-  organization: 'Порядок и хранение',
-  wellness: 'Здоровье',
-};
 
 interface CatalogEntry {
   id: string;
@@ -30,13 +19,11 @@ interface CatalogEntry {
 
 const ENTRIES: CatalogEntry[] = PRODUCTS_CATALOG.map((product) => {
   const site = SITE_PRODUCTS.find((p) => p.id === product.id);
-  const raw = String(site?.category || product.category || '').trim();
-  const label = CATEGORY_LABELS[raw] || raw || 'Разное';
   return {
     id: product.id,
     name: product.name,
     brand: product.brand || '',
-    category: label,
+    category: site?.group || '',
     summary: product.shortDesc || site?.summary || '',
     hasErid: Boolean(disclosureFor(product.id)),
   };
@@ -45,7 +32,12 @@ const ENTRIES: CatalogEntry[] = PRODUCTS_CATALOG.map((product) => {
   .filter((entry) => SITE_PRODUCTS.find((p) => p.id === entry.id)?.offers?.length)
   .sort((a, b) => a.name.localeCompare(b.name, 'ru'));
 
-const CATEGORIES = ['Все', ...Array.from(new Set(ENTRIES.map((e) => e.category))).sort((a, b) => a.localeCompare(b, 'ru'))];
+// Порядок групп фиксированный и общий с данными: никаких «Свет» рядом со «Свет для видеозвонков».
+const CATEGORY_COUNTS = new Map<string, number>();
+for (const entry of ENTRIES) {
+  CATEGORY_COUNTS.set(entry.category, (CATEGORY_COUNTS.get(entry.category) || 0) + 1);
+}
+const CATEGORIES = ['Все', ...SITE_CATALOG_GROUPS.filter((g) => CATEGORY_COUNTS.has(g))];
 
 const byName = (a: CatalogEntry, b: CatalogEntry) => a.name.localeCompare(b.name, 'ru');
 
@@ -86,6 +78,11 @@ export const CatalogView: React.FC = () => {
                 type="button"
                 onClick={() => setCategory(label)}
                 aria-pressed={active}
+                aria-label={
+                  label === 'Все'
+                    ? `Все товары, ${ENTRIES.length}`
+                    : `${label}, товаров: ${CATEGORY_COUNTS.get(label) || 0}`
+                }
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-colors cursor-pointer ${
                   active
                     ? 'bg-stone-900 text-white border-stone-900'
@@ -93,6 +90,11 @@ export const CatalogView: React.FC = () => {
                 }`}
               >
                 {label}
+                {label !== 'Все' && (
+                  <span aria-hidden="true" className="ml-1.5 text-[10px] font-normal opacity-70">
+                    {CATEGORY_COUNTS.get(label)}
+                  </span>
+                )}
               </button>
             );
           })}
