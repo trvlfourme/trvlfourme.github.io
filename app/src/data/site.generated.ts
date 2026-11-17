@@ -3455,7 +3455,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "brand": "ErgoSteel",
     "category": "",
     "summary": "",
-    "group": "Порядок на столе",
+    "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
     "priceRub": 1693,
@@ -3530,7 +3530,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "brand": "MOFT",
     "category": "",
     "summary": "",
-    "group": "Порядок на столе",
+    "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
     "priceRub": 2887,
@@ -3783,7 +3783,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "brand": "Ugreen",
     "category": "Техника для удаленной работы",
     "summary": "Подставка складная Ugreen Foldable Laptop Riser подходит для всех устройств с диагональю до 17.3\" и весом до 5 кг. Складная конструкция позволит расположить гаджет под удобным углом, поможет сохранить осанку и оптимизировать рабочее место.",
-    "group": "Порядок на столе",
+    "group": "Принадлежности для стола",
     "priceMode": "note",
     "priceNote": "2263",
     "priceRub": 2263,
@@ -3809,7 +3809,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "brand": "Delux",
     "category": "",
     "summary": "",
-    "group": "Порядок на столе",
+    "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
     "priceRub": 1895,
@@ -3834,7 +3834,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "brand": "Logitech",
     "category": "",
     "summary": "",
-    "group": "Порядок на столе",
+    "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
     "priceRub": 6618,
@@ -3909,7 +3909,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "brand": "TickTime",
     "category": "",
     "summary": "",
-    "group": "Порядок на столе",
+    "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
     "priceRub": 2683,
@@ -4245,7 +4245,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "brand": "Logitech",
     "category": "Трекболы",
     "summary": "Наклон 0–20°, 2048 dpi, Bluetooth и USB-приёмник: кисть не двигается по столу.",
-    "group": "Порядок на столе",
+    "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
     "priceRub": 0,
@@ -4267,7 +4267,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "brand": "Logitech",
     "category": "Трекболы",
     "summary": "Бюджетный трекбол 2000 dpi: Bluetooth и приёмник, корпус без наклона.",
-    "group": "Порядок на столе",
+    "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
     "priceRub": 0,
@@ -4439,6 +4439,6 @@ export const SITE_PRODUCTS: SiteProduct[] = [
   }
 ];
 
-export const SITE_CATALOG_GROUPS: string[] = ["Столы","Кресла и опора","Свет","Звук и камера","Мониторы и крепления","Порядок на столе","Техника и подключение"];
+export const SITE_CATALOG_GROUPS: string[] = ["Столы","Кресла и опора","Свет","Звук и камера","Мониторы и крепления","Принадлежности для стола","Техника и подключение"];
 
 export const SITE_UPDATED = "2026-11-04";
