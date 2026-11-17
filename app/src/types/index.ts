@@ -27,8 +27,6 @@ export interface ProductItem {
   priceRub: number;
   priceMode?: 'hidden' | 'note';
   priceNote?: string;
-  rating: number; // 1-5
-  reviewsCount: number;
   pros: string[];
   cons: string[];
   specs: Record<string, string>;
