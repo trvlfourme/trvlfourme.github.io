@@ -17,6 +17,7 @@ const articles = JSON.parse(fs.readFileSync(path.join(__dirname, 'articles.json'
 const pages = [
   { route: '/', priority: '1.0', changefreq: 'weekly', file: 'index.html' },
   { route: '/articles/', priority: '0.7', changefreq: 'monthly', file: 'articles/index.html' },
+  { route: '/catalog/', priority: '0.8', changefreq: 'weekly', file: 'catalog/index.html' },
   { route: '/calculator/', priority: '0.9', changefreq: 'monthly', file: 'calculator/index.html' },
   { route: '/builder/', priority: '0.8', changefreq: 'monthly', file: 'builder/index.html' },
   { route: '/tests/', priority: '0.8', changefreq: 'monthly', file: 'tests/index.html' },

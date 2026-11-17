@@ -80,6 +80,7 @@ const products = (catalog.products || [])
     name: p.name,
     brand: p.brand || '',
     category: p.category || '',
+    summary: p.summary || '',
     priceMode: p.price_mode === 'note' ? 'note' : 'hidden',
     priceNote: p.price_note || '',
     priceRub: p.price_rub || 0,
@@ -114,6 +115,7 @@ export interface SiteProduct {
   name: string;
   brand: string;
   category: string;
+  summary: string;
   priceMode: 'hidden' | 'note';
   priceNote: string;
   priceRub: number;

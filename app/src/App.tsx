@@ -5,6 +5,7 @@ import { ArticleCard } from './components/ArticleCard';
 import { ArticleView } from './components/ArticleView';
 import { ErgonomicsCalculatorView } from './components/ErgonomicsCalculatorView';
 import { WorkspaceBuilderView } from './components/WorkspaceBuilderView';
+import { CatalogView } from './components/CatalogView';
 import { ParentChecklistView } from './components/ParentChecklistView';
 import { AboutView } from './components/AboutView';
 import { PrivacyPolicyView } from './components/PrivacyPolicyView';
@@ -46,7 +47,7 @@ export default function App() {
       if (cleanPath === 'calculator') { setActiveTab('calculator'); setSelectedArticleId(null); return; }
       if (cleanPath === 'builder') { setActiveTab('builder'); setSelectedArticleId(null); return; }
       if (cleanPath === 'checklist') { setActiveTab('checklist'); setSelectedArticleId(null); return; }
-      if (cleanPath === 'catalog') { setActiveTab('articles'); setSelectedArticleId(null); return; }
+      if (cleanPath === 'catalog') { setActiveTab('catalog'); setSelectedArticleId(null); return; }
       if (cleanPath === 'tests' || cleanPath === 'diagnostic' || cleanPath === 'quiz') { setActiveTab('tests'); setSelectedArticleId(null); return; }
       if (cleanPath === 'about' || cleanPath === 'contacts') { setActiveTab('about'); setSelectedArticleId(null); return; }
       if (cleanPath === 'privacy') { setActiveTab('privacy'); setSelectedArticleId(null); return; }
@@ -419,6 +420,10 @@ export default function App() {
 
         {activeTab === 'builder' && (
           <WorkspaceBuilderView />
+        )}
+
+        {activeTab === 'catalog' && (
+          <CatalogView />
         )}
 
         {activeTab === 'checklist' && (

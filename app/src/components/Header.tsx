@@ -135,6 +135,16 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <button 
+              onClick={() => handleNav('catalog')}
+              className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
+                activeTab === 'catalog' ? 'text-stone-950 bg-stone-100 font-semibold' : 'hover:text-stone-900 hover:bg-stone-50'
+              }`}
+            >
+              <ShoppingBag className="w-4 h-4 text-stone-600" />
+              Каталог
+            </button>
+
+            <button 
               onClick={() => handleNav('about')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
                 activeTab === 'about' ? 'text-stone-950 bg-stone-100 font-semibold' : 'hover:text-stone-900 hover:bg-stone-50'
@@ -218,6 +228,15 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <CheckSquare className="w-4 h-4 text-rose-600" />
               Чек-лист фокуса с детьми
+            </button>
+            <button 
+              onClick={() => handleNav('catalog')}
+              className={`w-full text-left px-3 py-2 text-sm rounded-lg flex items-center gap-2 ${
+                activeTab === 'catalog' ? 'bg-stone-100 font-semibold text-stone-900' : 'text-stone-700'
+              }`}
+            >
+              <ShoppingBag className="w-4 h-4 text-stone-600" />
+              Каталог товаров
             </button>
             <button 
               onClick={() => handleNav('about')}

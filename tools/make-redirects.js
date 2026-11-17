@@ -29,7 +29,6 @@ const ARTICLE_MAP = {
 // старые разделы SPA, у которых нет отдельной страницы в новой сборке -> на главную
 // /articles/ больше не редирект: там живёт хаб базы знаний, его нельзя перезаписывать
 const SECTION_MAP = {
-  catalog: '',
 };
 
 const SITE = 'https://kabinetdoma.ru';

@@ -15,7 +15,7 @@ const OG_IMAGE = `${SITE}/og-image.jpg`;
 const stage = path.join(root, '_prerender');
 const profile = path.join(os.tmpdir(), 'kd-prerender-profile');
 
-const TABS = ['/', '/calculator', '/builder', '/tests', '/checklist', '/about', '/privacy', '/terms'];
+const TABS = ['/', '/catalog', '/calculator', '/builder', '/tests', '/checklist', '/about', '/privacy', '/terms'];
 const articles = JSON.parse(fs.readFileSync(path.join(__dirname, 'articles.json'), 'utf8'));
 
 const routes = [

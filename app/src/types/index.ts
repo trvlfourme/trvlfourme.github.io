@@ -141,6 +141,7 @@ export interface LaunchChecklistItem {
 
 export type NavTab = 
   | 'articles' 
+  | 'catalog'
   | 'calculator' 
   | 'builder' 
   | 'checklist' 
