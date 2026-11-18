@@ -93,6 +93,7 @@ function copyStaged(from, to) {
   step('адаптивные картинки и preload', 'responsive-images.js');
   step('sitemap', 'sitemap.js');
   step('без внешних счётчиков и шрифтов (финально)', 'strip-third-party.js');
+  step('заголовки безопасности в meta', 'security-headers.js');
   step('проверка', 'verify-build.js');
   console.log('\nсборка завершена');
 })().catch((e) => {

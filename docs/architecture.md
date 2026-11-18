@@ -121,6 +121,22 @@ production-сборкой из исходников, это T-028.
 (аналитика, шрифты, виджеты) в этот режим не добавляются без отдельного решения владельца и
 правки политики (T-054). Шрифты — системные: `--font-sans` в `assets/index.css`.
 
+## Заголовки безопасности
+
+GitHub Pages не отдаёт HTTP-заголовки, поэтому политика живёт в разметке. `tools/security-headers.js`
+шагом сборки ставит в каждую страницу две строки сразу после `meta charset`:
+
+- `Content-Security-Policy`: `default-src 'self'`, `script-src 'self'`, `style-src 'self' 'unsafe-inline'`
+  (нужен для style-атрибутов React), `img-src 'self' data:`, `font-src 'self'`, `connect-src 'self'`,
+  `object-src 'none'`, `base-uri 'self'`, `form-action 'self'`, `frame-src 'none'`. Хеши не нужны:
+  исполняемых инлайн-скриптов на страницах нет, всё инлайн-содержимое — `application/ld+json`;
+- `Referrer-Policy: strict-origin-when-cross-origin` (meta `name="referrer"`).
+
+Ограничения хостинга, которые meta-тегом не решаются: `X-Frame-Options` и `frame-ancestors`
+(защита от встраивания в iframe), `HSTS` и `X-Content-Type-Options`. Они появятся при переезде,
+где заголовки настраиваются на сервере (`docs/migration-hothat.md`). Проверка полноты разметки —
+`node tools/security-headers.js --check`.
+
 ## Бэкапы
 
 Бэкап — архив ветки `main` плюс проверка, что из него всё восстанавливается:
@@ -161,7 +177,9 @@ node tools/build.js --skip-prerender     # только постобработк
    запускается дважды: до пререндера (чистит оболочку) и финально — по всем страницам.
 8. `sitemap.js` — адреса ровно как в canonical (со слешем), `lastmod` меняется только при
    изменении содержимого (`tools/sitemap-lastmod.json` хранит хэши и коммитится).
-9. `verify-build.js` — правила ниже.
+9. `security-headers.js` — CSP и Referrer-Policy meta-тегами во все страницы (T-065);
+   идемпотентен, старые теги снимает и ставит заново после `meta charset`.
+10. `verify-build.js` — правила ниже.
 
 Без шагов 4–8 пререндер затирает метаданные, поэтому «собрал и забыл» не работает.
 

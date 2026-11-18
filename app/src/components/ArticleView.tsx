@@ -71,7 +71,9 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
     };
 
     const description = article.seo?.metaDescription || article.excerpt;
-    const canonicalUrl = `https://kabinetdoma.ru/article/${article.slug || article.id}`;
+    // Адрес со слешем — как в HTML и в sitemap.xml: без него канонический адрес
+    // после гидратации расходится с файлом и с картой сайта (T-138).
+    const canonicalUrl = `https://kabinetdoma.ru/article/${article.slug || article.id}/`;
     const heroImageUrl = article.heroImage ? (article.heroImage.startsWith('http') ? article.heroImage : `https://kabinetdoma.ru${article.heroImage}`) : undefined;
 
     setMeta('name', 'description', description);
