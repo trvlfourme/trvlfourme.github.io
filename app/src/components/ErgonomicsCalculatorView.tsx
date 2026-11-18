@@ -260,6 +260,18 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
                 </div>
               </div>
             )}
+
+            <p className="mt-4 text-xs text-stone-600 leading-relaxed">
+              Цифры — половина дела: если под столом клубок проводов, высота сама по себе не поможет.
+              Порядок укладки за один вечер — в гайде про{' '}
+              <a
+                href="/article/kabel-menedzhment-pod-stolom-svoimi-rukami/"
+                className="text-amber-700 underline decoration-amber-300 hover:text-amber-800"
+              >
+                кабель-менеджмент под столом
+              </a>
+              .
+            </p>
           </div>
 
           {/* Recommendations box */}
