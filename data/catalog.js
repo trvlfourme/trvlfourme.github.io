@@ -5,7 +5,7 @@
 // Правки: админка (Ctrl+Shift+A, код 2026) -> кнопка «Каталог» -> «Скачать catalog.js».
 window.KD_CATALOG = {
   "version": 1,
-  "updated": "2026-11-04",
+  "updated": "2026-11-18",
   "products": [
     {
       "id": "ergostol-terra",
@@ -16,7 +16,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 57545,
+      "price_rub": 60780,
       "archived": false,
       "offers": [
         {
@@ -60,7 +60,7 @@ window.KD_CATALOG = {
       "image": "/images/ergonomic-chair.svg",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 60488,
+      "price_rub": 58493,
       "archived": false,
       "offers": [
         {
@@ -82,7 +82,7 @@ window.KD_CATALOG = {
       "image": "/images/ergonomic-chair.svg",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 30348,
+      "price_rub": 31224,
       "archived": false,
       "offers": [
         {
@@ -104,7 +104,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 4998,
+      "price_rub": 5120,
       "archived": false,
       "offers": [
         {
@@ -148,7 +148,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 26627,
+      "price_rub": 27426,
       "archived": false,
       "offers": [
         {
@@ -192,7 +192,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 3375,
+      "price_rub": 3240,
       "archived": false,
       "offers": [
         {
@@ -214,7 +214,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 1693,
+      "price_rub": 1670,
       "archived": false,
       "offers": [
         {
@@ -236,7 +236,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 3647,
+      "price_rub": 3839,
       "archived": false,
       "offers": [
         {
@@ -280,7 +280,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 2887,
+      "price_rub": 2951,
       "archived": false,
       "offers": [
         {
@@ -302,7 +302,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 2505,
+      "price_rub": 2885,
       "archived": false,
       "offers": [
         {
@@ -324,7 +324,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 7474,
+      "price_rub": 8005,
       "archived": false,
       "offers": [
         {
@@ -346,7 +346,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 14997,
+      "price_rub": 14366,
       "archived": false,
       "offers": [
         {
@@ -368,7 +368,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 27554,
+      "price_rub": 30067,
       "archived": false,
       "offers": [
         {
@@ -390,7 +390,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 72835,
+      "price_rub": 74620,
       "archived": false,
       "offers": [
         {
@@ -412,7 +412,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 8800,
+      "price_rub": 12126,
       "archived": false,
       "offers": [
         {
@@ -434,7 +434,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 16659,
+      "price_rub": 16692,
       "archived": false,
       "offers": [
         {
@@ -456,7 +456,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 1090,
+      "price_rub": 1690,
       "archived": false,
       "offers": [
         {
@@ -478,7 +478,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "note",
       "price_note": "2397",
-      "price_rub": 2397,
+      "price_rub": 2169,
       "archived": false,
       "offers": [
         {
@@ -500,7 +500,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "note",
       "price_note": "2263",
-      "price_rub": 2263,
+      "price_rub": 2234,
       "archived": false,
       "offers": [
         {
@@ -522,7 +522,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 1895,
+      "price_rub": 2000,
       "archived": false,
       "offers": [
         {
@@ -544,7 +544,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 6618,
+      "price_rub": 6984,
       "archived": false,
       "offers": [
         {
@@ -566,7 +566,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 6898,
+      "price_rub": 7119,
       "archived": false,
       "offers": [
         {
@@ -588,7 +588,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 5596,
+      "price_rub": 5904,
       "archived": false,
       "offers": [
         {
@@ -610,7 +610,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 2683,
+      "price_rub": 2797,
       "archived": false,
       "offers": [
         {
@@ -632,7 +632,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 3320,
+      "price_rub": 4491,
       "archived": false,
       "offers": [
         {
@@ -676,7 +676,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 22689,
+      "price_rub": 23391,
       "archived": false,
       "offers": [
         {
@@ -698,7 +698,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 9728,
+      "price_rub": 9249,
       "archived": false,
       "offers": [
         {
@@ -720,7 +720,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 10085,
+      "price_rub": 10397,
       "archived": false,
       "offers": [
         {
@@ -742,7 +742,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 40512,
+      "price_rub": 41484,
       "archived": false,
       "offers": [
         {
@@ -764,6 +764,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 16194,
       "archived": false,
       "offers": [
         {
@@ -785,6 +786,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 4091,
       "archived": false,
       "offers": [
         {
@@ -806,6 +808,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 21515,
       "archived": false,
       "offers": [
         {
@@ -827,6 +830,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 2246,
       "archived": false,
       "offers": [
         {
@@ -848,6 +852,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 1700,
       "archived": false,
       "offers": [
         {
@@ -869,6 +874,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 6252,
       "archived": false,
       "offers": [
         {
@@ -890,6 +896,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 3348,
       "archived": false,
       "offers": [
         {
@@ -911,6 +918,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 11273,
       "archived": false,
       "offers": [
         {
@@ -932,6 +940,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 19126,
       "archived": false,
       "offers": [
         {
@@ -953,6 +962,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 3720,
       "archived": false,
       "offers": [
         {
@@ -995,6 +1005,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 15866,
       "archived": false,
       "offers": [
         {
@@ -1016,6 +1027,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 10557,
       "archived": false,
       "offers": [
         {
@@ -1037,6 +1049,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 3180,
       "archived": false,
       "offers": [
         {
@@ -1058,6 +1071,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 3400,
       "archived": false,
       "offers": [
         {
@@ -1079,6 +1093,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 2654,
       "archived": false,
       "offers": [
         {
@@ -1100,6 +1115,7 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 2064,
       "archived": false,
       "offers": [
         {

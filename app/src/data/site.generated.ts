@@ -3238,7 +3238,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Столы",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 57545,
+    "priceRub": 60780,
     "offers": [
       {
         "store": "yandex",
@@ -3289,7 +3289,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Кресла и опора",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 60488,
+    "priceRub": 58493,
     "offers": [
       {
         "store": "yandex",
@@ -3311,7 +3311,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Кресла и опора",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 30348,
+    "priceRub": 31224,
     "offers": [
       {
         "store": "yandex",
@@ -3333,7 +3333,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Свет",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 4998,
+    "priceRub": 5120,
     "offers": [
       {
         "store": "yandex",
@@ -3383,7 +3383,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Звук и камера",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 26627,
+    "priceRub": 27426,
     "offers": [
       {
         "store": "yandex",
@@ -3433,7 +3433,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Мониторы и крепления",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 3375,
+    "priceRub": 3240,
     "offers": [
       {
         "store": "yandex",
@@ -3458,7 +3458,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 1693,
+    "priceRub": 1670,
     "offers": [
       {
         "store": "yandex",
@@ -3483,7 +3483,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 3647,
+    "priceRub": 3839,
     "offers": [
       {
         "store": "yandex",
@@ -3533,7 +3533,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 2887,
+    "priceRub": 2951,
     "offers": [
       {
         "store": "yandex",
@@ -3558,7 +3558,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 2505,
+    "priceRub": 2885,
     "offers": [
       {
         "store": "yandex",
@@ -3583,7 +3583,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Кресла и опора",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 7474,
+    "priceRub": 8005,
     "offers": [
       {
         "store": "yandex",
@@ -3609,7 +3609,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Кресла и опора",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 14997,
+    "priceRub": 14366,
     "offers": [
       {
         "store": "yandex",
@@ -3635,7 +3635,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Кресла и опора",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 27554,
+    "priceRub": 30067,
     "offers": [
       {
         "store": "yandex",
@@ -3657,7 +3657,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Кресла и опора",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 72835,
+    "priceRub": 74620,
     "offers": [
       {
         "store": "yandex",
@@ -3683,7 +3683,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Столы",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 8800,
+    "priceRub": 12126,
     "offers": [
       {
         "store": "yandex",
@@ -3709,7 +3709,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Столы",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 16659,
+    "priceRub": 16692,
     "offers": [
       {
         "store": "yandex",
@@ -3734,7 +3734,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Кресла и опора",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 1090,
+    "priceRub": 1690,
     "offers": [
       {
         "store": "yandex",
@@ -3760,7 +3760,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Кресла и опора",
     "priceMode": "note",
     "priceNote": "2397",
-    "priceRub": 2397,
+    "priceRub": 2169,
     "offers": [
       {
         "store": "yandex",
@@ -3786,7 +3786,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Принадлежности для стола",
     "priceMode": "note",
     "priceNote": "2263",
-    "priceRub": 2263,
+    "priceRub": 2234,
     "offers": [
       {
         "store": "yandex",
@@ -3812,7 +3812,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 1895,
+    "priceRub": 2000,
     "offers": [
       {
         "store": "yandex",
@@ -3837,7 +3837,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 6618,
+    "priceRub": 6984,
     "offers": [
       {
         "store": "yandex",
@@ -3862,7 +3862,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Звук и камера",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 6898,
+    "priceRub": 7119,
     "offers": [
       {
         "store": "yandex",
@@ -3887,7 +3887,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Звук и камера",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 5596,
+    "priceRub": 5904,
     "offers": [
       {
         "store": "yandex",
@@ -3912,7 +3912,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 2683,
+    "priceRub": 2797,
     "offers": [
       {
         "store": "yandex",
@@ -3937,7 +3937,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Кресла и опора",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 3320,
+    "priceRub": 4491,
     "offers": [
       {
         "store": "yandex",
@@ -3984,7 +3984,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 22689,
+    "priceRub": 23391,
     "offers": [
       {
         "store": "yandex",
@@ -4006,7 +4006,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 9728,
+    "priceRub": 9249,
     "offers": [
       {
         "store": "yandex",
@@ -4028,7 +4028,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 10085,
+    "priceRub": 10397,
     "offers": [
       {
         "store": "yandex",
@@ -4050,7 +4050,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 40512,
+    "priceRub": 41484,
     "offers": [
       {
         "store": "yandex",
@@ -4072,7 +4072,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 16194,
     "offers": [
       {
         "store": "yandex",
@@ -4094,7 +4094,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 4091,
     "offers": [
       {
         "store": "yandex",
@@ -4116,7 +4116,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 21515,
     "offers": [
       {
         "store": "yandex",
@@ -4138,7 +4138,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 2246,
     "offers": [
       {
         "store": "yandex",
@@ -4160,7 +4160,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 1700,
     "offers": [
       {
         "store": "yandex",
@@ -4182,7 +4182,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Мониторы и крепления",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 6252,
     "offers": [
       {
         "store": "yandex",
@@ -4204,7 +4204,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Мониторы и крепления",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 3348,
     "offers": [
       {
         "store": "yandex",
@@ -4226,7 +4226,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Мониторы и крепления",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 11273,
     "offers": [
       {
         "store": "yandex",
@@ -4248,7 +4248,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 19126,
     "offers": [
       {
         "store": "yandex",
@@ -4270,7 +4270,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Принадлежности для стола",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 3720,
     "offers": [
       {
         "store": "yandex",
@@ -4314,7 +4314,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Звук и камера",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 15866,
     "offers": [
       {
         "store": "yandex",
@@ -4336,7 +4336,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Свет",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 10557,
     "offers": [
       {
         "store": "yandex",
@@ -4358,7 +4358,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 3180,
     "offers": [
       {
         "store": "yandex",
@@ -4380,7 +4380,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 3400,
     "offers": [
       {
         "store": "yandex",
@@ -4402,7 +4402,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 2654,
     "offers": [
       {
         "store": "yandex",
@@ -4424,7 +4424,7 @@ export const SITE_PRODUCTS: SiteProduct[] = [
     "group": "Техника и подключение",
     "priceMode": "hidden",
     "priceNote": "",
-    "priceRub": 0,
+    "priceRub": 2064,
     "offers": [
       {
         "store": "yandex",
@@ -4441,4 +4441,4 @@ export const SITE_PRODUCTS: SiteProduct[] = [
 
 export const SITE_CATALOG_GROUPS: string[] = ["Столы","Кресла и опора","Свет","Звук и камера","Мониторы и крепления","Принадлежности для стола","Техника и подключение"];
 
-export const SITE_UPDATED = "2026-11-04";
+export const SITE_UPDATED = "2026-11-18";
