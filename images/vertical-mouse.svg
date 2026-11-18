@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bgMouse" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1917" />
+      <stop offset="60%" stop-color="#292524" />
+      <stop offset="100%" stop-color="#0c0a09" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgMouse)" />
+  <rect x="0" y="380" width="800" height="70" fill="#0c0a09" />
+  <line x1="0" y1="380" x2="800" y2="380" stroke="#44403c" stroke-width="2" />
+
+  <!-- Left: обычная мышь, ладонь вниз -->
+  <g transform="translate(90, 300)">
+    <!-- корпус -->
+    <path d="M 20 60 Q 20 10 70 6 Q 130 2 170 18 Q 190 26 186 60 Q 184 78 160 78 L 44 78 Q 22 78 20 60 Z"
+          fill="#3f3f46" stroke="#a8a29e" stroke-width="2" />
+    <!-- колесо -->
+    <rect x="96" y="16" width="8" height="16" rx="3" fill="#f59e0b" />
+    <!-- кисть сверху: ладонь параллельно столу -->
+    <path d="M 6 22 Q 60 -14 150 -16 Q 196 -16 214 8" fill="none" stroke="#e7e5e4" stroke-width="10"
+          stroke-linecap="round" />
+    <circle cx="212" cy="10" r="7" fill="#e7e5e4" />
+    <!-- угол пронации 0° -->
+    <line x1="0" y1="78" x2="230" y2="78" stroke="#78716c" stroke-dasharray="4 4" />
+    <text x="115" y="112" font-family="system-ui, sans-serif" font-size="13" font-weight="700"
+          fill="#a8a29e" text-anchor="middle">ладонь вниз: пронация 0°</text>
+  </g>
+
+  <!-- Right: вертикальная мышь, ладонь как при рукопожатии -->
+  <g transform="translate(455, 300)">
+    <!-- корпус, наклонённый к столу -->
+    <g transform="rotate(-24 90 60)">
+      <path d="M 20 60 Q 20 10 70 6 Q 130 2 170 18 Q 190 26 186 60 Q 184 78 160 78 L 44 78 Q 22 78 20 60 Z"
+            fill="#292524" stroke="#f59e0b" stroke-width="2" />
+      <rect x="96" y="16" width="8" height="16" rx="3" fill="#fbbf24" />
+      <!-- большой палец сверху -->
+      <path d="M 40 4 Q 22 -10 6 4" fill="none" stroke="#e7e5e4" stroke-width="9" stroke-linecap="round" />
+    </g>
+    <!-- кисть под углом, мизинец снизу -->
+    <path d="M 40 216 Q 84 150 150 96 Q 186 70 200 40" fill="none" stroke="#e7e5e4" stroke-width="10"
+          stroke-linecap="round" />
+    <!-- дуга угла 55-60° -->
+    <path d="M 40 78 A 90 90 0 0 1 118 18" fill="none" stroke="#10b981" stroke-width="3" />
+    <text x="132" y="24" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#34d399">55–60°</text>
+    <text x="100" y="256" font-family="system-ui, sans-serif" font-size="13" font-weight="700"
+          fill="#fbbf24" text-anchor="middle">ладонь как при рукопожатии</text>
+  </g>
+
+  <!-- Заголовок -->
+  <g transform="translate(400, 40)">
+    <rect x="-230" y="-18" width="460" height="34" rx="8" fill="#1c1917" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="0" y="4" font-family="system-ui, sans-serif" font-size="13" font-weight="800"
+          fill="#f8fafc" text-anchor="middle" letter-spacing="1">ЧТО МЕНЯЕТ ВЕРТИКАЛЬНАЯ МЫШЬ</text>
+  </g>
+</svg>

@@ -1,5 +1,7 @@
 import React from 'react';
 import { AlertTriangle, Lightbulb, Target, CheckCircle2 } from 'lucide-react';
+import { imageSrcSet } from '../utils/images';
+import { handleImageError } from '../utils/imageFallback';
 
 interface MarkdownRendererProps {
   content: string;
@@ -157,7 +159,48 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, cla
       continue;
     }
 
-    // 0. Tables (| a | b |, second row is the --- separator)
+    // 0. Figures: <figure><img src="…" alt="…"><figcaption>…</figcaption></figure>
+    // Разметка приходит из data/articles/*.json как есть; здесь она превращается в <figure>
+    // с адаптивным srcset и подписью, чтобы картинка не вылезала за колонку.
+    if (rawLine.startsWith('<figure')) {
+      flushList(`line-${i}`);
+      flushQuote(`line-${i}`);
+      const buf: string[] = [];
+      let j = i;
+      while (j < rawLines.length) {
+        buf.push(rawLines[j]);
+        if (rawLines[j].includes('</figure>')) break;
+        j += 1;
+      }
+      const html = buf.join(' ');
+      const src = (html.match(/<img[^>]*\bsrc="([^"]+)"/) || [])[1] || '';
+      const alt = (html.match(/<img[^>]*\balt="([^"]*)"/) || [])[1] || '';
+      const caption = (html.match(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/) || [])[1] || '';
+      if (src) {
+        blocks.push(
+          <figure key={`figure-${i}`} className="my-6">
+            <img
+              src={src}
+              srcSet={imageSrcSet(src)}
+              sizes="(max-width: 768px) 100vw, 720px"
+              alt={alt}
+              loading="lazy"
+              onError={handleImageError}
+              className="w-full h-auto rounded-xl border border-stone-200 bg-stone-100"
+            />
+            {caption.trim() && (
+              <figcaption className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed">
+                {formatInlineText(caption.trim())}
+              </figcaption>
+            )}
+          </figure>
+        );
+      }
+      i = j;
+      continue;
+    }
+
+    // 0.1. Tables (| a | b |, second row is the --- separator)
     if (rawLine.startsWith('|')) {
       flushList(`line-${i}`);
       flushQuote(`line-${i}`);

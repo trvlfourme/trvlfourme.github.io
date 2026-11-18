@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bgNeck" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="60%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgNeck)" />
+  <rect x="0" y="370" width="800" height="80" fill="#09090b" />
+  <line x1="0" y1="370" x2="800" y2="370" stroke="#334155" stroke-width="2" />
+
+  <!-- человек в профиль -->
+  <g transform="translate(120, 250)">
+    <circle cx="0" cy="-60" r="42" fill="#334155" stroke="#94a3b8" stroke-width="2" />
+    <path d="M -40 -30 L -46 120" stroke="#64748b" stroke-width="2" fill="none" />
+    <path d="M -6 -18 Q 6 30 2 90 L 60 92" fill="none" stroke="#e2e8f0" stroke-width="12"
+          stroke-linecap="round" stroke-linejoin="round" />
+    <!-- глаз -->
+    <circle cx="26" cy="-66" r="5" fill="#fbbf24" />
+    <!-- линия взгляда в верхнюю треть экрана -->
+    <line x1="26" y1="-66" x2="470" y2="-96" stroke="#fbbf24" stroke-width="2" stroke-dasharray="7 6" />
+    <text x="150" y="-124" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      линия взгляда — в верхнюю треть экрана
+    </text>
+    <!-- наклон взгляда 15-20° -->
+    <path d="M 26 -66 L 150 -66" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" />
+    <path d="M 110 -66 A 84 84 0 0 0 106 -84" fill="none" stroke="#38bdf8" stroke-width="2.5" />
+    <text x="118" y="-52" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#38bdf8">15–20°</text>
+  </g>
+
+  <!-- стол и кронштейн -->
+  <g transform="translate(470, 0)">
+    <rect x="-40" y="300" width="300" height="16" rx="3" fill="#cbd5e1" />
+    <rect x="228" y="300" width="26" height="70" fill="#475569" />
+    <!-- струбцина -->
+    <rect x="228" y="296" width="44" height="18" rx="3" fill="#94a3b8" />
+    <rect x="228" y="334" width="44" height="14" rx="3" fill="#94a3b8" />
+    <!-- штанга и рычаг -->
+    <rect x="120" y="140" width="14" height="160" fill="#64748b" />
+    <path d="M 127 150 Q 190 130 236 168" fill="none" stroke="#94a3b8" stroke-width="10" stroke-linecap="round" />
+    <!-- монитор -->
+    <rect x="150" y="60" width="180" height="112" rx="6" fill="#0b1220" stroke="#94a3b8" stroke-width="2" />
+    <rect x="160" y="70" width="160" height="92" rx="3" fill="#1e293b" />
+    <rect x="160" y="70" width="160" height="30" fill="#38bdf8" opacity="0.18" />
+    <text x="240" y="196" font-family="system-ui, sans-serif" font-size="10" font-weight="700"
+          fill="#cbd5e1" text-anchor="middle">верхняя треть на уровне глаз</text>
+    <!-- размеры -->
+    <line x1="330" y1="60" x2="400" y2="60" stroke="#f59e0b" stroke-width="2" />
+    <line x1="330" y1="300" x2="400" y2="300" stroke="#f59e0b" stroke-width="2" />
+    <line x1="392" y1="60" x2="392" y2="300" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 4" />
+    <text x="404" y="186" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">50–70 см</text>
+  </g>
+
+  <!-- заголовок -->
+  <g transform="translate(400, 40)">
+    <rect x="-220" y="-18" width="440" height="34" rx="8" fill="#0b1220" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="0" y="4" font-family="system-ui, sans-serif" font-size="13" font-weight="800"
+          fill="#f8fafc" text-anchor="middle" letter-spacing="1">ВЫСОТА МОНИТОРА И ШЕЯ</text>
+  </g>
+</svg>
