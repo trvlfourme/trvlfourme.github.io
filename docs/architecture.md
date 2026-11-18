@@ -203,6 +203,8 @@ node tools/build.js --skip-prerender     # только постобработк
 на сайт, в git и на прод не попадает. Ответ API — не повод включать `note`: показывать цену
 можно только со свежей датой сверки.
 
+**Заменить оффер автоматически нельзя.** `GET /v3/affiliate/partner/link/create` требует `clid` типа «Партнерские ссылки» (без него 401 «required parameter 'clid' or 'place_id' is missing»), а `erid` в ссылку подставляется только из креатива в ОРД. `link/info` работает только по нашим партнёрским ссылкам: обычная страница Маркета даёт 404 «Partner link not found», поэтому чужой живой оффер им не проверить. Метода поиска товаров в Referral API нет. Что можно автоматически — проверить уже готовую ссылку (`market-prices.js --only-id`, `check-offers.js --only-id`); сами ссылки приносит владелец (T-140), раскладка — T-139.
+
 ### Сбор цен: `tools/market-prices.js`
 
 Скрипт читает `data/catalog.js`, ходит по yandex-ссылкам тем же методом `/partner/link/info` (токен — `.secrets/market-token`, `Authorization: OAuth`) и печатает таблицу «товар → было → стало → дельта → наличие».
