@@ -38,15 +38,15 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 32693,
+      "price_rub": 30716,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
           "kind": "card",
-          "url": "https://market.yandex.ru/cc/BSwU5t?erid=5jtCeReNx12oak2szCiDxyy",
+          "url": "https://market.yandex.ru/cc/Bb9kVt?erid=MvGzQC9JbZnS6fV7C3sRthyi",
           "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2szCiDxyy",
+          "erid": "MvGzQC9JbZnS6fV7C3sRthyi",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
@@ -127,17 +127,8 @@ window.KD_CATALOG = {
       "price_mode": "hidden",
       "price_note": "",
       "price_rub": 20896,
-      "archived": false,
-      "offers": [
-        {
-          "store": "yandex",
-          "kind": "card",
-          "url": "https://market.yandex.ru/cc/BSsqaS?erid=5jtCeReNx12oak2szCdoM9A",
-          "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2szCdoM9A",
-          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
-        }
-      ]
+      "archived": true,
+      "offers": []
     },
     {
       "id": "jabra-evolve2-65",
@@ -170,15 +161,15 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 5705,
+      "price_rub": 9051,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
           "kind": "card",
-          "url": "https://market.yandex.ru/cc/BSssY6?erid=5jtCeReNx12oak2szCdoMSf",
+          "url": "https://market.yandex.ru/cc/Bb9obY?erid=MvGzQC9JbZnS6fV7C3sRtiD2",
           "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2szCdoMSf",
+          "erid": "MvGzQC9JbZnS6fV7C3sRtiD2",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
@@ -258,15 +249,15 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 3381,
+      "price_rub": 8279,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
           "kind": "card",
-          "url": "https://market.yandex.ru/cc/BSswpv?erid=5jtCeReNx12oak2szCdogUD",
+          "url": "https://market.yandex.ru/cc/Bb9p4j?erid=MvGzQC9JbZnS6fV7C3sRtiD6",
           "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2szCdogUD",
+          "erid": "MvGzQC9JbZnS6fV7C3sRtiD6",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
@@ -654,15 +645,15 @@ window.KD_CATALOG = {
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
-      "price_rub": 15464,
+      "price_rub": 18556,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
           "kind": "card",
-          "url": "https://market.yandex.ru/cc/BT67SG?erid=5jtCeReNx12oak2tU4s6NdD",
+          "url": "https://market.yandex.ru/cc/Bb9por?erid=MvGzQC9JbZnS6fV7C3sRtiHU",
           "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2tU4s6NdD",
+          "erid": "MvGzQC9JbZnS6fV7C3sRtiHU",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
@@ -977,21 +968,22 @@ window.KD_CATALOG = {
     },
     {
       "id": "shokz-openfit-pro",
-      "name": "Наушники Shokz OpenFit Pro",
+      "name": "Наушники Shokz OpenFit",
       "brand": "Shokz",
       "category": "Наушники",
       "summary": "Открытое ухо, заушное крепление, Bluetooth 6.1: слышно и собеседника, и комнату.",
       "image": "",
       "price_mode": "hidden",
       "price_note": "",
+      "price_rub": 16643,
       "archived": false,
       "offers": [
         {
           "store": "yandex",
           "kind": "card",
-          "url": "https://market.yandex.ru/cc/BUJuXL?erid=5jtCeReNx12oak2tUX3GPah",
+          "url": "https://market.yandex.ru/cc/Bb9ujg?erid=MvGzQC9JbZnS6fV7C3sRu3Tf",
           "label": "Купить на Яндекс Маркете",
-          "erid": "5jtCeReNx12oak2tUX3GPah",
+          "erid": "MvGzQC9JbZnS6fV7C3sRu3Tf",
           "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
         }
       ]
@@ -1240,8 +1232,7 @@ window.KD_CATALOG = {
       "title": "Скринбар на монитор: как выбрать лампу для защиты глаз",
       "block_title": "Скринбары из сравнения",
       "product_ids": [
-        "xiaomi-lightbar",
-        "benq-screenbar-halo"
+        "xiaomi-lightbar"
       ]
     },
     {
@@ -1339,7 +1330,6 @@ window.KD_CATALOG = {
       "block_title": "Свет и провода на новом месте",
       "product_ids": [
         "xiaomi-lightbar",
-        "benq-screenbar-halo",
         "cable-management-kit",
         "onkron-g80"
       ]

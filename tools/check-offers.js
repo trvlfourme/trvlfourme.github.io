@@ -154,7 +154,7 @@ for (const product of products) {
   if (product.archived && offers.length) {
     add(product.id, '—', '—', `архивный товар с ${offers.length} живыми офферами`);
   }
-  if (!offers.length) add(product.id, '—', '—', 'у товара нет ни одного оффера');
+  if (!product.archived && !offers.length) add(product.id, '—', '—', 'у товара нет ни одного оффера');
   for (const offer of offers) checkOffer(product, offer);
 }
 

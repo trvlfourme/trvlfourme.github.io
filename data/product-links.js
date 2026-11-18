@@ -8,7 +8,7 @@ window.KD_PRODUCT_LINKS = {
     "wb": ""
   },
   "metta-samurai-s3": {
-    "yandex": "https://market.yandex.ru/cc/BRxNak?erid=5jtCeReNx12oak2szCZM4CC",
+    "yandex": "https://market.yandex.ru/cc/Bb9kVt?erid=MvGzQC9JbZnS6fV7C3sRthyi",
     "ozon": "",
     "wb": ""
   },
