@@ -131,6 +131,28 @@ window.KD_CATALOG = {
       "offers": []
     },
     {
+      "id": "screenbar-friendme",
+      "name": "Бестеневая лампа на монитор Friendme (двойной свет)",
+      "brand": "Friendme",
+      "category": "",
+      "summary": "",
+      "image": "",
+      "price_mode": "hidden",
+      "price_note": "",
+      "price_rub": 3010,
+      "archived": false,
+      "offers": [
+        {
+          "store": "yandex",
+          "kind": "card",
+          "url": "https://market.yandex.ru/cc/BbAEr7?erid=MvGzQC9JbZnS6fV7C3sRuijH",
+          "label": "Купить на Яндекс Маркете",
+          "erid": "MvGzQC9JbZnS6fV7C3sRuijH",
+          "advertiser": "ООО «Яндекс Маркет», ИНН 9704254424"
+        }
+      ]
+    },
+    {
       "id": "jabra-evolve2-65",
       "name": "Jabra Evolve2 65 Flex (ENC микрофон)",
       "brand": "Jabra",
