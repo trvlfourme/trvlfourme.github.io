@@ -157,6 +157,50 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, cla
       continue;
     }
 
+    // 0. Tables (| a | b |, second row is the --- separator)
+    if (rawLine.startsWith('|')) {
+      flushList(`line-${i}`);
+      flushQuote(`line-${i}`);
+      const rows: string[][] = [];
+      let j = i;
+      while (j < rawLines.length && rawLines[j].trim().startsWith('|')) {
+        const cells = rawLines[j].trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim());
+        if (!cells.every((c) => /^:?-{2,}:?$/.test(c))) rows.push(cells);
+        j += 1;
+      }
+      if (rows.length > 0) {
+        const [head, ...body] = rows;
+        blocks.push(
+          <div key={`table-${i}`} className="my-5 overflow-x-auto rounded-xl border border-stone-200">
+            <table className="w-full text-left text-xs sm:text-sm border-collapse">
+              <thead className="bg-stone-100 text-stone-900">
+                <tr>
+                  {head.map((cell, ci) => (
+                    <th key={ci} className="px-3 py-2.5 font-bold align-bottom border-b border-stone-200">
+                      {formatInlineText(cell)}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {body.map((row, ri) => (
+                  <tr key={ri} className="even:bg-stone-50/70">
+                    {row.map((cell, ci) => (
+                      <td key={ci} className="px-3 py-2.5 align-top text-stone-700 border-t border-stone-100">
+                        {formatInlineText(cell)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+      i = j - 1;
+      continue;
+    }
+
     // 1. Headings (### or #### or ##)
     const headingMatch = rawLine.match(/^(#{2,5})\s+(.+)$/);
     if (headingMatch) {
