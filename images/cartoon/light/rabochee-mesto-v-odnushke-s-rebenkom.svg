@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" width="1376" height="768">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf6f1" />
+      <stop offset="100%" stop-color="#ece3da" />
+    </linearGradient>
+  </defs>
+  <rect width="1376" height="768" fill="url(#bg)" />
+  <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" /><ellipse cx="430" cy="606" rx="285.2" ry="16" fill="#cdc0b5" fill-opacity="0.5" />
+  <rect x="120" y="470" width="620" height="26" rx="8" fill="#d3a97c" />
+  <rect x="120" y="470" width="620" height="5" rx="2.5" fill="#e6c8a6" />
+  <rect x="160" y="496" width="26" height="100" fill="#b78e63" />
+  <rect x="674" y="496" width="26" height="100" fill="#b78e63" />
+  <rect x="240" y="310" width="200" height="88" rx="10" fill="#64748b" stroke="#4a5a70" stroke-width="2" />
+  <circle cx="340" cy="354" r="14.000000000000002" fill="#94a3b8" />
+  <rect x="256" y="398" width="168" height="10" rx="4" fill="#475569" />
+    <rect x="180" y="380" width="140" height="120" rx="26" fill="#c8beb5" />
+  <rect x="206" y="410" width="88" height="60" rx="18" fill="#ded7d0" />
+  <path d="M250 500 v42 M200 542 h100" stroke="#c8beb5" stroke-width="10" stroke-linecap="round" />
+  <rect x="700" y="200" width="18" height="396" fill="#c8beb5" opacity="0.5" />
+  <g stroke="#c8beb5" stroke-width="6" stroke-linecap="round" opacity="0.6">
+    <line x1="718" y1="220" x2="718" y2="580" stroke-dasharray="16 14" />
+  </g>
+  <rect x="800" y="520" width="330" height="20" rx="8" fill="#34d399" />
+  <rect x="820" y="540" width="20" height="56" fill="#0f9d6b" />
+  <rect x="1090" y="540" width="20" height="56" fill="#0f9d6b" />
+  <rect x="860" y="470" width="70" height="50" rx="6" fill="#fbbf24" />
+  <rect x="940" y="486" width="46" height="34" rx="6" fill="#38bdf8" />
+  <circle cx="1040" cy="500" r="20" fill="#ef4444" />
+  <rect x="960" y="596" width="0" height="0" />
+  <rect x="780" y="250" width="280" height="40" rx="10" fill="#ffffff" stroke="#0f9d6b" stroke-width="2" />
+  <text x="920" y="276" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#0f9d6b" text-anchor="middle">ДЕТСКИЙ УГОЛОК</text>
+  <rect x="130" y="200" width="260" height="40" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="2" />
+  <text x="260" y="226" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#0ea5e9" text-anchor="middle">ВЗРОСЛЫЙ СТОЛ</text>
+  <rect x="48" y="690" width="460" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+  <text x="278" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · ОДНУШКА С РЕБЁНКОМ</text>
+</svg>

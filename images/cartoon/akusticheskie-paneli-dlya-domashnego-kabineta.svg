@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" width="1376" height="768">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#282122" />
+      <stop offset="100%" stop-color="#141011" />
+    </linearGradient>
+  </defs>
+  <rect width="1376" height="768" fill="url(#bg)" />
+  <rect x="0" y="596" width="1376" height="172" fill="#171213" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#3a3130" stroke-width="2" />
+  <rect x="80" y="60" width="700" height="330" fill="none" />
+  <g>
+    <rect x="100" y="90" width="120" height="66" rx="6" fill="#44403c" stroke="#4a3f39" stroke-width="2" /><rect x="232" y="90" width="120" height="66" rx="6" fill="#44403c" stroke="#4a3f39" stroke-width="2" /><rect x="364" y="90" width="120" height="66" rx="6" fill="#44403c" stroke="#4a3f39" stroke-width="2" /><rect x="496" y="90" width="120" height="66" rx="6" fill="#44403c" stroke="#4a3f39" stroke-width="2" /><rect x="628" y="90" width="120" height="66" rx="6" fill="#44403c" stroke="#4a3f39" stroke-width="2" /><rect x="100" y="168" width="120" height="66" rx="6" fill="#57534e" stroke="#4a3f39" stroke-width="2" /><rect x="232" y="168" width="120" height="66" rx="6" fill="#57534e" stroke="#4a3f39" stroke-width="2" /><rect x="364" y="168" width="120" height="66" rx="6" fill="#57534e" stroke="#4a3f39" stroke-width="2" /><rect x="496" y="168" width="120" height="66" rx="6" fill="#57534e" stroke="#4a3f39" stroke-width="2" /><rect x="628" y="168" width="120" height="66" rx="6" fill="#57534e" stroke="#4a3f39" stroke-width="2" /><rect x="100" y="246" width="120" height="66" rx="6" fill="#44403c" stroke="#4a3f39" stroke-width="2" /><rect x="232" y="246" width="120" height="66" rx="6" fill="#44403c" stroke="#4a3f39" stroke-width="2" /><rect x="364" y="246" width="120" height="66" rx="6" fill="#44403c" stroke="#4a3f39" stroke-width="2" /><rect x="496" y="246" width="120" height="66" rx="6" fill="#44403c" stroke="#4a3f39" stroke-width="2" /><rect x="628" y="246" width="120" height="66" rx="6" fill="#44403c" stroke="#4a3f39" stroke-width="2" /><rect x="100" y="324" width="120" height="66" rx="6" fill="#57534e" stroke="#4a3f39" stroke-width="2" /><rect x="232" y="324" width="120" height="66" rx="6" fill="#57534e" stroke="#4a3f39" stroke-width="2" /><rect x="364" y="324" width="120" height="66" rx="6" fill="#57534e" stroke="#4a3f39" stroke-width="2" /><rect x="496" y="324" width="120" height="66" rx="6" fill="#57534e" stroke="#4a3f39" stroke-width="2" /><rect x="628" y="324" width="120" height="66" rx="6" fill="#57534e" stroke="#4a3f39" stroke-width="2" />
+  </g>
+  <g fill="none" stroke="#38bdf8" stroke-width="5" opacity="0.8">
+    <path d="M840 220 q60 -50 0 -100" /><path d="M880 250 q90 -80 0 -160" /><path d="M920 280 q120 -110 0 -220" />
+  </g>
+  <ellipse cx="1060" cy="606" rx="220.8" ry="16" fill="#0f0c0d" fill-opacity="0.5" />
+  <rect x="820" y="470" width="480" height="26" rx="8" fill="#4a3f39" />
+  <rect x="820" y="470" width="480" height="5" rx="2.5" fill="#5d5049" />
+  <rect x="860" y="496" width="26" height="100" fill="#3a3130" />
+  <rect x="1234" y="496" width="26" height="100" fill="#3a3130" />
+  <polygon points="900,464 1050,464 1050,354 924,354" fill="#2f3d4d" stroke="#4a5a70" stroke-width="3" />
+  <polygon points="914,360 1038,360 1038,456 910,456" fill="#dbeafe" />
+  <g stroke="#60a5fa" stroke-width="4" stroke-linecap="round" opacity="0.8">
+    <line x1="924" y1="376" x2="993" y2="376" />
+    <line x1="924" y1="394" x2="1023" y2="394" />
+    <line x1="924" y1="412" x2="975" y2="412" />
+  </g>
+  <rect x="900" y="458" width="162" height="14" rx="5" fill="#3b4a5c" />
+  <path d="M980 440 q-40 20 -80 10" fill="none" stroke="#7dd3fc" stroke-width="5" stroke-linecap="round" opacity="0.7" />
+  <rect x="170" y="470" width="220" height="40" rx="10" fill="#1c1917" stroke="#34d399" stroke-width="2" />
+  <text x="280" y="496" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#34d399" text-anchor="middle">ЭХО ГАСНЕТ</text>
+  <rect x="48" y="690" width="450" height="46" rx="10" fill="#1c1917" stroke="#f59e0b" stroke-width="2" />
+  <text x="273" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#fef3c7" text-anchor="middle">КАБИНЕТ ДОМА · АКУСТИКА КОМНАТЫ</text>
+</svg>

@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" width="1376" height="768">
+  <defs>
+    <linearGradient id="bgBalconyL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf7f3" />
+      <stop offset="100%" stop-color="#ebe3da" />
+    </linearGradient>
+    <linearGradient id="glassColdL" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#274b70" />
+      <stop offset="55%" stop-color="#1c3550" />
+      <stop offset="100%" stop-color="#14263a" />
+    </linearGradient>
+    <linearGradient id="warmRoomL" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0" />
+    </linearGradient>
+    <radialGradient id="heaterGlowL" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1376" height="768" fill="url(#bgBalconyL)" />
+  <rect x="900" y="0" width="476" height="768" fill="url(#warmRoomL)" />
+
+  <!-- окно -->
+  <rect x="60" y="40" width="860" height="424" rx="16" fill="url(#glassColdL)" />
+  <g fill="#0a131e">
+    <rect x="90" y="330" width="70" height="134" />
+    <rect x="176" y="300" width="56" height="164" />
+    <rect x="248" y="356" width="88" height="108" />
+    <rect x="352" y="286" width="62" height="178" />
+    <rect x="430" y="344" width="78" height="120" />
+    <rect x="524" y="310" width="58" height="154" />
+    <rect x="598" y="360" width="92" height="104" />
+    <rect x="706" y="296" width="64" height="168" />
+    <rect x="786" y="348" width="104" height="116" />
+  </g>
+  <g fill="#fbbf24" opacity="0.6">
+    <rect x="100" y="348" width="10" height="12" /><rect x="122" y="376" width="10" height="12" />
+    <rect x="190" y="322" width="10" height="12" /><rect x="212" y="352" width="10" height="12" />
+    <rect x="366" y="308" width="10" height="12" /><rect x="390" y="340" width="10" height="12" />
+    <rect x="720" y="318" width="10" height="12" /><rect x="744" y="352" width="10" height="12" />
+    <rect x="806" y="372" width="10" height="12" /><rect x="840" y="404" width="10" height="12" />
+  </g>
+  <g fill="#e0f2fe" opacity="0.8">
+    <circle cx="140" cy="120" r="5" /><circle cx="220" cy="180" r="4" /><circle cx="300" cy="110" r="6" />
+    <circle cx="380" cy="220" r="4" /><circle cx="450" cy="140" r="5" /><circle cx="520" cy="200" r="4" />
+    <circle cx="600" cy="120" r="6" /><circle cx="670" cy="240" r="4" /><circle cx="740" cy="160" r="5" />
+    <circle cx="820" cy="230" r="4" /><circle cx="880" cy="130" r="5" /><circle cx="250" cy="270" r="4" />
+  </g>
+  <g fill="none" stroke="#bae6fd" stroke-width="3" opacity="0.3" stroke-linecap="round">
+    <path d="M90 440 q30 -40 20 -70" /><path d="M112 448 q22 -50 8 -86" /><path d="M136 444 q14 -40 4 -68" />
+    <path d="M860 440 q-30 -40 -20 -70" /><path d="M838 448 q-22 -50 -8 -86" />
+  </g>
+  <text x="800" y="112" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#cbe6ff" text-anchor="middle">−15°</text>
+  <rect x="520" y="40" width="12" height="424" fill="#d8cec4" />
+  <rect x="60" y="40" width="860" height="424" rx="16" fill="none" stroke="#d8cec4" stroke-width="12" />
+
+  <!-- подоконник -->
+  <rect x="44" y="464" width="892" height="24" rx="6" fill="#d6cabf" />
+  <g fill="#ffffff" stroke="#dcd2c8" stroke-width="2">
+    <ellipse cx="120" cy="468" rx="48" ry="6" /><ellipse cx="300" cy="467" rx="66" ry="7" />
+    <ellipse cx="560" cy="468" rx="52" ry="6" /><ellipse cx="820" cy="467" rx="60" ry="6" />
+  </g>
+
+  <!-- пол -->
+  <rect x="0" y="668" width="1376" height="100" fill="#e2d8d0" />
+  <line x1="0" y1="668" x2="1376" y2="668" stroke="#d0c4ba" stroke-width="2" />
+
+  <!-- табурет -->
+  <rect x="248" y="628" width="160" height="16" rx="6" fill="#c9a077" />
+  <line x1="266" y1="644" x2="258" y2="690" stroke="#b18b66" stroke-width="10" stroke-linecap="round" />
+  <line x1="392" y1="644" x2="402" y2="690" stroke="#b18b66" stroke-width="10" stroke-linecap="round" />
+
+  <!-- человек в профиль -->
+  <g>
+    <rect x="380" y="596" width="122" height="40" rx="20" fill="#334155" />
+    <rect x="470" y="620" width="34" height="70" rx="16" fill="#334155" />
+    <ellipse cx="496" cy="692" rx="34" ry="12" fill="#3d342c" />
+    <path d="M300 634 q-24 -70 8 -128 q26 -46 84 -50 q46 -4 52 42 q6 48 -18 82 q-26 38 -126 54 z" fill="#334155" />
+    <path d="M352 462 q40 -6 62 22 q10 16 -6 26 q-30 6 -60 -10 z" fill="#42566e" />
+    <path d="M256 570 q120 -26 200 -6 q22 60 6 92 q-110 22 -206 6 q-14 -50 0 -92 z" fill="#f8b34a" />
+    <path d="M276 586 q80 -16 156 -2 M270 610 q86 -14 170 0 M268 632 q92 -12 176 2" fill="none" stroke="#d98b1f" stroke-width="4" opacity="0.7" />
+    <circle cx="392" cy="404" r="56" fill="#f5c9a3" />
+    <path d="M448 410 q18 8 2 20 q-10 6 -14 -4 z" fill="#f5c9a3" />
+    <circle cx="420" cy="416" r="6" fill="#241f1c" />
+    <ellipse cx="404" cy="438" rx="9" ry="6" fill="#f59e0b" opacity="0.45" />
+    <path d="M412 446 q14 8 26 0" fill="none" stroke="#241f1c" stroke-width="4" stroke-linecap="round" />
+    <path d="M336 400 q0 -58 56 -58 q56 0 56 58 q-56 -22 -112 0 z" fill="#ef4444" />
+    <path d="M348 392 q44 -16 88 0" fill="none" stroke="#c81e1e" stroke-width="4" />
+    <rect x="336" y="384" width="112" height="16" rx="8" fill="#dc2626" />
+    <circle cx="392" cy="330" r="20" fill="#fde68a" />
+    <path d="M346 462 q46 22 92 0 q10 22 -6 34 q-40 16 -80 0 q-16 -12 -6 -34 z" fill="#f59e0b" />
+    <path d="M430 486 q22 10 16 40 q-4 16 -18 12 q-12 -22 -14 -42 z" fill="#f59e0b" />
+    <path d="M420 500 q50 4 78 34" fill="none" stroke="#334155" stroke-width="30" stroke-linecap="round" />
+    <ellipse cx="500" cy="538" rx="20" ry="13" fill="#f59e0b" transform="rotate(18 500 538)" />
+  </g>
+
+  <!-- стол -->
+  <ellipse cx="560" cy="694" rx="440" ry="22" fill="#cdc0b5" fill-opacity="0.6" />
+  <rect x="100" y="520" width="880" height="26" rx="8" fill="#d3a97c" />
+  <rect x="100" y="520" width="880" height="5" rx="2.5" fill="#e6c8a6" />
+  <rect x="130" y="546" width="26" height="132" fill="#b78e63" />
+  <rect x="926" y="546" width="26" height="132" fill="#b78e63" />
+
+  <!-- ноутбук в профиль -->
+  <polygon points="540,504 700,504 700,392 566,392" fill="#2f3d4d" stroke="#4a5a70" stroke-width="3" />
+  <polygon points="556,398 690,398 690,494 552,494" fill="#dbeafe" />
+  <g stroke="#60a5fa" stroke-width="4" stroke-linecap="round" opacity="0.85">
+    <line x1="566" y1="412" x2="650" y2="412" />
+    <line x1="566" y1="428" x2="678" y2="428" />
+    <line x1="566" y1="444" x2="620" y2="444" />
+    <line x1="566" y1="460" x2="664" y2="460" />
+  </g>
+  <rect x="540" y="500" width="170" height="16" rx="5" fill="#3b4a5c" />
+  <polygon points="540,398 700,398 470,470 300,440" fill="#bae6fd" fill-opacity="0.07" />
+
+  <!-- кружка с паром -->
+  <rect x="740" y="470" width="52" height="50" rx="10" fill="#ef4444" />
+  <path d="M792 480 a15 15 0 0 1 0 28" fill="none" stroke="#ef4444" stroke-width="8" />
+  <path d="M756 458 q7 -13 0 -24 M774 460 q7 -13 0 -24" fill="none" stroke="#a89b8e" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+
+  <!-- обогреватель -->
+  <circle cx="832" cy="640" r="96" fill="url(#heaterGlowL)" />
+  <rect x="786" y="580" width="100" height="88" rx="10" fill="#eae3db" stroke="#c6bab0" stroke-width="3" />
+  <g stroke="#f59e0b" stroke-width="6" stroke-linecap="round">
+    <line x1="806" y1="596" x2="866" y2="596" /><line x1="806" y1="612" x2="866" y2="612" />
+    <line x1="806" y1="628" x2="866" y2="628" /><line x1="806" y1="644" x2="866" y2="644" />
+  </g>
+
+  <!-- градусник на стене -->
+  <text x="1160" y="132" font-family="system-ui, sans-serif" font-size="26" font-weight="800" fill="#b45309" text-anchor="middle">+18°</text>
+  <rect x="1134" y="152" width="52" height="180" rx="26" fill="#ffffff" stroke="#d0c4ba" stroke-width="3" />
+  <rect x="1155" y="212" width="10" height="94" rx="5" fill="#ef4444" />
+  <circle cx="1160" cy="318" r="24" fill="#ef4444" />
+  <g stroke="#c0b4a8" stroke-width="3">
+    <line x1="1142" y1="190" x2="1152" y2="190" /><line x1="1142" y1="220" x2="1152" y2="220" />
+    <line x1="1142" y1="250" x2="1152" y2="250" /><line x1="1142" y1="280" x2="1152" y2="280" />
+  </g>
+
+  <!-- растение -->
+  <path d="M1290 690 l-10 -58 h64 l-10 58 z" fill="#c1793f" />
+  <circle cx="1312" cy="596" r="30" fill="#166534" />
+  <circle cx="1288" cy="612" r="20" fill="#15803d" />
+  <circle cx="1336" cy="610" r="18" fill="#15803d" />
+
+  <!-- подпись -->
+  <rect x="48" y="690" width="380" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+  <text x="238" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · РАБОТА НА БАЛКОНЕ</text>
+</svg>

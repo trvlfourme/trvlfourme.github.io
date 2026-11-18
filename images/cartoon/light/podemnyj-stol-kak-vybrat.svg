@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" width="1376" height="768">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf6f1" />
+      <stop offset="100%" stop-color="#ece3da" />
+    </linearGradient>
+  </defs>
+  <rect width="1376" height="768" fill="url(#bg)" />
+  <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" /><rect x="444" y="476" width="24" height="110" rx="11" fill="#334155" />
+  <rect x="476" y="476" width="24" height="110" rx="11" fill="#334155" />
+  <ellipse cx="456" cy="588" rx="22" ry="10" fill="#3a2a1c" />
+  <ellipse cx="488" cy="588" rx="22" ry="10" fill="#3a2a1c" />
+  <path d="M408 478 v-64 a62 62 0 0 1 124 0 v64 z" fill="#38bdf8" />
+  <circle cx="470" cy="310" r="48" fill="#f5c9a3" />
+  <path d="M422 310 a48 48 0 0 1 96 0 q-22 -26 -48 -26 q-26 0 -48 26 z" fill="#3a2a1c" />
+  <circle cx="453" cy="312" r="5.5" fill="#241f1c" />
+  <circle cx="487" cy="312" r="5.5" fill="#241f1c" />
+  <path d="M457 332 q13 12 26 0" fill="none" stroke="#241f1c" stroke-width="4" stroke-linecap="round" />
+  <ellipse cx="820" cy="610" rx="280" ry="18" fill="#cdc0b5" fill-opacity="0.45" />
+  <rect x="540" y="380" width="600" height="26" rx="8" fill="#d3a97c" />
+  <rect x="540" y="380" width="600" height="5" rx="2.5" fill="#e6c8a6" />
+  <rect x="600" y="406" width="26" height="190" fill="#b78e63" />
+  <rect x="1054" y="406" width="26" height="190" fill="#b78e63" />
+  <rect x="612" y="440" width="14" height="120" fill="#c8beb5" opacity="0.6" />
+  <rect x="1054" y="440" width="14" height="120" fill="#c8beb5" opacity="0.6" />
+  <rect x="700" y="330" width="120" height="46" rx="10" fill="#1f2937" />
+  <text x="760" y="360" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#fbbf24" text-anchor="middle">110</text>
+  <rect x="880" y="280" width="190" height="83.6" rx="10" fill="#64748b" stroke="#4a5a70" stroke-width="2" />
+  <circle cx="975" cy="321.8" r="13.3" fill="#94a3b8" />
+  <rect x="895.2" y="363.6" width="159.6" height="10" rx="4" fill="#475569" />
+  <rect x="620" y="330" width="46" height="50" rx="9" fill="#ef4444" />
+  <path d="M666 340 a14 14 0 0 1 0 26" fill="none" stroke="#ef4444" stroke-width="7" />
+  <path d="M632 318 q7 -13 0 -24 M650 320 q7 -13 0 -24" fill="none" stroke="#a89b8e" stroke-width="3" stroke-linecap="round" opacity="0.7" />
+  <rect x="330" y="250" width="140" height="40" rx="10" fill="#ffffff" stroke="#0f9d6b" stroke-width="2" />
+  <text x="400" y="276" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#0f9d6b" text-anchor="middle">СТОЯ</text>
+  <rect x="48" y="690" width="410" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+  <text x="253" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · ПОДЪЁМНЫЙ СТОЛ</text>
+</svg>

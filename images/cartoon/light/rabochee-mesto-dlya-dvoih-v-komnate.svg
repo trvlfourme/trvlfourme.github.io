@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" width="1376" height="768">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf6f1" />
+      <stop offset="100%" stop-color="#ece3da" />
+    </linearGradient>
+  </defs>
+  <rect width="1376" height="768" fill="url(#bg)" />
+  <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" />
+  <ellipse cx="330" cy="606" rx="230" ry="16" fill="#cdc0b5" fill-opacity="0.5" />
+  <rect x="80" y="470" width="500" height="26" rx="8" fill="#d3a97c" />
+  <rect x="80" y="470" width="500" height="5" rx="2.5" fill="#e6c8a6" />
+  <rect x="120" y="496" width="26" height="100" fill="#b78e63" />
+  <rect x="514" y="496" width="26" height="100" fill="#b78e63" />
+  <rect x="180" y="320" width="190" height="83.6" rx="10" fill="#64748b" stroke="#4a5a70" stroke-width="2" />
+  <circle cx="275" cy="361.8" r="13.3" fill="#94a3b8" />
+  <rect x="195.2" y="403.6" width="159.6" height="10" rx="4" fill="#475569" />
+    <rect x="120" y="380" width="140" height="120" rx="26" fill="#c8beb5" />
+  <rect x="146" y="410" width="88" height="60" rx="18" fill="#ded7d0" />
+  <path d="M190 500 v42 M140 542 h100" stroke="#c8beb5" stroke-width="10" stroke-linecap="round" />
+  <rect x="620" y="150" width="140" height="450" rx="10" fill="#d3a97c" />
+  <g fill="#e6c8a6">
+    <rect x="632" y="200" width="116" height="10" /><rect x="632" y="300" width="116" height="10" />
+    <rect x="632" y="400" width="116" height="10" />
+  </g>
+  <g fill="#94a3b8">
+    <rect x="640" y="170" width="14" height="30" /><rect x="662" y="176" width="14" height="24" />
+    <rect x="690" y="168" width="14" height="32" /><rect x="712" y="178" width="14" height="22" />
+    <rect x="646" y="268" width="14" height="32" /><rect x="670" y="276" width="14" height="24" />
+    <rect x="700" y="270" width="14" height="30" />
+  </g>
+  <ellipse cx="1070" cy="606" rx="230" ry="16" fill="#cdc0b5" fill-opacity="0.5" />
+  <rect x="820" y="470" width="500" height="26" rx="8" fill="#d3a97c" />
+  <rect x="820" y="470" width="500" height="5" rx="2.5" fill="#e6c8a6" />
+  <rect x="860" y="496" width="26" height="100" fill="#b78e63" />
+  <rect x="1254" y="496" width="26" height="100" fill="#b78e63" />
+  <rect x="920" y="320" width="190" height="83.6" rx="10" fill="#64748b" stroke="#4a5a70" stroke-width="2" />
+  <circle cx="1015" cy="361.8" r="13.3" fill="#94a3b8" />
+  <rect x="935.2" y="403.6" width="159.6" height="10" rx="4" fill="#475569" />
+    <rect x="1060" y="380" width="140" height="120" rx="26" fill="#c8beb5" />
+  <rect x="1086" y="410" width="88" height="60" rx="18" fill="#ded7d0" />
+  <path d="M1130 500 v42 M1080 542 h100" stroke="#c8beb5" stroke-width="10" stroke-linecap="round" />
+  <rect x="80" y="200" width="330" height="40" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="2" />
+  <text x="245" y="226" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#0ea5e9" text-anchor="middle">СТЕЛЛАЖ-ПЕРЕГОРОДКА</text>
+  <rect x="48" y="690" width="470" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+  <text x="283" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · ДВОЕ В ОДНОЙ КОМНАТЕ</text>
+</svg>

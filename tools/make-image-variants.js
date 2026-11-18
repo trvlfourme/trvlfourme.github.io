@@ -19,7 +19,8 @@ const JPEG = { quality: 76, mozjpeg: true, progressive: true, chromaSubsampling:
 (async () => {
   let made = 0;
   let skipped = 0;
-  for (const name of fs.readdirSync(dir).filter((f) => /^[a-z0-9-]+\.jpg$/i.test(f))) {
+  // производные -320/-640 пропускаем: иначе получаются варианты вариантов (-640-320.jpg)
+  for (const name of fs.readdirSync(dir).filter((f) => /^[a-z0-9-]+\.jpg$/i.test(f) && !/-\d{3}\.jpg$/i.test(f))) {
     const src = path.join(dir, name);
     const base = name.replace(/\.jpg$/i, '');
     for (const w of [320, 640]) {

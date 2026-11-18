@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" width="1376" height="768">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#282122" />
+      <stop offset="100%" stop-color="#141011" />
+    </linearGradient>
+  </defs>
+  <rect width="1376" height="768" fill="url(#bg)" />
+  <rect x="0" y="596" width="1376" height="172" fill="#171213" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#3a3130" stroke-width="2" /><ellipse cx="680" cy="606" rx="487.6" ry="16" fill="#0f0c0d" fill-opacity="0.5" />
+  <rect x="150" y="470" width="1060" height="26" rx="8" fill="#4a3f39" />
+  <rect x="150" y="470" width="1060" height="5" rx="2.5" fill="#5d5049" />
+  <rect x="190" y="496" width="26" height="100" fill="#3a3130" />
+  <rect x="1144" y="496" width="26" height="100" fill="#3a3130" />
+  <rect x="300" y="300" width="210" height="92.4" rx="10" fill="#64748b" stroke="#4a5a70" stroke-width="2" />
+  <circle cx="405" cy="346.2" r="14.700000000000001" fill="#94a3b8" />
+  <rect x="316.8" y="392.4" width="176.4" height="10" rx="4" fill="#475569" />
+  <rect x="700" y="300" width="380" height="170" rx="12" fill="#1e293b" stroke="#475569" stroke-width="4" />
+  <rect x="716" y="316" width="348" height="138" rx="6" fill="#243447" />
+  <g stroke="#7dd3fc" stroke-width="5" stroke-linecap="round" opacity="0.7">
+    <line x1="744" y1="350" x2="880" y2="350" /><line x1="744" y1="380" x2="1010" y2="380" />
+    <line x1="744" y1="410" x2="900" y2="410" />
+  </g>
+  <rect x="620" y="470" width="20" height="34" fill="#334155" />
+  <path d="M630 470 q-10 -90 60 -150 q70 -60 150 -20" fill="none" stroke="#475569" stroke-width="9" stroke-linecap="round" />
+  <rect x="806" y="266" width="56" height="86" rx="24" fill="#334155" />
+  <rect x="818" y="278" width="32" height="52" rx="16" fill="#64748b" />
+  <circle cx="834" cy="304" r="10" fill="#fbbf24" />
+  <text x="600" y="250" font-family="system-ui, sans-serif" font-size="22" font-weight="800" fill="#fcd34d" text-anchor="middle">15–20 см</text>
+  <line x1="700" y1="262" x2="806" y2="290" stroke="#fbbf24" stroke-width="3" stroke-dasharray="10 8" />
+  <rect x="1090" y="414" width="46" height="50" rx="9" fill="#ef4444" />
+  <path d="M1136 424 a14 14 0 0 1 0 26" fill="none" stroke="#ef4444" stroke-width="7" />
+  <path d="M1102 402 q7 -13 0 -24 M1120 404 q7 -13 0 -24" fill="none" stroke="#a89b8e" stroke-width="3" stroke-linecap="round" opacity="0.7" />
+  <rect x="48" y="690" width="470" height="46" rx="10" fill="#1c1917" stroke="#f59e0b" stroke-width="2" />
+  <text x="283" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#fef3c7" text-anchor="middle">КАБИНЕТ ДОМА · МИКРОФОН НА ПАНТОГРАФЕ</text>
+</svg>

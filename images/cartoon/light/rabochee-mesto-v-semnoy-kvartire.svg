@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" width="1376" height="768">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf6f1" />
+      <stop offset="100%" stop-color="#ece3da" />
+    </linearGradient>
+  </defs>
+  <rect width="1376" height="768" fill="url(#bg)" />
+  <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" />
+  <rect x="90" y="120" width="320" height="300" rx="12" fill="#cfe6fb" />
+  <rect x="90" y="120" width="320" height="300" rx="12" fill="none" stroke="#e2d7cb" stroke-width="12" />
+  <line x1="250" y1="120" x2="250" y2="420" stroke="#e2d7cb" stroke-width="10" />
+  <line x1="90" y1="270" x2="410" y2="270" stroke="#e2d7cb" stroke-width="10" />
+  <rect x="74" y="420" width="352" height="18" rx="6" fill="#ded7d0" />
+  <rect x="60" y="420" width="420" height="150" fill="#ded7d0" />
+  <rect x="60" y="404" width="440" height="20" rx="6" fill="#d3a97c" />
+  <polygon points="150,402 290,402 290,292 172.4,292" fill="#2f3d4d" stroke="#4a5a70" stroke-width="3" />
+  <polygon points="164,298 278,298 278,394 160,394" fill="#dbeafe" />
+  <g stroke="#60a5fa" stroke-width="4" stroke-linecap="round" opacity="0.8">
+    <line x1="174" y1="314" x2="236.8" y2="314" />
+    <line x1="174" y1="332" x2="264.8" y2="332" />
+    <line x1="174" y1="350" x2="220" y2="350" />
+  </g>
+  <rect x="150" y="396" width="152" height="14" rx="5" fill="#3b4a5c" />
+  <rect x="330" y="330" width="90" height="70" rx="10" fill="#334155" />
+  <rect x="346" y="346" width="58" height="38" rx="4" fill="#94a3b8" />
+  <path d="M330 400 q-30 0 -30 30" fill="none" stroke="#334155" stroke-width="8" />
+    <rect x="180" y="470" width="140" height="120" rx="26" fill="#c8beb5" />
+  <rect x="206" y="500" width="88" height="60" rx="18" fill="#ded7d0" />
+  <path d="M250 590 v42 M200 632 h100" stroke="#c8beb5" stroke-width="10" stroke-linecap="round" />
+  <path d="M520 596 h180 l-30 -110 h-120 z" fill="#f59e0b" />
+  <rect x="560" y="470" width="110" height="20" rx="8" fill="#d98b1f" />
+  <rect x="520" y="250" width="330" height="40" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+  <text x="685" y="276" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#f59e0b" text-anchor="middle">НИ ОДНОГО ОТВЕРСТИЯ</text>
+  <rect x="48" y="690" width="460" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+  <text x="278" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · СЪЁМНАЯ КВАРТИРА</text>
+</svg>

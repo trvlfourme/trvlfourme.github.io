@@ -46,7 +46,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-17",
     "updatedAt": "2026-11-17",
     "readTimeMin": 8,
-    "heroImage": "/images/editorial/standing-desk-health.jpg",
+    "heroImage": "/images/editorial/23-rabochee-mesto-v-semnoy-kvartire.jpg",
     "tableOfContents": [
       {
         "id": "sec-pravilo",
@@ -179,7 +179,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-17",
     "updatedAt": "2026-11-17",
     "readTimeMin": 9,
-    "heroImage": "/images/editorial/standing-desk-health.jpg",
+    "heroImage": "/images/editorial/16-chto-podarit-udelenshchiku.jpg",
     "tableOfContents": [
       {
         "id": "sec-princip",
@@ -313,7 +313,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-17",
     "updatedAt": "2026-11-17",
     "readTimeMin": 7,
-    "heroImage": "/images/editorial/standing-desk-health.jpg",
+    "heroImage": "/images/editorial/01-vertikalnaya-mysh-polza.jpg",
     "tableOfContents": [
       {
         "id": "sec-pronacia",
@@ -446,7 +446,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-17",
     "updatedAt": "2026-11-17",
     "readTimeMin": 8,
-    "heroImage": "/images/editorial/standing-desk-health.jpg",
+    "heroImage": "/images/editorial/12-rabota-za-noutbukom-bez-boli-v-shee.jpg",
     "tableOfContents": [
       {
         "id": "sec-geometry",
@@ -574,7 +574,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-03",
     "updatedAt": "2026-11-17",
     "readTimeMin": 9,
-    "heroImage": "/images/editorial/compact-apartment-nook.jpg",
+    "heroImage": "/images/editorial/21-rabochee-mesto-na-balkone.jpg",
     "tableOfContents": [
       {
         "id": "sec-constraints",
@@ -690,7 +690,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-06",
     "updatedAt": "2026-11-04",
     "readTimeMin": 5,
-    "heroImage": "/images/editorial/work-life-balance.jpg",
+    "heroImage": "/images/editorial/15-balans-raboty-i-lichnoj-zhizni-na-udalenke.jpg",
     "tableOfContents": [
       {
         "id": "sec-trap",
@@ -817,7 +817,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-05",
     "updatedAt": "2026-11-17",
     "readTimeMin": 4,
-    "heroImage": "/images/editorial/family-remote-work.jpg",
+    "heroImage": "/images/editorial/22-rabochee-mesto-v-odnushke-s-rebenkom.jpg",
     "tableOfContents": [
       {
         "id": "sec-problem",
@@ -936,7 +936,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-04",
     "updatedAt": "2026-10-04",
     "readTimeMin": 2,
-    "heroImage": "/images/editorial/home-office-cozy.jpg",
+    "heroImage": "/images/editorial/07-stol-s-elektroprivodom-polza-dlya-spiny.jpg",
     "tableOfContents": [
       {
         "id": "sec-spine",
@@ -1040,7 +1040,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-04",
     "updatedAt": "2026-11-18",
     "readTimeMin": 4,
-    "heroImage": "/images/editorial/ergonomic-chair-desk.jpg",
+    "heroImage": "/images/editorial/10-5-luchshih-ergonomichnyh-kresel-rejting.jpg",
     "tableOfContents": [
       {
         "id": "sec-trap",
@@ -1152,7 +1152,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-03",
     "updatedAt": "2026-11-18",
     "readTimeMin": 3,
-    "heroImage": "/images/editorial/screenbar-evening-light.jpg",
+    "heroImage": "/images/editorial/02-skrinbar-na-monitor-vybor-zashchita-glaz.jpg",
     "tableOfContents": [
       {
         "id": "sec-eyes",
@@ -1246,7 +1246,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-03",
     "updatedAt": "2026-11-18",
     "readTimeMin": 6,
-    "heroImage": "/images/editorial/audio-podcasting-desk.jpg",
+    "heroImage": "/images/editorial/05-mikrofon-s-shumopodavleniem-dlya-zvonkov.jpg",
     "tableOfContents": [
       {
         "id": "sec-capsule",
@@ -1365,7 +1365,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-02",
     "updatedAt": "2026-11-18",
     "readTimeMin": 8,
-    "heroImage": "/images/editorial/realistic-workspace-scandinavian.jpg",
+    "heroImage": "/images/editorial/14-kabel-menedzhment-pod-stolom-svoimi-rukami.jpg",
     "tableOfContents": [
       {
         "id": "sec-steps",
@@ -1507,7 +1507,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-02",
     "updatedAt": "2026-11-17",
     "readTimeMin": 5,
-    "heroImage": "/images/editorial/ergonomic-chair-desk.jpg",
+    "heroImage": "/images/editorial/04-kronshtejn-dlya-monitora-ergonomika-shei.jpg",
     "tableOfContents": [
       {
         "id": "sec-head-weight",
@@ -1647,7 +1647,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-01",
     "updatedAt": "2026-11-17",
     "readTimeMin": 1,
-    "heroImage": "/images/editorial/family-remote-work.jpg",
+    "heroImage": "/images/editorial/25-metod-svetofor-udalenka-s-detmi.jpg",
     "tableOfContents": [
       {
         "id": "sec-child-psych",
@@ -1778,7 +1778,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-01",
     "updatedAt": "2026-11-18",
     "readTimeMin": 2,
-    "heroImage": "/images/editorial/compact-apartment-nook.jpg",
+    "heroImage": "/images/editorial/20-rabochee-mesto-dlya-dvoih-v-komnate.jpg",
     "tableOfContents": [
       {
         "id": "sec-dual-layouts",
@@ -1866,7 +1866,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-09-30",
     "updatedAt": "2026-11-18",
     "readTimeMin": 6,
-    "heroImage": "/images/editorial/standing-desk-health.jpg",
+    "heroImage": "/images/editorial/08-podstavka-dlya-nog-pod-stol-ergonomika.jpg",
     "tableOfContents": [
       {
         "id": "sec-foot-problem",
@@ -1997,7 +1997,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-09-29",
     "updatedAt": "2026-11-18",
     "readTimeMin": 5,
-    "heroImage": "/images/editorial/ergonomic-chair-desk.jpg",
+    "heroImage": "/images/editorial/03-kronshtejn-dlya-monitora-na-stol-vybor.jpg",
     "tableOfContents": [
       {
         "id": "sec-arm-why",
@@ -2126,7 +2126,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-09-28",
     "updatedAt": "2026-11-18",
     "readTimeMin": 1,
-    "heroImage": "/images/editorial/audio-podcasting-desk.jpg",
+    "heroImage": "/images/editorial/13-akusticheskie-paneli-dlya-domashnego-kabineta.jpg",
     "tableOfContents": [
       {
         "id": "sec-echo-nature",
@@ -2234,7 +2234,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-05",
     "updatedAt": "2026-10-05",
     "readTimeMin": 3,
-    "heroImage": "/images/editorial/compact-apartment-nook.jpg",
+    "heroImage": "/images/editorial/27-v-kakoj-komnate-luchshe-rabotat-na-udalenke.jpg",
     "tableOfContents": [
       {
         "id": "sec-kitchen",
@@ -2334,7 +2334,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-04",
     "updatedAt": "2026-11-04",
     "readTimeMin": 5,
-    "heroImage": "/images/editorial/realistic-workspace-scandinavian.jpg",
+    "heroImage": "/images/editorial/19-kuda-postavit-rabochij-stol-v-komnate.jpg",
     "tableOfContents": [
       {
         "id": "sec-window-angle",
@@ -2481,7 +2481,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-03",
     "updatedAt": "2026-10-03",
     "readTimeMin": 7,
-    "heroImage": "/images/editorial/budget-clean-desk.jpg",
+    "heroImage": "/images/editorial/17-domashnij-ofis-s-nulya-nedorogo.jpg",
     "tableOfContents": [
       {
         "id": "sec-priority-one",
@@ -2588,7 +2588,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-10-06",
     "updatedAt": "2026-10-06",
     "readTimeMin": 7,
-    "heroImage": "/images/editorial/remote-travel-work.jpg",
+    "heroImage": "/images/editorial/26-udalennaya-rabota-v-poezdke-i-otpuske.jpg",
     "tableOfContents": [
       {
         "id": "sec-agreements",
@@ -2695,7 +2695,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-02",
     "updatedAt": "2026-11-17",
     "readTimeMin": 10,
-    "heroImage": "/images/editorial/ergonomic-chair-desk.jpg",
+    "heroImage": "/images/editorial/09-kak-vybrat-kreslo-dlya-spiny.jpg",
     "tableOfContents": [
       {
         "id": "sec-geometry",
@@ -2812,7 +2812,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-02",
     "updatedAt": "2026-11-17",
     "readTimeMin": 8,
-    "heroImage": "/images/editorial/standing-desk-health.jpg",
+    "heroImage": "/images/editorial/06-podemnyj-stol-kak-vybrat.jpg",
     "tableOfContents": [
       {
         "id": "sec-1",
@@ -2927,7 +2927,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-02",
     "updatedAt": "2026-11-02",
     "readTimeMin": 8,
-    "heroImage": "/images/editorial/family-remote-work.jpg",
+    "heroImage": "/images/editorial/24-udalennaya-rabota-s-rebenkom.jpg",
     "tableOfContents": [
       {
         "id": "sec-1",
@@ -3036,7 +3036,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-02",
     "updatedAt": "2026-11-17",
     "readTimeMin": 9,
-    "heroImage": "/images/editorial/home-office-cozy.jpg",
+    "heroImage": "/images/editorial/18-ergonomika-rabochego-mesta-nastroyka.jpg",
     "tableOfContents": [
       {
         "id": "sec-1",
@@ -3169,7 +3169,7 @@ export const SITE_ARTICLES: Article[] = [
     "publishedAt": "2026-11-02",
     "updatedAt": "2026-11-02",
     "readTimeMin": 7,
-    "heroImage": "/images/editorial/budget-clean-desk.jpg",
+    "heroImage": "/images/editorial/11-printer-dlya-doma-kompaktno-i-kuda-postavit.jpg",
     "tableOfContents": [
       {
         "id": "sec-task",

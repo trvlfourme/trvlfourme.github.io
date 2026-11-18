@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" width="1376" height="768">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf6f1" />
+      <stop offset="100%" stop-color="#ece3da" />
+    </linearGradient>
+  </defs>
+  <rect width="1376" height="768" fill="url(#bg)" />
+  <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" />
+  <rect x="40" y="560" width="620" height="0" fill="none" />
+  <g>
+    <rect x="70" y="470" width="440" height="24" rx="8" fill="#d3a97c" />
+    <rect x="70" y="470" width="440" height="5" rx="2.5" fill="#e6c8a6" />
+    <rect x="100" y="494" width="22" height="102" fill="#b78e63" />
+    <rect x="458" y="494" width="22" height="102" fill="#b78e63" />
+    <rect x="120" y="330" width="190" height="110" rx="10" fill="#e2d7cb" stroke="#46586b" stroke-width="3" />
+  <rect x="132" y="342" width="166" height="76" rx="6" fill="#334155" />
+  <g stroke="#7dd3fc" stroke-width="5" stroke-linecap="round" opacity="0.8">
+    <line x1="150" y1="364" x2="237.8" y2="364" />
+    <line x1="150" y1="384" x2="275.79999999999995" y2="384" />
+    <line x1="150" y1="404" x2="215" y2="404" />
+  </g>
+  <rect x="193" y="440" width="44" height="10" rx="4" fill="#475569" />
+  <rect x="155" y="450" width="120" height="10" rx="5" fill="#334155" />
+      <rect x="330" y="380" width="130" height="120" rx="26" fill="#c8beb5" />
+  <rect x="356" y="410" width="78" height="60" rx="18" fill="#ded7d0" />
+  <path d="M395 500 v42 M350 542 h90" stroke="#c8beb5" stroke-width="10" stroke-linecap="round" />
+    <rect x="250" y="200" width="210" height="40" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="2" />
+  <text x="355" y="226" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#0ea5e9" text-anchor="middle">45 МИН СИДЯ</text>
+  </g>
+  <g transform="translate(700 0)">
+    <rect x="40" y="380" width="440" height="24" rx="8" fill="#d3a97c" />
+    <rect x="40" y="380" width="440" height="5" rx="2.5" fill="#e6c8a6" />
+    <rect x="70" y="404" width="22" height="192" fill="#b78e63" />
+    <rect x="428" y="404" width="22" height="192" fill="#b78e63" />
+    <rect x="90" y="240" width="190" height="110" rx="10" fill="#e2d7cb" stroke="#46586b" stroke-width="3" />
+  <rect x="102" y="252" width="166" height="76" rx="6" fill="#334155" />
+  <g stroke="#7dd3fc" stroke-width="5" stroke-linecap="round" opacity="0.8">
+    <line x1="120" y1="274" x2="207.8" y2="274" />
+    <line x1="120" y1="294" x2="245.79999999999998" y2="294" />
+    <line x1="120" y1="314" x2="185" y2="314" />
+  </g>
+  <rect x="163" y="350" width="44" height="10" rx="4" fill="#475569" />
+  <rect x="125" y="360" width="120" height="10" rx="5" fill="#334155" />
+    <rect x="294" y="476" width="24" height="110" rx="11" fill="#334155" />
+  <rect x="326" y="476" width="24" height="110" rx="11" fill="#334155" />
+  <ellipse cx="306" cy="588" rx="22" ry="10" fill="#3a2a1c" />
+  <ellipse cx="338" cy="588" rx="22" ry="10" fill="#3a2a1c" />
+  <path d="M258 478 v-64 a62 62 0 0 1 124 0 v64 z" fill="#38bdf8" />
+  <circle cx="320" cy="310" r="48" fill="#f5c9a3" />
+  <path d="M272 310 a48 48 0 0 1 96 0 q-22 -26 -48 -26 q-26 0 -48 26 z" fill="#3a2a1c" />
+  <circle cx="303" cy="312" r="5.5" fill="#241f1c" />
+  <circle cx="337" cy="312" r="5.5" fill="#241f1c" />
+  <path d="M307 332 q13 12 26 0" fill="none" stroke="#241f1c" stroke-width="4" stroke-linecap="round" />
+    <rect x="230" y="130" width="210" height="40" rx="10" fill="#ffffff" stroke="#0f9d6b" stroke-width="2" />
+  <text x="335" y="156" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#0f9d6b" text-anchor="middle">15 МИН СТОЯ</text>
+  </g>
+  <path d="M660 300 q40 -70 0 -140" fill="none" stroke="#f59e0b" stroke-width="7" stroke-linecap="round" stroke-dasharray="14 10" />
+  <path d="M660 160 l-12 20 M660 160 l12 20" stroke="#f59e0b" stroke-width="7" stroke-linecap="round" />
+  <rect x="48" y="690" width="430" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+  <text x="263" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · СМЕНА ПОЗЫ 40/20</text>
+</svg>

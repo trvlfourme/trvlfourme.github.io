@@ -8,43 +8,54 @@
   </defs>
 
   <rect width="800" height="450" fill="url(#bgMouse)" />
-  <rect x="0" y="380" width="800" height="70" fill="#0c0a09" />
-  <line x1="0" y1="380" x2="800" y2="380" stroke="#44403c" stroke-width="2" />
 
-  <!-- Left: обычная мышь, ладонь вниз -->
-  <g transform="translate(90, 300)">
-    <!-- корпус -->
-    <path d="M 20 60 Q 20 10 70 6 Q 130 2 170 18 Q 190 26 186 60 Q 184 78 160 78 L 44 78 Q 22 78 20 60 Z"
+  <!-- поверхность стола -->
+  <line x1="40" y1="300" x2="760" y2="300" stroke="#57534e" stroke-width="2" />
+  <rect x="40" y="300" width="720" height="6" fill="#0c0a09" opacity="0.55" />
+
+  <!-- Слева: обычная мышь, ладонь вниз -->
+  <g>
+    <!-- корпус, вид сбоку -->
+    <path d="M 110 300 L 110 272 Q 110 246 148 240 Q 215 232 265 246 Q 300 256 300 280 L 300 300 Z"
           fill="#3f3f46" stroke="#a8a29e" stroke-width="2" />
     <!-- колесо -->
-    <rect x="96" y="16" width="8" height="16" rx="3" fill="#f59e0b" />
-    <!-- кисть сверху: ладонь параллельно столу -->
-    <path d="M 6 22 Q 60 -14 150 -16 Q 196 -16 214 8" fill="none" stroke="#e7e5e4" stroke-width="10"
-          stroke-linecap="round" />
-    <circle cx="212" cy="10" r="7" fill="#e7e5e4" />
-    <!-- угол пронации 0° -->
-    <line x1="0" y1="78" x2="230" y2="78" stroke="#78716c" stroke-dasharray="4 4" />
-    <text x="115" y="112" font-family="system-ui, sans-serif" font-size="13" font-weight="700"
-          fill="#a8a29e" text-anchor="middle">ладонь вниз: пронация 0°</text>
+    <rect x="250" y="238" width="10" height="22" rx="4" fill="#f59e0b" />
+    <!-- предплечье -->
+    <path d="M 44 254 Q 84 240 126 234" fill="none" stroke="#d6d3d1" stroke-width="26" stroke-linecap="round" />
+    <!-- кисть -->
+    <rect x="116" y="208" width="114" height="52" rx="25" fill="#e7e5e4" />
+    <!-- пальцы лежат на корпусе -->
+    <path d="M 228 218 Q 256 224 262 244" fill="none" stroke="#e7e5e4" stroke-width="12" stroke-linecap="round" />
+    <path d="M 232 240 Q 254 246 258 262" fill="none" stroke="#e7e5e4" stroke-width="11" stroke-linecap="round" />
+    <text x="196" y="340" font-family="system-ui, sans-serif" font-size="13" font-weight="700"
+          fill="#d6d3d1" text-anchor="middle">ладонь вниз · пронация 0°</text>
   </g>
 
-  <!-- Right: вертикальная мышь, ладонь как при рукопожатии -->
-  <g transform="translate(455, 300)">
-    <!-- корпус, наклонённый к столу -->
-    <g transform="rotate(-24 90 60)">
-      <path d="M 20 60 Q 20 10 70 6 Q 130 2 170 18 Q 190 26 186 60 Q 184 78 160 78 L 44 78 Q 22 78 20 60 Z"
-            fill="#292524" stroke="#f59e0b" stroke-width="2" />
-      <rect x="96" y="16" width="8" height="16" rx="3" fill="#fbbf24" />
-      <!-- большой палец сверху -->
-      <path d="M 40 4 Q 22 -10 6 4" fill="none" stroke="#e7e5e4" stroke-width="9" stroke-linecap="round" />
+  <!-- Справа: вертикальная мышь, ладонь как при рукопожатии -->
+  <g>
+    <!-- угол наклона корпуса -->
+    <path d="M 450 300 A 150 150 0 0 1 497 191" fill="none" stroke="#10b981" stroke-width="3" />
+    <text x="418" y="252" font-family="system-ui, sans-serif" font-size="14" font-weight="800"
+          fill="#34d399" text-anchor="middle">55–60°</text>
+
+    <g transform="translate(600 300) rotate(-30)">
+      <!-- предплечье -->
+      <path d="M 18 -8 Q 80 24 116 54" fill="none" stroke="#d6d3d1" stroke-width="28" stroke-linecap="round" />
+      <!-- кисть: ладонь обхватывает корпус сбоку -->
+      <rect x="-2" y="-112" width="54" height="112" rx="27" fill="#e7e5e4" />
+      <!-- корпус -->
+      <rect x="-36" y="-150" width="72" height="150" rx="36" fill="#292524" stroke="#f59e0b" stroke-width="2" />
+      <!-- колесо -->
+      <rect x="-6" y="-124" width="12" height="26" rx="6" fill="#fbbf24" />
+      <!-- упор под большой палец -->
+      <ellipse cx="-34" cy="-62" rx="12" ry="22" fill="#57534e" />
+      <!-- пальцы -->
+      <path d="M -44 -100 Q -18 -94 6 -98" fill="none" stroke="#f5f5f4" stroke-width="11" stroke-linecap="round" />
+      <path d="M -46 -76 Q -20 -70 4 -74" fill="none" stroke="#f5f5f4" stroke-width="11" stroke-linecap="round" />
+      <path d="M -46 -52 Q -20 -46 2 -50" fill="none" stroke="#f5f5f4" stroke-width="11" stroke-linecap="round" />
     </g>
-    <!-- кисть под углом, мизинец снизу -->
-    <path d="M 40 216 Q 84 150 150 96 Q 186 70 200 40" fill="none" stroke="#e7e5e4" stroke-width="10"
-          stroke-linecap="round" />
-    <!-- дуга угла 55-60° -->
-    <path d="M 40 78 A 90 90 0 0 1 118 18" fill="none" stroke="#10b981" stroke-width="3" />
-    <text x="132" y="24" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#34d399">55–60°</text>
-    <text x="100" y="256" font-family="system-ui, sans-serif" font-size="13" font-weight="700"
+
+    <text x="620" y="340" font-family="system-ui, sans-serif" font-size="13" font-weight="700"
           fill="#fbbf24" text-anchor="middle">ладонь как при рукопожатии</text>
   </g>
 

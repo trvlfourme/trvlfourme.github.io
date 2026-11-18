@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" width="1376" height="768">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf6f1" />
+      <stop offset="100%" stop-color="#ece3da" />
+    </linearGradient>
+  </defs>
+  <rect width="1376" height="768" fill="url(#bg)" />
+  <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" />
+    <rect x="120" y="360" width="150" height="150" rx="26" fill="#c8beb5" />
+  <rect x="146" y="390" width="98" height="90" rx="18" fill="#ded7d0" />
+  <path d="M195 510 v42 M140 552 h110" stroke="#c8beb5" stroke-width="10" stroke-linecap="round" />
+    <rect x="350" y="340" width="170" height="170" rx="26" fill="#c8beb5" />
+  <rect x="376" y="370" width="118" height="110" rx="18" fill="#ded7d0" />
+  <path d="M435 510 v42 M370 552 h130" stroke="#c8beb5" stroke-width="10" stroke-linecap="round" />
+    <rect x="610" y="320" width="190" height="190" rx="26" fill="#c8beb5" />
+  <rect x="636" y="350" width="138" height="130" rx="18" fill="#ded7d0" />
+  <path d="M705 510 v42 M630 552 h150" stroke="#c8beb5" stroke-width="10" stroke-linecap="round" />
+  <g transform="translate(900 300) scale(1.2)">
+    <rect x="0" y="0" width="26" height="150" rx="12" fill="#c8beb5" />
+    <rect x="6" y="58" width="14" height="46" rx="7" fill="#f59e0b" />
+    <rect x="10" y="128" width="118" height="26" rx="12" fill="#ded7d0" />
+    <rect x="60" y="154" width="10" height="56" fill="#c8beb5" />
+    <path d="M65 210 L18 236 M65 210 L112 236" stroke="#c8beb5" stroke-width="8" stroke-linecap="round" />
+  </g>
+  <rect x="110" y="250" width="170" height="40" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="2" />
+  <text x="195" y="276" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#0ea5e9" text-anchor="middle">ЭКОНОМ</text>
+  <rect x="345" y="228" width="180" height="40" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+  <text x="435" y="254" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#f59e0b" text-anchor="middle">ОПТИМУМ</text>
+  <rect x="605" y="200" width="200" height="40" rx="10" fill="#ffffff" stroke="#0f9d6b" stroke-width="2" />
+  <text x="705" y="226" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#0f9d6b" text-anchor="middle">ТОП</text>
+  <rect x="1130" y="420" width="46" height="50" rx="9" fill="#ef4444" />
+  <path d="M1176 430 a14 14 0 0 1 0 26" fill="none" stroke="#ef4444" stroke-width="7" />
+  <path d="M1142 408 q7 -13 0 -24 M1160 410 q7 -13 0 -24" fill="none" stroke="#a89b8e" stroke-width="3" stroke-linecap="round" opacity="0.7" />
+  <g transform="translate(1240 596) scale(1.1)">
+    <path d="M-30 0 l-10 -58 h64 l-10 58 z" fill="#c1793f" />
+    <circle cx="-8" cy="-94" r="30" fill="#166534" />
+    <circle cx="-32" cy="-78" r="20" fill="#15803d" />
+    <circle cx="16" cy="-80" r="18" fill="#15803d" />
+  </g>
+  <rect x="48" y="690" width="410" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+  <text x="253" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · РЕЙТИНГ КРЕСЕЛ</text>
+</svg>

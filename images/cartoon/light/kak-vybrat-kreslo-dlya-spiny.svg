@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" width="1376" height="768">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf6f1" />
+      <stop offset="100%" stop-color="#ece3da" />
+    </linearGradient>
+  </defs>
+  <rect width="1376" height="768" fill="url(#bg)" />
+  <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" /><g transform="translate(480 240) scale(1.5)">
+    <rect x="0" y="0" width="26" height="150" rx="12" fill="#c8beb5" />
+    <rect x="6" y="58" width="14" height="46" rx="7" fill="#f59e0b" />
+    <rect x="10" y="128" width="118" height="26" rx="12" fill="#ded7d0" />
+    <rect x="60" y="154" width="10" height="56" fill="#c8beb5" />
+    <path d="M65 210 L18 236 M65 210 L112 236" stroke="#c8beb5" stroke-width="8" stroke-linecap="round" />
+  </g>
+  <line x1="480" y1="240" x2="480" y2="596" stroke="#d2c6bb" stroke-width="3" stroke-dasharray="10 10" />
+  <line x1="560" y1="330" x2="860" y2="330" stroke="#0ea5e9" stroke-width="4" />
+  <text x="880" y="336" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#0369a1">поясничный упор</text>
+  <line x1="660" y1="470" x2="980" y2="470" stroke="#0f9d6b" stroke-width="4" />
+  <text x="1000" y="476" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#0f9d6b">глубина сиденья</text>
+  <line x1="300" y1="596" x2="300" y2="360" stroke="#d2c6bb" stroke-width="4" />
+  <path d="M300 360 l-10 18 M300 360 l10 18" stroke="#d2c6bb" stroke-width="4" />
+  <text x="250" y="340" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#3a2c1c" text-anchor="middle">высота</text>
+  <rect x="1040" y="560" width="290" height="40" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+  <text x="1185" y="586" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#f59e0b" text-anchor="middle">ПРОВЕРКА ПО РОСТУ</text>
+  <rect x="48" y="690" width="410" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+  <text x="253" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · КРЕСЛО В ПРОФИЛЬ</text>
+</svg>
