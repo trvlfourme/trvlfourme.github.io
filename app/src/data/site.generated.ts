@@ -1150,7 +1150,7 @@ export const SITE_ARTICLES: Article[] = [
     ],
     "author": EDITORIAL_AUTHOR,
     "publishedAt": "2026-10-03",
-    "updatedAt": "2026-11-17",
+    "updatedAt": "2026-11-18",
     "readTimeMin": 3,
     "heroImage": "/images/editorial/screenbar-evening-light.jpg",
     "tableOfContents": [
@@ -1210,7 +1210,7 @@ export const SITE_ARTICLES: Article[] = [
       "xiaomi-lightbar",
       "benq-screenbar-halo"
     ],
-    "conclusion": "Скринбар окупается в первую же неделю: глаза перестают слезиться, а стол освобождается от громоздкой подставки настольной лампы.",
+    "conclusion": "Скринбар окупается в первую же неделю: глаза перестают слезиться, а стол освобождается от громоздкой подставки настольной лампы.\n\nОстальные гайды «Кабинета Дома» про свет и посадку собраны в разделе статей — начните с [настройки рабочего места](/article/ergonomika-rabochego-mesta-nastroyka/).",
     "faqList": [
       {
         "question": "Подойдет ли скринбар для изогнутого монитора?",
@@ -1245,7 +1245,7 @@ export const SITE_ARTICLES: Article[] = [
     ],
     "author": EDITORIAL_AUTHOR,
     "publishedAt": "2026-10-03",
-    "updatedAt": "2026-11-17",
+    "updatedAt": "2026-11-18",
     "readTimeMin": 2,
     "heroImage": "/images/editorial/audio-podcasting-desk.jpg",
     "tableOfContents": [
@@ -1300,7 +1300,7 @@ export const SITE_ARTICLES: Article[] = [
       "headphones-anker-space-one",
       "webcam-logitech-c922"
     ],
-    "conclusion": "Качественный звук формирует впечатление профессионализма у клиентов и руководства сильнее, чем 4K-вебкамера.",
+    "conclusion": "Качественный звук формирует впечатление профессионализма у клиентов и руководства сильнее, чем 4K-вебкамера.\n\nКомнату для созвонов редакция «Кабинета Дома» разбирает отдельно — в гайде про [акустические панели](/article/akusticheskie-paneli-dlya-domashnego-kabineta/).",
     "faqList": [
       {
         "question": "Нужен ли аудиоинтерфейс для Fifine K688?",
@@ -1805,7 +1805,7 @@ export const SITE_ARTICLES: Article[] = [
     ],
     "author": EDITORIAL_AUTHOR,
     "publishedAt": "2026-09-30",
-    "updatedAt": "2026-11-04",
+    "updatedAt": "2026-11-18",
     "readTimeMin": 6,
     "heroImage": "/images/editorial/standing-desk-health.jpg",
     "tableOfContents": [
@@ -1889,7 +1889,7 @@ export const SITE_ARTICLES: Article[] = [
       "desk-loctek-et114",
       "lumbar-cushion-memory"
     ],
-    "conclusion": "Опора под ногами — завершающий элемент эргономического треугольника «стол-стул-монитор».\n\nОтдельно про высоту стола: если столешница ниже 72 см, подставка чаще мешает, чем помогает — ноги и так стоят ровно, а подъём начинает задирать колени. Проверьте это число рулеткой до покупки, а не после.",
+    "conclusion": "Опора под ногами — завершающий элемент эргономического треугольника «стол-стул-монитор».\n\nОтдельно про высоту стола: если столешница ниже 72 см, подставка чаще мешает, чем помогает — ноги и так стоят ровно, а подъём начинает задирать колени. Проверьте это число рулеткой до покупки, а не после.\n\nПодставка — часть цикла «Кабинета Дома» про высоту рабочего места: рядом — [как выбрать стол с электроприводом](/article/podemnyj-stol-kak-vybrat/).",
     "faqList": [
       {
         "question": "Какая оптимальная высота подставки для ног?",
