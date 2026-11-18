@@ -31,15 +31,21 @@ const IMG = {
   'webcam-logitech-c922': '/images/audio-microphones.svg',
   'pomodoro-timer-cube': '/images/workspace-hero.svg',
   'acupressure-mat-pranamat': '/images/ergonomic-chair.svg',
+  'metta-samurai-s3': '/images/ergonomic-chair.svg',
+  'chair-budget-burokrat': '/images/ergonomic-chair.svg',
+  'chair-ergohuman-plus': '/images/ergonomic-chair.svg',
+  'webcam-anker-powerconf-c200': '/images/audio-microphones.svg',
 };
 const AVATAR = '/logo.png';
-const AVATAR_SRC = 'https://images.unsplash.com/photo-1497366216548-37526070297c';
+// Аватар автора приходит с query-строкой (?auto=format&fit=crop…), поэтому режем
+// адрес целиком, а не только префикс: иначе в бандле остаётся /logo.png?auto=…
+const AVATAR_RE = /https:\/\/images\.unsplash\.com\/photo-1497366216548[^`"'\s]*/g;
 
 let src = fs.readFileSync(file, 'utf8');
 const before = src;
 let replaced = 0;
 
-src = src.split(AVATAR_SRC).join(AVATAR);
+src = src.replace(AVATAR_RE, AVATAR);
 
 // Идём по объектам офферов: последний {id:`...`} перед imageUrl определяет товар.
 src = src.replace(/imageUrl:`https:\/\/images\.unsplash\.com\/photo-[0-9a-f-]+[^`]*`/g, (tag, offset, all) => {

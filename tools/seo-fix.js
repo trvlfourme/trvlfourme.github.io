@@ -134,6 +134,27 @@ function buildSchema({ route, meta, h1, datePublished, dateModified, faq, og }) 
   const url = SITE + route;
   const isTool = ['/calculator/', '/builder/', '/tests/', '/checklist/'].includes(route);
   const graph = [];
+  // Название сайта поисковик берёт из WebSite.name; на страницы товаров/статей
+  // ссылаются через @id, сами узлы живут на главной.
+  if (route === '/') {
+    graph.push({
+      '@type': 'WebSite',
+      '@id': SITE + '/#website',
+      url: SITE + '/',
+      name: 'Кабинет Дома',
+      alternateName: 'kabinetdoma.ru',
+      inLanguage: 'ru-RU',
+    });
+    // sameAs не заполняем: подтверждённых профилей у сайта нет, пустой список
+    // лучше выдуманной ссылки (T-119).
+    graph.push({
+      '@type': 'Organization',
+      '@id': SITE + '/#organization',
+      name: 'Кабинет Дома',
+      url: SITE + '/',
+      logo: { '@type': 'ImageObject', url: SITE + '/logo.png' },
+    });
+  }
   if (route.startsWith('/article/')) {
     graph.push({
       '@type': 'Article',

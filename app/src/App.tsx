@@ -68,6 +68,10 @@ export default function App() {
       if (articleParam) {
         const found = findArticleBySlugOrId(articlesList, articleParam);
         if (found) {
+          // ?article=<id> — старый параметрический адрес: сразу заменяем его каноническим
+          // путём одной записью в истории, чтобы назад возвращало на предыдущую страницу,
+          // а не на дубль. Сама статья открывается и без этого, по ветке 1 выше.
+          window.history.replaceState({}, '', `/article/${found.slug || found.id}/`);
           setSelectedArticleId(found.id);
           setActiveTab('articles');
           return;

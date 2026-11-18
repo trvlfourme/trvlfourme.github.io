@@ -193,22 +193,6 @@ function pickDescription(html) {
 
 const escapeAttr = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
-// Приложение не умеет /article/<slug>: до старта бандла подменяем адрес на ?article=<id>,
-// после монтирования возвращаем чистый URL. Краулер при этом видит готовый HTML.
-const shim = (article) => `<script>
-    (function () {
-      var m = /^\\/article\\/[a-z0-9-]+\\/?$/.exec(location.pathname);
-      if (!m) return;
-      var pretty = location.pathname + location.hash;
-      try { history.replaceState(null, '', '/?article=${article.id}'); } catch (e) {}
-      function restore() {
-        try { history.replaceState(null, '', pretty); } catch (e) {}
-      }
-      if (document.readyState === 'complete') setTimeout(restore, 80);
-      else window.addEventListener('load', function () { setTimeout(restore, 80); });
-    })();
-    </script>`;
-
 function rewriteHead(html, route, title, description) {
   // канонический адрес со слешем в конце — как у уже выложенных страниц
   const canonical = SITE + (route !== '/' && !/\.[a-z0-9]+$/i.test(route) ? route + '/' : route);
@@ -269,7 +253,6 @@ for (const { route, url, article } of selected) {
     .replace(/[ 	]*<!-- kd-seo -->[\s\S]*?<!-- \/kd-seo -->/g, '')
     .replace(/[ 	]*<!-- kd-links -->[\s\S]*?<!-- \/kd-links -->/g, '');
   out = rewriteHead(out, route, title, description);
-  if (article) out = out.replace(/<\/head>/i, `    ${shim(article)}\n  </head>`);
 
   const text = stripTags(out).length;
   const target =
