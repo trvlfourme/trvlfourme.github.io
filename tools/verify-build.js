@@ -199,6 +199,10 @@ else {
   if (/код:\s*2026/.test(js)) fail('в бандле есть PIN редакторской панели');
   if (js.includes('kd_gemini_api_key')) fail('в бандле есть чтение ключа Gemini');
   if (js.includes('@google/genai') || js.includes('GoogleGenAI')) fail('в бандле остался Google GenAI SDK');
+  // адрес статьи, который клиентский код собирает сам, тоже со слэшем:
+  // шаблон `/article/${slug}` без слэша даёт 301 после клика по карточке (T-149)
+  const templated = [...js.matchAll(/\/article\/\$\{[^`}]*\}(?!\/)/g)].map((m) => m[0].slice(0, 60));
+  if (templated.length) fail(`в бандле адрес статьи собирается без слэша (${templated.length}): ${templated.slice(0, 3).join(', ')}`);
 }
 for (const jsFile of ['tools/admin/loader.js', 'tools/admin/links.js', 'tools/admin/catalog.js', 'assets/kd-catalog-render.js', 'data/product-links.js', 'data/catalog.js']) {
   if (exists(jsFile)) {
@@ -407,6 +411,40 @@ for (const page of contentPages) {
   if (html.includes('/data/product-links.js') && !html.includes('/data/catalog.js')) fail(`${rel}: не подключён data/catalog.js`);
   if (html.includes('/data/product-links.js') && !html.includes('/assets/kd-catalog-render.js')) fail(`${rel}: не подключён assets/kd-catalog-render.js`);
   // Трекер целей снят вместе с Метрикой: режим «сайт без ПДн» (T-056).
+}
+
+// 3б. Адреса статей — всегда со слэшем на конце (T-149, T-156).
+// GitHub Pages отдаёт статью по /article/<slug>/ , а адрес без слэша — 301,
+// поэтому такие ссылки Google складывает в «Страница с переадресацией».
+const articleLink = /^(?:https:\/\/kabinetdoma\.ru)?\/article\/[^/?#]+(?:[?#].*)?$/;
+const badArticleLinks = [];
+const badArticleCanonical = [];
+let articlesChecked = 0;
+for (const page of contentPages) {
+  const rel = path.relative(root, page).split(path.sep).join('/');
+  const html = fs.readFileSync(page, 'utf8');
+  const isRedirect = /http-equiv="refresh"/i.test(html);
+  if (isRedirect) continue; // у алиасов canonical ведёт на основной адрес, ссылок нет
+  for (const m of html.matchAll(/<a\b[^>]*\shref="([^"]+)"/g)) {
+    if (articleLink.test(m[1])) badArticleLinks.push(`${rel} → ${m[1]}`);
+  }
+  if (rel.startsWith('article/')) {
+    articlesChecked++;
+    const slug = rel.split('/')[1];
+    const want = `${SITE}/article/${slug}/`;
+    const canonical = (html.match(/<link rel="canonical" href="([^"]+)"/i) || [])[1];
+    if (canonical !== want) badArticleCanonical.push(`${rel}: ${canonical || 'нет canonical'} вместо ${want}`);
+  }
+}
+if (badArticleLinks.length) {
+  fail(`ссылки на статьи без слэша на конце (${badArticleLinks.length}): ${badArticleLinks.slice(0, 5).join(', ')} — GitHub Pages ответит 301`);
+} else {
+  note('ссылки на статьи на всех страницах со слэшем на конце');
+}
+if (badArticleCanonical.length) {
+  fail(`canonical статей не со слэшем или не на свой адрес (${badArticleCanonical.length}): ${badArticleCanonical.slice(0, 5).join(', ')}`);
+} else {
+  note(`canonical статей: ${articlesChecked} — у каждой свой адрес со слэшем`);
 }
 
 // 4. Локальные пути в разметке существуют
