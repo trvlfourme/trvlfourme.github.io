@@ -39,6 +39,15 @@ function today() {
 function ready(it) {
   return !it.release || it.release === '—' || it.release <= today();
 }
+// когда «Выпуск» — фиксированное начало, а когда дата выхода готовой работы:
+// регулярная проверка и отложенный разбор начинаются не раньше дня в «Выпуск»;
+// у статьи дедлайн «До» стоит раньше выпуска — значит готовить можно заранее.
+function fixedStart(it) {
+  if (!it.release || it.release === '—') return false;
+  if (it.regularity) return true;
+  if (!it.due || it.due === '—') return true;
+  return it.due.slice(0, 10) >= it.release;
+}
 // для показа: критичное сверху, внутри приоритета — по сроку
 function rank(it) {
   const i = PRIORITIES.indexOf(it.priority);
@@ -54,6 +63,7 @@ const FIELD = {
   итог: 'result',
   до: 'due',
   выпуск: 'release',
+  регулярность: 'regularity',
   взял: 'taken',
   вопрос: 'question',
   ответ: 'answer',
@@ -97,6 +107,7 @@ function parse(text) {
         context: '',
         due: '',
         release: '',
+        regularity: '',
         taken: '',
         line: i + 1,
       };
@@ -112,7 +123,7 @@ function parse(text) {
     }
     if (!cur) return;
 
-    const f = line.match(/^\*\*(Статус|Метка|Приоритет|Кому|Задача|Итог|До|Выпуск|Взял|Вопрос|Ответ|Контекст):\*\*\s*(.*)$/);
+    const f = line.match(/^\*\*(Статус|Метка|Приоритет|Кому|Задача|Итог|До|Выпуск|Регулярность|Взял|Вопрос|Ответ|Контекст):\*\*\s*(.*)$/);
     if (f) {
       field = FIELD[f[1].toLowerCase()];
       cur[field] = f[2].trim();
@@ -150,9 +161,12 @@ function parse(text) {
     if (it.status === 'в работе' && !it.taken) errors.push(`${it.id}: в работе без поля «Взял» (роль и время)`);
     if (it.release && it.release !== '—') {
       if (!DATE.test(it.release)) errors.push(`${it.id}: поле «Выпуск» должно быть «ГГГГ-ММ-ДД» или «—»`);
-      else if (it.status === 'в работе' && it.release > today()) {
-        errors.push(`${it.id}: запланирована на ${it.release} — брать в работу раньше нельзя`);
+      else if (it.status === 'в работе' && fixedStart(it) && it.release > today()) {
+        errors.push(`${it.id}: «Выпуск» ${it.release} — раньше этого дня не начинают (проверка/отложенный разбор)`);
       }
+    }
+    if (it.status !== 'закрыта' && it.regularity && (!it.release || it.release === '—')) {
+      errors.push(`${it.id}: регулярная задача без «Выпуск» — поставьте дату следующей проверки (ГГГГ-ММ-ДД), иначе период не проверить`);
     }
     if (it.due && it.due !== '—') {
       if (!DUE.test(it.due)) errors.push(`${it.id}: поле «До» должно быть «ГГГГ-ММ-ДД ЧЧ:ММ» или «—»`);
@@ -166,6 +180,7 @@ function parse(text) {
   const inWork = new Map();
   for (const it of items) {
     if (it.kind !== 'T' || it.status !== 'в работе') continue;
+    if (isLock(it)) continue; // лок сборки/деплоя — отдельная запись, не вторая задача роли
     const who = it.to || it.from;
     if (who === OWNER) continue;
     inWork.set(who, [...(inWork.get(who) || []), it.id]);
@@ -205,7 +220,7 @@ function head(it) {
   if (it.to && it.kind === 'T') bits.push(`кому: ${it.to}`);
   if (it.status === 'в работе' && it.taken) bits.push(`взял: ${it.taken}`);
   if (it.due && it.due !== '—') bits.push(`до ${it.due}`);
-  if (it.release && it.release !== '—') bits.push(ready(it) ? `выпуск с ${it.release}` : `ждёт ${it.release}`);
+  if (it.release && it.release !== '—') bits.push(`${it.regularity ? 'проверка' : 'выпуск'} ${it.release}`);
   return bits.filter(Boolean).join(' · ');
 }
 
@@ -226,6 +241,8 @@ function main(argv) {
     console.log('node tools/questions.js [--tasks] [--chat <роль>] [--all] [--json] [--check]');
     console.log('роли: ' + ROLES.join(', ') + ' · адресат: ' + OWNER + ' · метки: ' + LABELS.join(', '));
     console.log('приоритеты (только у незакрытых задач): ' + PRIORITIES.join(', '));
+    console.log('«Выпуск» — фиксированная дата выпуска или следующей регулярной проверки, не сдвигается;');
+    console.log('«До» — дедлайн: обычную задачу берут раньше срока, если нет блокеров.');
     return 0;
   }
   const chatAt = args.indexOf('--chat');
@@ -277,9 +294,19 @@ function main(argv) {
   }
 
   const mine = (it) => !chat || it.to === chat || (it.kind === 'T' && !it.to && it.from === chat) || isLock(it);
+  // сначала то, что можно брать сейчас; внутри — по приоритету и сроку.
+  // Ждёт своей даты только регулярная проверка: у неё фиксирован период. Плановую статью
+  // можно готовить заранее — её держит дедлайн «До», а не дата выхода.
+  const waiting = (it) => (it.status === 'открыта' && fixedStart(it) && !ready(it) ? 1 : 0);
+  const takeable = (it) => it.status === 'открыта' && !waiting(it);
   const shownTasks = (all ? tasks : activeTasks)
     .filter(mine)
-    .sort((a, b) => rank(a) - rank(b) || String(a.due || '9999').localeCompare(String(b.due || '9999')));
+    .sort(
+      (a, b) =>
+        waiting(a) - waiting(b) ||
+        rank(a) - rank(b) ||
+        String(a.due || '9999').localeCompare(String(b.due || '9999'))
+    );
   const shownQuestions = onlyTasks ? [] : (all ? questions : openQuestions).filter(mine);
 
   const scope = chat ? ` · адресату «${chat}»` : '';
@@ -293,13 +320,11 @@ function main(argv) {
     return 0;
   }
   if (chat && !all) {
-    const free = shownTasks.filter((it) => it.status === 'открыта' && ready(it));
-    const later = shownTasks.filter((it) => it.status === 'открыта' && !ready(it));
-    if (free.length) console.log(`можно брать сейчас: ${free.map((it) => it.id).join(', ')}`);
-    else if (later.length) {
-      const next = later.slice().sort((a, b) => (a.release < b.release ? -1 : 1))[0];
-      console.log(`на сегодня задач нет: ближайшая ${next.id} с ${next.release}`);
-    }
+    const free = shownTasks.filter(takeable);
+    const later = shownTasks.filter((it) => it.status === 'открыта' && waiting(it));
+    if (free.length) console.log(`можно брать сейчас (сверху — приоритетнее): ${free.map((it) => it.id).join(', ')}`);
+    if (later.length) console.log(`ждут своей даты: ${later.map((it) => `${it.id} с ${it.release}`).join(', ')}`);
+    if (!free.length && later.length) console.log('на сегодня брать нечего: всё ждёт своей даты');
   }
   show(shownTasks);
   if (shownQuestions.length) {
