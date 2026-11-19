@@ -218,7 +218,9 @@ export function generateStaticPages() {
     const aliases = article.slugAliases || [];
     const allSlugs = Array.from(new Set([primarySlug, ...aliases]));
 
-    const canonicalUrl = `https://kabinetdoma.ru/article/${primarySlug}`;
+    // Слэш на конце — как в sitemap и в артефактах tools/build.js, иначе app/dist
+    // перезаписывает canonical на адрес, который отдаёт 301 (T-154).
+    const canonicalUrl = `https://kabinetdoma.ru/article/${primarySlug}/`;
     const pageTitle = article.seo?.metaTitle || `${article.title} — Кабинет Дома`;
     const metaDesc = article.seo?.metaDescription || article.excerpt;
     const heroImage = article.heroImage

@@ -163,7 +163,9 @@ export default function App() {
     if (id) {
       const art = findArticleBySlugOrId(articlesList, id);
       const targetSlug = art?.slug || id;
-      window.history.pushState({}, '', `/article/${targetSlug}`);
+      // Со слэшем: иначе после клика по карточке адрес остаётся без слэша и
+      // перезагрузка даёт лишний 301 (T-154).
+      window.history.pushState({}, '', `/article/${targetSlug}/`);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       window.history.pushState({}, '', activeTab === 'articles' ? '/' : `/${activeTab}`);

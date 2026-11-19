@@ -15,7 +15,9 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article, onSelect, onS
   const categoryLabel = CATEGORIES.find(c => c.id === article.category)?.label || 'Гайд';
   const isAi = article.isAiGenerated || article.generatedBy === 'gemini';
   const tags = article.tags && article.tags.length > 0 ? article.tags : getTagsForArticle(article);
-  const articleUrl = `/article/${article.slug || article.id}`;
+  // Адрес со слэшем — как canonical и sitemap: без него каждый переход с хаба и главной
+  // уходит в лишний 301 от GitHub Pages (T-154).
+  const articleUrl = `/article/${article.slug || article.id}/`;
 
   const handleCardClick = (e: React.MouseEvent) => {
     // If not middle click or ctrl/cmd click, handle as SPA navigation
