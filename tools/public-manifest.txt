@@ -1,0 +1,42 @@
+# Публикуемый состав сайта kabinetdoma.ru — один список на все выкладки (T-090).
+# Читают: .cpanel.yml и tools/deploy-hothat.sh (cPanel), tools/deploy-prod.sh (GitHub Pages),
+# tools/verify-build.js (проверка, что публикация полна).
+# Одна запись на строку: папки — без слэша, маски — со звёздочкой.
+# Секции: «общие» — уезжает на любой хостинг, «только cPanel» / «только GitHub Pages» — по месту.
+# Правило T-053: docs/, tools/, app/, content/, *.md, исходники и архивы не публикуются никогда.
+
+# --- общие ---
+index.html
+404.html
+robots.txt
+sitemap.xml
+article
+articles
+about
+builder
+calculator
+catalog
+checklist
+privacy
+terms
+tests
+assets
+data
+images
+favicon.svg
+favicon-32.png
+apple-touch-icon.png
+logo.png
+logo-64.png
+logo-128.png
+og-image.jpg
+google*.html
+yandex*.html
+
+# --- только cPanel ---
+.htaccess
+
+# --- только GitHub Pages ---
+CNAME
+.nojekyll
+_redirects

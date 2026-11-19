@@ -1,0 +1,13 @@
+---
+# Выкладка из панели cPanel: Git™ Version Control → «Deploy HEAD Commit».
+# Состав берётся из tools/public-manifest.txt — те же записи отправляет rsync
+# (tools/deploy-hothat.sh), поэтому списки не расходятся (T-090).
+# Корень сайта: /home/<аккаунт>/kabinetdoma.ru (docs/migration-hothat.md, §3).
+# Если владелец выбрал другой путь, поменяйте DEPLOYPATH ниже.
+deployment:
+  tasks:
+    - export DEPLOYPATH="$HOME/kabinetdoma.ru"
+    - export ITEMS="$(awk '/^#/ { if ($0 ~ /только cPanel/) sec="cpanel"; else if ($0 ~ /GitHub Pages/) sec="pages"; else if ($0 ~ /общие/) sec="common"; next } NF == 0 { next } sec == "pages" { next } { printf "%s ", $0 }' tools/public-manifest.txt)"
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - for item in $ITEMS; do /bin/rm -rf "$DEPLOYPATH/$item"; done
+    - for item in $ITEMS; do /bin/cp -a "$item" "$DEPLOYPATH/"; done

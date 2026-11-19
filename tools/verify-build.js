@@ -15,7 +15,7 @@ const exists = (rel) => fs.existsSync(path.join(root, rel));
 
 function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === 'tools' || e.name === '_prodcheck' || e.name === '_prerender') continue;
+    if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === 'tools' || e.name === '_prodcheck' || e.name === '_prerender' || e.name === '_hothatcheck') continue;
     const full = path.join(dir, e.name);
     if (e.isDirectory()) {
       if (fs.existsSync(path.join(full, 'package.json'))) continue;
@@ -26,10 +26,14 @@ function walk(dir, out = []) {
   return out;
 }
 
-// 1. Обязательные для GitHub Pages файлы
-if (!exists('CNAME')) fail('нет CNAME — домен отвалится');
-else if (fs.readFileSync(path.join(root, 'CNAME'), 'utf8').trim() !== 'kabinetdoma.ru') fail('CNAME не указывает на kabinetdoma.ru');
-if (!exists('.nojekyll')) fail('нет .nojekyll — GitHub соберёт сайт через Jekyll и потеряет папки с подчёркиванием');
+// 1. Обязательные для GitHub Pages файлы. На cPanel их нет и не нужно: выкладка
+// запускает проверку с KD_HOSTING=hothat (tools/deploy-hothat.sh).
+const PAGES = process.env.KD_HOSTING !== 'hothat';
+if (PAGES) {
+  if (!exists('CNAME')) fail('нет CNAME — домен отвалится');
+  else if (fs.readFileSync(path.join(root, 'CNAME'), 'utf8').trim() !== 'kabinetdoma.ru') fail('CNAME не указывает на kabinetdoma.ru');
+  if (!exists('.nojekyll')) fail('нет .nojekyll — GitHub соберёт сайт через Jekyll и потеряет папки с подчёркиванием');
+}
 if (!exists('404.html')) fail('нет 404.html');
 if (!exists('robots.txt')) fail('нет robots.txt');
 else if (/Disallow:\s*\/\s*$/m.test(fs.readFileSync(path.join(root, 'robots.txt'), 'utf8'))) fail('robots.txt закрывает сайт от индексации (Disallow: /)');
@@ -441,6 +445,36 @@ if (exists('sitemap.xml')) {
   const extraInSitemap = [...sitemapSet].filter((u) => !canonicalSet.has(u));
   if (notInSitemap.length) fail(`sitemap: нет адреса со страницы — ${notInSitemap.slice(0, 6).join(', ')}`);
   if (extraInSitemap.length) fail(`sitemap: адрес без такой canonical — ${extraInSitemap.slice(0, 6).join(', ')}`);
+}
+
+// 6б. Публикуемый состав: tools/public-manifest.txt — один список для cPanel, Pages
+// и выкладок (T-090). Проверяем, что всё из списка реально есть в проверяемой папке.
+const HOST = process.env.KD_HOSTING === 'hothat' ? 'hothat' : 'pages';
+const manifestFile = path.join(__dirname, 'public-manifest.txt');
+if (fs.existsSync(manifestFile)) {
+  const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const wanted = [];
+  let section = 'common';
+  for (const raw of fs.readFileSync(manifestFile, 'utf8').split(/\r?\n/)) {
+    const line = raw.trim();
+    if (line.startsWith('#')) {
+      if (line.includes('только cPanel')) section = 'cpanel';
+      else if (line.includes('GitHub Pages')) section = 'pages';
+      else if (line.includes('общие')) section = 'common';
+      continue;
+    }
+    if (!line) continue;
+    if (section === 'common' || section === HOST || (section === 'cpanel' && HOST === 'hothat')) wanted.push(line);
+  }
+  const absent = [];
+  for (const entry of wanted) {
+    if (entry.includes('*')) {
+      const re = new RegExp('^' + entry.split('*').map(escapeRe).join('.*') + '$');
+      if (!fs.readdirSync(root).some((n) => re.test(n))) absent.push(entry);
+    } else if (!fs.existsSync(path.join(root, entry))) absent.push(entry);
+  }
+  if (absent.length) fail(`манифест (${HOST}): в публикации нет ${absent.join(', ')}`);
+  else note(`манифест ${HOST}: ${wanted.length} записей, все на месте`);
 }
 
 // 6. Итог

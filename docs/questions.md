@@ -1212,12 +1212,31 @@ www, а `openssl s_client -servername www.kabinetdoma.ru` показывает �
 ### T-090 · разработка · 2026-11-16
 **Метка:** разработка
 **Приоритет:** важный
-**Статус:** открыта
+**Статус:** закрыта
+**Взял:** разработка, 2026-11-19 21:40
 **Кому:** разработка
 **Задача:** сделать в репозитории то, без чего день переезда (T-073) растянется: (1) `tools/make-htaccess.js` — генерирует `.htaccess` из `_redirects` (17 правил) плюс служебный блок: http→https, www→apex с сохранением пути, `ErrorDocument 404`, кэш по типам, `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `AddDefaultCharset UTF-8`; (2) `tools/public-manifest.txt` — единый публикуемый состав, его читают выкладка и `verify-build`, чтобы `PUBLIC` из `deploy-prod.sh` и `.cpanel.yml` не разъехались; (3) `.cpanel.yml` с задачами деплоя по этому составу (путь к корню — placeholder, владелец подставит свой); (4) `tools/deploy-hothat.sh` — выкладка на cPanel (основной) и rsync по SSH (запасной) с отказом, если в составе появились `docs/`, `tools/`, `*.md`; (5) проверка: `node tools/make-htaccess.js --check` сверяет сгенерированный `.htaccess` с `_redirects`, `node tools/verify-build.js` чистый.
 **Контекст:** план переезда — `docs/migration-hothat.md` (T-073). Без генератора `.htaccess` и общего манифеста 17 редиректов и состав выкладки придётся держать в двух местах руками — это ровно тот тип расхождения, который молча ломает прод. Pages продолжает работать: `.htaccess` для него инертен.
 **Приёмка:** `node tools/make-htaccess.js --check` зелёный; `.htaccess` содержит 17 `Redirect 301` и служебный блок; `tools/verify-build.js` использует `tools/public-manifest.txt` и остаётся чистым; `.cpanel.yml` и `deploy-hothat.sh` не выкладывают ничего лишнего (проверяется прогоном в `_prodcheck`).
 **До:** 2026-11-23 18:00
+**Итог:** закрыта 2026-11-19. Сделаны четыре артефакта переезда.
+`tools/make-htaccess.js` собирает `.htaccess` из `_redirects` — 16 `Redirect 301` (в `_redirects`
+столько строк, а не 17), один `301` http→https, `www`→apex с сохранением пути, `ErrorDocument 404`,
+`Options -Indexes`, `DirectoryIndex`, gzip, кэш по типам (у `assets/*` час, а не год: имена не
+хешируются), `X-Content-Type-Options`/`Referrer-Policy`/`X-Frame-Options`, `AddDefaultCharset`,
+готовые строки HSTS под раскомментирование через сутки; `--check` сверяет файл с `_redirects` и
+ловит цель без страницы на диске. `tools/public-manifest.txt` — единый состав публикации в трёх
+секциях («общие» / «только cPanel» / «только GitHub Pages»); его читают `deploy-prod.sh`,
+`.cpanel.yml`, `deploy-hothat.sh` и `verify-build` (там же проверка, что всё из списка есть в
+публикации). `.cpanel.yml` — деплой панелью по манифесту в `$HOME/kabinetdoma.ru`, без placeholder.
+`tools/deploy-hothat.sh` — сборка состава в `_hothatcheck/stage`, отказ при `docs/`, `tools/`,
+`*.md`, затем `rsync -az --delete` по SSH; выкладка отказывается работать, если путь не оканчивается
+на `/kabinetdoma.ru/` (иначе снесла бы соседний сайт). Проверено: `node tools/make-htaccess.js --check`
+зелёный; `node tools/verify-build.js` в корне — «всё чисто» (37 страниц, 16 редиректов, 311 файлов,
+11,3 МБ, манифест pages: 29 записей); сухой прогон `tools/deploy-hothat.sh` — 264 файла, 8,3 МБ,
+`verify-build` на составе с `KD_HOSTING=hothat` чистый. Найденное попутно: `verify-build.js`
+переведён на манифест и на режим cPanel. Записано обособленно: переезд не начат — ждём от владельца
+`Shared IP`, путь аккаунта и SSH.
 
 ### T-089 · контент · 2026-11-17
 **Метка:** контент

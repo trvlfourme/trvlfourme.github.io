@@ -12,6 +12,7 @@ desktop.ini
 # артефакты локальных сборок
 _prodcheck/
 _prerender/
+_hothatcheck/
 deploy/
 
 # временные скрипты и выгрузки чатов

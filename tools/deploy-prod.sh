@@ -53,13 +53,11 @@ if [ -d "$ROOT/_prodcheck/keep" ]; then
   cp -r "$ROOT/_prodcheck/keep/." "$WORK/"
 fi
 
-# Состав публикации. На сайт уезжают только страницы и их ресурсы: всё остальное
-# (docs/, tools/, content/, *.md, исходники, архивы) остаётся в репозитории и на сайт не попадает.
-# Новый раздел сайта или файл в корне — добавьте сюда, иначе он не выложится (prune скажет об этом).
-PUBLIC="index.html 404.html CNAME .nojekyll robots.txt sitemap.xml _redirects \
-article articles about builder calculator catalog checklist privacy terms tests \
-assets data images \
-favicon.svg favicon-32.png apple-touch-icon.png logo.png logo-64.png logo-128.png og-image.jpg"
+# Состав публикации — единый список в tools/public-manifest.txt (T-090): его же читают
+# .cpanel.yml и tools/deploy-hothat.sh для cPanel. Секция «только cPanel» (.htaccess)
+# на Pages не нужна. Новый раздел сайта или файл в корне — добавьте в манифест,
+# иначе он не выложится (prune скажет об этом).
+PUBLIC="$(awk '/^#/ { if ($0 ~ /только cPanel/) sec="cpanel"; else if ($0 ~ /GitHub Pages/) sec="pages"; else if ($0 ~ /общие/) sec="common"; next } NF == 0 { next } sec == "cpanel" { next } { printf "%s ", $0 }' tools/public-manifest.txt)"
 
 is_public() {
   local name="$1"
