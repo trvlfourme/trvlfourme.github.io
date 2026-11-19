@@ -1,13 +1,28 @@
 ---
-# Выкладка из панели cPanel: Git™ Version Control → «Deploy HEAD Commit».
+# Выкладка из панели cPanel: Git™ Version Control → «Deploy HEAD Commit» (docs/migration-hothat.md, §4).
 # Состав берётся из tools/public-manifest.txt — те же записи отправляет rsync
 # (tools/deploy-hothat.sh), поэтому списки не расходятся (T-090).
-# Корень сайта: /home/<аккаунт>/kabinetdoma.ru (docs/migration-hothat.md, §3).
-# Если владелец выбрал другой путь, поменяйте DEPLOYPATH ниже.
+# Клон репозитория в панели лежит ВНЕ корня сайта: /home/<аккаунт>/repositories/kabinetdoma,
+# а корень сайта — /home/<аккаунт>/kabinetdoma.ru. Иначе .git, docs/ и tools/ уедут на сайт.
+#
+# Панель клонирует РАБОЧИЙ репозиторий (trvlfourme/trvlfourme.github.io): манифест, .htaccess и
+# этот файл лежат в нём рядом с составом сайта. Прод-репозиторий mail4startups-creator/home4work
+# для клона не годится — в нём только опубликованные файлы, без tools/ и .cpanel.yml.
 deployment:
   tasks:
-    - export DEPLOYPATH="$HOME/kabinetdoma.ru"
-    - export ITEMS="$(awk '/^#/ { if ($0 ~ /только cPanel/) sec="cpanel"; else if ($0 ~ /GitHub Pages/) sec="pages"; else if ($0 ~ /общие/) sec="common"; next } NF == 0 { next } sec == "pages" { next } { printf "%s ", $0 }' tools/public-manifest.txt)"
+    # $HOME в задачах cPanel есть; /home/<логин> — подстраховка, если окружение урезано.
+    - export DEPLOYPATH="${HOME:-/home/$(whoami)}/kabinetdoma.ru"
+    # Задачи выполняются в корне клона. Если клон не тот (нет манифеста) — останавливаемся,
+    # иначе awk ниже вернёт пустой список и выкладка «пройдёт», ничего не скопировав.
+    - 'if [ ! -f tools/public-manifest.txt ]; then echo "ОШИБКА, в клоне нет tools/public-manifest.txt, панель клонировала mail4startups-creator/home4work, нужен trvlfourme/trvlfourme.github.io" >&2; exit 1; fi'
+    # Общие записи + секция «только cPanel»; секцию «только GitHub Pages» пропускаем.
+    - export ITEMS="$(awk '/^#/ { if ($0 ~ /только cPanel/) sec = "cpanel"; else if ($0 ~ /GitHub Pages/) sec = "pages"; else if ($0 ~ /общие/) sec = "common"; next } NF == 0 { next } sec == "pages" { next } { printf "%s ", $0 }' tools/public-manifest.txt)"
     - /bin/mkdir -p "$DEPLOYPATH"
-    - for item in $ITEMS; do /bin/rm -rf "$DEPLOYPATH/$item"; done
-    - for item in $ITEMS; do /bin/cp -a "$item" "$DEPLOYPATH/"; done
+    # Сначала убираем прошлую версию каждой записи, чтобы удалённые файлы не висели на сайте.
+    - for item in $ITEMS; do /bin/rm -rf "$DEPLOYPATH"/$item; done
+    # Потом копируем. $item раскрывается как маска (google*.html, yandex*.html);
+    # если совпадений нет — запись пропускается, а не роняет деплой.
+    - for item in $ITEMS; do for src in $item; do if [ -e "$src" ]; then /bin/cp -a "$src" "$DEPLOYPATH/"; fi; done; done
+    # Заметки *.md внутри публикуемых папок (images/SOURCES.md) на сайт не уезжают — правило T-053.
+    - /usr/bin/find "$DEPLOYPATH" -name '*.md' -type f -delete
+    - echo "deploy ok $DEPLOYPATH files $(/usr/bin/find "$DEPLOYPATH" -type f | wc -l)"
