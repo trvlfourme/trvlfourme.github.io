@@ -23,14 +23,14 @@
   <circle cx="832" cy="386" r="7" fill="#fbbf24" />
   <path d="M596 400 q10 -96 96 -110" fill="none" stroke="#f59e0b" stroke-width="8" stroke-linecap="round" stroke-dasharray="14 12" />
   <path d="M682 278 l22 4 l-14 18 z" fill="#f59e0b" />
-  <text x="632" y="330" font-family="system-ui, sans-serif" font-size="26" font-weight="800" fill="#b45309" text-anchor="middle">55–60°</text>
-  <rect x="300" y="180" width="250" height="40" rx="10" fill="#ffffff" stroke="#64748b" stroke-width="2" />
-  <text x="425" y="206" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#64748b" text-anchor="middle">ЛАДОНЬ ВНИЗ</text>
-  <rect x="750" y="180" width="290" height="40" rx="10" fill="#ffffff" stroke="#0f9d6b" stroke-width="2" />
-  <text x="895" y="206" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#0f9d6b" text-anchor="middle">КАК РУКОПОЖАТИЕ</text>
+  <text x="632" y="332" font-family="system-ui, sans-serif" font-size="48" font-weight="800" fill="#b45309" text-anchor="middle">55–60°</text>
+  <rect x="300" y="180" width="354.24" height="80" rx="16" fill="#ffffff" stroke="#64748b" stroke-width="3" />
+  <text x="477.12" y="232" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#64748b" text-anchor="middle">ЛАДОНЬ ВНИЗ</text>
+  <rect x="750" y="180" width="465.6" height="80" rx="16" fill="#ffffff" stroke="#0f9d6b" stroke-width="3" />
+  <text x="982.8" y="232" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#0f9d6b" text-anchor="middle">КАК РУКОПОЖАТИЕ</text>
   <rect x="1090" y="412" width="46" height="50" rx="9" fill="#ef4444" />
   <path d="M1136 422 a14 14 0 0 1 0 26" fill="none" stroke="#ef4444" stroke-width="7" />
   <path d="M1102 400 q7 -13 0 -24 M1120 402 q7 -13 0 -24" fill="none" stroke="#a89b8e" stroke-width="3" stroke-linecap="round" opacity="0.7" />
-  <rect x="48" y="690" width="400" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
-  <text x="248" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · ВЕРТИКАЛЬНАЯ МЫШЬ</text>
+  <rect x="52" y="676" width="558.86" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="331.43" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">ВЕРТИКАЛЬНАЯ МЫШЬ</text>
 </svg>

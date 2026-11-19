@@ -46,8 +46,9 @@
   <path d="M960 430 a40 40 0 0 1 80 0" fill="none" stroke="#334155" stroke-width="10" stroke-linecap="round" />
   <rect x="948" y="424" width="26" height="38" rx="12" fill="#334155" />
   <rect x="1026" y="424" width="26" height="38" rx="12" fill="#334155" />
-  <rect x="100" y="220" width="300" height="40" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
-  <text x="250" y="246" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#f59e0b" text-anchor="middle">РАБОТА, А НЕ ПЛЯЖ</text>
-  <rect x="48" y="690" width="440" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
-  <text x="268" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · РАБОТА В ПОЕЗДКЕ</text>
+  <rect x="100" y="176" width="300" height="118" rx="16" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="250" y="224" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#f59e0b" text-anchor="middle">РАБОТА,</text>
+  <text x="250" y="268" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#f59e0b" text-anchor="middle">А НЕ ПЛЯЖ</text>
+  <rect x="52" y="676" width="529.28" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="316.64" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">РАБОТА В ПОЕЗДКЕ</text>
 </svg>

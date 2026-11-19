@@ -29,8 +29,8 @@
   </g>
   <rect x="900" y="458" width="162" height="14" rx="5" fill="#3b4a5c" />
   <path d="M980 440 q-40 20 -80 10" fill="none" stroke="#7dd3fc" stroke-width="5" stroke-linecap="round" opacity="0.7" />
-  <rect x="170" y="470" width="220" height="40" rx="10" fill="#1c1917" stroke="#34d399" stroke-width="2" />
-  <text x="280" y="496" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#34d399" text-anchor="middle">ЭХО ГАСНЕТ</text>
-  <rect x="48" y="690" width="450" height="46" rx="10" fill="#1c1917" stroke="#f59e0b" stroke-width="2" />
-  <text x="273" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#fef3c7" text-anchor="middle">КАБИНЕТ ДОМА · АКУСТИКА КОМНАТЫ</text>
+  <rect x="170" y="470" width="326.4" height="80" rx="16" fill="#1c1917" stroke="#34d399" stroke-width="3" />
+  <text x="333.2" y="522" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#34d399" text-anchor="middle">ЭХО ГАСНЕТ</text>
+  <rect x="52" y="676" width="529.28" height="74" rx="14" fill="#1c1917" stroke="#f59e0b" stroke-width="3" />
+  <text x="316.64" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#fef3c7" text-anchor="middle">АКУСТИКА КОМНАТЫ</text>
 </svg>

@@ -38,12 +38,11 @@
   <line x1="470" y1="330" x2="290" y2="330" stroke="#34d399" stroke-width="4" stroke-dasharray="12 10" />
   <line x1="420" y1="596" x2="420" y2="330" stroke="#0ea5e9" stroke-width="4" />
   <path d="M420 330 l-10 18 M420 330 l10 18" stroke="#0ea5e9" stroke-width="4" />
-  <line x1="150" y1="470" x2="150" y2="410" stroke="#f59e0b" stroke-width="4" />
-  <text x="880" y="330" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#0f9d6b">верхняя треть</text>
-  <text x="200" y="392" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#b45309">локоть 90°</text>
-  <text x="440" y="470" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0369a1">высота стола</text>
-  <rect x="950" y="400" width="330" height="40" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
-  <text x="1115" y="426" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#f59e0b" text-anchor="middle">30 МИНУТ — И ГОТОВО</text>
-  <rect x="48" y="690" width="470" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
-  <text x="283" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · НАСТРОЙКА ЗА 30 МИНУТ</text>
+  <line x1="750" y1="330" x2="866" y2="334" stroke="#0f9d6b" stroke-width="4" stroke-dasharray="10 8" />
+  <text x="880" y="334" font-family="system-ui, sans-serif" font-size="34" font-weight="700" fill="#0f9d6b">верхняя треть</text>
+  <text x="440" y="532" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#0369a1">высота стола</text>
+  <rect x="759.04" y="190" width="576.96" height="80" rx="16" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="1047.52" y="242" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#f59e0b" text-anchor="middle">30 МИНУТ — И ГОТОВО</text>
+  <rect x="52" y="676" width="677.18" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="390.59" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">НАСТРОЙКА ЗА 30 МИНУТ</text>
 </svg>

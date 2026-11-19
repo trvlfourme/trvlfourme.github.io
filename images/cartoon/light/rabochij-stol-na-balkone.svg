@@ -52,7 +52,7 @@
     <path d="M90 440 q30 -40 20 -70" /><path d="M112 448 q22 -50 8 -86" /><path d="M136 444 q14 -40 4 -68" />
     <path d="M860 440 q-30 -40 -20 -70" /><path d="M838 448 q-22 -50 -8 -86" />
   </g>
-  <text x="800" y="112" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#cbe6ff" text-anchor="middle">−15°</text>
+  <text x="800" y="112" font-family="system-ui, sans-serif" font-size="40" font-weight="700" fill="#cbe6ff" text-anchor="middle">−15°</text>
   <rect x="520" y="40" width="12" height="424" fill="#d8cec4" />
   <rect x="60" y="40" width="860" height="424" rx="16" fill="none" stroke="#d8cec4" stroke-width="12" />
 
@@ -68,9 +68,11 @@
   <line x1="0" y1="668" x2="1376" y2="668" stroke="#d0c4ba" stroke-width="2" />
 
   <!-- табурет -->
+  <g transform="translate(44 0)">
   <rect x="248" y="628" width="160" height="16" rx="6" fill="#c9a077" />
   <line x1="266" y1="644" x2="258" y2="690" stroke="#b18b66" stroke-width="10" stroke-linecap="round" />
   <line x1="392" y1="644" x2="402" y2="690" stroke="#b18b66" stroke-width="10" stroke-linecap="round" />
+  </g>
 
   <!-- человек в профиль -->
   <g>
@@ -129,7 +131,7 @@
   </g>
 
   <!-- градусник на стене -->
-  <text x="1160" y="132" font-family="system-ui, sans-serif" font-size="26" font-weight="800" fill="#b45309" text-anchor="middle">+18°</text>
+  <text x="1160" y="132" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#b45309" text-anchor="middle">+18°</text>
   <rect x="1134" y="152" width="52" height="180" rx="26" fill="#ffffff" stroke="#d0c4ba" stroke-width="3" />
   <rect x="1155" y="212" width="10" height="94" rx="5" fill="#ef4444" />
   <circle cx="1160" cy="318" r="24" fill="#ef4444" />
@@ -145,6 +147,6 @@
   <circle cx="1336" cy="610" r="18" fill="#15803d" />
 
   <!-- подпись -->
-  <rect x="48" y="690" width="380" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
-  <text x="238" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · РАБОТА НА БАЛКОНЕ</text>
+  <rect x="52" y="676" width="233" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="168" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">БАЛКОН</text>
 </svg>

@@ -16,14 +16,14 @@
   </g>
   <line x1="480" y1="240" x2="480" y2="596" stroke="#d2c6bb" stroke-width="3" stroke-dasharray="10 10" />
   <line x1="560" y1="330" x2="860" y2="330" stroke="#0ea5e9" stroke-width="4" />
-  <text x="880" y="336" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#0369a1">поясничный упор</text>
+  <text x="880" y="330" font-family="system-ui, sans-serif" font-size="34" font-weight="700" fill="#0369a1">поясничный упор</text>
   <line x1="660" y1="470" x2="980" y2="470" stroke="#0f9d6b" stroke-width="4" />
-  <text x="1000" y="476" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#0f9d6b">глубина сиденья</text>
+  <text x="1000" y="486" font-family="system-ui, sans-serif" font-size="34" font-weight="700" fill="#0f9d6b">глубина сиденья</text>
   <line x1="300" y1="596" x2="300" y2="360" stroke="#d2c6bb" stroke-width="4" />
   <path d="M300 360 l-10 18 M300 360 l10 18" stroke="#d2c6bb" stroke-width="4" />
-  <text x="250" y="340" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#3a2c1c" text-anchor="middle">высота</text>
-  <rect x="1040" y="560" width="290" height="40" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
-  <text x="1185" y="586" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#f59e0b" text-anchor="middle">ПРОВЕРКА ПО РОСТУ</text>
-  <rect x="48" y="690" width="410" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
-  <text x="253" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · КРЕСЛО В ПРОФИЛЬ</text>
+  <text x="250" y="334" font-family="system-ui, sans-serif" font-size="34" font-weight="700" fill="#3a2c1c" text-anchor="middle">высота</text>
+  <rect x="814.72" y="420" width="521.28" height="80" rx="16" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="1075.3600000000001" y="472" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#f59e0b" text-anchor="middle">ПРОВЕРКА ПО РОСТУ</text>
+  <rect x="52" y="676" width="529.28" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="316.64" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">КРЕСЛО В ПРОФИЛЬ</text>
 </svg>

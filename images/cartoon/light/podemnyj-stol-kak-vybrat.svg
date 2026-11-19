@@ -25,15 +25,17 @@
   <rect x="612" y="440" width="14" height="120" fill="#c8beb5" opacity="0.6" />
   <rect x="1054" y="440" width="14" height="120" fill="#c8beb5" opacity="0.6" />
   <rect x="700" y="330" width="120" height="46" rx="10" fill="#1f2937" />
-  <text x="760" y="360" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#fbbf24" text-anchor="middle">110</text>
-  <rect x="880" y="280" width="190" height="83.6" rx="10" fill="#64748b" stroke="#4a5a70" stroke-width="2" />
-  <circle cx="975" cy="321.8" r="13.3" fill="#94a3b8" />
-  <rect x="895.2" y="363.6" width="159.6" height="10" rx="4" fill="#475569" />
+  <text x="760" y="366" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#fbbf24" text-anchor="middle">110</text>
+  <ellipse cx="975" cy="386" rx="106.4" ry="9" fill="#cdc0b5" fill-opacity="0.4" />
+  <rect x="880" y="282.4" width="190" height="83.6" rx="10" fill="#64748b" stroke="#4a5a70" stroke-width="2" />
+  <rect x="893.3" y="292.43199999999996" width="163.4" height="55.176" rx="6" fill="#546a85" />
+  <circle cx="975" cy="317.51199999999994" r="11.4" fill="#94a3b8" />
+  <rect x="874.3" y="366" width="201.4" height="14" rx="6" fill="#475569" />
   <rect x="620" y="330" width="46" height="50" rx="9" fill="#ef4444" />
   <path d="M666 340 a14 14 0 0 1 0 26" fill="none" stroke="#ef4444" stroke-width="7" />
   <path d="M632 318 q7 -13 0 -24 M650 320 q7 -13 0 -24" fill="none" stroke="#a89b8e" stroke-width="3" stroke-linecap="round" opacity="0.7" />
-  <rect x="330" y="250" width="140" height="40" rx="10" fill="#ffffff" stroke="#0f9d6b" stroke-width="2" />
-  <text x="400" y="276" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#0f9d6b" text-anchor="middle">СТОЯ</text>
-  <rect x="48" y="690" width="410" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
-  <text x="253" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · ПОДЪЁМНЫЙ СТОЛ</text>
+  <rect x="300" y="176" width="159.36" height="80" rx="16" fill="#ffffff" stroke="#0f9d6b" stroke-width="3" />
+  <text x="379.68" y="228" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#0f9d6b" text-anchor="middle">СТОЯ</text>
+  <rect x="52" y="676" width="470.12" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="287.06" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">ПОДЪЁМНЫЙ СТОЛ</text>
 </svg>

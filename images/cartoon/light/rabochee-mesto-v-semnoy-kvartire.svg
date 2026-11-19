@@ -26,13 +26,10 @@
   <rect x="330" y="330" width="90" height="70" rx="10" fill="#334155" />
   <rect x="346" y="346" width="58" height="38" rx="4" fill="#94a3b8" />
   <path d="M330 400 q-30 0 -30 30" fill="none" stroke="#334155" stroke-width="8" />
-    <rect x="180" y="470" width="140" height="120" rx="26" fill="#c8beb5" />
-  <rect x="206" y="500" width="88" height="60" rx="18" fill="#ded7d0" />
-  <path d="M250 590 v42 M200 632 h100" stroke="#c8beb5" stroke-width="10" stroke-linecap="round" />
   <path d="M520 596 h180 l-30 -110 h-120 z" fill="#f59e0b" />
   <rect x="560" y="470" width="110" height="20" rx="8" fill="#d98b1f" />
-  <rect x="520" y="250" width="330" height="40" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
-  <text x="685" y="276" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#f59e0b" text-anchor="middle">НИ ОДНОГО ОТВЕРСТИЯ</text>
-  <rect x="48" y="690" width="460" height="46" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
-  <text x="278" y="719" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3a2c1c" text-anchor="middle">КАБИНЕТ ДОМА · СЪЁМНАЯ КВАРТИРА</text>
+  <rect x="520" y="250" width="576.96" height="80" rx="16" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="808.48" y="302" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#f59e0b" text-anchor="middle">НИ ОДНОГО ОТВЕРСТИЯ</text>
+  <rect x="52" y="676" width="529.28" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="316.64" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">СЪЁМНАЯ КВАРТИРА</text>
 </svg>
