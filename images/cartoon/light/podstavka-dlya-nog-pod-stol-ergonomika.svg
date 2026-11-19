@@ -19,12 +19,18 @@
     <rect x="60" y="154" width="10" height="56" fill="#c8beb5" />
     <path d="M65 210 L18 236 M65 210 L112 236" stroke="#c8beb5" stroke-width="8" stroke-linecap="round" />
   </g>
-  <rect x="430" y="438" width="216" height="46" rx="23" fill="#334155" />
-  <rect x="618" y="452" width="46" height="116" rx="22" fill="#334155" transform="rotate(-6 641 510)" />
-  <path d="M596 556 q66 -12 130 -2 q8 24 -10 28 q-60 8 -116 0 q-10 -10 -4 -26 z" fill="#1f2937" />
   <rect x="520" y="560" width="320" height="30" rx="12" fill="#8b5cf6" transform="rotate(-8 680 575)" />
   <g stroke="#ede9fe" stroke-width="5" stroke-linecap="round" transform="rotate(-8 680 575)">
     <line x1="552" y1="568" x2="808" y2="568" /><line x1="552" y1="580" x2="808" y2="580" />
+  </g>
+  <rect x="530" y="586" width="300" height="7" rx="3.5" fill="#6d28d9" transform="rotate(-8 680 575)" />
+  <rect x="356" y="442" width="206" height="54" rx="27" fill="#334155" transform="rotate(3 459 469)" />
+  <circle cx="556" cy="478" r="27" fill="#334155" />
+  <rect x="532" y="464" width="48" height="84" rx="24" fill="#334155" transform="rotate(-14 556 506)" />
+  <g transform="rotate(-8 620 560)">
+    <path d="M556 556 V538 Q556 526 570 526 H584 Q596 526 600 538 L606 549 Q628 552 642 555 Q650 557 649 560 H556 Z" fill="#1f2937" />
+    <rect x="552" y="554" width="102" height="8" rx="4" fill="#0f172a" />
+    <path d="M574 536 h18" stroke="#3b4a5e" stroke-width="4" stroke-linecap="round" />
   </g>
   <path d="M880 520 a60 60 0 0 0 40 -40" fill="none" stroke="#f59e0b" stroke-width="5" stroke-dasharray="10 8" />
   <text x="908" y="470" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#b45309">10–15°</text>
