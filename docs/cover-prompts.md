@@ -311,3 +311,73 @@ face, low contrast, harsh shadows, neon colors
 4. `node tools/verify-build.js` — «всё чисто: можно выкладывать»; проверить, что на странице
    статьи новая обложка и оба варианта отдаются 200.
 5. Старые SVG не удалять: они остаются запасным вариантом, как и прежние JPEG.
+## 7. Поиск на стоках: 27 запросов
+
+Если генерация не идёт — тот же кадр ищется фотографией на Pexels и Unsplash (условия —
+раздел 2 и `docs/image-plan.md` §6: коммерческое использование разрешено, атрибуция не нужна).
+Запросы английские: обе площадки индексируют по-английски, русский запрос даёт в разы меньше
+попаданий и почти не находит западные кадры.
+
+Как искать:
+
+- фильтр **orientation = landscape** и размер от 24 Мп: обложка 1376×768 — широкий кадр, из
+  вертикального он не вырезается;
+- смотреть на свет и температуру: 23 обложки светлые, с тёплым дневным светом; кадр с холодным
+  офисным светом или синими тенями в серию не встанет;
+- ни логотипов, ни надписей на предметах, ни узнаваемых лиц: права на них сток не передаёт;
+- 2–4 слова на запрос, дальше уточнять фильтрами; синонимы в таблице — это разные попытки,
+  а не одна длинная строка.
+
+| № | Что на обложке | Запросы (Pexels / Unsplash) |
+|---|---|---|
+| 1 | вертикальная мышь под ладонью | `vertical ergonomic mouse hand`, `ergonomic mouse grip side view`, `hand resting on vertical mouse` |
+| 2 | планка света на мониторе | `monitor light bar`, `screen bar monitor`, `monitor lamp clip on` |
+| 3 | струбцина кронштейна на столе | `monitor arm desk clamp`, `c-clamp table edge`, `monitor mount table edge` |
+| 4 | человек за столом в профиль | `person working at monitor side view`, `desk setup side profile person`, `eye level monitor desk` |
+| 5 | микрофон на пантографе | `microphone boom arm desk`, `condenser microphone desk setup`, `podcast mic arm` |
+| 6 | подъёмный стол, работа стоя | `standing desk person working`, `height adjustable desk standing`, `sit stand desk home office` |
+| 7 | сидя и стоя в одном кадре | `standing desk sitting position`, `height adjustable desk two positions`, `same desk standing sitting` — см. ниже |
+| 8 | ноги на подставке под столом | `footrest under desk`, `feet on ergonomic footrest`, `foot rest office desk` |
+| 9 | кресло в профиль | `office chair side view`, `ergonomic chair profile`, `mesh office chair studio` |
+| 10 | три разных кресла в ряд | `office chairs row`, `office chair collection`, `office chair showroom` |
+| 11 | принтер на тумбе | `home printer on shelf`, `small printer home office`, `printer on cabinet` |
+| 12 | ноутбук на подставке, руки на клавиатуре | `laptop stand external keyboard`, `laptop riser hands typing`, `laptop stand desk setup` |
+| 13 | акустические панели за столом | `acoustic panels home studio`, `felt acoustic panels wall`, `hexagon acoustic panels` |
+| 14 | провода под столом, было/стало | `cable management under desk`, `cable tray desk underside`, `messy cables under desk` — см. ниже |
+| 15 | вечер, закрытый ноутбук, торшер | `closed laptop evening desk`, `cozy desk lamp evening`, `home office evening light` |
+| 16 | подарки раскладкой на столе | `desk accessories flat lay`, `office gifts flat lay`, `desk flat lay wooden` |
+| 17 | минимальный стол у окна | `minimal home office window`, `small desk near window`, `scandinavian home office` |
+| 18 | рабочее место в профиль целиком | `ergonomic workstation side view`, `correct posture desk side`, `home office side view` |
+| 19 | стол у окна, батарея и розетка | `desk by window radiator`, `workspace next to window`, `desk under window home` |
+| 20 | два места, стеллаж между ними | `two desks home office`, `two workstations one room`, `home office shelf divider` |
+| 21 | утеплённый балкон, мороз за стеклом | `balcony workspace`, `loggia desk window`, `small balcony office` |
+| 22 | детский столик рядом со взрослым | `child desk next to workspace`, `home office with kids corner`, `family desk one room` |
+| 23 | подоконник, струбцина, съёмная квартира | `desk on windowsill`, `monitor clamp windowsill`, `small apartment workspace` |
+| 24 | взрослый и ребёнок за своими столами | `parent and child at desk`, `mother working child drawing`, `homeschool desk` |
+| 25 | три карточки: красная, жёлтая, зелёная | `red yellow green cards`, `colored cards table`, `traffic light cards` — см. ниже |
+| 26 | ноутбук у окна в поездке | `laptop train window`, `laptop hotel room window`, `working on train` |
+| 27 | три комнаты в одном кадре | `kitchen table workspace`, `desk in bedroom`, `loggia workspace` — см. ниже |
+
+Русские подсказки для отдельных предметов (на обеих площадках их меньше, но находятся):
+вертикальная мышь рука, лампа на монитор, струбцина кронштейна, подставка для ног, лоток для
+проводов, акустические панели, кресло сбоку.
+
+**Где сток кадр не даст.** Четыре сцены в одном фото не находятся, и это не повод гнать
+неудачный кадр в обложку:
+
+- № 7 и № 14 (сидя/стоя и было/стало в одном кадре) — берите две картинки одного стола из одной
+  серии одного автора, иначе половины не сойдутся по свету и цвету; если такой серии нет,
+  оставляйте SVG: склейка двух разных комнат читается как ошибка;
+- № 25 (три карточки, ребёнок поднимает зелёную) — по запросу выходит светофор, а не карточки;
+  проще снять самим: три кружка из цветной бумаги на столе, телефон, пять минут;
+- № 27 (кухня, спальня и лоджия в одном кадре) — только коллаж из трёх фото, а коллаж в серии
+  обложек видно сразу; оставьте SVG.
+
+**Что делать с серией.** Двадцать три обложки фотографией и четыре тёмные рисованные — это уже не
+серия, а два разных сайта: фото и вектор рядом в списке статей читаются как разные издания. Поэтому
+фото имеет смысл ставить только пачкой и только туда, где предмет важнее настроения (№ 2, 3, 5, 8,
+9, 11, 13, 23 — узлы и гаджеты), а сцены с людьми и комнатами оставить векторными. Решение за
+владельцем; пока ни одна обложка на сайте не менялась.
+
+**Порядок замены тот же** (раздел 6), плюс в `images/SOURCES.md` для стока пишем не сервис и
+промпт, а ссылку на исходник и автора.
