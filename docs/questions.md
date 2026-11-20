@@ -1939,12 +1939,14 @@ www, а `openssl s_client -servername www.kabinetdoma.ru` показывает �
 ### T-160 · разработка · 2026-11-20
 **Метка:** разработка
 **Приоритет:** стандартный
-**Статус:** открыта
+**Статус:** закрыта
 **Кому:** разработка
+**Взял:** разработка, 2026-11-20
 **Задача:** Обновить `docs/architecture.md` под hothat/cPanel: где лежит сайт (`${HOME}/kabinetdoma.ru`), как устроена выкладка (`.cpanel.yml`, `tools/deploy-hothat.sh`), что публикуется (`tools/public-manifest.txt`), где генерируется `.htaccess`. Старый `tools/deploy-prod.sh` (выкладка на GitHub Pages) перенести в `tools/archive/` и убрать упоминания из документации.
 **Контекст:** После переезда документация описывает Pages. Пока `deploy-prod.sh` лежит рядом с рабочими скриптами, его легко запустить по привычке и опубликовать сборку в старый репозиторий.
 **Выпуск:** —
 **До:** 2026-11-24 18:00
+**Итог:** закрыта 2026-11-20, коммит `38f38e8`. `docs/architecture.md` переписан: раздел «Репозиторий, хостинг и домен» (hothat/cPanel, LiteSpeed, `${HOME}/kabinetdoma.ru`, клон `repositories/kabinetdoma`, домен и AutoSSL) и новый раздел «Выкладка» — две кнопки панели, `.cpanel.yml` и его работа с манифестом, запасной `tools/deploy-hothat.sh`, требования к клону, генерация `.htaccess` из `_redirects` с замером T-157, порядок выкладки. «Заголовки безопасности» разделены: CSP и Referrer-Policy в разметке, `X-Content-Type-Options`/`X-Frame-Options`/charset в `.htaccess`, HSTS выключен до T-159; шаг 6 сборки больше не обещает `301` «как на Pages». `tools/deploy-prod.sh` → `tools/archive/deploy-prod.sh` (`git mv`, в шапке пометка «АРХИВ»), упоминания поправлены в `README.md`, `AGENTS.md`, `docs/roles/razrabotka.md`, `tools/admin/README.md`, `tools/public-manifest.txt`, `docs/migration-hothat.md` (§1, §4, §7, §11, §15) и `docs/tasks.md` (запись о заходе). Проверено: `node tools/verify-build.js` — «всё чисто: можно выкладывать» (37 страниц, 16 редиректов, 323 файла), `node tools/make-htaccess.js --check` — «соответствует `_redirects`, правил 16», CRLF сохранён в `docs/architecture.md`, `docs/questions.md`, `docs/tasks.md` и архивном скрипте. Выкладка не требовалась: сайт не менялся, выложены только документы. Журнал (`docs/questions.md`, `docs/audit-2026-11-05-ib.md`) не переписывал.
 ### T-161 · разработка · 2026-11-20
 **Метка:** разработка
 **Приоритет:** стандартный
