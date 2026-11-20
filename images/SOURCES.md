@@ -8,6 +8,10 @@
 2026-11-20: восемь обложек (№1, 3, 8, 11, 13, 14, 20, 23) перерисованы редакцией поверх прошлой версии.
 Исходник тот же — SVG в `images/cartoon/`, права те же: собственная графика, сторонних лицензий нет.
 
+2026-11-20, третья итерация: двенадцать обложек собраны заново — № 1, 3, 4, 6, 7, 8, 9, 10, 11, 12, 18, 23.
+Часть из них теперь схемы (человек — пиктограмма без лица, размеры и подписи внутри кадра), часть —
+предметные кадры без людей. Исходник и права те же: собственная графика, SVG, сторонних лицензий нет.
+
 ## Обложки статей (27)
 
 | Файл | Статья | Исходник | Канал и права | Создано | Сверено |
@@ -17,11 +21,11 @@
 | `03-kronshtejn-dlya-monitora-na-stol-vybor.jpg` | Кронштейн для монитора на стол: как выбрать надежный газлифт | `kronshtejn-dlya-monitora-na-stol-vybor.svg` | собственная графика, SVG  | 2026-11-20 | 2026-11-20 |
 | `04-kronshtejn-dlya-monitora-ergonomika-shei.jpg` | Кронштейн для монитора и эргономика шеи: как избавиться от боли | `kronshtejn-dlya-monitora-ergonomika-shei.svg` | собственная графика, SVG  | 2026-11-20 | 2026-11-20 |
 | `05-mikrofon-s-shumopodavleniem-dlya-zvonkov.jpg` | Микрофон с шумоподавлением для звонков: рейтинг для удаленки | `mikrofon-s-shumopodavleniem-dlya-zvonkov.svg` | собственная графика, SVG  | 2026-11-18 | 2026-11-18 |
-| `06-podemnyj-stol-kak-vybrat.jpg` | Подъёмный стол: как выбрать привод и высоту под свой рост | `podemnyj-stol-kak-vybrat.svg` | собственная графика, SVG  | 2026-11-18 | 2026-11-18 |
+| `06-podemnyj-stol-kak-vybrat.jpg` | Подъёмный стол: как выбрать привод и высоту под свой рост | `podemnyj-stol-kak-vybrat.svg` | собственная графика, SVG  | 2026-11-20 | 2026-11-20 |
 | `07-stol-s-elektroprivodom-polza-dlya-spiny.jpg` | Стол с электроприводом: тест моделей и реальная польза для спины | `stol-s-elektroprivodom-polza-dlya-spiny.svg` | собственная графика, SVG  | 2026-11-20 | 2026-11-20 |
 | `08-podstavka-dlya-nog-pod-stol-ergonomika.jpg` | Подставка для ног под стол: кому нужна и как выбрать | `podstavka-dlya-nog-pod-stol-ergonomika.svg` | собственная графика, SVG  | 2026-11-20 | 2026-11-20 |
-| `09-kak-vybrat-kreslo-dlya-spiny.jpg` | Как выбрать кресло для спины: 5 параметров и проверка по росту | `kak-vybrat-kreslo-dlya-spiny.svg` | собственная графика, SVG  | 2026-11-18 | 2026-11-18 |
-| `10-5-luchshih-ergonomichnyh-kresel-rejting.jpg` | 5 лучших эргономичных кресел до 35 000 рублей: честный рейтинг | `5-luchshih-ergonomichnyh-kresel-rejting.svg` | собственная графика, SVG  | 2026-11-18 | 2026-11-18 |
+| `09-kak-vybrat-kreslo-dlya-spiny.jpg` | Как выбрать кресло для спины: 5 параметров и проверка по росту | `kak-vybrat-kreslo-dlya-spiny.svg` | собственная графика, SVG  | 2026-11-20 | 2026-11-20 |
+| `10-5-luchshih-ergonomichnyh-kresel-rejting.jpg` | 5 лучших эргономичных кресел до 35 000 рублей: честный рейтинг | `5-luchshih-ergonomichnyh-kresel-rejting.svg` | собственная графика, SVG  | 2026-11-20 | 2026-11-20 |
 | `11-printer-dlya-doma-kompaktno-i-kuda-postavit.jpg` | Принтер для дома: как выбрать компактный и куда его поставить | `printer-dlya-doma-kompaktno-i-kuda-postavit.svg` | собственная графика, SVG  | 2026-11-20 | 2026-11-20 |
 | `12-rabota-za-noutbukom-bez-boli-v-shee.jpg` | Работа за ноутбуком без боли в шее: 4 аксессуара и один навык | `rabota-za-noutbukom-bez-boli-v-shee.svg` | собственная графика, SVG  | 2026-11-20 | 2026-11-20 |
 | `13-akusticheskie-paneli-dlya-domashnego-kabineta.jpg` | Акустические панели для домашнего кабинета: убираем эхо | `akusticheskie-paneli-dlya-domashnego-kabineta.svg` | собственная графика, SVG  | 2026-11-20 | 2026-11-20 |
