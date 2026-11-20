@@ -21,26 +21,27 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-</IfModule>
 
-# Старые адреса статей: 16 правил из _redirects.
-<IfModule mod_alias.c>
-  Redirect 301 /article/rabochij-ugolok-v-odnushke-s-rebenkom/ /article/rabochee-mesto-v-odnushke-s-rebenkom/
-  Redirect 301 /article/stol-s-elektroprivodom-vs-obychnyj/ /article/stol-s-elektroprivodom-polza-dlya-spiny/
-  Redirect 301 /article/5-luchshih-ergonomichnyh-kresel-do-35000/ /article/5-luchshih-ergonomichnyh-kresel-rejting/
-  Redirect 301 /article/skrinbar-na-monitor-pochemu-nastolnaya-lampa-portit-zrenie/ /article/skrinbar-na-monitor-vybor-zashchita-glaz/
-  Redirect 301 /article/kristalnyj-zvuk-na-sozvonah-bez-krikov-detej/ /article/mikrofon-s-shumopodavleniem-dlya-zvonkov/
-  Redirect 301 /article/kabel-menedzhment-pod-stolom-za-1-chas-i-2500-rublej/ /article/kabel-menedzhment-pod-stolom-svoimi-rukami/
-  Redirect 301 /article/kronshtejn-dlya-monitora-i-podstavka-dlya-nog/ /article/kronshtejn-dlya-monitora-ergonomika-shei/
-  Redirect 301 /article/metod-svetofor-tajm-menedzhment-dlya-roditelej/ /article/metod-svetofor-udalenka-s-detmi/
-  Redirect 301 /article/rabochee-mesto-dlya-dvoih-v-odnoj-komnate/ /article/rabochee-mesto-dlya-dvoih-v-komnate/
-  Redirect 301 /article/podstavki-dlya-nog-ergonomika-oteki/ /article/podstavka-dlya-nog-pod-stol-ergonomika/
-  Redirect 301 /article/vybor-kronshtejna-dlya-monitora-gazlift/ /article/kronshtejn-dlya-monitora-na-stol-vybor/
-  Redirect 301 /article/akusticheskie-paneli-peregorodki-dlya-kvartiry/ /article/akusticheskie-paneli-dlya-domashnego-kabineta/
-  Redirect 301 /article/v-kakoj-komnate-luchshe-rabotat-doma/ /article/v-kakoj-komnate-luchshe-rabotat-na-udalenke/
-  Redirect 301 /article/kuda-postavit-rabochij-stol-okno-batareya-rozetki/ /article/kuda-postavit-rabochij-stol-v-komnate/
-  Redirect 301 /article/domashnij-ofis-s-nulya-chto-kupit-srazu-a-chto-zaminit/ /article/domashnij-ofis-s-nulya-nedorogo/
-  Redirect 301 /article/kak-podgotovitsya-k-udalennoj-rabote-v-poezdke/ /article/udalennaya-rabota-v-poezdke-i-otpuske/
+  # Старые адреса статей: 16 правил из _redirects.
+  # Через mod_rewrite, а не Redirect 301: на hothat (LiteSpeed) блок mod_alias
+  # отрабатывает не на всех воркерах, и часть старых адресов отдавала
+  # страницу-заглушку с кодом 200 вместо 301 (T-157).
+  RewriteRule ^article/rabochij-ugolok-v-odnushke-s-rebenkom/?$ /article/rabochee-mesto-v-odnushke-s-rebenkom/ [R=301,L]
+  RewriteRule ^article/stol-s-elektroprivodom-vs-obychnyj/?$ /article/stol-s-elektroprivodom-polza-dlya-spiny/ [R=301,L]
+  RewriteRule ^article/5-luchshih-ergonomichnyh-kresel-do-35000/?$ /article/5-luchshih-ergonomichnyh-kresel-rejting/ [R=301,L]
+  RewriteRule ^article/skrinbar-na-monitor-pochemu-nastolnaya-lampa-portit-zrenie/?$ /article/skrinbar-na-monitor-vybor-zashchita-glaz/ [R=301,L]
+  RewriteRule ^article/kristalnyj-zvuk-na-sozvonah-bez-krikov-detej/?$ /article/mikrofon-s-shumopodavleniem-dlya-zvonkov/ [R=301,L]
+  RewriteRule ^article/kabel-menedzhment-pod-stolom-za-1-chas-i-2500-rublej/?$ /article/kabel-menedzhment-pod-stolom-svoimi-rukami/ [R=301,L]
+  RewriteRule ^article/kronshtejn-dlya-monitora-i-podstavka-dlya-nog/?$ /article/kronshtejn-dlya-monitora-ergonomika-shei/ [R=301,L]
+  RewriteRule ^article/metod-svetofor-tajm-menedzhment-dlya-roditelej/?$ /article/metod-svetofor-udalenka-s-detmi/ [R=301,L]
+  RewriteRule ^article/rabochee-mesto-dlya-dvoih-v-odnoj-komnate/?$ /article/rabochee-mesto-dlya-dvoih-v-komnate/ [R=301,L]
+  RewriteRule ^article/podstavki-dlya-nog-ergonomika-oteki/?$ /article/podstavka-dlya-nog-pod-stol-ergonomika/ [R=301,L]
+  RewriteRule ^article/vybor-kronshtejna-dlya-monitora-gazlift/?$ /article/kronshtejn-dlya-monitora-na-stol-vybor/ [R=301,L]
+  RewriteRule ^article/akusticheskie-paneli-peregorodki-dlya-kvartiry/?$ /article/akusticheskie-paneli-dlya-domashnego-kabineta/ [R=301,L]
+  RewriteRule ^article/v-kakoj-komnate-luchshe-rabotat-doma/?$ /article/v-kakoj-komnate-luchshe-rabotat-na-udalenke/ [R=301,L]
+  RewriteRule ^article/kuda-postavit-rabochij-stol-okno-batareya-rozetki/?$ /article/kuda-postavit-rabochij-stol-v-komnate/ [R=301,L]
+  RewriteRule ^article/domashnij-ofis-s-nulya-chto-kupit-srazu-a-chto-zaminit/?$ /article/domashnij-ofis-s-nulya-nedorogo/ [R=301,L]
+  RewriteRule ^article/kak-podgotovitsya-k-udalennoj-rabote-v-poezdke/?$ /article/udalennaya-rabota-v-poezdke-i-otpuske/ [R=301,L]
 </IfModule>
 
 # Сжатие: на cPanel без него страницы уезжают в сеть как есть.

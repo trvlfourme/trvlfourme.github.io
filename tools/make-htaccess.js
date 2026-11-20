@@ -34,6 +34,12 @@ for (const raw of fs.readFileSync(path.join(root, '_redirects'), 'utf8').split(/
   rules.push({ from, to });
 }
 
+// Путь из _redirects → шаблон RewriteRule: в .htaccess ведущий слэш уже срезан,
+// хвостовой слэш необязателен — так одно правило ловит и «/article/slug», и «/article/slug/».
+function pattern(from) {
+  return from.replace(/^\/|\/$/g, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 // 2. Служебный блок. Порядок важен: сначала www → apex (он же закрывает http для www одним
 // 301), потом http → https для основного имени — так не бывает цепочки из двух редиректов.
 const out = [
@@ -60,12 +66,13 @@ const out = [
   '  RewriteCond %{HTTPS} !=on',
   '  RewriteCond %{HTTP:X-Forwarded-Proto} !https',
   '  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]',
-  '</IfModule>',
   '',
-  `# Старые адреса статей: ${rules.length} правил из _redirects.`,
-  '<IfModule mod_alias.c>',
+  `  # Старые адреса статей: ${rules.length} правил из _redirects.`,
+  '  # Через mod_rewrite, а не Redirect 301: на hothat (LiteSpeed) блок mod_alias',
+  '  # отрабатывает не на всех воркерах, и часть старых адресов отдавала',
+  '  # страницу-заглушку с кодом 200 вместо 301 (T-157).',
 ];
-for (const r of rules) out.push(`  Redirect 301 ${r.from} ${r.to}`);
+for (const r of rules) out.push(`  RewriteRule ^${pattern(r.from)}/?$ ${r.to} [R=301,L]`);
 out.push(
   '</IfModule>',
   '',
