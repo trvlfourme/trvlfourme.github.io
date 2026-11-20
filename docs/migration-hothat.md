@@ -58,7 +58,7 @@ support@hothat.ru. Для переезда это лишние расходы и
 | SPF | `v=spf1 include:spf.improvmx.com ~all` |
 | DMARC | `v=DMARC1; p=none; rua=mailto:info@kabinetdoma.ru` |
 | Хостинг | GitHub Pages, репозиторий `trvlfourme/trvlfourme.github.io`, ветка `main`, публичный |
-| Выкладка | `bash tools/deploy-prod.sh --push` (git archive → отбор публикуемого состава → push) |
+| Выкладка | панель cPanel: клон `repositories/kabinetdoma` + «Update from Remote» → «Deploy HEAD Commit» (`.cpanel.yml`); запасной путь — `tools/deploy-hothat.sh --push` (на 19.11 было `tools/deploy-prod.sh --push`, теперь он в `tools/archive/`) |
 | Сайт | 37 страниц, 16 редиректов, публикуемый состав ~198 файлов, 9,7 МБ |
 | Цель | hothat.ru, cPanel, SSH, ежедневный бэкап с восстановлением в один клик, панель на русском |
 | Второй сайт | `trvl4.me` — на этом же аккаунте hothat, остаётся как есть |
@@ -162,7 +162,7 @@ support@hothat.ru. Для переезда это лишние расходы и
 
 **Какой репозиторий клонировать.** Только рабочий — `trvlfourme/trvlfourme.github.io`: в нём
 рядом с составом сайта лежат `tools/public-manifest.txt`, `.htaccess` и `.cpanel.yml`. Прод-
-репозиторий `mail4startups-creator/home4work`, куда `tools/deploy-prod.sh` отправляет выкладки, —
+репозиторий `mail4startups-creator/home4work`, куда раньше отправлял выкладки `tools/deploy-prod.sh` (теперь он в `tools/archive/`), —
 это готовая публикация без `tools/`, `.cpanel.yml` и `.htaccess` (проверено 19.11 по дереву
 GitHub). Панель из него выложить не сможет: копировать нечего и запускать нечего.
 
@@ -178,7 +178,8 @@ GitHub). Панель из него выложить не сможет: копи
 **Перед первым клоном** в рабочую копию должен быть отправлен `main`: до 19.11 GitHub-копия
 рабочего репозитория отставала на 153 коммита, поэтому `ea40a8b` с `.cpanel.yml` до неё не
 доехал — панель видела в клоне пустой корень и отключала Deploy. `git push origin main` — это
-не выкладка: прод обновляет только `tools/deploy-prod.sh --push`.
+не выкладка: сайт обновляют кнопки панели («Update from Remote» → «Deploy HEAD Commit»),
+запасной путь — `tools/deploy-hothat.sh --push`.
 
 1. **Создать клон.** cPanel → «Files» → **«Git™ Version Control»** → «Create»:
    - тумблер **«Clone a Repository»** — включить;
@@ -338,7 +339,7 @@ done < _redirects
 
 7. `https://kabinetdoma.ru/nesushchestvuyushchaya-stranitsa/` — `404` и **наш** `404.html`
    (проверить, что в теле есть текст сайта, а не стандартная страница Apache).
-8. Служебное не отдаётся: `/docs/questions.md`, `/AGENTS.md`, `/tools/deploy-prod.sh`,
+8. Служебное не отдаётся: `/docs/questions.md`, `/AGENTS.md`, `/tools/deploy-hothat.sh`,
    `/README.md`, `/*.md` — `404`. На диске их и нет, но проверка ловит ошибку состава выкладки.
 9. `robots.txt` и `sitemap.xml` — с абсолютными адресами `https://kabinetdoma.ru/...`.
 10. Заголовки: `curl -sI https://kabinetdoma.ru/ | grep -iE 'x-content-type|referrer-policy|x-frame'`
@@ -407,8 +408,8 @@ done < _redirects
   переезда, вместе с владельцем).
 - T-060 — приватный репозиторий и deploy key.
 - T-074 — пересмотр режима ПД через месяц, уже на новом хостинге.
-- `docs/architecture.md`: раздел про деплой и заголовки переписать под cPanel, `deploy-prod.sh`
-  убрать в `tools/archive/`.
+- `docs/architecture.md`: раздел про деплой и заголовки переписан под cPanel, `deploy-prod.sh`
+  лежит в `tools/archive/` (сделано 20.11, T-160).
 - Pages выключить не раньше чем через месяц нормальной работы.
 
 ## 12. Риски и что делать
@@ -476,5 +477,5 @@ done < _redirects
 - `.cpanel.yml` — задачи деплоя для панели, путь к корню — placeholder под аккаунт владельца.
 - `tools/deploy-hothat.sh` — rsync по SSH с проверкой состава и отказом при `docs/`, `tools/`,
   `*.md`.
-- После переезда: `docs/architecture.md` (деплой и заголовки), `deploy-prod.sh` в
-  `tools/archive/`.
+- После переезда (сделано 20.11, T-160): `docs/architecture.md` переписан под cPanel
+  (хостинг, выкладка, состав, `.htaccess`), `deploy-prod.sh` лежит в `tools/archive/`.

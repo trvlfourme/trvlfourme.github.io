@@ -71,7 +71,8 @@
 
 Бандл — не источник правды: `tools/apply-articles.js` сам собирает массив из JSON и вставляет его в `assets/index.js` между маркерами `/*kd:articles:start*/` и `/*kd:articles:end*/`. Сборка вызывает этот шаг первой, а `verify-build.js` падает, если бандл разошёлся с JSON. Поэтому править текст прямо в бандле бессмысленно — следующая сборка его перезапишет.
 
-Цикл правки текста: изменить JSON → `PORT=8099 node tools/build.js` → `verify-build.js` скажет «всё чисто» → коммит, пуш и `tools/deploy-prod.sh --push`. Проверить только соответствие бандла и JSON без сборки: `node tools/apply-articles.js --check`. Файл HTML в `article/<slug>/index.html` — артефакт пререндера, руками его не трогают.
+Цикл правки текста: изменить JSON → `PORT=8099 node tools/build.js` → `verify-build.js` скажет «всё чисто» → коммит, пуш, сухой прогон `bash tools/deploy-hothat.sh` и выкладка кнопками панели cPanel
+(«Update from Remote» → «Deploy HEAD Commit»). Проверить только соответствие бандла и JSON без сборки: `node tools/apply-articles.js --check`. Файл HTML в `article/<slug>/index.html` — артефакт пререндера, руками его не трогают.
 
 Поля `author: "editorial"` в JSON при сборке превращается в авторский объект редакции из бандла. Новая статья: файл `<slug>.json`, строка в `order.json`, запись в `tools/seo-pages-*.json` и карточка в хаб `articles/index.html`.
 

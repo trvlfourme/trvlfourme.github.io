@@ -46,8 +46,10 @@ node tools/server.js 8100         # отдельным процессом, по�
 #   /, /?article=<id>, /article/<slug>/
 
 # 5. коммит (проверив git status — дерево общее с другими чатами)
-# 6. деплой — только с разрешения владельца
-bash tools/deploy-prod.sh --push
+# 6. деплой — только с разрешения владельца и с локом «деплой» на доске
+bash tools/deploy-hothat.sh   # сухой прогон: состав + verify-build
+git push origin main          # коммит должен доехать до GitHub
+#    выкладка: cPanel → Git™ Version Control → Update from Remote → Deploy HEAD Commit
 ```
 
 ## Готово, когда

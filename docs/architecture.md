@@ -1,22 +1,86 @@
 # Архитектура и сборка
 
-Дата: 2026-11-03. Актуальные числа (страницы, товары, размер сборки) — в `docs/tasks.md`.
+Дата: 2026-11-20. Актуальные числа (страницы, товары, размер сборки) — в `docs/tasks.md`.
 
-## Репозитории и домен
+## Репозиторий, хостинг и домен
 
 | Что | Значение |
 |---|---|
-| Рабочая копия (`origin`) | `trvlfourme/trvlfourme.github.io`, ветка `main` |
-| Прод-репозиторий | `mail4startups-creator/home4work` (значение по умолчанию в `tools/deploy-prod.sh`, переопределяется `PROD_REPO`) |
-| Домен | `kabinetdoma.ru`, статика на GitHub Pages |
+| Рабочая копия (`origin`) | `trvlfourme/trvlfourme.github.io`, ветка `main`: и рабочая копия, и репозиторий, из которого выкладывает панель |
+| Хостинг | hothat.ru, cPanel, LiteSpeed, аккаунт `p14021`, выделенный IP `178.57.216.221`, тариф «Пять» (5 сайтов, 5 ГБ) |
+| Сайт на сервере | `${HOME}/kabinetdoma.ru` = `/home/p14021/kabinetdoma.ru` — корневой каталог домена, вне `public_html` |
+| Клон для выкладки | `/home/p14021/repositories/kabinetdoma` — копия этого репозитория, отдельно от корня сайта |
+| Домен | `kabinetdoma.ru` и `www` (отдельная A-запись), DNS на nic.ru, AutoSSL Let's Encrypt с 19.11.2026 до 17.02.2027 |
+| Второй сайт на аккаунте | `trvl4.me` — его каталог, `.htaccess` и сертификат не трогаем |
 | Локальный запуск | `node tools/server.js <порт>`, например `node tools/server.js 8100` |
+| Бывший хостинг | GitHub Pages и репозиторий `mail4startups-creator/home4work`: с 20.11.2026 сайт там не живёт |
 
-Пуш в `origin` — это только рабочая копия. На прод файлы уезжают скриптом
-`bash tools/deploy-prod.sh --push`: он забирает прод-ветку в `_prodcheck/prod-clone`,
-запоминает файлы, которые есть только на проде (подтверждения Search Console и т. п.),
-заменяет дерево на `git archive main`, прогоняет `verify-build.js` уже по клону и коммитит.
-Без `--push` скрипт только готовит и проверяет. Деплой — только с разрешения владельца.
+Сайт статический: сервер отдаёт готовые файлы, PHP, базы и Node на хостинге не нужны.
+`git push origin main` обновляет GitHub и рабочую копию, но **не** сайт: файлы в
+`${HOME}/kabinetdoma.ru` кладёт панель cPanel, запасной путь — rsync по SSH (см. «Выкладка»).
 
+## Выкладка
+
+| Что | Где |
+|---|---|
+| Состав публикации | `tools/public-manifest.txt` — единственный список того, что уезжает на сайт |
+| Задание панели | `.cpanel.yml` — команды кнопки «Deploy HEAD Commit» |
+| Выкладка по SSH | `bash tools/deploy-hothat.sh` — сухой прогон; `--push` — rsync |
+| Правила сервера | `.htaccess`, генерируется `node tools/make-htaccess.js` |
+| Архив | `tools/archive/deploy-prod.sh` — выкладка на GitHub Pages, не используется |
+
+**Панель.** cPanel → «Files» → «Git™ Version Control» держит `git clone` этого репозитория в
+`/home/<аккаунт>/repositories/kabinetdoma` — **не** в корне сайта, иначе `.git`, `docs/`,
+`tools/`, `app/` стали бы публичными. Обновление — две кнопки по порядку:
+**«Update from Remote»** (`git pull --ff-only`, забирает коммиты из GitHub) и
+**«Deploy HEAD Commit»** (запускает `.cpanel.yml`). Пуш в GitHub панель не уведомляет:
+одна первая кнопка сайт не меняет, нужны обе.
+
+**Что делает `.cpanel.yml`.** `DEPLOYPATH` = `${HOME}/kabinetdoma.ru` (с подстраховкой
+`/home/$(whoami)`); если в клоне нет `tools/public-manifest.txt`, задача падает с объяснением:
+значит, панель склонировала не тот репозиторий. Дальше awk выбирает из манифеста секции
+«общие» + «только cPanel» и пропускает «только GitHub Pages» (`CNAME`, `.nojekyll`,
+`_redirects`). `rm -rf` сначала убирает прошлую версию каждой записи, чтобы удалённые у нас
+файлы не висели на сайте; `cp -a` копирует новую, маски вроде `google*.html` раскрываются, а
+запись без совпадений пропускается. В конце `find -name '*.md' -delete` снимает заметки внутри
+публикуемых папок (`images/SOURCES.md`) — правило T-053. `.htaccess` — единственная запись
+секции «только cPanel»: на GitHub Pages он не нужен.
+
+**`tools/deploy-hothat.sh`.** Тот же состав без панели, по SSH: собирает stage в
+`_hothatcheck/stage`, отказывается, если в публикацию попали `docs/`, `tools/`, `app/`,
+`content/`, `*.md`, `.git`, `_redirects`, `CNAME`, `.nojekyll`, и прогоняет
+`verify-build.js` с `KD_HOSTING=hothat`. `--push` требует
+`HOTHAT_REMOTE=user@host:/home/<аккаунт>/kabinetdoma.ru/` — путь обязан заканчиваться на
+`kabinetdoma.ru`, иначе rsync `--delete` снесёт чужой сайт; ключ — `HOTHAT_KEY`
+(по умолчанию `.secrets/hothat_ed25519`), порт — `HOTHAT_PORT`. С 20.11.2026 это запасной
+путь: с рабочей машины SSH к серверу не проходит (порт 22 — reset, 2222 — refused), `rsync`
+локально не установлен, поэтому выкладка идёт кнопками панели.
+
+**Требования к клону.** «Deploy HEAD Commit» серая, пока в клоне есть незакоммиченные правки
+или пока панель не видит `.cpanel.yml` в HEAD. Поэтому `.cpanel.yml`, `tools/` и `.htaccess`
+правят в репозитории и пушат, а на сервере не редактируют. Клонировать надо рабочий
+репозиторий: в `mail4startups-creator/home4work` лежала только готовая публикация — без
+`tools/`, `.cpanel.yml` и `.htaccess`, выкладывать из него нечего.
+
+**`.htaccess`.** Источник правил — `_redirects` (16 пар «старый адрес → новый, 301»).
+`node tools/make-htaccess.js` собирает из них `.htaccess`: `Options -Indexes`, `DirectoryIndex`,
+`ErrorDocument 404`, http→https, `www`→apex с сохранением пути, блок `mod_rewrite` с 16
+`RewriteRule`, `mod_expires` (HTML без долгого кэша, `assets/*` с `max-age`), `mod_headers`
+(см. «Заголовки безопасности») и `AddDefaultCharset UTF-8`. Всё лежит внутри `<IfModule>`,
+поэтому на сборке без модуля файл не роняет сайт. Руками `.htaccess` не правят: меняют
+`_redirects` или генератор, затем запускают `node tools/make-htaccess.js`, сверка —
+`node tools/make-htaccess.js --check`. Раньше правила были на `mod_alias` (`Redirect 301`),
+и на LiteSpeed часть воркеров отдавала 200 вместо 301; после перехода на `RewriteRule`
+замер §7 п.6 (T-157, 20.11.2026) дал 160/160 `301` с точным `Location` на 16 адресах × 10.
+
+**Порядок выкладки** (только с разрешения владельца, с локом `деплой` на доске):
+
+1. `bash tools/deploy-hothat.sh` — сухой прогон: состав, `verify-build`, число файлов и объём.
+2. `git push origin main` — коммит должен доехать до GitHub, иначе «Update from Remote» его не увидит.
+3. Владелец: «Update from Remote» → «Deploy HEAD Commit».
+4. Проверка на живом сайте: `curl -sI https://kabinetdoma.ru/ | head -1`, адреса из
+   `sitemap.xml`, 16 старых адресов (301), служебные пути (`/docs/questions.md` — 404,
+   `/.htaccess` — 403), `https://www` (один 301 на apex).
 ## Каталоги
 
 | Путь | Что это |
@@ -32,7 +96,7 @@
 | `tools/*.js` | генераторы и проверки, `package.json` нет — всё через `node tools/<файл>.js` |
 | `article/<slug>/index.html`, `index.html`, `builder/`, `calculator/` … | артефакты пререндера |
 | `articles/index.html` | хаб `/articles/`: артефакт `tools/build-hub.js` (карточки из `data/articles`, раскладка — `data/hub.js`), не пререндерится (`TABS` его не содержит) |
-| `sitemap.xml`, `_redirects`, `404.html` | генерируются/обслуживают обход |
+| `sitemap.xml`, `404.html` | артефакты сборки; `_redirects` — источник правил для `.htaccess`, на сайт не уезжает |
 
 ## Порядок статей, даты и источник приложения
 
@@ -131,8 +195,10 @@ production-сборкой из исходников, это T-028.
 
 ## Заголовки безопасности
 
-GitHub Pages не отдаёт HTTP-заголовки, поэтому политика живёт в разметке. `tools/security-headers.js`
-шагом сборки ставит в каждую страницу две строки сразу после `meta charset`:
+Политика живёт в двух местах: CSP и `Referrer-Policy` — в разметке, остальное — в `.htaccess`.
+
+`tools/security-headers.js` шагом сборки ставит в каждую страницу две строки сразу после
+`meta charset`:
 
 - `Content-Security-Policy`: `default-src 'self'`, `script-src 'self'`, `style-src 'self' 'unsafe-inline'`
   (нужен для style-атрибутов React), `img-src 'self' data:`, `font-src 'self'`, `connect-src 'self'`,
@@ -140,11 +206,15 @@ GitHub Pages не отдаёт HTTP-заголовки, поэтому поли�
   исполняемых инлайн-скриптов на страницах нет, всё инлайн-содержимое — `application/ld+json`;
 - `Referrer-Policy: strict-origin-when-cross-origin` (meta `name="referrer"`).
 
-Ограничения хостинга, которые meta-тегом не решаются: `X-Frame-Options` и `frame-ancestors`
-(защита от встраивания в iframe), `HSTS` и `X-Content-Type-Options`. Они появятся при переезде,
-где заголовки настраиваются на сервере (`docs/migration-hothat.md`). Проверка полноты разметки —
-`node tools/security-headers.js --check`.
-
+Серверные заголовки даёт `.htaccess` (генератор `tools/make-htaccess.js`): в блоке
+`<IfModule mod_headers.c>` стоят `X-Content-Type-Options: nosniff`,
+`Referrer-Policy: strict-origin-when-cross-origin` и `X-Frame-Options: SAMEORIGIN`, рядом
+`AddDefaultCharset UTF-8`. HSTS (`Strict-Transport-Security: max-age=31536000`) в генераторе
+прописан, но закомментирован: до T-159 его держали выключенным, пока не прошли сутки нормальной
+работы после выпуска сертификата, — HSTS прибивает схему в браузере на год и делает быстрый
+откат `www` невозможным. Заголовки проверяют на живом сайте через `curl -sI`: сам `.htaccess`
+снаружи не читается (403), поэтому состояние правил видно только по поведению адресов.
+Проверка полноты разметки — `node tools/security-headers.js --check`.
 ## Бэкапы
 
 Бэкап — архив ветки `main` плюс проверка, что из него всё восстанавливается:
@@ -179,8 +249,9 @@ node tools/build.js --skip-prerender     # только постобработк
    `<!-- kd-seo -->` и `<!-- kd-links -->`.
 5. `optimize-html-images.js` — локальные картинки, `width`/`height`, `loading="lazy"`,
    `fetchpriority="high"` у первой.
-6. `make-redirects.js` — 17 страниц на meta-refresh (GitHub Pages не умеет 301) + `_redirects`
-   для Cloudflare.
+6. `make-redirects.js` — 16 правил в `_redirects` и meta-refresh в старых страницах.
+   `.htaccess` в сборку не входит: его отдельно собирает `node tools/make-htaccess.js`,
+   иначе правила сервера и `_redirects` разъезжаются.
 7. `strip-third-party.js` — снимает внешние вставки (Метрика, Google Fonts, трекер целей);
    запускается дважды: до пререндера (чистит оболочку) и финально — по всем страницам.
 8. `sitemap.js` — адреса ровно как в canonical (со слешем), `lastmod` меняется только при
@@ -241,7 +312,8 @@ node tools/build.js --skip-prerender     # только постобработк
   и такие ссылки не считаются битыми;
 - `price_rub` необязателен, как и в `verify-build`; товары без цены перечисляются отдельной
   строкой — это подсказка контенту, а не ошибка;
-- в публикацию не попадает: `deploy-prod.sh` выкладывает только список `PUBLIC`.
+- в публикацию не попадает: и панель, и `tools/deploy-hothat.sh` берут только записи
+  `tools/public-manifest.txt`.
 
 
 ## Как устроен фронтенд
@@ -294,3 +366,6 @@ node tools/server.js 8100          # статика + SPA-фолбэк чере�
 - Админка живёт только локально (`tools/admin`, см. раздел «Админка»): на сайте её нет,
   а правки каталога всё равно остаются в localStorage до экспорта `catalog.js`.
 - Фоновые node-процессы на 8080/8081/8099/8124/8142/8143 — чужие, не убивать.
+- Выкладка — две кнопки панели: `git push` и даже «Deploy HEAD Commit» без «Update from Remote»
+  оставляют на сайте прошлую версию, а правки `.cpanel.yml` прямо в клоне на сервере панель
+  блокирует («no uncommitted changes»).

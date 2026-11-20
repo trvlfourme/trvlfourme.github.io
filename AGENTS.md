@@ -104,8 +104,10 @@
   `node --check assets/index.js`. Тексты статей идут через `tools/apply-articles.js`, в бандл —
   только массив статей между маркерами `/*kd:articles:start*/` и `/*kd:articles:end*/`.
 - HTML-артефакты в CRLF (`.gitattributes` → `* -text`), переводы строк не менять.
-- Деплой на прод — только с разрешения владельца: `bash tools/deploy-prod.sh --push`.
-  `git push origin main` обновляет рабочую копию, но не прод.
+- Деплой на прод — только с разрешения владельца: сухой прогон `bash tools/deploy-hothat.sh`,
+  затем «Update from Remote» → «Deploy HEAD Commit» в cPanel (`docs/architecture.md`, «Выкладка»).
+  `git push origin main` обновляет рабочую копию и GitHub, но не прод; выкладка на GitHub Pages
+  (`tools/archive/deploy-prod.sh`) больше не используется.
 - Рабочая копия общая для всех чатов: перед коммитом смотреть `git status` и `git diff`,
   не коммитить чужие правки. Коммить только свои пути (`git add <файлы>`), не `git add -A`
   и не `commit -a`: иначе в твой коммит уедут чужие правки (так уже было в `f67685b`, `f0edce9`).

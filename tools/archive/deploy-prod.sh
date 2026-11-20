@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
+# АРХИВ (T-160, 2026-11-20): выкладка на GitHub Pages. Сайт с 20.11.2026 живёт на hothat/cPanel,
+# прод обновляют кнопки панели — «Update from Remote» → «Deploy HEAD Commit» (`.cpanel.yml`),
+# запасной путь — tools/deploy-hothat.sh. Скрипт оставлен как история выкладки и для отката на Pages.
 # Выкладка текущей ветки main на прод (репозиторий mail4startups-creator/home4work).
 #
-#   tools/deploy-prod.sh          — подготовить и проверить, ничего не отправляя
-#   tools/deploy-prod.sh --push   — подготовить, проверить и отправить на прод
+#   tools/archive/deploy-prod.sh          — подготовить и проверить, ничего не отправляя
+#   tools/archive/deploy-prod.sh --push   — подготовить, проверить и отправить на прод
 #
 # Скрипт не перезаписывает историю прода: он добавляет один обычный коммит поверх
 # прод-ветки. Файлы, которые есть на проде и которых нет у нас (например,
@@ -121,7 +124,7 @@ fi
 if [ "$PUSH" = "0" ]; then
   echo
   echo "проверка пройдена, изменено файлов: $CHANGED"
-  echo "ничего не отправлено. Чтобы выложить: tools/deploy-prod.sh --push"
+  echo "ничего не отправлено. Чтобы выложить: tools/archive/deploy-prod.sh --push"
   exit 0
 fi
 

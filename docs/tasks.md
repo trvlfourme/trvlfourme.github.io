@@ -35,6 +35,14 @@ verify-build: всё чисто (311 файлов, 11,3 МБ), внешних с
 
 ## Что сделано в последние заходы
 
+- `docs/architecture.md` переписан под hothat/cPanel (T-160, 2026-11-20): где лежит сайт
+  (`${HOME}/kabinetdoma.ru`), клон панели и две кнопки выкладки, `.cpanel.yml`, запасной
+  `tools/deploy-hothat.sh`, единый состав `tools/public-manifest.txt`, генерация `.htaccess`
+  из `_redirects` (16 `RewriteRule`). Заголовки безопасности разделены: CSP и `Referrer-Policy`
+  в разметке, `X-Content-Type-Options`/`X-Frame-Options`/charset в `.htaccess`, HSTS выключен
+  до T-159. `tools/deploy-prod.sh` (GitHub Pages) убран в `tools/archive/`, упоминания
+  поправлены в `README.md`, `AGENTS.md`, `docs/roles/razrabotka.md`, `tools/admin/README.md`.
+
 - План переезда `docs/migration-hothat.md` переписан 2026-11-19 под фактическую панель: шаги
   начинаются с создания второго сайта в cPanel («Домены» → «Создать новый домен», снять
   «Share document root», отдельный каталог), затем выкладка до смены DNS и проверка по IP,
