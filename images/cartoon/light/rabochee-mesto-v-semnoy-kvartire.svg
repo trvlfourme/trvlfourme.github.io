@@ -8,28 +8,49 @@
   <rect width="1376" height="768" fill="url(#bg)" />
   <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
   <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" />
-  <rect x="90" y="120" width="320" height="300" rx="12" fill="#cfe6fb" />
-  <rect x="90" y="120" width="320" height="300" rx="12" fill="none" stroke="#e2d7cb" stroke-width="12" />
-  <line x1="250" y1="120" x2="250" y2="420" stroke="#e2d7cb" stroke-width="10" />
-  <line x1="90" y1="270" x2="410" y2="270" stroke="#e2d7cb" stroke-width="10" />
-  <rect x="74" y="420" width="352" height="18" rx="6" fill="#ded7d0" />
-  <rect x="60" y="420" width="420" height="150" fill="#ded7d0" />
-  <rect x="60" y="404" width="440" height="20" rx="6" fill="#d3a97c" />
-  <polygon points="150,402 290,402 290,292 172.4,292" fill="#2f3d4d" stroke="#4a5a70" stroke-width="3" />
-  <polygon points="164,298 278,298 278,394 160,394" fill="#dbeafe" />
-  <g stroke="#60a5fa" stroke-width="4" stroke-linecap="round" opacity="0.8">
-    <line x1="174" y1="314" x2="236.8" y2="314" />
-    <line x1="174" y1="332" x2="264.8" y2="332" />
-    <line x1="174" y1="350" x2="220" y2="350" />
+  <rect x="150" y="170" width="430" height="300" rx="8" fill="#f6f2ec" />
+  <rect x="164" y="184" width="402" height="272" rx="4" fill="#dfeaf5" />
+  <rect x="360" y="184" width="10" height="272" fill="#f6f2ec" />
+  <rect x="164" y="316" width="402" height="10" fill="#f6f2ec" />
+  <rect x="86" y="150" width="52" height="400" rx="14" fill="#f3eee7" />
+  <rect x="592" y="150" width="52" height="400" rx="14" fill="#f3eee7" />
+
+  <rect x="110" y="470" width="540" height="24" rx="7" fill="#d3a97c" />
+  <rect x="110" y="470" width="540" height="6" rx="3" fill="#e6c8a6" />
+  <rect x="110" y="494" width="540" height="10" fill="#c99f74" />
+
+  <rect x="196" y="444" width="150" height="18" rx="5" fill="#475569" />
+  <rect x="204" y="446" width="134" height="5" rx="2.5" fill="#64748b" />
+  <rect x="380" y="428" width="40" height="42" rx="8" fill="#ef4444" />
+  <path d="M420 438 a12 12 0 0 1 0 24" fill="none" stroke="#ef4444" stroke-width="6" />
+
+  <g transform="translate(600 470)">
+    <rect x="-14" y="-14" width="56" height="18" rx="6" fill="#475569" />
+    <rect x="24" y="-14" width="18" height="66" rx="6" fill="#475569" />
+    <rect x="-14" y="36" width="52" height="16" rx="6" fill="#475569" />
+    <rect x="6" y="52" width="14" height="26" rx="6" fill="#64748b" />
+    <rect x="-8" y="12" width="44" height="8" rx="4" fill="#f59e0b" />
+    <rect x="30" y="-116" width="16" height="106" rx="6" fill="#64748b" />
+    <circle cx="38" cy="-116" r="22" fill="#475569" />
+    <circle cx="38" cy="-116" r="8" fill="#cbd5e1" />
+    <rect x="-96" y="-140" width="140" height="96" rx="10" fill="#334155" />
+    <rect x="-86" y="-130" width="120" height="76" rx="6" fill="#41526a" />
+    <rect x="-72" y="-114" width="72" height="9" rx="4.5" fill="#64748b" />
+    <rect x="-72" y="-96" width="92" height="9" rx="4.5" fill="#64748b" />
+    <rect x="-40" y="-44" width="16" height="14" rx="5" fill="#64748b" />
   </g>
-  <rect x="150" y="396" width="152" height="14" rx="5" fill="#3b4a5c" />
-  <rect x="330" y="330" width="90" height="70" rx="10" fill="#334155" />
-  <rect x="346" y="346" width="58" height="38" rx="4" fill="#94a3b8" />
-  <path d="M330 400 q-30 0 -30 30" fill="none" stroke="#334155" stroke-width="8" />
-  <path d="M520 596 h180 l-30 -110 h-120 z" fill="#f59e0b" />
-  <rect x="560" y="470" width="110" height="20" rx="8" fill="#d98b1f" />
-  <rect x="520" y="250" width="576.96" height="80" rx="16" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
-  <text x="808.48" y="302" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#f59e0b" text-anchor="middle">НИ ОДНОГО ОТВЕРСТИЯ</text>
-  <rect x="52" y="676" width="529.28" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
-  <text x="316.64" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">СЪЁМНАЯ КВАРТИРА</text>
+
+  <path d="M1010 596 q-16 -110 22 -132 l96 0 q38 22 22 132 z" fill="#d8c9b4" />
+  <path d="M1010 596 q-16 -110 22 -132 l96 0 q38 22 22 132 z" fill="none" stroke="#c2b09a" stroke-width="4" />
+  <path d="M1044 466 q-6 -46 34 -46 q40 0 34 46" fill="none" stroke="#b9a892" stroke-width="9" stroke-linecap="round" />
+
+  <ellipse cx="1080" cy="600" rx="120" ry="10" fill="#cdc0b5" fill-opacity="0.35" />
+  <rect x="1200" y="470" width="60" height="60" rx="8" fill="#b78e63" />
+  <ellipse cx="1230" cy="450" rx="34" ry="30" fill="#0f9d6b" opacity="0.75" />
+  <ellipse cx="1212" cy="432" rx="22" ry="20" fill="#0f9d6b" opacity="0.55" />
+
+  <rect x="760" y="250" width="677" height="80" rx="16" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="1098" y="302" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#b45309" text-anchor="middle">НИ ОДНОГО ОТВЕРСТИЯ</text>
+  <rect x="52" y="676" width="568" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="336" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">СЪЁМНАЯ КВАРТИРА</text>
 </svg>

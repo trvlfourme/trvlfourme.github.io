@@ -7,35 +7,30 @@
   </defs>
   <rect width="1376" height="768" fill="url(#bg)" />
   <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
-  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" />    <rect x="200" y="330" width="980" height="24" rx="8" fill="#d3a97c" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" />
+  <rect x="200" y="330" width="980" height="24" rx="8" fill="#d3a97c" />
   <rect x="200" y="330" width="980" height="5" rx="2.5" fill="#e6c8a6" />
   <rect x="234" y="354" width="24" height="242" fill="#b78e63" />
   <rect x="1122" y="354" width="24" height="242" fill="#b78e63" />
-  <ellipse cx="690" cy="606" rx="280" ry="14" fill="#cdc0b5" fill-opacity="0.3" />
-  <g transform="translate(300 336) scale(1)">
-    <rect x="0" y="0" width="26" height="150" rx="12" fill="#c8beb5" />
-    <rect x="6" y="58" width="14" height="46" rx="7" fill="#f59e0b" />
-    <rect x="10" y="128" width="118" height="26" rx="12" fill="#ded7d0" />
-    <rect x="60" y="154" width="10" height="56" fill="#c8beb5" />
-    <path d="M65 210 L18 236 M65 210 L112 236" stroke="#c8beb5" stroke-width="8" stroke-linecap="round" />
+  <ellipse cx="790" cy="606" rx="300" ry="14" fill="#cdc0b5" fill-opacity="0.35" />
+
+  <g transform="rotate(-7 790 566)">
+    <rect x="600" y="552" width="384" height="26" rx="11" fill="#d3a97c" />
+    <rect x="600" y="552" width="384" height="8" rx="4" fill="#e6c8a6" />
+    <rect x="616" y="578" width="30" height="20" rx="7" fill="#b78e63" />
+    <rect x="938" y="578" width="30" height="20" rx="7" fill="#b78e63" />
+    <rect x="664" y="578" width="236" height="9" rx="4.5" fill="#c39b71" />
   </g>
-  <rect x="520" y="560" width="320" height="30" rx="12" fill="#8b5cf6" transform="rotate(-8 680 575)" />
-  <g stroke="#ede9fe" stroke-width="5" stroke-linecap="round" transform="rotate(-8 680 575)">
-    <line x1="552" y1="568" x2="808" y2="568" /><line x1="552" y1="580" x2="808" y2="580" />
-  </g>
-  <rect x="530" y="586" width="300" height="7" rx="3.5" fill="#6d28d9" transform="rotate(-8 680 575)" />
-  <rect x="356" y="442" width="206" height="54" rx="27" fill="#334155" transform="rotate(3 459 469)" />
-  <circle cx="556" cy="478" r="27" fill="#334155" />
-  <rect x="532" y="464" width="48" height="84" rx="24" fill="#334155" transform="rotate(-14 556 506)" />
-  <g transform="rotate(-8 620 560)">
-    <path d="M556 556 V538 Q556 526 570 526 H584 Q596 526 600 538 L606 549 Q628 552 642 555 Q650 557 649 560 H556 Z" fill="#1f2937" />
-    <rect x="552" y="554" width="102" height="8" rx="4" fill="#0f172a" />
-    <path d="M574 536 h18" stroke="#3b4a5e" stroke-width="4" stroke-linecap="round" />
-  </g>
-  <path d="M880 520 a60 60 0 0 0 40 -40" fill="none" stroke="#f59e0b" stroke-width="5" stroke-dasharray="10 8" />
-  <text x="908" y="470" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#b45309">10–15°</text>
-  <rect x="250" y="190" width="437.76" height="80" rx="16" fill="#ffffff" stroke="#0ea5e9" stroke-width="3" />
-  <text x="468.88" y="242" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#0ea5e9" text-anchor="middle">КОЛЕНО 90–100°</text>
-  <rect x="52" y="676" width="558.86" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
-  <text x="331.43" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">ПОДСТАВКА ДЛЯ НОГ</text>
+
+  <line x1="330" y1="404" x2="588" y2="464" stroke="#2c3a4c" stroke-width="92" stroke-linecap="round" />
+  <line x1="588" y1="464" x2="650" y2="496" stroke="#2c3a4c" stroke-width="66" stroke-linecap="round" />
+  <rect x="634" y="482" width="46" height="62" rx="23" fill="#f3efe9" />
+  <rect x="650" y="520" width="106" height="44" rx="22" fill="#f3efe9" transform="rotate(-7 652 542)" />
+
+  <path d="M784 508 a58 58 0 0 0 54 20" fill="none" stroke="#f59e0b" stroke-width="5" stroke-dasharray="10 8" />
+  <text x="858" y="496" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#b45309">10–15°</text>
+  <rect x="250" y="190" width="512" height="80" rx="16" fill="#ffffff" stroke="#0ea5e9" stroke-width="3" />
+  <text x="506" y="242" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#0ea5e9" text-anchor="middle">КОЛЕНО 90–100°</text>
+  <rect x="52" y="676" width="601" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="352" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">ПОДСТАВКА ДЛЯ НОГ</text>
 </svg>
