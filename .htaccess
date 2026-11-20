@@ -70,9 +70,10 @@ ErrorDocument 404 /404.html
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
-</IfModule>
 
-# HSTS — только через сутки нормальной работы, раскомментировать строку ниже
-# (docs/migration-hothat.md, шаг 4). Раньше нельзя: ошибка с сертификатом
-# запомнится браузером на год.
-# Header always set Strict-Transport-Security "max-age=31536000"
+  # HSTS с 20.11.2026 (T-159): сутки штатной работы после выпуска сертификата
+  # прошли. Браузер запоминает схему на год — после этой строки откат на http
+  # или отказ от www для уже заходивших станет невозможен. Убирать только
+  # вместе с перегенерированным .htaccess, а не правкой файла на сервере.
+  Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>

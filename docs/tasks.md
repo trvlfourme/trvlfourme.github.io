@@ -35,6 +35,12 @@ verify-build: всё чисто (311 файлов, 11,3 МБ), внешних с
 
 ## Что сделано в последние заходы
 
+- HSTS включён (T-159, 2026-11-20): строка `Strict-Transport-Security: max-age=31536000`
+  в `tools/make-htaccess.js` раскомментирована и перенесена внутрь `<IfModule mod_headers.c>`
+  (рядом с остальными серверными заголовками), `.htaccess` перегенерирован, `--check` зелёный.
+  Выкладка — отдельным заходом с разрешения владельца; после неё заголовок проверяется на apex
+  и на `https://www.kabinetdoma.ru/`.
+
 - `docs/architecture.md` переписан под hothat/cPanel (T-160, 2026-11-20): где лежит сайт
   (`${HOME}/kabinetdoma.ru`), клон панели и две кнопки выкладки, `.cpanel.yml`, запасной
   `tools/deploy-hothat.sh`, единый состав `tools/public-manifest.txt`, генерация `.htaccess`
