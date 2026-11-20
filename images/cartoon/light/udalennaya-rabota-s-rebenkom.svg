@@ -7,56 +7,75 @@
   </defs>
   <rect width="1376" height="768" fill="url(#bg)" />
   <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
-  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" /><ellipse cx="400" cy="606" rx="285.2" ry="16" fill="#cdc0b5" fill-opacity="0.5" />
-  <rect x="90" y="470" width="620" height="26" rx="8" fill="#d3a97c" />
-  <rect x="90" y="470" width="620" height="5" rx="2.5" fill="#e6c8a6" />
-  <rect x="130" y="496" width="26" height="100" fill="#b78e63" />
-  <rect x="644" y="496" width="26" height="100" fill="#b78e63" />
-    <ellipse cx="255" cy="602" rx="87" ry="10" fill="#cdc0b5" fill-opacity="0.35" />
-  <g stroke="#c8beb5" stroke-width="11" stroke-linecap="round">
-    <line x1="255" y1="542" x2="198" y2="586" />
-    <line x1="255" y1="542" x2="312" y2="586" />
-    <line x1="255" y1="542" x2="237" y2="592" />
-    <line x1="255" y1="542" x2="273" y2="592" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" />
+  <ellipse cx="330" cy="600" rx="300" ry="14" fill="#cdc0b5" fill-opacity="0.3" />
+  <ellipse cx="960" cy="600" rx="280" ry="14" fill="#cdc0b5" fill-opacity="0.3" />
+  <rect x="120" y="452" width="430" height="26" rx="8" fill="#d3a97c" />
+  <rect x="120" y="452" width="430" height="6" rx="3" fill="#e6c8a6" />
+  <rect x="156" y="478" width="24" height="118" fill="#b78e63" />
+  <rect x="490" y="478" width="24" height="118" fill="#b78e63" />
+  <ellipse cx="280" cy="596" rx="96" ry="10" fill="#cdc0b5" fill-opacity="0.35" />
+  <rect x="204" y="354" width="20" height="132" rx="10" fill="#c8beb5" />
+  <rect x="214" y="486" width="150" height="22" rx="8" fill="#ded7d0" />
+  <rect x="282" y="508" width="16" height="72" fill="#c8beb5" />
+  <g stroke="#c8beb5" stroke-width="10" stroke-linecap="round">
+    <line x1="290" y1="578" x2="228" y2="592" />
+    <line x1="290" y1="578" x2="352" y2="592" />
+    <line x1="290" y1="578" x2="266" y2="596" />
+    <line x1="290" y1="578" x2="316" y2="596" />
   </g>
-  <circle cx="198" cy="588" r="7" fill="#c8beb5" />
-  <circle cx="312" cy="588" r="7" fill="#c8beb5" />
-  <circle cx="237" cy="594" r="7" fill="#c8beb5" />
-  <circle cx="273" cy="594" r="7" fill="#c8beb5" />
-  <rect x="239" y="530" width="32" height="18" rx="7" fill="#c8beb5" />
-  <rect x="246" y="492.6" width="18" height="37.39999999999998" fill="#c8beb5" />
-  <rect x="172" y="424.6" width="12" height="46" fill="#c8beb5" />
-  <rect x="326" y="424.6" width="12" height="46" fill="#c8beb5" />
-  <rect x="164" y="412.6" width="45" height="14" rx="7" fill="#ded7d0" />
-  <rect x="301" y="412.6" width="45" height="14" rx="7" fill="#ded7d0" />
-  <rect x="198" y="368" width="114" height="80.6" rx="16.5" fill="#c8beb5" />
-  <rect x="211.5" y="392.18" width="87" height="44.33" rx="12" fill="#ded7d0" />
-  <rect x="180" y="470.6" width="150" height="28" rx="11" fill="#ded7d0" />
-  <rect x="185" y="489.6" width="140" height="7" rx="3.5" fill="#c8beb5" opacity="0.75" />
-  <path d="M182 472 v-40 a78 78 0 0 1 156 0 v40 z" fill="#38bdf8" />
-  <circle cx="260" cy="330" r="56" fill="#f5c9a3" />
-  <path d="M204 330 a56 56 0 0 1 112 0 q-25.2 -30 -56 -30 q-30.800000000000004 0 -56 30 z" fill="#3a2a1c" />
-  <circle cx="240" cy="332" r="6" fill="#241f1c" />
-  <circle cx="280" cy="332" r="6" fill="#241f1c" />
-  <path d="M244 356 q16 14 32 0" fill="none" stroke="#241f1c" stroke-width="4" stroke-linecap="round" />
-  <path d="M204 330 a56 56 0 0 1 112 0" fill="none" stroke="#f59e0b" stroke-width="9" stroke-linecap="round" />
-       <rect x="188" y="308" width="26" height="52" rx="13" fill="#f59e0b" />
-       <rect x="306" y="308" width="26" height="52" rx="13" fill="#f59e0b" />
-  <ellipse cx="450" cy="476" rx="112.00000000000001" ry="9" fill="#cdc0b5" fill-opacity="0.4" />
-  <rect x="350" y="368" width="200" height="88" rx="10" fill="#64748b" stroke="#4a5a70" stroke-width="2" />
-  <rect x="364" y="378.56" width="172" height="58.080000000000005" rx="6" fill="#546a85" />
-  <circle cx="450" cy="404.96" r="12" fill="#94a3b8" />
-  <rect x="344" y="456" width="212" height="14" rx="6" fill="#475569" />
-  <rect x="760" y="520" width="360" height="20" rx="8" fill="#34d399" />
-  <rect x="790" y="540" width="20" height="56" fill="#0f9d6b" />
-  <rect x="1070" y="540" width="20" height="56" fill="#0f9d6b" />
-  <rect x="820" y="440" width="90" height="70" rx="8" fill="#fbbf24" />
-  <rect x="940" y="470" width="60" height="40" rx="6" fill="#38bdf8" />
-  <circle cx="1040" cy="500" r="18" fill="#ef4444" />
-  <circle cx="700" cy="200" r="56" fill="#ffffff" stroke="#d2c6bb" stroke-width="4" />
-  <path d="M700 200 v-34 M700 200 l26 14" stroke="#3a2c1c" stroke-width="5" stroke-linecap="round" />
-  <rect x="780" y="300" width="382.08" height="80" rx="16" fill="#ffffff" stroke="#0ea5e9" stroke-width="3" />
-  <text x="971.04" y="352" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#0ea5e9" text-anchor="middle">РАБОЧЕЕ ОКНО</text>
-  <rect x="52" y="676" width="499.7" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
-  <text x="301.85" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">ДЕНЬ С РЕБЁНКОМ</text>
+  <circle cx="228" cy="594" r="7" fill="#c8beb5" />
+  <circle cx="352" cy="594" r="7" fill="#c8beb5" />
+  <rect x="238" y="366" width="124" height="134" rx="16" fill="#38bdf8" />
+  <circle cx="300" cy="322" r="46" fill="#f5c9a3" />
+  <path d="M254 322 a46 46 0 0 0 92 0 l0 -8 q-46 -34 -92 0 z" fill="#3a2a1c" />
+  <rect x="212" y="378" width="26" height="86" rx="13" fill="#38bdf8" />
+  <rect x="362" y="378" width="26" height="86" rx="13" fill="#38bdf8" />
+  <line x1="270" y1="496" x2="266" y2="590" stroke="#46586b" stroke-width="44" stroke-linecap="round" />
+  <line x1="330" y1="496" x2="334" y2="590" stroke="#46586b" stroke-width="44" stroke-linecap="round" />
+  <line x1="262" y1="596" x2="296" y2="598" stroke="#334155" stroke-width="26" stroke-linecap="round" />
+  <line x1="330" y1="596" x2="364" y2="598" stroke="#334155" stroke-width="26" stroke-linecap="round" />
+
+  <rect x="170" y="424" width="140" height="14" rx="6" fill="#475569" />
+  <rect x="186" y="412" width="112" height="14" rx="6" fill="#94a3b8" />
+  <rect x="386" y="430" width="46" height="22" rx="20" fill="#38bdf8" />
+  <path d="M432 436 a10 10 0 0 1 0 12" fill="none" stroke="#38bdf8" stroke-width="5" />
+
+  <rect x="760" y="524" width="400" height="22" rx="8" fill="#d3a97c" />
+  <rect x="760" y="524" width="400" height="6" rx="3" fill="#e6c8a6" />
+  <rect x="796" y="546" width="22" height="50" fill="#b78e63" />
+  <rect x="1102" y="546" width="22" height="50" fill="#b78e63" />
+  <rect x="820" y="516" width="120" height="8" rx="4" fill="#94a3b8" />
+  <rect x="930" y="452" width="120" height="72" rx="6" fill="#e2d7cb" stroke="#46586b" stroke-width="3" />
+  <ellipse cx="980" cy="596" rx="96" ry="10" fill="#cdc0b5" fill-opacity="0.35" />
+  <rect x="904" y="416" width="20" height="132" rx="10" fill="#c8beb5" />
+  <rect x="914" y="548" width="150" height="22" rx="8" fill="#ded7d0" />
+  <rect x="982" y="570" width="16" height="72" fill="#c8beb5" />
+  <g stroke="#c8beb5" stroke-width="10" stroke-linecap="round">
+    <line x1="990" y1="640" x2="928" y2="592" />
+    <line x1="990" y1="640" x2="1052" y2="592" />
+    <line x1="990" y1="640" x2="966" y2="596" />
+    <line x1="990" y1="640" x2="1016" y2="596" />
+  </g>
+  <circle cx="928" cy="594" r="7" fill="#c8beb5" />
+  <circle cx="1052" cy="594" r="7" fill="#c8beb5" />
+  <rect x="938" y="428" width="124" height="134" rx="16" fill="#0f9d6b" />
+  <circle cx="1000" cy="384" r="46" fill="#f5c9a3" />
+  <path d="M954 384 a46 46 0 0 0 92 0 l0 -8 q-46 -34 -92 0 z" fill="#3a2a1c" />
+  <rect x="912" y="440" width="26" height="86" rx="13" fill="#0f9d6b" />
+  <rect x="1062" y="440" width="26" height="86" rx="13" fill="#0f9d6b" />
+  <line x1="970" y1="558" x2="966" y2="652" stroke="#46586b" stroke-width="44" stroke-linecap="round" />
+  <line x1="1030" y1="558" x2="1034" y2="652" stroke="#46586b" stroke-width="44" stroke-linecap="round" />
+  <line x1="962" y1="658" x2="996" y2="660" stroke="#334155" stroke-width="26" stroke-linecap="round" />
+  <line x1="1030" y1="658" x2="1064" y2="660" stroke="#334155" stroke-width="26" stroke-linecap="round" />
+
+  <rect x="1010" y="500" width="120" height="8" rx="4" fill="#f59e0b" />
+  <rect x="880" y="540" width="16" height="16" rx="3" fill="#ef4444" />
+  <rect x="1080" y="540" width="18" height="16" rx="3" fill="#0ea5e9" />
+  <rect x="130" y="176" width="479" height="80" rx="16" fill="#ffffff" stroke="#0ea5e9" stroke-width="3" />
+  <text x="369" y="228" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#0ea5e9" text-anchor="middle">ВЗРОСЛЫЙ СТОЛ</text>
+  <rect x="830" y="176" width="512" height="80" rx="16" fill="#ffffff" stroke="#0f9d6b" stroke-width="3" />
+  <text x="1086" y="228" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#0f9d6b" text-anchor="middle">ДЕТСКИЙ УГОЛОК</text>
+  <rect x="52" y="676" width="535" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="319" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">ДЕНЬ С РЕБЁНКОМ</text>
 </svg>

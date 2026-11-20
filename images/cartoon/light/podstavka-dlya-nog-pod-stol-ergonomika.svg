@@ -8,10 +8,10 @@
   <rect width="1376" height="768" fill="url(#bg)" />
   <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
   <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" />
-  <rect x="200" y="330" width="980" height="24" rx="8" fill="#d3a97c" />
-  <rect x="200" y="330" width="980" height="5" rx="2.5" fill="#e6c8a6" />
-  <rect x="234" y="354" width="24" height="242" fill="#b78e63" />
-  <rect x="1122" y="354" width="24" height="242" fill="#b78e63" />
+  <rect x="330" y="330" width="700" height="24" rx="8" fill="#d3a97c" />
+  <rect x="330" y="330" width="700" height="5" rx="2.5" fill="#e6c8a6" />
+  <rect x="372" y="354" width="24" height="242" fill="#b78e63" />
+  <rect x="972" y="354" width="24" height="242" fill="#b78e63" />
   <ellipse cx="790" cy="606" rx="300" ry="14" fill="#cdc0b5" fill-opacity="0.35" />
 
   <g transform="rotate(-7 790 566)">

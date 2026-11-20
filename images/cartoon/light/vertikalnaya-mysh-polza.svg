@@ -11,10 +11,10 @@
   <ellipse cx="690" cy="600" rx="480" ry="16" fill="#cdc0b5" fill-opacity="0.35" />
   <ellipse cx="430" cy="452" rx="126" ry="14" fill="#cdc0b5" fill-opacity="0.45" />
   <ellipse cx="880" cy="452" rx="118" ry="14" fill="#cdc0b5" fill-opacity="0.45" />
-  <rect x="120" y="452" width="1140" height="26" rx="8" fill="#d3a97c" />
-  <rect x="120" y="452" width="1140" height="6" rx="3" fill="#e6c8a6" />
-  <rect x="168" y="478" width="26" height="118" fill="#b78e63" />
-  <rect x="1186" y="478" width="26" height="118" fill="#b78e63" />
+  <rect x="250" y="452" width="880" height="26" rx="8" fill="#d3a97c" />
+  <rect x="250" y="452" width="880" height="6" rx="3" fill="#e6c8a6" />
+  <rect x="296" y="478" width="26" height="118" fill="#b78e63" />
+  <rect x="1064" y="478" width="26" height="118" fill="#b78e63" />
 
   <ellipse cx="466" cy="452" rx="152" ry="14" fill="#cdc0b5" fill-opacity="0.4" />
   <path d="M330 450 q0 -100 136 -100 q136 0 136 100 q0 18 -20 18 h-232 q-20 0 -20 -18 z" fill="#c6d0da" />
@@ -38,9 +38,9 @@
   <text x="476" y="222" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#64748b" text-anchor="middle">ЛАДОНЬ ВНИЗ</text>
   <rect x="740" y="170" width="545" height="80" rx="16" fill="#ffffff" stroke="#0f9d6b" stroke-width="3" />
   <text x="1012" y="222" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#0f9d6b" text-anchor="middle">КАК РУКОПОЖАТИЕ</text>
-  <rect x="1096" y="410" width="46" height="52" rx="9" fill="#ef4444" />
-  <path d="M1142 422 a14 14 0 0 1 0 26" fill="none" stroke="#ef4444" stroke-width="7" />
-  <path d="M1108 398 q7 -13 0 -24 M1126 400 q7 -13 0 -24" fill="none" stroke="#a89b8e" stroke-width="3" stroke-linecap="round" opacity="0.7" />
+  <rect x="1006" y="410" width="46" height="52" rx="9" fill="#ef4444" />
+  <path d="M1052 422 a14 14 0 0 1 0 26" fill="none" stroke="#ef4444" stroke-width="7" />
+  <path d="M1018 398 q7 -13 0 -24 M1036 400 q7 -13 0 -24" fill="none" stroke="#a89b8e" stroke-width="3" stroke-linecap="round" opacity="0.7" />
   <rect x="52" y="676" width="601" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
   <text x="352" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">ВЕРТИКАЛЬНАЯ МЫШЬ</text>
 </svg>

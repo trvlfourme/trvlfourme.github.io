@@ -31,10 +31,10 @@
   <polygon points="908.6,379.0 908.6,449.0 848.0,484.0 787.4,449.0 787.4,379.0 848.0,344.0" fill="#7d6c60" stroke="#4a3f39" stroke-width="2" />
   <polygon points="1040.6,379.0 1040.6,449.0 980.0,484.0 919.4,449.0 919.4,379.0 980.0,344.0" fill="#8a7a6b" stroke="#4a3f39" stroke-width="2" />
   <polygon points="1172.6,379.0 1172.6,449.0 1112.0,484.0 1051.4,449.0 1051.4,379.0 1112.0,344.0" fill="#746456" stroke="#4a3f39" stroke-width="2" />
-  <rect x="330" y="470" width="960" height="26" rx="8" fill="#8a6547" />
-  <rect x="330" y="470" width="960" height="6" rx="3" fill="#a07a53" />
-  <rect x="380" y="496" width="24" height="100" fill="#6d4f36" />
-  <rect x="1216" y="496" width="24" height="100" fill="#6d4f36" />
+  <rect x="620" y="470" width="660" height="26" rx="8" fill="#8a6547" />
+  <rect x="620" y="470" width="660" height="6" rx="3" fill="#a07a53" />
+  <rect x="664" y="496" width="24" height="100" fill="#6d4f36" />
+  <rect x="1212" y="496" width="24" height="100" fill="#6d4f36" />
 
   <rect x="746" y="316" width="302" height="154" rx="12" fill="#1b1618" stroke="#3a3130" stroke-width="3" />
   <rect x="759" y="329" width="276" height="128" rx="8" fill="#241d1f" />
