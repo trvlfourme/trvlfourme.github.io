@@ -35,7 +35,6 @@ for (const r of data.rows) {
     if (!Number.isInteger(r[key]) || r[key] <= 0) throw new Error(`data/tables.json: рост ${r.height} — поле ${key} должно быть целым числом`);
   }
   if (r.desk > r.monitor) throw new Error(`data/tables.json: рост ${r.height} — экран ниже столешницы`);
-  if (typeof r.footrest !== 'boolean') throw new Error(`data/tables.json: рост ${r.height} — footrest должен быть true/false`);
 }
 if (!Array.isArray(data.links) || data.links.length !== 3) throw new Error('data/tables.json: нужно ровно три внутренние ссылки');
 for (const [href] of data.links) {
@@ -45,11 +44,10 @@ for (const [href] of data.links) {
 const rowsHtml = data.rows
   .map((r) => {
     const cls = r.height === 175 ? ' class="is-standard"' : '';
-    const footrest = r.footrest ? '<span class="yes">да</span>' : '<span class="no">нет</span>';
     return (
       `        <tr${cls}><th scope="row">${r.height}</th>` +
       `<td class="num">${r.desk}</td><td class="num">${r.seat}</td>` +
-      `<td class="num">${r.monitor}</td><td>${footrest}</td></tr>`
+      `<td class="num">${r.monitor}</td></tr>`
     );
   })
   .join('\n');
