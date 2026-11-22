@@ -44,22 +44,24 @@
 Если всё же захочется: на сайте hothat услуги выделенного IP нет, спрашивать у
 support@hothat.ru. Для переезда это лишние расходы и лишний шаг, брать не советую.
 
-## 1. Что есть сейчас (проверено 2026-11-19)
+## 1. Что есть сейчас (проверено 2026-11-22)
 
 | Что | Сейчас |
 |---|---|
 | Домен | `kabinetdoma.ru`, регистратор и DNS — nic.ru (`ns3-l2`, `ns4-l2`, `ns8-l2`, `ns4-cloud`, `ns8-cloud`) |
-| A-записи | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (GitHub Pages), TTL 3600 |
+| A-записи | один `A @` → `178.57.216.221` (hothat), TTL 3600; четыре A GitHub Pages из зоны убраны |
 | AAAA | нет |
 | Выделенный IP | `178.57.216.221` — один на аккаунт, вместе с `trvl4.me` |
 | Домен в панели | создан 19.11: корневая папка `/kabinetdoma.ru` (то есть `/home/<аккаунт>/kabinetdoma.ru`), отдельно от `public_html`; служебный поддомен `kabinetdoma.ru.trvl4.me` |
-| `www` | записи нет: 19.11 владелец убрал CNAME в nic.ru, `www.kabinetdoma.ru` отдаёт NXDOMAIN |
+| `www` | отдельный `A www` → `178.57.216.221`. CNAME у `www` нет: 19.11 там стоял битый `CNAME www → kabinetdoma.ru.kabinetdoma.ru` (домен в домене), дававший NXDOMAIN, см. §12 |
 | MX | `mx1.improvmx.com` (10), `mx2.improvmx.com` (20) — пересылка на Gmail |
 | SPF | `v=spf1 include:spf.improvmx.com ~all` |
 | DMARC | `v=DMARC1; p=none; rua=mailto:info@kabinetdoma.ru` |
-| Хостинг | GitHub Pages, репозиторий `trvlfourme/trvlfourme.github.io`, ветка `main`, публичный |
+| Хостинг | hothat.ru, cPanel, LiteSpeed; корень `/home/<аккаунт>/kabinetdoma.ru`. GitHub `trvlfourme/trvlfourme.github.io` (ветка `main`, публичный) — источник, из которого панель тянет HEAD |
 | Выкладка | панель cPanel: клон `repositories/kabinetdoma` + «Update from Remote» → «Deploy HEAD Commit» (`.cpanel.yml`); запасной путь — `tools/deploy-hothat.sh --push` (на 19.11 было `tools/deploy-prod.sh --push`, теперь он в `tools/archive/`) |
 | Сайт | 37 страниц, 16 редиректов, публикуемый состав ~198 файлов, 9,7 МБ |
+| Сертификат | Let's Encrypt (AutoSSL панели) выпущен 19.11.2026 на оба имени, SAN `DNS:kabinetdoma.ru, DNS:www.kabinetdoma.ru`, срок до 17.02.2027 |
+| Переезд | выполнен 19.11.2026: сайт, сертификат и редиректы живут на hothat, Pages остаётся включённым до месяца нормальной работы (§11) |
 | Цель | hothat.ru, cPanel, SSH, ежедневный бэкап с восстановлением в один клик, панель на русском |
 | Второй сайт | `trvl4.me` — на этом же аккаунте hothat, остаётся как есть |
 
@@ -309,18 +311,28 @@ openssl s_client -connect kabinetdoma.ru:443 -servername kabinetdoma.ru </dev/nu
 5. **HSTS** — через сутки нормальной работы, строкой в `.htaccess`
    (`Header always set Strict-Transport-Security "max-age=31536000"`), не в первый час.
 
+**Чем это кончилось 19.11.2026** (проверено 2026-11-22): AutoSSL выпустил Let's Encrypt сразу
+на два имени, SAN `DNS:kabinetdoma.ru, DNS:www.kabinetdoma.ru`, срок до 17.02.2027; на домене
+один `A` → `178.57.216.221`, у `www` — отдельный `A` на тот же адрес, AAAA нет. Продление делает
+сам AutoSSL примерно за 30 дней до срока, отдельного продления не нужно — раз в месяц смотреть
+«SSL/TLS Status» в месячной проверке прода (T-136). Три сбоя этого шага, которые стоили времени,
+вынесены в §12: права `750` на корень, битый `CNAME` у `www` и кэш сертификата в антивирусе
+на ноутбуке.
+
 ## 7. Шаг 5. Приёмка в тот же вечер (30 минут, разработка + владелец)
 
 Проверки по порядку; всё, что не сошлось, чинится до объявления переезда.
+Отметка ✅ — проверено 20.11.2026 после полной перезаливки (T-130, T-157, T-159, T-158), ⏳ —
+ещё не сделано или делается руками в день выкладки.
 
-1. Домен обслуживает новый хостинг: `curl -sI https://kabinetdoma.ru/ | head -1` — `200`, и
+1. ✅ Домен обслуживает новый хостинг: `curl -sI https://kabinetdoma.ru/ | head -1` — `200`, и
    `server:` не `GitHub.com`.
-2. Главная отдаёт наш `<title>` (а не заглушку), картинки и стили грузятся.
-3. `curl -sI http://kabinetdoma.ru/` — **один** `301` на `https://kabinetdoma.ru/`.
-4. `curl -sI https://www.kabinetdoma.ru/article/rabochee-mesto-na-balkone/` — **один** `301`
+2. ✅ Главная отдаёт наш `<title>` (а не заглушку), картинки и стили грузятся.
+3. ✅ `curl -sI http://kabinetdoma.ru/` — **один** `301` на `https://kabinetdoma.ru/`.
+4. ✅ `curl -sI https://www.kabinetdoma.ru/article/rabochee-mesto-na-balkone/` — **один** `301`
    на `https://kabinetdoma.ru/article/rabochee-mesto-na-balkone/`, путь сохранён; сертификат
    без ошибки (SAN из шага 4).
-5. Все 37 адресов из `sitemap.xml` отвечают `200`:
+5. ✅ Все 37 адресов из `sitemap.xml` отвечают `200`:
 
 ```bash
 grep -o '<loc>[^<]*' sitemap.xml | sed 's|<loc>||' | while read u; do
@@ -328,7 +340,9 @@ grep -o '<loc>[^<]*' sitemap.xml | sed 's|<loc>||' | while read u; do
 done | sort | uniq -c | sort -rn | head
 ```
 
-6. Все 16 редиректов из `_redirects` дают `301` на новый адрес:
+6. ✅ Все 16 редиректов из `_redirects` дают `301` на новый адрес (после перевода правил на
+   `RewriteRule` замер дал 160/160 — по 10 запросов на каждый адрес, T-157; на `Redirect 301`
+   в пересменку 19–20.11 21 запрос из 48 отвечал `200`):
 
 ```bash
 while read -r from to code; do
@@ -337,24 +351,24 @@ while read -r from to code; do
 done < _redirects
 ```
 
-7. `https://kabinetdoma.ru/nesushchestvuyushchaya-stranitsa/` — `404` и **наш** `404.html`
+7. ✅ `https://kabinetdoma.ru/nesushchestvuyushchaya-stranitsa/` — `404` и **наш** `404.html`
    (проверить, что в теле есть текст сайта, а не стандартная страница Apache).
-8. Служебное не отдаётся: `/docs/questions.md`, `/AGENTS.md`, `/tools/deploy-hothat.sh`,
+8. ✅ Служебное не отдаётся: `/docs/questions.md`, `/AGENTS.md`, `/tools/deploy-hothat.sh`,
    `/README.md`, `/*.md` — `404`. На диске их и нет, но проверка ловит ошибку состава выкладки.
-9. `robots.txt` и `sitemap.xml` — с абсолютными адресами `https://kabinetdoma.ru/...`.
-10. Заголовки: `curl -sI https://kabinetdoma.ru/ | grep -iE 'x-content-type|referrer-policy|x-frame'`
+9. ✅ `robots.txt` и `sitemap.xml` — с абсолютными адресами `https://kabinetdoma.ru/...`.
+10. ✅ Заголовки: `curl -sI https://kabinetdoma.ru/ | grep -iE 'x-content-type|referrer-policy|x-frame'`
     — все три на месте (это то, что нельзя было задать мета-тегом на Pages). CSP и
     Referrer-Policy в HTML остаются как были.
-11. Кэш: `curl -sI https://kabinetdoma.ru/assets/index.js` — `Cache-Control: max-age=...`;
+11. ✅ Кэш: `curl -sI https://kabinetdoma.ru/assets/index.js` — `Cache-Control: max-age=...`;
     `curl -sI https://kabinetdoma.ru/` — без долгого кэша у HTML.
-12. Сжатие: `curl -sI -H 'Accept-Encoding: gzip' https://kabinetdoma.ru/assets/index.js | grep -i content-encoding`
+12. ✅ Сжатие: `curl -sI -H 'Accept-Encoding: gzip' https://kabinetdoma.ru/assets/index.js | grep -i content-encoding`
     — `gzip` (если в панели есть «Optimize Website» и он выключен — включить).
-13. `trvl4.me` открывается и показывает **свой** сайт, не наш; его сертификат на месте.
-14. Яндекс.Вебмастер: «Индексирование → Файлы Sitemap» — `sitemap.xml` читается, ошибок нет;
+13. ✅ `trvl4.me` открывается и показывает **свой** сайт, не наш; его сертификат на месте.
+14. ⏳ Яндекс.Вебмастер: «Индексирование → Файлы Sitemap» — `sitemap.xml` читается, ошибок нет;
     в Search Console — то же (переобход не нужен).
-15. Скорость для сравнения: `curl -w '%{time_total}\n' -o /dev/null -s https://kabinetdoma.ru/`
+15. ⏳ Скорость для сравнения: `curl -w '%{time_total}\n' -o /dev/null -s https://kabinetdoma.ru/`
     — на Pages было ~0,2–0,4 с из РФ.
-16. На главной и одной статье в браузере: консоль пустая, битых картинок нет, внешних
+16. ⏳ На главной и одной статье в браузере: консоль пустая, битых картинок нет, внешних
     запросов (`mc.yandex.ru`, `fonts.googleapis.com`) нет.
 
 ## 8. Шаг 6. Откат за 10 минут
@@ -423,7 +437,9 @@ done < _redirects
 | AutoSSL не выпустил сертификат | красный статус, ошибка DCV | проверить `dig`, что оба имени смотрят на IP hothat, запустить повторно; если не помогло — тикет в поддержку, до этого не объявлять переезд |
 | `500 Internal Server Error` | на любой странице | права 644/755, проверить `.htaccess` (синтаксис, `Options -Indexes` при запрете `AllowOverride`) |
 | Нет `mod_headers`/`mod_expires` | заголовков и кэша нет, сайт работает | блоки `<IfModule>` уже это переживают; написать в поддержку, не критично |
-| `www` не работает | NXDOMAIN или ошибка сертификата | вернуть CNAME, дождаться TTL, перезапустить AutoSSL |
+| `www` не работает | NXDOMAIN или ошибка сертификата | проверить тип записи: у `www` должен быть **A** на IP hothat. 19.11 в nic.ru стоял `CNAME www → kabinetdoma.ru.kabinetdoma.ru` (домен в домене) — NXDOMAIN и отказ AutoSSL; исправлено на A, после правки перезапустить AutoSSL |
+| AutoSSL не может подтвердить домен | в «SSL/TLS Status» ошибка DCV, в логах `404` на `/.well-known/acme-challenge/...` | права на корень были `750`, и проверяющий агент не мог прочитать файл подтверждения. Поставить `755` на каталоги и `644` на файлы (`find . -type d -exec chmod 755 {} +`, `find . -type f -exec chmod 644 {} +`), затем «Run AutoSSL» |
+| Браузер пишет «Недопустимое имя сертификата», хотя на сервере он верный | ошибка только на одном компьютере, `openssl s_client` показывает правильный SAN | это кэш проверки HTTPS в антивирусе (Касперский на ноутбуке владельца): он помнит старый сертификат GitHub Pages. Проверить сайт в другом браузере и через `openssl`, в антивирусе почистить кэш проверки SSL или временно её отключить |
 | Старые A остались в зоне | часть запросов уходит на Pages | удалить, проверить `dig` с 1.1.1.1 и 8.8.8.8 |
 | Кончилось место | ошибки записи в панели | сайт 11 МБ + клон 30 МБ, лимит 5 ГБ; почистить старые бэкапы |
 | Почта пропала | письма не доходят | в день сайта MX не трогали — проверить, что записи MX/SPF не изменились |
