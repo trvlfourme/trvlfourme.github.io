@@ -50,15 +50,16 @@ verify-build: всё чисто (324 файла, 13,1 МБ), внешних сч
 - HSTS включён (T-159, 2026-11-20): строка `Strict-Transport-Security: max-age=31536000`
   в `tools/make-htaccess.js` раскомментирована и перенесена внутрь `<IfModule mod_headers.c>`
   (рядом с остальными серверными заголовками), `.htaccess` перегенерирован, `--check` зелёный.
-  Выкладка — отдельным заходом с разрешения владельца; после неё заголовок проверяется на apex
-  и на `https://www.kabinetdoma.ru/`.
+  Выложено 2026-11-22 из панели (GitHub `3dacff5`): заголовок отдаётся на apex, на `www`
+  и на `http` (по 301), на старых адресах, на 404 и на статике; регрессий нет. `max-age` год —
+  у браузеров, уже получивших заголовок, откат `www` и возврат на http не сработают.
 
 - `docs/architecture.md` переписан под hothat/cPanel (T-160, 2026-11-20): где лежит сайт
   (`${HOME}/kabinetdoma.ru`), клон панели и две кнопки выкладки, `.cpanel.yml`, запасной
   `tools/deploy-hothat.sh`, единый состав `tools/public-manifest.txt`, генерация `.htaccess`
   из `_redirects` (16 `RewriteRule`). Заголовки безопасности разделены: CSP и `Referrer-Policy`
-  в разметке, `X-Content-Type-Options`/`X-Frame-Options`/charset в `.htaccess`, HSTS выключен
-  до T-159. `tools/deploy-prod.sh` (GitHub Pages) убран в `tools/archive/`, упоминания
+  в разметке, `X-Content-Type-Options`/`X-Frame-Options`/charset в `.htaccess`, HSTS включён
+  с T-159. `tools/deploy-prod.sh` (GitHub Pages) убран в `tools/archive/`, упоминания
   поправлены в `README.md`, `AGENTS.md`, `docs/roles/razrabotka.md`, `tools/admin/README.md`.
 
 - План переезда `docs/migration-hothat.md` переписан 2026-11-19 под фактическую панель: шаги
