@@ -1,29 +1,114 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" width="1376" height="768">
-<defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#faf6f1"/><stop offset="100%" stop-color="#ece3da"/></linearGradient></defs>
-<rect width="1376" height="768" fill="url(#bg)"/>
-<rect x="0" y="596" width="1376" height="172" fill="#e4dad1"/>
-<line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2"/>
-<g stroke="#7c6a58" stroke-opacity="0.055" stroke-width="1"><line x1="48" y1="40" x2="48" y2="596"/><line x1="96" y1="40" x2="96" y2="596"/><line x1="144" y1="40" x2="144" y2="596"/><line x1="192" y1="40" x2="192" y2="596"/><line x1="240" y1="40" x2="240" y2="596"/><line x1="288" y1="40" x2="288" y2="596"/><line x1="336" y1="40" x2="336" y2="596"/><line x1="384" y1="40" x2="384" y2="596"/><line x1="432" y1="40" x2="432" y2="596"/><line x1="480" y1="40" x2="480" y2="596"/><line x1="528" y1="40" x2="528" y2="596"/><line x1="576" y1="40" x2="576" y2="596"/><line x1="624" y1="40" x2="624" y2="596"/><line x1="672" y1="40" x2="672" y2="596"/><line x1="720" y1="40" x2="720" y2="596"/><line x1="768" y1="40" x2="768" y2="596"/><line x1="816" y1="40" x2="816" y2="596"/><line x1="864" y1="40" x2="864" y2="596"/><line x1="912" y1="40" x2="912" y2="596"/><line x1="960" y1="40" x2="960" y2="596"/><line x1="1008" y1="40" x2="1008" y2="596"/><line x1="1056" y1="40" x2="1056" y2="596"/><line x1="1104" y1="40" x2="1104" y2="596"/><line x1="1152" y1="40" x2="1152" y2="596"/><line x1="1200" y1="40" x2="1200" y2="596"/><line x1="1248" y1="40" x2="1248" y2="596"/><line x1="1296" y1="40" x2="1296" y2="596"/><line x1="1344" y1="40" x2="1344" y2="596"/><line x1="0" y1="88" x2="1376" y2="88"/><line x1="0" y1="136" x2="1376" y2="136"/><line x1="0" y1="184" x2="1376" y2="184"/><line x1="0" y1="232" x2="1376" y2="232"/><line x1="0" y1="280" x2="1376" y2="280"/><line x1="0" y1="328" x2="1376" y2="328"/><line x1="0" y1="376" x2="1376" y2="376"/><line x1="0" y1="424" x2="1376" y2="424"/><line x1="0" y1="472" x2="1376" y2="472"/><line x1="0" y1="520" x2="1376" y2="520"/><line x1="0" y1="568" x2="1376" y2="568"/></g>
-<rect x="170" y="80" width="300" height="500" rx="44" fill="#2b3646"/>
-  <rect x="188" y="98" width="264" height="464" rx="30" fill="#35445a"/>
-  <circle cx="320" cy="190" r="76" fill="#ef4444" opacity="0.18"/>
-  <circle cx="320" cy="190" r="54" fill="#ef4444"/><ellipse cx="304" cy="172" rx="16" ry="11" fill="#ffffff" opacity="0.35"/>
-  <circle cx="320" cy="330" r="54" fill="#f59e0b"/><ellipse cx="304" cy="312" rx="16" ry="11" fill="#ffffff" opacity="0.35"/>
-  <circle cx="320" cy="470" r="84" fill="#0f9d6b" opacity="0.2"/>
-  <circle cx="320" cy="470" r="54" fill="#0f9d6b"/><ellipse cx="304" cy="452" rx="16" ry="11" fill="#ffffff" opacity="0.35"/>
-  <text x="498" y="204" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#ef4444" paint-order="stroke" stroke="#faf6f1" stroke-width="8">СТОП</text>
-  <text x="498" y="344" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#d97706" paint-order="stroke" stroke="#faf6f1" stroke-width="8">ПАУЗА</text>
-  <text x="498" y="484" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#0f9d6b" paint-order="stroke" stroke="#faf6f1" stroke-width="8">МОЖНО</text>
-  <ellipse cx="1010" cy="592" rx="70" ry="12" fill="#cdc0b5" fill-opacity="0.26"/>
-  <g transform="translate(1010 596) scale(0.62)" stroke="#43617a" fill="none" stroke-linecap="round">
-  <path d="M0 -270 L-18 -4" stroke-width="26"/><path d="M0 -270 L18 -4" stroke-width="26"/>
-  <path d="M-14 -2 L-34 0" stroke-width="18"/><path d="M14 -2 L34 0" stroke-width="18"/>
-  <path d="M0 -276 L-2 -430" stroke-width="44"/>
-  <circle cx="-2" cy="-466" r="40" fill="#43617a" stroke="none"/>
-  <path d="M0 -420 L40 -470" stroke-width="20"/><path d="M40 -470 L78 -516" stroke-width="18"/>
+  <defs>
+    <linearGradient id="bgTrafficL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf6f2" />
+      <stop offset="100%" stop-color="#ece3da" />
+    </linearGradient>
+    <radialGradient id="warmTrafficL" cx="30%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1376" height="768" fill="url(#bgTrafficL)" />
+  <rect width="1376" height="768" fill="url(#warmTrafficL)" />
+
+  <!-- стена и пол -->
+  <rect x="0" y="596" width="1376" height="172" fill="#e4dad1" />
+  <line x1="0" y1="596" x2="1376" y2="596" stroke="#d2c6bb" stroke-width="2" />
+
+  <!-- картина на стене -->
+  <rect x="70" y="120" width="150" height="112" rx="8" fill="#ffffff" stroke="#d9cec5" stroke-width="4" />
+  <path d="M84 210 L120 168 L146 192 L170 156 L206 210 Z" fill="#7dd3fc" />
+  <circle cx="190" cy="148" r="12" fill="#fbbf24" />
+
+  <!-- стол -->
+  <ellipse cx="590" cy="606" rx="450" ry="16" fill="#cdc0b5" fill-opacity="0.55" />
+  <rect x="120" y="466" width="940" height="28" rx="8" fill="#d3a97c" />
+  <rect x="120" y="466" width="940" height="5" rx="2.5" fill="#e6c8a6" />
+  <rect x="160" y="494" width="26" height="106" fill="#b78e63" />
+  <rect x="994" y="494" width="26" height="106" fill="#b78e63" />
+
+  <!-- кресло -->
+  <rect x="238" y="212" width="216" height="234" rx="34" fill="#ded7d0" />
+  <rect x="238" y="212" width="216" height="234" rx="34" fill="none" stroke="#c8beb5" stroke-width="3" />
+
+  <!-- взрослый: торс, голова, наушники -->
+  <path d="M262 470 v-62 a78 78 0 0 1 156 0 v62 z" fill="#38bdf8" />
+  <circle cx="340" cy="330" r="60" fill="#f5c9a3" />
+  <path d="M280 330 a60 60 0 0 1 120 0 q-28 -30 -60 -30 q-32 0 -60 30 z" fill="#3a2a1c" />
+  <circle cx="320" cy="332" r="6" fill="#241f1c" />
+  <circle cx="360" cy="332" r="6" fill="#241f1c" />
+  <path d="M324 356 q16 14 32 0" fill="none" stroke="#241f1c" stroke-width="4" stroke-linecap="round" />
+  <path d="M276 330 a64 64 0 0 1 128 0" fill="none" stroke="#f59e0b" stroke-width="10" stroke-linecap="round" />
+  <rect x="254" y="304" width="28" height="58" rx="14" fill="#f59e0b" />
+  <rect x="398" y="304" width="28" height="58" rx="14" fill="#f59e0b" />
+
+  <!-- поднятая рука с большим пальцем -->
+  <path d="M404 420 q52 -42 76 -100" fill="none" stroke="#38bdf8" stroke-width="26" stroke-linecap="round" />
+  <circle cx="484" cy="306" r="25" fill="#f5c9a3" />
+  <rect x="470" y="270" width="16" height="30" rx="8" fill="#f5c9a3" transform="rotate(-18 478 285)" />
+
+  <!-- ноутбук -->
+  <rect x="252" y="386" width="214" height="80" rx="10" fill="#64748b" stroke="#4a5a70" stroke-width="2" />
+  <rect x="266" y="398" width="186" height="56" rx="6" fill="#334155" />
+  <circle cx="452" cy="452" r="4" fill="#fbbf24" />
+
+  <!-- три карточки на столе -->
+  <g transform="rotate(-3 572 466)">
+    <ellipse cx="572" cy="470" rx="68" ry="6" fill="#b9a894" fill-opacity="0.7" />
+    <rect x="500" y="316" width="144" height="150" rx="12" fill="#ef4444" />
+    <rect x="530" y="352" width="60" height="16" rx="8" fill="#7f1d1d" />
+    <text x="572" y="428" font-family="system-ui, sans-serif" font-size="30" font-weight="800" fill="#4c0a0a" text-anchor="middle">СТОП</text>
   </g>
-  <g transform="rotate(-6 1090 222)"><rect x="990" y="158" width="200" height="118" rx="12" fill="#0f9d6b" stroke="#0b7a54" stroke-width="5"/>
-  <text x="1090" y="232" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#ffffff" text-anchor="middle">МОЖНО</text></g>
-  <g><rect x="52.0" y="676" width="459.4" height="70" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3"/><text x="281.7" y="723.2" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">МЕТОД СВЕТОФОР</text></g>
+  <g>
+    <ellipse cx="728" cy="470" rx="68" ry="6" fill="#b9a894" fill-opacity="0.7" />
+    <rect x="656" y="314" width="144" height="152" rx="12" fill="#fbbf24" />
+    <rect x="690" y="344" width="14" height="34" rx="6" fill="#7c4a03" />
+    <rect x="716" y="344" width="14" height="34" rx="6" fill="#7c4a03" />
+    <text x="728" y="428" font-family="system-ui, sans-serif" font-size="30" font-weight="800" fill="#6b3f02" text-anchor="middle">ПАУЗА</text>
+  </g>
+  <g transform="rotate(3 884 466)">
+    <ellipse cx="884" cy="470" rx="68" ry="6" fill="#b9a894" fill-opacity="0.7" />
+    <rect x="812" y="316" width="144" height="150" rx="12" fill="#34d399" />
+    <path d="M866 356 l34 18 l-34 18 z" fill="#04543c" />
+    <text x="884" y="428" font-family="system-ui, sans-serif" font-size="30" font-weight="800" fill="#04543c" text-anchor="middle">МОЖНО</text>
+  </g>
+
+  <!-- кружка -->
+  <rect x="990" y="412" width="54" height="54" rx="10" fill="#ef4444" />
+  <path d="M1044 424 a16 16 0 0 1 0 30" fill="none" stroke="#ef4444" stroke-width="8" />
+  <path d="M1006 400 q6 -12 0 -22 M1024 402 q6 -12 0 -22" fill="none" stroke="#a89b8e" stroke-width="3" stroke-linecap="round" opacity="0.7" />
+
+  <!-- ребёнок -->
+  <rect x="1128" y="520" width="26" height="76" rx="12" fill="#334155" />
+  <rect x="1172" y="520" width="26" height="76" rx="12" fill="#334155" />
+  <ellipse cx="1141" cy="600" rx="24" ry="11" fill="#6b5a4a" />
+  <ellipse cx="1185" cy="600" rx="24" ry="11" fill="#6b5a4a" />
+  <rect x="1108" y="410" width="110" height="132" rx="42" fill="#f59e0b" />
+  <circle cx="1163" cy="372" r="54" fill="#f5c9a3" />
+  <circle cx="1108" cy="342" r="20" fill="#4a3524" />
+  <circle cx="1218" cy="342" r="20" fill="#4a3524" />
+  <path d="M1111 372 a52 52 0 0 1 104 0 q-26 -26 -52 -26 q-26 0 -52 26 z" fill="#4a3524" />
+  <circle cx="1146" cy="372" r="5.5" fill="#241f1c" />
+  <circle cx="1180" cy="372" r="5.5" fill="#241f1c" />
+  <path d="M1149 394 q14 12 28 0" fill="none" stroke="#241f1c" stroke-width="4" stroke-linecap="round" />
+
+  <!-- поднятая рука ребёнка с зелёной карточкой -->
+  <path d="M1208 432 q34 -34 46 -88" fill="none" stroke="#f5c9a3" stroke-width="24" stroke-linecap="round" />
+  <circle cx="1256" cy="336" r="17" fill="#f5c9a3" />
+  <g transform="rotate(-8 1284 296)">
+    <rect x="1236" y="262" width="96" height="66" rx="9" fill="#34d399" />
+    <path d="M1260 296 l12 14 l24 -26" fill="none" stroke="#04543c" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- растение -->
+  <path d="M1300 690 l-8 -60 h56 l-8 60 z" fill="#c1793f" />
+  <circle cx="1320" cy="600" r="30" fill="#166534" />
+  <circle cx="1298" cy="612" r="20" fill="#15803d" />
+  <circle cx="1342" cy="614" r="18" fill="#15803d" />
+
+  <!-- подпись -->
+  <rect x="52" y="676" width="470" height="74" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+  <text x="287" y="726" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#3a2c1c" text-anchor="middle">МЕТОД СВЕТОФОР</text>
 </svg>

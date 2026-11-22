@@ -50,6 +50,14 @@
   <path d="M700 536 C 686 512 690 494 704 486 C 716 496 716 518 700 536" fill="#0f9d6b" opacity="0.75"/>
 
   <g>
+  <ellipse cx="1040" cy="596" rx="270" ry="10" fill="#cdc0b5" fill-opacity="0.16"/>
+  <rect x="762" y="374" width="528" height="22" rx="6" fill="#d3a97c"/>
+  <rect x="762" y="374" width="528" height="6" rx="3" fill="#e6c8a6"/>
+  <rect x="830" y="396" width="22" height="200" fill="#b78e63"/>
+  <rect x="1236" y="396" width="22" height="200" fill="#b78e63"/>
+  <rect x="982" y="354" width="118" height="20" rx="5" fill="#e8e2da" stroke="#c9c1b6" stroke-width="3"/><rect x="996" y="360" width="12" height="6" rx="2" fill="#cfc7bc"/><rect x="1014" y="360" width="12" height="6" rx="2" fill="#cfc7bc"/><rect x="1032" y="360" width="12" height="6" rx="2" fill="#cfc7bc"/><rect x="1050" y="360" width="12" height="6" rx="2" fill="#cfc7bc"/><rect x="1068" y="360" width="12" height="6" rx="2" fill="#cfc7bc"/><rect x="1086" y="360" width="12" height="6" rx="2" fill="#cfc7bc"/>
+  </g>
+  <g>
   <ellipse cx="1104" cy="594" rx="105" ry="10" fill="#cdc0b5" fill-opacity="0.22"/>
   <rect x="1026" y="461" width="150" height="24" rx="10" fill="#d5cec6"/>
   <rect x="1030" y="485" width="142" height="10" rx="5" fill="#c3bbb2"/>
@@ -75,7 +83,7 @@
   </g>
   <rect x="900" y="356" width="140" height="18" rx="5" fill="#e8e2da" stroke="#c9c1b6" stroke-width="3"/><rect x="912" y="360" width="10" height="5" rx="2" fill="#cfc7bc"/><rect x="926" y="360" width="10" height="5" rx="2" fill="#cfc7bc"/><rect x="940" y="360" width="10" height="5" rx="2" fill="#cfc7bc"/><rect x="954" y="360" width="10" height="5" rx="2" fill="#cfc7bc"/><rect x="968" y="360" width="10" height="5" rx="2" fill="#cfc7bc"/><rect x="982" y="360" width="10" height="5" rx="2" fill="#cfc7bc"/><rect x="996" y="360" width="10" height="5" rx="2" fill="#cfc7bc"/><rect x="1010" y="360" width="10" height="5" rx="2" fill="#cfc7bc"/><rect x="1024" y="360" width="10" height="5" rx="2" fill="#cfc7bc"/>
   <g><rect x="800" y="248" width="26" height="100" rx="7" fill="#dfe3e8" stroke="#b9c2cc" stroke-width="3"/>
-  <rect x="803" y="254" width="7" height="88" rx="3" fill="#2b3646"/>
+  <rect x="817" y="254" width="7" height="88" rx="3" fill="#2b3646"/>
   <rect x="805" y="348" width="16" height="26" fill="#9aa6b4"/>
   <rect x="771" y="374" width="84" height="10" rx="5" fill="#8b98a8"/></g>
   <g><rect x="560.0" y="112" width="486.2" height="61" rx="14" fill="#ffffff" stroke="#475569" stroke-width="3"/><text x="803.1" y="151.9" font-family="system-ui, sans-serif" font-size="26" font-weight="800" fill="#475569" text-anchor="middle">СТЕЛЛАЖ-ПЕРЕГОРОДКА</text></g>
