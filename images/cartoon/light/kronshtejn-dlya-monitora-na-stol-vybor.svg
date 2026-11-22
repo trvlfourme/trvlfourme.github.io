@@ -17,7 +17,7 @@
   <rect x="790" y="250" width="18" height="166" rx="6" fill="#8b98a8"/>
   <circle cx="799" cy="250" r="16" fill="#7f8c9c"/><circle cx="799" cy="250" r="7" fill="#cfd6de"/>
   <line x1="799" y1="250" x2="905" y2="232" stroke="#8b98a8" stroke-width="20" stroke-linecap="round"/>
-  <rect x="896" y="206" width="16" height="54" rx="4" fill="#7f8c9c"/>
+  
   <g>
     <rect x="900" y="104" width="364" height="228" rx="12" fill="#dfe3e8" stroke="#b9c2cc" stroke-width="4"/>
     <rect x="914" y="118" width="336" height="186" rx="6" fill="#2b3646"/>

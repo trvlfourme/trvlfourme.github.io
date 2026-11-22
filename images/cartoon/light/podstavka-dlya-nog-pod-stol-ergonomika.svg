@@ -39,7 +39,8 @@
   <path d="M348 530 C 352 512 362 502 376 500 L452 512 C 468 514 476 522 476 532 L466 542 C 436 540 380 542 348 530 Z" fill="#e8b892" stroke="#d09b73" stroke-width="3"/>
   <polygon points="326,556 486,528 486,548 330,576" fill="#cfc7bd" stroke="#b5ada2" stroke-width="3"/>
   <line x1="352" y1="547" x2="366" y2="544" stroke="#b5ada2" stroke-width="4" stroke-linecap="round"/><line x1="368" y1="544.4" x2="382" y2="541.4" stroke="#b5ada2" stroke-width="4" stroke-linecap="round"/><line x1="384" y1="541.8" x2="398" y2="538.8" stroke="#b5ada2" stroke-width="4" stroke-linecap="round"/><line x1="400" y1="539.2" x2="414" y2="536.2" stroke="#b5ada2" stroke-width="4" stroke-linecap="round"/><line x1="416" y1="536.6" x2="430" y2="533.6" stroke="#b5ada2" stroke-width="4" stroke-linecap="round"/><line x1="432" y1="534" x2="446" y2="531" stroke="#b5ada2" stroke-width="4" stroke-linecap="round"/><line x1="448" y1="531.4" x2="462" y2="528.4" stroke="#b5ada2" stroke-width="4" stroke-linecap="round"/>
-  <rect x="330" y="552" width="20" height="34" fill="#9aa6b4"/>
+    <path d="M350 543 L392 533" fill="none" stroke="#43617a" stroke-width="24" stroke-linecap="round" />
+  <rect x="330" y="552" width="20" height="34" fill="#9aa6b4" />
   <rect x="470" y="528" width="20" height="58" fill="#9aa6b4"/>
   <rect x="316" y="584" width="190" height="12" rx="6" fill="#7f8c9c"/>
   <path d="M486 530 L578 530" stroke="#64748b" stroke-width="2" stroke-dasharray="7 6"/>

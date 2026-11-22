@@ -22,21 +22,18 @@
   <path d="M84 210 L120 168 L146 192 L170 156 L206 210 Z" fill="#7dd3fc" />
   <circle cx="190" cy="148" r="12" fill="#fbbf24" />
 
-  <!-- кресло и ноги сидящего, спрятанные за столешницей -->
+  <!-- кресло и ноги сидящего: спинка и база уходят за столешницу -->
   <g>
+    <rect x="238" y="212" width="216" height="258" rx="34" fill="#ded7d0" stroke="#c8beb5" stroke-width="3" />
     <rect x="326" y="470" width="28" height="88" fill="#9aa6b4" />
     <line x1="340" y1="558" x2="250" y2="586" stroke="#7f8c9c" stroke-width="12" stroke-linecap="round" />
     <line x1="340" y1="558" x2="430" y2="586" stroke="#7f8c9c" stroke-width="12" stroke-linecap="round" />
-    <line x1="340" y1="558" x2="296" y2="592" stroke="#7f8c9c" stroke-width="10" stroke-linecap="round" />
-    <line x1="340" y1="558" x2="384" y2="592" stroke="#7f8c9c" stroke-width="10" stroke-linecap="round" />
     <circle cx="250" cy="588" r="12" fill="#6f7c8c" />
     <circle cx="430" cy="588" r="12" fill="#6f7c8c" />
-    <circle cx="296" cy="596" r="11" fill="#6f7c8c" />
-    <circle cx="384" cy="596" r="11" fill="#6f7c8c" />
     <path d="M302 480 L300 566" fill="none" stroke="#334155" stroke-width="38" stroke-linecap="round" />
     <path d="M378 480 L380 566" fill="none" stroke="#334155" stroke-width="38" stroke-linecap="round" />
-    <ellipse cx="296" cy="578" rx="32" ry="14" fill="#6b5a4a" />
-    <ellipse cx="390" cy="578" rx="32" ry="14" fill="#6b5a4a" />
+    <ellipse cx="294" cy="578" rx="32" ry="14" fill="#6b5a4a" />
+    <ellipse cx="386" cy="578" rx="32" ry="14" fill="#6b5a4a" />
   </g>
 
   <!-- стол -->
@@ -45,10 +42,6 @@
   <rect x="120" y="466" width="940" height="5" rx="2.5" fill="#e6c8a6" />
   <rect x="160" y="494" width="26" height="106" fill="#b78e63" />
   <rect x="994" y="494" width="26" height="106" fill="#b78e63" />
-
-  <!-- кресло -->
-  <rect x="238" y="212" width="216" height="234" rx="34" fill="#ded7d0" />
-  <rect x="238" y="212" width="216" height="234" rx="34" fill="none" stroke="#c8beb5" stroke-width="3" />
 
   <!-- взрослый: торс, голова, наушники -->
   <path d="M262 470 v-62 a78 78 0 0 1 156 0 v62 z" fill="#38bdf8" />
