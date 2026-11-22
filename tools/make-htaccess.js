@@ -1,10 +1,10 @@
-// .htaccess для cPanel (T-090): 301 из _redirects плюс служебный блок.
+// .htaccess для cPanel (T-090): 301 из _redirects и data/articles плюс служебный блок.
 // Запуск: node tools/make-htaccess.js          — записать .htaccess
 //         node tools/make-htaccess.js --check  — только сверить, ничего не писать
 //
 // На GitHub Pages файл инертен и не публикуется (секция «только cPanel»
 // в tools/public-manifest.txt): там редиректы работают страницами-заглушками.
-// Руками .htaccess не правят: источник правил — _redirects.
+// Руками .htaccess не правят: источники правил — _redirects и data/articles/*.json.
 const fs = require('fs');
 const path = require('path');
 
@@ -34,17 +34,52 @@ for (const raw of fs.readFileSync(path.join(root, '_redirects'), 'utf8').split(/
   rules.push({ from, to });
 }
 
+// 1b. Старые параметрические адреса статей: /?article=<id> → /article/<slug>/ (T-168).
+// Источник — data/articles/*.json: у статьи есть id и slug, у order.json (массив слагов) их нет.
+// Пока такой адрес отвечал 200 главной с canonical на «/», Google выбирал его каноническим
+// вместо статьи, поэтому на cPanel нужен настоящий 301.
+const articlesDir = path.join(root, 'data', 'articles');
+const articleRules = [];
+for (const name of fs.readdirSync(articlesDir).sort()) {
+  if (!name.endsWith('.json')) continue;
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(path.join(articlesDir, name), 'utf8'));
+  } catch (e) {
+    problems.push(`data/articles/${name}: не разобрать JSON (${e.message})`);
+    continue;
+  }
+  if (!data || typeof data !== 'object' || Array.isArray(data)) continue;
+  const { id, slug } = data;
+  if (!id || !slug) {
+    problems.push(`data/articles/${name}: нет id или slug — правило ?article= не собрать`);
+    continue;
+  }
+  if (!fs.existsSync(path.join(root, 'article', slug, 'index.html'))) {
+    problems.push(`data/articles/${name}: нет article/${slug}/index.html — цели редиректа`);
+  }
+  if (articleRules.some((r) => r.id === id)) problems.push(`data/articles/${name}: id «${id}» указан дважды`);
+  if (articleRules.some((r) => r.slug === slug)) problems.push(`data/articles/${name}: slug «${slug}» указан дважды`);
+  articleRules.push({ id, slug });
+}
+articleRules.sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+
 // Путь из _redirects → шаблон RewriteRule: в .htaccess ведущий слэш уже срезан,
 // хвостовой слэш необязателен — так одно правило ловит и «/article/slug», и «/article/slug/».
 function pattern(from) {
   return from.replace(/^\/|\/$/g, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+// Значение id в шаблоне QUERY_STRING: точка и прочие спецсимволы не должны работать как regexp.
+function re(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 // 2. Служебный блок. Порядок важен: сначала www → apex (он же закрывает http для www одним
 // 301), потом http → https для основного имени — так не бывает цепочки из двух редиректов.
 const out = [
-  '# Сгенерировано tools/make-htaccess.js из _redirects. Руками не править:',
-  '# правьте _redirects и запускайте node tools/make-htaccess.js (T-090).',
+  '# Сгенерировано tools/make-htaccess.js из _redirects и data/articles. Руками не править:',
+  '# правьте _redirects (или data/articles/*.json) и запускайте node tools/make-htaccess.js (T-090).',
   '#',
   '# cPanel/Apache: реальные 301 вместо страниц-заглушек, один редирект на https,',
   '# www → apex с сохранением пути, кэш, заголовки безопасности, gzip.',
@@ -73,6 +108,18 @@ const out = [
   '  # страницу-заглушку с кодом 200 вместо 301 (T-157).',
 ];
 for (const r of rules) out.push(`  RewriteRule ^${pattern(r.from)}/?$ ${r.to} [R=301,L]`);
+out.push(
+  '',
+  `  # Старые параметрические адреса статей: ${articleRules.length} правил из data/articles (T-168).`,
+  '  # /?article=<id> отдавал 200 главной с canonical на «/», и Google выбирал этот адрес',
+  '  # каноническим вместо статьи. Правила трогают только корень, поэтому порядок www/https',
+  '  # выше не меняется; «?» в конце цели отбрасывает QUERY_STRING, иначе он уехал бы в адрес',
+  '  # статьи (/article/slug/?article=...).'
+);
+for (const r of articleRules) {
+  out.push(`  RewriteCond %{QUERY_STRING} ^article=${re(r.id)}(&|$)`);
+  out.push(`  RewriteRule ^/?$ /article/${r.slug}/? [R=301,L]`);
+}
 out.push(
   '</IfModule>',
   '',
@@ -128,6 +175,6 @@ for (const p of problems) console.log('  ✗ ' + p);
 if (problems.length) process.exit(1);
 console.log(
   check
-    ? `проверено: .htaccess соответствует _redirects, правил ${rules.length}, служебный блок на месте`
-    : `правил: ${rules.length}; .htaccess обновлён`
+    ? `проверено: .htaccess соответствует _redirects и data/articles, правил ${rules.length} + ${articleRules.length} (?article=), служебный блок на месте`
+    : `правил: ${rules.length} + ${articleRules.length} (?article=); .htaccess обновлён`
 );

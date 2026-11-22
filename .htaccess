@@ -1,5 +1,5 @@
-# Сгенерировано tools/make-htaccess.js из _redirects. Руками не править:
-# правьте _redirects и запускайте node tools/make-htaccess.js (T-090).
+# Сгенерировано tools/make-htaccess.js из _redirects и data/articles. Руками не править:
+# правьте _redirects (или data/articles/*.json) и запускайте node tools/make-htaccess.js (T-090).
 #
 # cPanel/Apache: реальные 301 вместо страниц-заглушек, один редирект на https,
 # www → apex с сохранением пути, кэш, заголовки безопасности, gzip.
@@ -42,6 +42,66 @@ ErrorDocument 404 /404.html
   RewriteRule ^article/kuda-postavit-rabochij-stol-okno-batareya-rozetki/?$ /article/kuda-postavit-rabochij-stol-v-komnate/ [R=301,L]
   RewriteRule ^article/domashnij-ofis-s-nulya-chto-kupit-srazu-a-chto-zaminit/?$ /article/domashnij-ofis-s-nulya-nedorogo/ [R=301,L]
   RewriteRule ^article/kak-podgotovitsya-k-udalennoj-rabote-v-poezdke/?$ /article/udalennaya-rabota-v-poezdke-i-otpuske/ [R=301,L]
+
+  # Старые параметрические адреса статей: 27 правил из data/articles (T-168).
+  # /?article=<id> отдавал 200 главной с canonical на «/», и Google выбирал этот адрес
+  # каноническим вместо статьи. Правила трогают только корень, поэтому порядок www/https
+  # выше не меняется; «?» в конце цели отбрасывает QUERY_STRING, иначе он уехал бы в адрес
+  # статьи (/article/slug/?article=...).
+  RewriteCond %{QUERY_STRING} ^article=guide-acoustic-panels-home(&|$)
+  RewriteRule ^/?$ /article/akusticheskie-paneli-dlya-domashnego-kabineta/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-balcony-workspace(&|$)
+  RewriteRule ^/?$ /article/rabochee-mesto-na-balkone/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-budget-workspace-setup(&|$)
+  RewriteRule ^/?$ /article/domashnij-ofis-s-nulya-nedorogo/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-cable-management(&|$)
+  RewriteRule ^/?$ /article/kabel-menedzhment-pod-stolom-svoimi-rukami/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-chair-for-back(&|$)
+  RewriteRule ^/?$ /article/kak-vybrat-kreslo-dlya-spiny/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-desk-placement-rules(&|$)
+  RewriteRule ^/?$ /article/kuda-postavit-rabochij-stol-v-komnate/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-ergonomic-chairs(&|$)
+  RewriteRule ^/?$ /article/5-luchshih-ergonomichnyh-kresel-rejting/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-ergonomics-setup(&|$)
+  RewriteRule ^/?$ /article/ergonomika-rabochego-mesta-nastroyka/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-footrest-ergonomics(&|$)
+  RewriteRule ^/?$ /article/podstavka-dlya-nog-pod-stol-ergonomika/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-gifts-remote-worker(&|$)
+  RewriteRule ^/?$ /article/chto-podarit-udelenshchiku/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-home-printer-placement(&|$)
+  RewriteRule ^/?$ /article/printer-dlya-doma-kompaktno-i-kuda-postavit/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-kids-1-room(&|$)
+  RewriteRule ^/?$ /article/rabochee-mesto-v-odnushke-s-rebenkom/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-laptop-neck-ergonomics(&|$)
+  RewriteRule ^/?$ /article/rabota-za-noutbukom-bez-boli-v-shee/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-microphones-for-calls(&|$)
+  RewriteRule ^/?$ /article/mikrofon-s-shumopodavleniem-dlya-zvonkov/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-monitor-arm-ergonomics(&|$)
+  RewriteRule ^/?$ /article/kronshtejn-dlya-monitora-ergonomika-shei/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-monitor-gaslift-choice(&|$)
+  RewriteRule ^/?$ /article/kronshtejn-dlya-monitora-na-stol-vybor/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-remote-work-kids-day(&|$)
+  RewriteRule ^/?$ /article/udalennaya-rabota-s-rebenkom/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-remote-work-travel(&|$)
+  RewriteRule ^/?$ /article/udalennaya-rabota-v-poezdke-i-otpuske/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-remote-work-with-kids(&|$)
+  RewriteRule ^/?$ /article/metod-svetofor-udalenka-s-detmi/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-rented-flat-workspace(&|$)
+  RewriteRule ^/?$ /article/rabochee-mesto-v-semnoy-kvartire/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-room-selection-remote(&|$)
+  RewriteRule ^/?$ /article/v-kakoj-komnate-luchshe-rabotat-na-udalenke/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-screenbar-vs-lamp(&|$)
+  RewriteRule ^/?$ /article/skrinbar-na-monitor-vybor-zashchita-glaz/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-standing-desk(&|$)
+  RewriteRule ^/?$ /article/podemnyj-stol-kak-vybrat/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-standing-desks(&|$)
+  RewriteRule ^/?$ /article/stol-s-elektroprivodom-polza-dlya-spiny/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-two-people-one-room(&|$)
+  RewriteRule ^/?$ /article/rabochee-mesto-dlya-dvoih-v-komnate/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-vertical-mouse(&|$)
+  RewriteRule ^/?$ /article/vertikalnaya-mysh-polza/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^article=guide-work-life-balance-zen(&|$)
+  RewriteRule ^/?$ /article/balans-raboty-i-lichnoj-zhizni-na-udalenke/? [R=301,L]
 </IfModule>
 
 # Сжатие: на cPanel без него страницы уезжают в сеть как есть.

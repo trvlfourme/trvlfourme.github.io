@@ -62,7 +62,7 @@
 репозиторий: в `mail4startups-creator/home4work` лежала только готовая публикация — без
 `tools/`, `.cpanel.yml` и `.htaccess`, выкладывать из него нечего.
 
-**`.htaccess`.** Источник правил — `_redirects` (16 пар «старый адрес → новый, 301»).
+**`.htaccess`.** Источник правил — `_redirects` (16 пар «старый адрес → новый, 301») и `data/articles/*.json` (27 пар «id → slug» для старых параметрических адресов `/?article=<id>`, T-168).
 `node tools/make-htaccess.js` собирает из них `.htaccess`: `Options -Indexes`, `DirectoryIndex`,
 `ErrorDocument 404`, http→https, `www`→apex с сохранением пути, блок `mod_rewrite` с 16
 `RewriteRule`, `mod_expires` (HTML без долгого кэша, `assets/*` с `max-age`), `mod_headers`
