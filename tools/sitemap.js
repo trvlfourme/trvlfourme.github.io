@@ -19,6 +19,7 @@ const pages = [
   { route: '/articles/', priority: '0.7', changefreq: 'monthly', file: 'articles/index.html' },
   { route: '/catalog/', priority: '0.8', changefreq: 'weekly', file: 'catalog/index.html' },
   { route: '/calculator/', priority: '0.9', changefreq: 'monthly', file: 'calculator/index.html' },
+  { route: '/tables/', priority: '0.8', changefreq: 'monthly', file: 'tables/index.html' },
   { route: '/builder/', priority: '0.8', changefreq: 'monthly', file: 'builder/index.html' },
   { route: '/tests/', priority: '0.8', changefreq: 'monthly', file: 'tests/index.html' },
   { route: '/checklist/', priority: '0.8', changefreq: 'monthly', file: 'checklist/index.html' },

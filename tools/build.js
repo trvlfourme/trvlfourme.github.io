@@ -90,10 +90,14 @@ function copyStaged(from, to) {
   step('локальные картинки, размеры, lazy', 'optimize-html-images.js');
   step('редиректы', 'make-redirects.js');
   step('хаб статей', 'build-hub.js');
+  step('таблицы высот', 'build-tables.js');
   step('адаптивные картинки и preload', 'responsive-images.js');
-  step('sitemap', 'sitemap.js');
   step('без внешних счётчиков и шрифтов (финально)', 'strip-third-party.js');
   step('заголовки безопасности в meta', 'security-headers.js');
+  // sitemap — последним: он хеширует готовые страницы, а CSP в meta добавляет
+  // security-headers. Если посчитать хеши раньше, каждый следующий билд сдвигает
+  // lastmod у всех адресов разом (поймано на T-107).
+  step('sitemap', 'sitemap.js');
   step('проверка', 'verify-build.js');
   console.log('\nсборка завершена');
 })().catch((e) => {

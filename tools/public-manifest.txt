@@ -19,6 +19,7 @@ calculator
 catalog
 checklist
 privacy
+tables
 terms
 tests
 assets

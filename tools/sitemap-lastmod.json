@@ -1,150 +1,154 @@
 {
   "/": {
-    "hash": "d6ce6bc8acb6de75f7ad7162f6c72ba3f037cbe2",
-    "lastmod": "2026-11-19"
+    "hash": "5b61d26f9b688ad79c92e8160670a16d7f7299c5",
+    "lastmod": "2026-11-22"
   },
   "/articles/": {
-    "hash": "385f1c34425adf6e1c20e9dc7456145d519f5f5f",
-    "lastmod": "2026-11-17"
+    "hash": "2710efb09a37c449f8b4ccd49ecc53d9257142ce",
+    "lastmod": "2026-11-22"
   },
   "/catalog/": {
-    "hash": "0fbcb878ee189f2cee954744cf5747a08a9502a2",
-    "lastmod": "2026-11-18"
+    "hash": "1534ff2e305c4a146032a0b004dae55093ff3b85",
+    "lastmod": "2026-11-22"
   },
   "/calculator/": {
-    "hash": "410aa1aa8cdbc516d903b55f0eb31be567e1f09a",
-    "lastmod": "2026-11-18"
+    "hash": "1812ef3e73d477ee35dfd45501507408981190c0",
+    "lastmod": "2026-11-22"
+  },
+  "/tables/": {
+    "hash": "0440c990822c073a984861b564f84f8b9e131bb3",
+    "lastmod": "2026-11-22"
   },
   "/builder/": {
-    "hash": "833521f7c030a95815bfa99be28db3988f3509f6",
-    "lastmod": "2026-11-18"
+    "hash": "0b4b1967919aec30eaabfcd4aeacca0c216fd0f4",
+    "lastmod": "2026-11-22"
   },
   "/tests/": {
-    "hash": "ba4621d5775bb7a4fc000eef0bd15c54ba9a09d2",
-    "lastmod": "2026-11-18"
+    "hash": "b0ccd37c47101403a675c1e216ab15ed21a16afa",
+    "lastmod": "2026-11-22"
   },
   "/checklist/": {
-    "hash": "eaa5d8fa68ede9cd512e67dae23013a30ea18cda",
-    "lastmod": "2026-11-18"
+    "hash": "59d451fbc6a6300d09f0106a9483ffdf259db473",
+    "lastmod": "2026-11-22"
   },
   "/about/": {
-    "hash": "f1f544fe4bcf41a979ee002b157040795f3675d9",
-    "lastmod": "2026-11-18"
+    "hash": "f997c399b8f0b080f2cfb4cb46eda393c62700db",
+    "lastmod": "2026-11-22"
   },
   "/privacy/": {
-    "hash": "2a2a01e5977891e232f5683c6a68267981d1c182",
-    "lastmod": "2026-11-18"
+    "hash": "4a2cff504f5c61620c21ddd63a0e3a6909a5f4ed",
+    "lastmod": "2026-11-22"
   },
   "/terms/": {
-    "hash": "57a62a2bfd062c1c291d7d885a5bffa156df7afc",
-    "lastmod": "2026-11-18"
+    "hash": "5b335ee16788335a3fd1bf71120143240b4e1823",
+    "lastmod": "2026-11-22"
   },
   "/article/chto-podarit-udelenshchiku/": {
-    "hash": "ba175e58aecfd84288d8eeee0fa0902c0e073c0f",
-    "lastmod": "2026-11-18"
+    "hash": "bed5bb2599a45c145d458874cc2ae232ad28a735",
+    "lastmod": "2026-11-22"
   },
   "/article/rabochee-mesto-v-semnoy-kvartire/": {
-    "hash": "6b9492b8575bd06cd84ed93e136c8093f4c99262",
-    "lastmod": "2026-11-18"
+    "hash": "46e60c8c17cd759dc66c3731aa11e17ed2b96def",
+    "lastmod": "2026-11-22"
   },
   "/article/rabota-za-noutbukom-bez-boli-v-shee/": {
-    "hash": "d40a863fa9aa39047a53deed994407fef61264d4",
-    "lastmod": "2026-11-18"
+    "hash": "fbcaca1d878b844e7c9fca6775b08575ef95914a",
+    "lastmod": "2026-11-22"
   },
   "/article/vertikalnaya-mysh-polza/": {
-    "hash": "38d649288e8a036b25840a3a1bcc28d3d1efba69",
-    "lastmod": "2026-11-18"
+    "hash": "b35432d40568d568bdf9c484b6e8255e903d8936",
+    "lastmod": "2026-11-22"
   },
   "/article/rabochee-mesto-na-balkone/": {
-    "hash": "c53a7b7bfb0945cffe4ad9322962974a53522d44",
-    "lastmod": "2026-11-18"
+    "hash": "1257a75d82abfb97dd446a3b848eb45df3c357fd",
+    "lastmod": "2026-11-22"
   },
   "/article/printer-dlya-doma-kompaktno-i-kuda-postavit/": {
-    "hash": "b977f5905ccd4cce308d477d3ce253ff85d348e4",
-    "lastmod": "2026-11-18"
+    "hash": "8965e81ec75d29be4aac9ef806fc6292d70ff185",
+    "lastmod": "2026-11-22"
   },
   "/article/kak-vybrat-kreslo-dlya-spiny/": {
-    "hash": "a18fc99aa6c31a8cdbd855a9541b16ad033a8ed3",
-    "lastmod": "2026-11-18"
+    "hash": "875c33044f1f2e6b9c4b188d801bba83946096c0",
+    "lastmod": "2026-11-22"
   },
   "/article/podemnyj-stol-kak-vybrat/": {
-    "hash": "2d1f1a91b4fe71ee418309976f4fdae09d991ae8",
-    "lastmod": "2026-11-18"
+    "hash": "0f08422a36dfa63e01757614d3b087021efc141e",
+    "lastmod": "2026-11-22"
   },
   "/article/udalennaya-rabota-s-rebenkom/": {
-    "hash": "506388faae6c7017e0168cf5a1b5779711f9763b",
-    "lastmod": "2026-11-18"
+    "hash": "2fc92758b4aa47ee0cd94e6a9cc330cd4ba2f020",
+    "lastmod": "2026-11-22"
   },
   "/article/ergonomika-rabochego-mesta-nastroyka/": {
-    "hash": "4550febfda1f55637ec789cc2e9c9ed69fefd714",
-    "lastmod": "2026-11-18"
+    "hash": "52a9034df64c9d78201d7dd0d891bed0c3ecc322",
+    "lastmod": "2026-11-22"
   },
   "/article/udalennaya-rabota-v-poezdke-i-otpuske/": {
-    "hash": "f8cf7c2e18d35be95729b9a290f1cf69267c4a13",
-    "lastmod": "2026-11-18"
+    "hash": "b4245ebfb1e574d66b31b0c488a3a50aacf2dfca",
+    "lastmod": "2026-11-22"
   },
   "/article/balans-raboty-i-lichnoj-zhizni-na-udalenke/": {
-    "hash": "d95ac7e4233a98c3f7df895eeeb03d426c2f07ae",
-    "lastmod": "2026-11-18"
+    "hash": "cdff05905d6fce7fa2d2fb9ac29126150b9992c4",
+    "lastmod": "2026-11-22"
   },
   "/article/v-kakoj-komnate-luchshe-rabotat-na-udalenke/": {
-    "hash": "b6bc72f6b6b31e519627e51f98c8de6e7b9b0555",
-    "lastmod": "2026-11-18"
+    "hash": "eac930e293629d5242f9748bb28958cedc074e3c",
+    "lastmod": "2026-11-22"
   },
   "/article/rabochee-mesto-v-odnushke-s-rebenkom/": {
-    "hash": "1fb131b51d6355d01619e26694316d4d06e5f09a",
-    "lastmod": "2026-11-18"
+    "hash": "b0edea0e64bbf9f274140a1e1d6b6b97e015717f",
+    "lastmod": "2026-11-22"
   },
   "/article/kuda-postavit-rabochij-stol-v-komnate/": {
-    "hash": "eb5618dabde8062f7d7093327df227e64c14d952",
-    "lastmod": "2026-11-18"
+    "hash": "a27ca0561268eb05ab8b71b5c9294541e2daf8b5",
+    "lastmod": "2026-11-22"
   },
   "/article/5-luchshih-ergonomichnyh-kresel-rejting/": {
-    "hash": "e80fb9b0a486f8ad3a8b0fce192c85f952ed8600",
-    "lastmod": "2026-11-18"
+    "hash": "17c620c0c1fa87330fe232a3563fd8bb46380563",
+    "lastmod": "2026-11-22"
   },
   "/article/stol-s-elektroprivodom-polza-dlya-spiny/": {
-    "hash": "43fd45fbc10470381dd3d8d2dabb6691d9a28e65",
-    "lastmod": "2026-11-18"
+    "hash": "32300f7f770505cd75ae6fb964940250922cc61f",
+    "lastmod": "2026-11-22"
   },
   "/article/domashnij-ofis-s-nulya-nedorogo/": {
-    "hash": "8cc54aa37e720b5f675e6f4c42270d1c1072c158",
-    "lastmod": "2026-11-18"
+    "hash": "bfb811922dcc7fbc28a9ae3e033ffd448dd85156",
+    "lastmod": "2026-11-22"
   },
   "/article/mikrofon-s-shumopodavleniem-dlya-zvonkov/": {
-    "hash": "3e65c640702410c84a0730f7313c78cf72da20b4",
-    "lastmod": "2026-11-18"
+    "hash": "0162881d5048f258a4cf4dfffc6277141a072cce",
+    "lastmod": "2026-11-22"
   },
   "/article/skrinbar-na-monitor-vybor-zashchita-glaz/": {
-    "hash": "c03037abbf317951ecacffffc4e76ae25608ada2",
-    "lastmod": "2026-11-18"
+    "hash": "5b8f25254656653737990d6ad14e807b1a2cb917",
+    "lastmod": "2026-11-22"
   },
   "/article/kronshtejn-dlya-monitora-ergonomika-shei/": {
-    "hash": "59686db404957e34b0b066853b5b6c64583f4fa6",
-    "lastmod": "2026-11-18"
+    "hash": "69bfaafd815b94cfc3e9611be09d4a0614e03f5d",
+    "lastmod": "2026-11-22"
   },
   "/article/kabel-menedzhment-pod-stolom-svoimi-rukami/": {
-    "hash": "db26d9700dd2d99bfa426d8c3bde5759374255cb",
-    "lastmod": "2026-11-18"
+    "hash": "5708cad2fd283dfa6441e0239afc0cb3256cee11",
+    "lastmod": "2026-11-22"
   },
   "/article/rabochee-mesto-dlya-dvoih-v-komnate/": {
-    "hash": "1628dd10431af593d5b4bd7ab6d00bec8962f151",
-    "lastmod": "2026-11-18"
+    "hash": "c31059be254b722c46e45362fc1cb0de4b8771e2",
+    "lastmod": "2026-11-22"
   },
   "/article/metod-svetofor-udalenka-s-detmi/": {
-    "hash": "404ca9b2bbd8e393a591a099142b2faa38dc4c75",
-    "lastmod": "2026-11-18"
+    "hash": "8305d11ab39a29e9c7af4b7abdb79368d810e3c4",
+    "lastmod": "2026-11-22"
   },
   "/article/podstavka-dlya-nog-pod-stol-ergonomika/": {
-    "hash": "09982057ea8b8018417891731c35515d8b21465b",
-    "lastmod": "2026-11-18"
+    "hash": "08b9ae56a305066fa82e69cbf18d79e4ae3a4231",
+    "lastmod": "2026-11-22"
   },
   "/article/kronshtejn-dlya-monitora-na-stol-vybor/": {
-    "hash": "4d4255b49af20a0e8760f3e41d6edf21a43f480b",
-    "lastmod": "2026-11-18"
+    "hash": "144b200e43a45e86cb5b57d1c55b286ad71ac693",
+    "lastmod": "2026-11-22"
   },
   "/article/akusticheskie-paneli-dlya-domashnego-kabineta/": {
-    "hash": "e3eb1dd55987a05f4c81b26375426a25bc368054",
-    "lastmod": "2026-11-18"
+    "hash": "3714beddff1dfe0d4925096f21a88c095121947e",
+    "lastmod": "2026-11-22"
   }
 }

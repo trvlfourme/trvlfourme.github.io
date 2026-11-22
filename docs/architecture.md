@@ -96,6 +96,7 @@
 | `tools/*.js` | генераторы и проверки, `package.json` нет — всё через `node tools/<файл>.js` |
 | `article/<slug>/index.html`, `index.html`, `builder/`, `calculator/` … | артефакты пререндера |
 | `articles/index.html` | хаб `/articles/`: артефакт `tools/build-hub.js` (карточки из `data/articles`, раскладка — `data/hub.js`), не пререндерится (`TABS` его не содержит) |
+| `tables/index.html` | таблица высот `/tables/`: артефакт `tools/build-tables.js` из `data/tables.json`, не пререндерится |
 | `sitemap.xml`, `404.html` | артефакты сборки; `_redirects` — источник правил для `.htaccess`, на сайт не уезжает |
 
 ## Порядок статей, даты и источник приложения
@@ -234,7 +235,7 @@ production-сборкой из исходников, это T-028.
 ## Сборка
 
 ```
-PORT=8099 node tools/build.js            # полная: 31 страница + постобработка
+PORT=8099 node tools/build.js            # полная: пререндер всех страниц + постобработка
 PORT=8099 node tools/build.js --only=<slug>   # одна статья, без переноса в корень
 node tools/build.js --skip-prerender     # только постобработка
 ```
@@ -256,13 +257,21 @@ node tools/build.js --skip-prerender     # только постобработк
    иначе правила сервера и `_redirects` разъезжаются.
 7. `strip-third-party.js` — снимает внешние вставки (Метрика, Google Fonts, трекер целей);
    запускается дважды: до пререндера (чистит оболочку) и финально — по всем страницам.
-8. `sitemap.js` — адреса ровно как в canonical (со слешем), `lastmod` меняется только при
-   изменении содержимого (`tools/sitemap-lastmod.json` хранит хэши и коммитится).
-9. `security-headers.js` — CSP и Referrer-Policy meta-тегами во все страницы (T-065);
+8. `build-hub.js` — хаб `/articles/` из `data/articles` и `data/hub.js`; ссылка на `/tables/`
+   живёт в блоке «Инструменты вместо чтения» шаблона `tools/hub-template.html`.
+9. `build-tables.js` — страница `/tables/` из `data/tables.json`: проверяет диапазон 110–200 см,
+   шаг 5 см и целые высоты, `--check` сверяет готовый файл с JSON.
+10. `responsive-images.js` — адаптивные картинки и preload.
+11. `strip-third-party.js` — финальный проход по всем страницам.
+12. `security-headers.js` — CSP и Referrer-Policy meta-тегами во все страницы (T-065);
    идемпотентен, старые теги снимает и ставит заново после `meta charset`.
-10. `verify-build.js` — правила ниже.
+13. `sitemap.js` — адреса ровно как в canonical (со слешем), `lastmod` меняется только при
+   изменении содержимого (`tools/sitemap-lastmod.json` хранит хэши и коммитится). Стоит
+   последним: хэши считаются по страницам с CSP, иначе каждый следующий билд сдвигает
+   `lastmod` у всех адресов разом (ошибка порядка исправлена в T-107).
+14. `verify-build.js` — правила ниже.
 
-Без шагов 4–8 пререндер затирает метаданные, поэтому «собрал и забыл» не работает.
+Без шагов 5–13 пререндер затирает метаданные, поэтому «собрал и забыл» не работает.
 
 ## Что проверяет `verify-build.js`
 
