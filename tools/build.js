@@ -86,11 +86,13 @@ function copyStaged(from, to) {
     }
   }
 
+  // /tables/ рендерится из data/tables.json целиком, поэтому шаг стоит до seo-fix:
+  // иначе build-tables затирал разметку, kd-links и theme-color, которые тот дописывает.
+  step('таблицы высот', 'build-tables.js');
   step('метаданные и разметка', 'seo-fix.js');
   step('локальные картинки, размеры, lazy', 'optimize-html-images.js');
   step('редиректы', 'make-redirects.js');
   step('хаб статей', 'build-hub.js');
-  step('таблицы высот', 'build-tables.js');
   step('адаптивные картинки и preload', 'responsive-images.js');
   step('без внешних счётчиков и шрифтов (финально)', 'strip-third-party.js');
   step('заголовки безопасности в meta', 'security-headers.js');

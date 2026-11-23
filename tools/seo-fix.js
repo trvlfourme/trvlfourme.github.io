@@ -65,6 +65,14 @@ for (const key of Object.keys(META)) {
   delete META[key];
 }
 
+// /tables/ собирается из data/tables.json: заголовок, описание и ссылки блока
+// «Читайте также» берём оттуда, чтобы правки контента не расходились с META.
+const TABLES = path.join(root, 'data', 'tables.json');
+if (fs.existsSync(TABLES)) {
+  const t = JSON.parse(fs.readFileSync(TABLES, 'utf8'));
+  META['/tables/'] = { title: t.title, desc: t.description, related: t.links || [] };
+}
+
 const TOOLS = [
   ['/calculator/', 'Калькулятор высоты стола'],
   ['/builder/', 'Наборы для рабочего места'],

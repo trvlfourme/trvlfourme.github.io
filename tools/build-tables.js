@@ -68,12 +68,17 @@ const html = template
 if (/@@[A-Z]+@@/.test(html)) throw new Error('в шаблоне остались незаполненные маркеры');
 if (!html.includes('<link rel="canonical" href="' + SITE + '/tables/">')) throw new Error('canonical страницы не на /tables/');
 
-// security-headers.js дописывает в готовую страницу CSP и Referrer-Policy — в сборке он идёт
-// после этого шага, поэтому в --check эти две строки из сравнения убираем.
+// seo-fix.js и security-headers.js дописывают в готовую страницу свои блоки, а в сборке
+// идут после этого шага, поэтому в --check их снимаем: иначе законные правки выглядели бы
+// расхождением с data/tables.json.
 const stripAdded = (s) =>
   s
     .replace(/[ \t]*<meta http-equiv="Content-Security-Policy"[^>]*>\r?\n/, '')
-    .replace(/[ \t]*<meta name="referrer"[^>]*>\r?\n/, '');
+    .replace(/[ \t]*<meta name="referrer"[^>]*>\r?\n/, '')
+    .replace(/[ \t]*<!-- kd-seo -->[\s\S]*?<!-- \/kd-seo -->\r?\n/, '')
+    .replace(/[ \t]*<!-- kd-links -->[\s\S]*?<!-- \/kd-links -->\r?\n/, '')
+    .replace(/(?:\r?\n[ \t]*)*<\/head>/i, '\n</head>')
+    .replace(/(?:\r?\n[ \t]*)*<\/body>/i, '\n</body>');
 
 if (check) {
   const current = fs.existsSync(OUT) ? stripAdded(fs.readFileSync(OUT, 'utf8')) : '';

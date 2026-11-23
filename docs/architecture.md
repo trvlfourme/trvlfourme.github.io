@@ -96,7 +96,7 @@
 | `tools/*.js` | генераторы и проверки, `package.json` нет — всё через `node tools/<файл>.js` |
 | `article/<slug>/index.html`, `index.html`, `builder/`, `calculator/` … | артефакты пререндера |
 | `articles/index.html` | хаб `/articles/`: артефакт `tools/build-hub.js` (карточки из `data/articles`, раскладка — `data/hub.js`), не пререндерится (`TABS` его не содержит) |
-| `tables/index.html` | таблица высот `/tables/`: артефакт `tools/build-tables.js` из `data/tables.json`, не пререндерится |
+| `tables/index.html` | таблица высот `/tables/`: артефакт `tools/build-tables.js` из `data/tables.json`, не пререндерится; метаданные и перелинковку дописывает `seo-fix.js` (T-171) |
 | `sitemap.xml`, `404.html` | артефакты сборки; `_redirects` — источник правил для `.htaccess`, на сайт не уезжает |
 
 ## Порядок статей, даты и источник приложения
@@ -247,31 +247,34 @@ node tools/build.js --skip-prerender     # только постобработк
    `_prerender/` (`--dump-dom`; при падении Chrome на тяжёлых статьях — запасной путь через
    DevTools-протокол с реальной паузой).
 3. перенос `_prerender/` в корень сайта.
-4. `seo-fix.js` — выверенные `title`/`description`, JSON-LD `Article`/`WebPage`/`FAQPage`/
+4. `build-tables.js` — страница `/tables/` из `data/tables.json`: проверяет диапазон 110–200 см,
+   шаг 5 см, целые высоты и внутренние ссылки, `--check` сверяет готовый файл с JSON. Стоит
+   **до** `seo-fix.js`: генератор пишет страницу целиком и иначе затирал бы её метаданные,
+   `kd-links` и `theme-color` (ошибка порядка, T-171).
+5. `seo-fix.js` — выверенные `title`/`description`, JSON-LD `Article`/`WebPage`/`FAQPage`/
    `BreadcrumbList` с `@id`, равным адресу страницы, блок перелинковки. Идемпотентен по маркерам
-   `<!-- kd-seo -->` и `<!-- kd-links -->`.
-5. `optimize-html-images.js` — локальные картинки, `width`/`height`, `loading="lazy"`,
+   `<!-- kd-seo -->` и `<!-- kd-links -->`. Метаданные `/tables/` берёт из `data/tables.json`,
+   отдельной записи в `seo-pages-*.json` у страницы нет.
+6. `optimize-html-images.js` — локальные картинки, `width`/`height`, `loading="lazy"`,
    `fetchpriority="high"` у первой.
-6. `make-redirects.js` — 16 правил в `_redirects` и meta-refresh в старых страницах.
+7. `make-redirects.js` — 16 правил в `_redirects` и meta-refresh в старых страницах.
    `.htaccess` в сборку не входит: его отдельно собирает `node tools/make-htaccess.js`,
    иначе правила сервера и `_redirects` разъезжаются.
-7. `strip-third-party.js` — снимает внешние вставки (Метрика, Google Fonts, трекер целей);
+8. `strip-third-party.js` — снимает внешние вставки (Метрика, Google Fonts, трекер целей);
    запускается дважды: до пререндера (чистит оболочку) и финально — по всем страницам.
-8. `build-hub.js` — хаб `/articles/` из `data/articles` и `data/hub.js`; ссылка на `/tables/`
+9. `build-hub.js` — хаб `/articles/` из `data/articles` и `data/hub.js`; ссылка на `/tables/`
    живёт в блоке «Инструменты вместо чтения» шаблона `tools/hub-template.html`.
-9. `build-tables.js` — страница `/tables/` из `data/tables.json`: проверяет диапазон 110–200 см,
-   шаг 5 см и целые высоты, `--check` сверяет готовый файл с JSON.
 10. `responsive-images.js` — адаптивные картинки и preload.
 11. `strip-third-party.js` — финальный проход по всем страницам.
 12. `security-headers.js` — CSP и Referrer-Policy meta-тегами во все страницы (T-065);
-   идемпотентен, старые теги снимает и ставит заново после `meta charset`.
+    идемпотентен, старые теги снимает и ставит заново после `meta charset`.
 13. `sitemap.js` — адреса ровно как в canonical (со слешем), `lastmod` меняется только при
-   изменении содержимого (`tools/sitemap-lastmod.json` хранит хэши и коммитится). Стоит
-   последним: хэши считаются по страницам с CSP, иначе каждый следующий билд сдвигает
-   `lastmod` у всех адресов разом (ошибка порядка исправлена в T-107).
+    изменении содержимого (`tools/sitemap-lastmod.json` хранит хэши и коммитится). Стоит
+    последним: хэши считаются по страницам с CSP, иначе каждый следующий билд сдвигает
+    `lastmod` у всех адресов разом (ошибка порядка исправлена в T-107).
 14. `verify-build.js` — правила ниже.
 
-Без шагов 5–13 пререндер затирает метаданные, поэтому «собрал и забыл» не работает.
+Без шагов 4–13 пререндер затирает метаданные, поэтому «собрал и забыл» не работает.
 
 ## Что проверяет `verify-build.js`
 
