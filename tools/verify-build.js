@@ -418,33 +418,40 @@ for (const page of contentPages) {
 // проверки потеря метаданных на собранной странице видна только глазами: `--check` зелёный,
 // а kd-seo, kd-links, twitter-тегов или theme-color на странице уже нет (так было на /tables/).
 // Хаб /articles/ размечен build-hub.js и живёт без kd-links — его проверяет раздел 1в.
-const NO_SEO_FIX = new Set(['articles/index.html']);
-const TWITTER_TAGS = ['twitter:card', 'twitter:title', 'twitter:description', 'twitter:image'];
+const HUB_PAGE = 'articles/index.html';
+const HEAD_META = ['twitter:card', 'twitter:title', 'twitter:description', 'twitter:image', 'theme-color'];
+
+// Ровно одна пара маркеров: body — что между ними, или null, если маркеров не по одному.
+function singleBlock(html, open, close) {
+  const starts = html.split(open).length - 1;
+  const ends = html.split(close).length - 1;
+  const at = html.indexOf(open);
+  const body = starts === 1 && ends === 1 ? html.slice(at + open.length, html.indexOf(close)) : null;
+  return { starts, ends, at, body };
+}
+
 let metaChecked = 0;
 for (const page of contentPages) {
   const rel = path.relative(root, page).split(path.sep).join('/');
-  if (NO_SEO_FIX.has(rel)) continue;
+  if (rel === HUB_PAGE) continue;
   const html = fs.readFileSync(page, 'utf8');
   if (/http-equiv="refresh"/i.test(html)) continue; // алиасы-редиректы метаданных не несут
   metaChecked++;
-  const count = (needle) => html.split(needle).length - 1;
   const headEnd = html.search(/<\/head>/i);
-  const canonical = (html.match(/<link rel="canonical" href="([^"]+)"/i) || [])[1];
 
-  const seoOpen = count('<!-- kd-seo -->');
-  const seoClose = count('<!-- /kd-seo -->');
-  if (seoOpen !== 1 || seoClose !== 1) {
-    fail(`${rel}: блоков kd-seo ${seoOpen}, закрытий ${seoClose} — нужен ровно один`);
+  // Разметка: один блок в <head>, внутри один JSON-LD, @id — от этой страницы.
+  const seo = singleBlock(html, '<!-- kd-seo -->', '<!-- /kd-seo -->');
+  if (seo.body === null) {
+    fail(`${rel}: блоков kd-seo ${seo.starts}, закрытий ${seo.ends} — нужен ровно один`);
   } else {
-    const from = html.indexOf('<!-- kd-seo -->');
-    const block = html.slice(from, html.indexOf('<!-- /kd-seo -->'));
-    if (from > headEnd) fail(`${rel}: блок kd-seo вне <head>`);
-    const scripts = block.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g) || [];
+    if (seo.at > headEnd) fail(`${rel}: блок kd-seo вне <head>`);
+    const scripts = seo.body.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g) || [];
     if (scripts.length !== 1) {
       fail(`${rel}: в kd-seo ${scripts.length} JSON-LD — нужен ровно один`);
     } else {
+      const canonical = (html.match(/<link rel="canonical" href="([^"]+)"/i) || [])[1];
       try {
-        const json = scripts[0].replace(/^<script[^>]*>/, '').replace(/<\/script>$/, '');
+        const json = scripts[0].slice(scripts[0].indexOf('>') + 1, scripts[0].lastIndexOf('</script>'));
         const graph = JSON.parse(json)['@graph'];
         if (!Array.isArray(graph) || !graph.length) {
           fail(`${rel}: в JSON-LD kd-seo пустой @graph`);
@@ -459,25 +466,22 @@ for (const page of contentPages) {
     }
   }
 
-  const linksOpen = count('<!-- kd-links -->');
-  const linksClose = count('<!-- /kd-links -->');
-  if (linksOpen !== 1 || linksClose !== 1) {
-    fail(`${rel}: блоков kd-links ${linksOpen}, закрытий ${linksClose} — нужен ровно один`);
+  // Перелинковка: один блок в теле страницы, с секцией и хотя бы одной ссылкой.
+  const links = singleBlock(html, '<!-- kd-links -->', '<!-- /kd-links -->');
+  if (links.body === null) {
+    fail(`${rel}: блоков kd-links ${links.starts}, закрытий ${links.ends} — нужен ровно один`);
   } else {
-    const from = html.indexOf('<!-- kd-links -->');
-    const block = html.slice(from, html.indexOf('<!-- /kd-links -->'));
-    if (from < headEnd) fail(`${rel}: блок kd-links попал в <head>`);
-    else if (from > html.lastIndexOf('</body>')) fail(`${rel}: блок kd-links после </body>`);
-    if (!/class="kd-links"/.test(block)) fail(`${rel}: в kd-links нет section.kd-links`);
-    if (!/<a href="[^"]+"/.test(block)) fail(`${rel}: блок kd-links без ссылок`);
+    if (links.at < headEnd) fail(`${rel}: блок kd-links попал в <head>`);
+    else if (links.at > html.lastIndexOf('</body>')) fail(`${rel}: блок kd-links после </body>`);
+    if (!/class="kd-links"/.test(links.body)) fail(`${rel}: в kd-links нет section.kd-links`);
+    if (!/<a href="[^"]+"/.test(links.body)) fail(`${rel}: блок kd-links без ссылок`);
   }
 
-  for (const tag of TWITTER_TAGS) {
-    const n = count(`name="${tag}"`);
-    if (n !== 1) fail(`${rel}: тег ${tag} встречается ${n} раз — нужен ровно один`);
+  // Превью и цвет адресной строки: по одному тегу, ни забытых, ни лишних.
+  for (const tag of HEAD_META) {
+    const n = html.split(`name="${tag}"`).length - 1;
+    if (n !== 1) fail(`${rel}: meta name="${tag}" встречается ${n} раз — нужен ровно один`);
   }
-  const themeColor = count('name="theme-color"');
-  if (themeColor !== 1) fail(`${rel}: theme-color встречается ${themeColor} раз — нужен ровно один`);
 }
 note(`метаданные seo-fix: ${metaChecked} стр. с kd-seo, kd-links, twitter и theme-color`);
 
