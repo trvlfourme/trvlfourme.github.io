@@ -323,7 +323,9 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
                   <div className="text-2xl font-black text-stone-900 font-mono">
                     {calculated.monitorTopEdgeHeightCm} <span className="text-sm font-sans font-normal text-stone-500">см</span>
                   </div>
-                  <div className="text-[11px] text-stone-500 mt-1">От уровня пола</div>
+                  <div className="text-[11px] text-stone-500 mt-1">
+                    {isChild ? `Глаза сидя — ${calculated.monitorTopEdgeHeightCm + 2} см` : 'От уровня пола'}
+                  </div>
                 </div>
 
                 <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
