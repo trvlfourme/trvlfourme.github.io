@@ -96,7 +96,7 @@ export function calculateErgonomics(profile: ErgonomicsProfile): CalculatedErgon
     armrestHeightCm,
     schoolGroup,
     footrestNeeded: !schoolGroup && heightCm < 170 && deskSitHeightCm < 74,
-    idealAngleElbows: '90° – 105°',
+    idealAngleElbows: '90–105°',
     recommendations
   };
 }

@@ -78,7 +78,7 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
             <div className="grid grid-cols-2 gap-2">
               {[
                 { id: 'adult', label: 'Взрослый', hint: '145–205 см' },
-                { id: 'child', label: 'Ребёнок', hint: '110–175 см, школьная мебель' }
+                { id: 'child', label: 'Ребёнок', hint: '110–175 см' }
               ].map(item => {
                 const active = (profile.audience || 'adult') === item.id;
                 return (
@@ -245,7 +245,7 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
           
           {/* Main Numbers Grid */}
           <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xs">
-            <h3 className="font-bold text-base text-stone-900 mb-4 flex items-center justify-between">
+            <h3 className="font-bold text-base text-stone-900 mb-4 flex flex-wrap items-center justify-between gap-2">
               <span>{isChild ? 'Школьная мебель для роста' : 'Идеальные габариты для роста'} {profile.heightCm} см</span>
               <span className="text-xs font-normal text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                 {isChild && calculated.schoolGroup
@@ -293,9 +293,9 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
                 {calculated.schoolGroup && (
                 <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
                   <div className="text-xs text-stone-500 mb-1">Группа роста</div>
-                  <div className="text-2xl font-black text-stone-900 font-mono">
+                  <div className="text-xl font-black text-stone-900 font-mono whitespace-nowrap">
                     {calculated.schoolGroup.minHeightCm}–{calculated.schoolGroup.maxHeightCm}
-                    <span className="text-sm font-sans font-normal text-stone-500"> см</span>
+                    <span className="text-xs font-sans font-normal text-stone-500"> см</span>
                   </div>
                   <div className="text-[11px] text-stone-500 mt-1">ГОСТ 35278-2025, ГОСТ 11016-2024</div>
                 </div>
