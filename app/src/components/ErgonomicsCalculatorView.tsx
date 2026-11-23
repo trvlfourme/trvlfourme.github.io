@@ -23,6 +23,7 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
 }) => {
   const [profile, setProfile] = useState<ErgonomicsProfile>({
     heightCm: 178,
+    audience: 'adult',
     postureMode: 'hybrid',
     shoeSoleCm: 2,
     monitorDiagonalInch: 27,
@@ -31,6 +32,9 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
   });
 
   const calculated = calculateErgonomics(profile);
+  const isChild = profile.audience === 'child';
+  const heightMin = isChild ? 110 : 145;
+  const heightMax = isChild ? 175 : 205;
 
   const recommendedDesk = PRODUCTS_CATALOG.find(p => p.id === 'ergostol-terra')!;
   const recommendedChair = PRODUCTS_CATALOG.find(p => p.id === 'metta-samurai-s3')!;
@@ -52,6 +56,8 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
           Стандартная офисная мебель в магазинах рассчитана на усредненного мужчину ростом 175 см. 
           Если ваш рост отличается хотя бы на 5 см, мышцы шеи и поясницы получают постоянную спастическую нагрузку. 
           Укажите свои параметры для получения точных настроек в сантиметрах.
+          Если считаете рабочее место школьника, переключите режим на «Ребёнок»: высоты стола и
+          стула возьмутся из нормативов ученической мебели по группе роста, а не из взрослой формулы.
         </p>
       </div>
 
@@ -64,6 +70,48 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
             Ваши параметры
           </h3>
 
+          {/* Audience Selector */}
+          <div>
+            <label className="text-xs font-semibold text-stone-700 uppercase tracking-wider block mb-2">
+              Кого считаем
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { id: 'adult', label: 'Взрослый', hint: '145–205 см' },
+                { id: 'child', label: 'Ребёнок', hint: '110–175 см, школьная мебель' }
+              ].map(item => {
+                const active = (profile.audience || 'adult') === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => {
+                      const audience = item.id as 'adult' | 'child';
+                      const min = audience === 'child' ? 110 : 145;
+                      const max = audience === 'child' ? 175 : 205;
+                      setProfile({
+                        ...profile,
+                        audience,
+                        heightCm: Math.min(max, Math.max(min, profile.heightCm))
+                      });
+                    }}
+                    aria-pressed={active}
+                    className={`py-2 px-2 text-xs font-semibold rounded-lg border transition-all text-center cursor-pointer ${
+                      active
+                        ? 'bg-stone-900 text-white border-stone-900'
+                        : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border-stone-200'
+                    }`}
+                  >
+                    <span className="block">{item.label}</span>
+                    <span className={`block text-[10px] font-normal ${active ? 'text-stone-300' : 'text-stone-500'}`}>
+                      {item.hint}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Height Slider */}
           <div>
             <div className="flex items-center justify-between text-sm mb-2">
@@ -75,8 +123,8 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
             <input 
               id="height-slider"
               type="range"
-              min={145}
-              max={205}
+              min={heightMin}
+              max={heightMax}
               step={1}
               value={profile.heightCm}
               aria-label="Рост без обуви в сантиметрах"
@@ -84,13 +132,19 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
               className="w-full accent-amber-600 cursor-pointer"
             />
             <div className="flex justify-between text-[11px] text-stone-700 mt-1 font-mono">
-              <span>145 см</span>
-              <span>175 см (стандарт)</span>
-              <span>205 см</span>
+              <span>{heightMin} см</span>
+              <span>{isChild ? '145 см' : '175 см (стандарт)'}</span>
+              <span>{heightMax} см</span>
             </div>
+            {isChild && (
+              <p className="text-[11px] text-stone-500 mt-2">
+                Нормативы ученической мебели: рост без обуви, стол и стул подбирают по номеру группы роста.
+              </p>
+            )}
           </div>
 
-          {/* Shoe Sole Thickness */}
+          {/* Толщина подошвы: нормативы школьной мебели считаются без обуви */}
+          {!isChild && (
           <div>
             <div className="flex items-center justify-between text-sm mb-2">
               <label htmlFor="shoe-sole-input" className="text-stone-700 font-medium">Толщина подошвы тапочек/обуви:</label>
@@ -108,6 +162,8 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
               className="w-full accent-amber-600 cursor-pointer"
             />
           </div>
+
+          )}
 
           {/* Monitor Diagonal */}
           <div>
@@ -128,7 +184,8 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
             />
           </div>
 
-          {/* Mode Selector */}
+          {/* Mode Selector: школьная мебель нормируется только для работы сидя */}
+          {!isChild && (
           <div>
             <label className="text-xs font-semibold text-stone-700 uppercase tracking-wider block mb-2">
               Формат работы
@@ -153,6 +210,8 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
               ))}
             </div>
           </div>
+
+          )}
 
           {/* Symptoms check */}
           <div className="space-y-2 pt-2 border-t border-stone-150">
@@ -187,9 +246,11 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
           {/* Main Numbers Grid */}
           <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xs">
             <h3 className="font-bold text-base text-stone-900 mb-4 flex items-center justify-between">
-              <span>Идеальные габариты для роста {profile.heightCm} см</span>
+              <span>{isChild ? 'Школьная мебель для роста' : 'Идеальные габариты для роста'} {profile.heightCm} см</span>
               <span className="text-xs font-normal text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                Погрешность ±1.5 см
+                {isChild && calculated.schoolGroup
+                  ? `Группа ${calculated.schoolGroup.minHeightCm}–${calculated.schoolGroup.maxHeightCm} см`
+                  : 'Погрешность ±1.5 см'}
               </span>
             </h3>
 
@@ -213,10 +274,13 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
                     {calculated.deskSitHeightCm} <span className="text-sm font-sans font-normal text-amber-700">см</span>
                   </div>
                   <div className="text-[11px] text-amber-800 mt-1">
-                    {calculated.deskSitHeightCm < 74 ? 'Ниже стандарта (75 см)' : 'Около стандарта'}
+                    {isChild
+                      ? 'По нормативу группы роста'
+                      : calculated.deskSitHeightCm < 74 ? 'Ниже стандарта (75 см)' : 'Около стандарта'}
                   </div>
                 </div>
 
+                {!isChild && (
                 <div className="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200">
                   <div className="text-xs text-emerald-900 font-medium mb-1">Высота стола (стоя)</div>
                   <div className="text-2xl font-black text-emerald-900 font-mono">
@@ -224,6 +288,18 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
                   </div>
                   <div className="text-[11px] text-emerald-800 mt-1">Для работы стоя</div>
                 </div>
+                )}
+
+                {calculated.schoolGroup && (
+                <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
+                  <div className="text-xs text-stone-500 mb-1">Группа роста</div>
+                  <div className="text-2xl font-black text-stone-900 font-mono">
+                    {calculated.schoolGroup.minHeightCm}–{calculated.schoolGroup.maxHeightCm}
+                    <span className="text-sm font-sans font-normal text-stone-500"> см</span>
+                  </div>
+                  <div className="text-[11px] text-stone-500 mt-1">ГОСТ 35278-2025, ГОСТ 11016-2024</div>
+                </div>
+                )}
 
                 <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
                   <div className="text-xs text-stone-500 mb-1">Угол в локтях</div>
@@ -303,7 +379,8 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
             </div>
           </div>
 
-          {/* Targeted Product Picks for these dimensions */}
+          {/* Targeted Product Picks: взрослое оборудование, в детском режиме не предлагаем */}
+          {!isChild && (
           <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xs">
             <div className="flex items-center justify-between mb-4">
               <h4 className="font-bold text-sm text-stone-900">
@@ -345,6 +422,7 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
               ))}
             </div>
           </div>
+          )}
 
         </div>
 

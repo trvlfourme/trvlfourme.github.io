@@ -86,8 +86,16 @@ export interface Article {
   };
 }
 
+export interface SchoolHeightGroup {
+  minHeightCm: number;
+  maxHeightCm: number;
+  deskHeightCm: number;
+  seatHeightCm: number;
+}
+
 export interface ErgonomicsProfile {
   heightCm: number;
+  audience?: 'adult' | 'child';
   postureMode: 'sit' | 'stand' | 'hybrid';
   shoeSoleCm: number;
   monitorDiagonalInch: number;
@@ -98,10 +106,11 @@ export interface ErgonomicsProfile {
 export interface CalculatedErgonomics {
   seatHeightCm: number;
   deskSitHeightCm: number;
-  deskStandHeightCm: number;
+  deskStandHeightCm: number | null;
   monitorTopEdgeHeightCm: number;
   eyeToScreenDistanceCm: number;
   armrestHeightCm: number;
+  schoolGroup: SchoolHeightGroup | null;
   footrestNeeded: boolean;
   idealAngleElbows: string;
   recommendations: string[];
