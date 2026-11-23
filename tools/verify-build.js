@@ -413,6 +413,74 @@ for (const page of contentPages) {
   // Трекер целей снят вместе с Метрикой: режим «сайт без ПДн» (T-056).
 }
 
+// 3в. Метаданные seo-fix: разметка, перелинковка, превью (T-175).
+// `prerender` и `build-tables.js --check` снимают блоки kd-seo/kd-links, поэтому без этой
+// проверки потеря метаданных на собранной странице видна только глазами: `--check` зелёный,
+// а kd-seo, kd-links, twitter-тегов или theme-color на странице уже нет (так было на /tables/).
+// Хаб /articles/ размечен build-hub.js и живёт без kd-links — его проверяет раздел 1в.
+const NO_SEO_FIX = new Set(['articles/index.html']);
+const TWITTER_TAGS = ['twitter:card', 'twitter:title', 'twitter:description', 'twitter:image'];
+let metaChecked = 0;
+for (const page of contentPages) {
+  const rel = path.relative(root, page).split(path.sep).join('/');
+  if (NO_SEO_FIX.has(rel)) continue;
+  const html = fs.readFileSync(page, 'utf8');
+  if (/http-equiv="refresh"/i.test(html)) continue; // алиасы-редиректы метаданных не несут
+  metaChecked++;
+  const count = (needle) => html.split(needle).length - 1;
+  const headEnd = html.search(/<\/head>/i);
+  const canonical = (html.match(/<link rel="canonical" href="([^"]+)"/i) || [])[1];
+
+  const seoOpen = count('<!-- kd-seo -->');
+  const seoClose = count('<!-- /kd-seo -->');
+  if (seoOpen !== 1 || seoClose !== 1) {
+    fail(`${rel}: блоков kd-seo ${seoOpen}, закрытий ${seoClose} — нужен ровно один`);
+  } else {
+    const from = html.indexOf('<!-- kd-seo -->');
+    const block = html.slice(from, html.indexOf('<!-- /kd-seo -->'));
+    if (from > headEnd) fail(`${rel}: блок kd-seo вне <head>`);
+    const scripts = block.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g) || [];
+    if (scripts.length !== 1) {
+      fail(`${rel}: в kd-seo ${scripts.length} JSON-LD — нужен ровно один`);
+    } else {
+      try {
+        const json = scripts[0].replace(/^<script[^>]*>/, '').replace(/<\/script>$/, '');
+        const graph = JSON.parse(json)['@graph'];
+        if (!Array.isArray(graph) || !graph.length) {
+          fail(`${rel}: в JSON-LD kd-seo пустой @graph`);
+        } else if (canonical) {
+          // @id узлов строятся от canonical: разметка от другой страницы — та же регрессия
+          const stray = graph.map((n) => n && n['@id']).filter((id) => id && !id.startsWith(canonical));
+          if (stray.length) fail(`${rel}: @id разметки не на адрес страницы (${stray.slice(0, 2).join(', ')})`);
+        }
+      } catch (e) {
+        fail(`${rel}: битый JSON-LD в kd-seo (${e.message})`);
+      }
+    }
+  }
+
+  const linksOpen = count('<!-- kd-links -->');
+  const linksClose = count('<!-- /kd-links -->');
+  if (linksOpen !== 1 || linksClose !== 1) {
+    fail(`${rel}: блоков kd-links ${linksOpen}, закрытий ${linksClose} — нужен ровно один`);
+  } else {
+    const from = html.indexOf('<!-- kd-links -->');
+    const block = html.slice(from, html.indexOf('<!-- /kd-links -->'));
+    if (from < headEnd) fail(`${rel}: блок kd-links попал в <head>`);
+    else if (from > html.lastIndexOf('</body>')) fail(`${rel}: блок kd-links после </body>`);
+    if (!/class="kd-links"/.test(block)) fail(`${rel}: в kd-links нет section.kd-links`);
+    if (!/<a href="[^"]+"/.test(block)) fail(`${rel}: блок kd-links без ссылок`);
+  }
+
+  for (const tag of TWITTER_TAGS) {
+    const n = count(`name="${tag}"`);
+    if (n !== 1) fail(`${rel}: тег ${tag} встречается ${n} раз — нужен ровно один`);
+  }
+  const themeColor = count('name="theme-color"');
+  if (themeColor !== 1) fail(`${rel}: theme-color встречается ${themeColor} раз — нужен ровно один`);
+}
+note(`метаданные seo-fix: ${metaChecked} стр. с kd-seo, kd-links, twitter и theme-color`);
+
 // 3б. Адреса статей — всегда со слэшем на конце (T-149, T-156).
 // GitHub Pages отдаёт статью по /article/<slug>/ , а адрес без слэша — 301,
 // поэтому такие ссылки Google складывает в «Страница с переадресацией».
