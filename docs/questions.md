@@ -2133,3 +2133,14 @@ www, а `openssl s_client -servername www.kabinetdoma.ru` показывает �
 **До:** 2026-11-23 13:25
 **Контекст:** номер T-176, а не T-175: на T-175 уже ссылается незакоммиченная правка другого чата в `docs/architecture.md` (проверка блоков `kd-seo` в `verify-build`). Меняются `data/articles/kak-vybrat-kreslo-dlya-spiny.json`, `data/articles/5-luchshih-ergonomichnyh-kresel-rejting.json`, `data/articles/kronshtejn-dlya-monitora-ergonomika-shei.json`, `data/articles/kronshtejn-dlya-monitora-na-stol-vybor.json`, `app/src/types/index.ts`, `app/src/utils/ergonomics.ts`, `app/src/components/ErgonomicsCalculatorView.tsx`, `assets/index.js` и пререндеренные страницы. Пока лок держится, другим чатам не собирать, не коммитить и не пушить артефакты.
 **Итог:** лок снят 2026-11-23 12:50. За время лока: бандл пересобран (889 164 Б), `assets/index.css` 51 093 Б, полный пререндер, `verify-build` — «всё чисто: можно выкладывать» (38 страниц, 314 файлов, 12,3 МБ); коммит `f965a2a`, на прод не выкладывалось.
+### T-175 · разработка · 2026-11-23
+**Метка:** разработка
+**Приоритет:** стандартный
+**Статус:** закрыта
+**Взял:** разработка, 2026-11-23 13:00
+**Кому:** разработка
+**Задача:** научить `verify-build` ловить потерю метаданных собранных страниц: на `/tables/` и остальных страницах `seo-fix` должен быть ровно один блок `kd-seo` с одним JSON-LD, блок `kd-links`, теги `twitter:card/title/description/image` и `theme-color`, иначе прогон красный. Причина: `build-tables.js --check` эти блоки снимает, поэтому регрессия T-171 ловилась только глазами.
+**Контекст:** проверка покрывает 37 страниц `seo-fix`; хаб `/articles/` (разметка `build-hub.js`) и редиректы-алиасы метаданных не несут и исключены. Дополнительно `@id` JSON-LD сверяется с canonical страницы — разметка от чужой страницы тоже красная.
+**Выпуск:** —
+**До:** 2026-11-24 18:00
+**Итог:** сделано 2026-11-23, коммит `16e5057`; правило описано в `docs/architecture.md` («Что проверяет verify-build.js»). `node tools/verify-build.js` — «всё чисто: можно выкладывать», новая строка «метаданные seo-fix: 37 стр. с kd-seo, kd-links, twitter и theme-color». Негативные прогоны на копии `HEAD`: снятые `kd-seo` и `theme-color`, снятые `kd-links` и `twitter:image`, подменённый на `/calculator/` `@id` — exit 1 с точными сообщениями по `tables/index.html`.
