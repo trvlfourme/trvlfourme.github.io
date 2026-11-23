@@ -36,7 +36,7 @@ for (const r of data.rows) {
   }
   if (r.desk > r.monitor) throw new Error(`data/tables.json: рост ${r.height} — экран ниже столешницы`);
 }
-if (!Array.isArray(data.links) || data.links.length !== 3) throw new Error('data/tables.json: нужно ровно три внутренние ссылки');
+if (!Array.isArray(data.links) || data.links.length !== 4) throw new Error('data/tables.json: нужно ровно четыре внутренние ссылки');
 for (const [href] of data.links) {
   if (!href.startsWith('/')) throw new Error(`data/tables.json: ссылка ${href} должна быть внутренней`);
 }

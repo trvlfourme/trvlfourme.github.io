@@ -193,58 +193,72 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
               </span>
             </h3>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              
-              <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
-                <div className="text-xs text-stone-500 mb-1">Высота сиденья кресла</div>
-                <div className="text-2xl font-black text-stone-900 font-mono">
-                  {calculated.seatHeightCm} <span className="text-sm font-sans font-normal text-stone-500">см</span>
-                </div>
-                <div className="text-[11px] text-stone-500 mt-1">От пола до верха подушки</div>
-              </div>
+            <div id="chair" className="scroll-mt-24">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">
+                Сиденье и стол
+              </h4>
+              <div className="grid grid-cols-2 gap-3">
 
-              <div className="p-3.5 bg-amber-50/70 rounded-xl border border-amber-200">
-                <div className="text-xs text-amber-900 font-medium mb-1">Высота стола (сидя)</div>
-                <div className="text-2xl font-black text-amber-900 font-mono">
-                  {calculated.deskSitHeightCm} <span className="text-sm font-sans font-normal text-amber-700">см</span>
+                <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
+                  <div className="text-xs text-stone-500 mb-1">Высота сиденья кресла</div>
+                  <div className="text-2xl font-black text-stone-900 font-mono">
+                    {calculated.seatHeightCm} <span className="text-sm font-sans font-normal text-stone-500">см</span>
+                  </div>
+                  <div className="text-[11px] text-stone-500 mt-1">От пола до верха подушки</div>
                 </div>
-                <div className="text-[11px] text-amber-800 mt-1">
-                  {calculated.deskSitHeightCm < 74 ? 'Ниже стандарта (75 см)' : 'Около стандарта'}
-                </div>
-              </div>
 
-              <div className="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200">
-                <div className="text-xs text-emerald-900 font-medium mb-1">Высота стола (стоя)</div>
-                <div className="text-2xl font-black text-emerald-900 font-mono">
-                  {calculated.deskStandHeightCm} <span className="text-sm font-sans font-normal text-emerald-700">см</span>
+                <div className="p-3.5 bg-amber-50/70 rounded-xl border border-amber-200">
+                  <div className="text-xs text-amber-900 font-medium mb-1">Высота стола (сидя)</div>
+                  <div className="text-2xl font-black text-amber-900 font-mono">
+                    {calculated.deskSitHeightCm} <span className="text-sm font-sans font-normal text-amber-700">см</span>
+                  </div>
+                  <div className="text-[11px] text-amber-800 mt-1">
+                    {calculated.deskSitHeightCm < 74 ? 'Ниже стандарта (75 см)' : 'Около стандарта'}
+                  </div>
                 </div>
-                <div className="text-[11px] text-emerald-800 mt-1">Для работы стоя</div>
-              </div>
 
-              <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
-                <div className="text-xs text-stone-500 mb-1">Верхняя грань монитора</div>
-                <div className="text-2xl font-black text-stone-900 font-mono">
-                  {calculated.monitorTopEdgeHeightCm} <span className="text-sm font-sans font-normal text-stone-500">см</span>
+                <div className="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200">
+                  <div className="text-xs text-emerald-900 font-medium mb-1">Высота стола (стоя)</div>
+                  <div className="text-2xl font-black text-emerald-900 font-mono">
+                    {calculated.deskStandHeightCm} <span className="text-sm font-sans font-normal text-emerald-700">см</span>
+                  </div>
+                  <div className="text-[11px] text-emerald-800 mt-1">Для работы стоя</div>
                 </div>
-                <div className="text-[11px] text-stone-500 mt-1">От уровня пола</div>
-              </div>
 
-              <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
-                <div className="text-xs text-stone-500 mb-1">Дистанция до глаз</div>
-                <div className="text-2xl font-black text-stone-900 font-mono">
-                  {calculated.eyeToScreenDistanceCm} <span className="text-sm font-sans font-normal text-stone-500">см</span>
+                <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
+                  <div className="text-xs text-stone-500 mb-1">Угол в локтях</div>
+                  <div className="text-xl font-black text-stone-900 font-mono">
+                    {calculated.idealAngleElbows}
+                  </div>
+                  <div className="text-[11px] text-stone-500 mt-1">Предплечья на столе</div>
                 </div>
-                <div className="text-[11px] text-stone-500 mt-1">Длина вытянутой руки</div>
-              </div>
 
-              <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
-                <div className="text-xs text-stone-500 mb-1">Угол в локтях</div>
-                <div className="text-xl font-black text-stone-900 font-mono">
-                  {calculated.idealAngleElbows}
+              </div>
+            </div>
+
+            <div id="monitor" className="scroll-mt-24 mt-5">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">
+                Монитор
+              </h4>
+              <div className="grid grid-cols-2 gap-3">
+
+                <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
+                  <div className="text-xs text-stone-500 mb-1">Верхняя грань монитора</div>
+                  <div className="text-2xl font-black text-stone-900 font-mono">
+                    {calculated.monitorTopEdgeHeightCm} <span className="text-sm font-sans font-normal text-stone-500">см</span>
+                  </div>
+                  <div className="text-[11px] text-stone-500 mt-1">От уровня пола</div>
                 </div>
-                <div className="text-[11px] text-stone-500 mt-1">Предплечья на столе</div>
-              </div>
 
+                <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
+                  <div className="text-xs text-stone-500 mb-1">Дистанция до глаз</div>
+                  <div className="text-2xl font-black text-stone-900 font-mono">
+                    {calculated.eyeToScreenDistanceCm} <span className="text-sm font-sans font-normal text-stone-500">см</span>
+                  </div>
+                  <div className="text-[11px] text-stone-500 mt-1">Длина вытянутой руки</div>
+                </div>
+
+              </div>
             </div>
 
             {/* Standard Desk Warning if height is short */}
