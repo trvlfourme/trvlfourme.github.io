@@ -30,6 +30,10 @@ if (heights[0] !== 110 || heights[heights.length - 1] !== 200) {
 for (let i = 1; i < heights.length; i++) {
   if (heights[i] - heights[i - 1] !== 5) throw new Error(`data/tables.json: шаг не 5 см между ${heights[i - 1]} и ${heights[i]}`);
 }
+// С 145 см страница переходит со школьных групп роста на расчёт для взрослого
+// рабочего места — этот стык подписан заголовком блока, поэтому высота проверяется.
+const ADULT_FROM = 145;
+if (!heights.includes(ADULT_FROM)) throw new Error(`data/tables.json: нет строки ${ADULT_FROM} см — некуда ставить границу взрослого расчёта`);
 for (const r of data.rows) {
   for (const key of ['desk', 'seat', 'monitor']) {
     if (!Number.isInteger(r[key]) || r[key] <= 0) throw new Error(`data/tables.json: рост ${r.height} — поле ${key} должно быть целым числом`);
@@ -42,9 +46,17 @@ for (const [href] of data.links) {
 }
 
 const rowsHtml = data.rows
-  .map((r) => {
+  .map((r, i) => {
+    const prev = data.rows[i - 1];
+    let group = '';
+    if (i === 0) {
+      group = '        <tr class="group-row"><th colspan="4">Школьная мебель: группы роста</th></tr>\n';
+    } else if (prev && prev.height < ADULT_FROM && r.height >= ADULT_FROM) {
+      group = '        <tr class="group-row"><th colspan="4">Рабочее место взрослого: расчёт по росту</th></tr>\n';
+    }
     const cls = r.height === 175 ? ' class="is-standard"' : '';
     return (
+      group +
       `        <tr${cls}><th scope="row">${r.height}</th>` +
       `<td class="num">${r.desk}</td><td class="num">${r.seat}</td>` +
       `<td class="num">${r.monitor}</td></tr>`
