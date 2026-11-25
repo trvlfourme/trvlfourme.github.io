@@ -431,11 +431,26 @@ function singleBlock(html, open, close) {
 }
 
 let metaChecked = 0;
+let hubChecked = 0;
 for (const page of contentPages) {
   const rel = path.relative(root, page).split(path.sep).join('/');
-  if (rel === HUB_PAGE) continue;
   const html = fs.readFileSync(page, 'utf8');
   if (/http-equiv="refresh"/i.test(html)) continue; // алиасы-редиректы метаданных не несут
+  // У хаба своя разметка от build-hub.js: kd-seo и kd-links ему не нужны, но превью
+  // и theme-color обязательны — без этого пропуск снова пройдёт зелёным (T-179).
+  if (rel === HUB_PAGE) {
+    for (const tag of HEAD_META) {
+      const n = html.split(`name="${tag}"`).length - 1;
+      if (n !== 1) fail(`${rel}: meta name="${tag}" встречается ${n} раз — нужен ровно один`);
+    }
+    for (const [prop, value] of [['og:image:width', '1200'], ['og:image:height', '630']]) {
+      if (!new RegExp(`property="${prop}" content="${value}"`).test(html)) {
+        fail(`${rel}: нет ${prop} = ${value}`);
+      }
+    }
+    hubChecked++;
+    continue;
+  }
   metaChecked++;
   const headEnd = html.search(/<\/head>/i);
 
@@ -483,7 +498,7 @@ for (const page of contentPages) {
     if (n !== 1) fail(`${rel}: meta name="${tag}" встречается ${n} раз — нужен ровно один`);
   }
 }
-note(`метаданные seo-fix: ${metaChecked} стр. с kd-seo, kd-links, twitter и theme-color`);
+note(`метаданные seo-fix: ${metaChecked} стр. с kd-seo, kd-links, twitter и theme-color; хаб — ${hubChecked} стр. с twitter, theme-color и размерами og`);
 
 // 3б. Адреса статей — всегда со слэшем на конце (T-149, T-156).
 // GitHub Pages отдаёт статью по /article/<slug>/ , а адрес без слэша — 301,
