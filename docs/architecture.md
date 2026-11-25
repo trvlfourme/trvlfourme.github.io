@@ -218,6 +218,8 @@ production-сборкой из исходников, это T-028.
 Заголовки проверяют на живом сайте через `curl -sI`: сам `.htaccess`
 снаружи не читается (403), поэтому состояние правил видно только по поведению адресов.
 Проверка полноты разметки — `node tools/security-headers.js --check`.
+Если в консоли страницы появилось предупреждение CSP вида «The Content-Security-Policy directive 'frame-src' contains the keyword 'none' alongside with other source expressions», сначала проверьте, чей это CSP. Антивирус на рабочей машине (Kaspersky Internet Security) подменяет разметку на лету и ставит свою `meta` CSP со своими доменами: в браузере `document.querySelectorAll('meta[http-equiv]')` тогда показывает `script-src https://gc.kis.v2.scr.kaspersky-labs.com …`, а `curl` с сервера отдаёт наш один `frame-src 'none'`. На сайте дефекта нет: в обычном Chromium на проде консоль чистая (T-136, 2026-11-25). Сравнивайте разметку из `curl` с разметкой в браузере, прежде чем заводить задачу.
+
 ## Бэкапы
 
 Бэкап — архив ветки `main` плюс проверка, что из него всё восстанавливается:
