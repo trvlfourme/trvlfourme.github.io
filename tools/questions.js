@@ -5,7 +5,7 @@
 //
 //   node tools/questions.js                 — доска: активные задачи и открытые вопросы
 //   node tools/questions.js --tasks         — только задачи
-//   node tools/questions.js --chat контент  — только то, что адресовано этому чату (+ активный лок)
+//   node tools/questions.js --chat контент  — только то, что адресовано этому чату (лок — отдельной строкой)
 //   node tools/questions.js --all           — вместе с закрытыми
 //   node tools/questions.js --json          — машинный формат
 //   node tools/questions.js --check         — проверка формата (exit 1 при ошибке)
@@ -159,6 +159,12 @@ function parse(text) {
     if (it.status === 'закрыта' && (!it.result || it.result === '—')) errors.push(`${it.id}: закрыта без итога`);
     if (it.status !== 'закрыта' && it.result && it.result !== '—') errors.push(`${it.id}: есть итог, но статус «${it.status}»`);
     if (it.status === 'в работе' && !it.taken) errors.push(`${it.id}: в работе без поля «Взял» (роль и время)`);
+    if (it.taken && it.taken !== '—') {
+      const role = it.taken.split(',')[0].trim().toLowerCase();
+      if (!ROLES.includes(role)) {
+        errors.push(`${it.id}: в «Взял» неизвестная роль «${role}» (допустимо: ${ROLES.join(', ')})`);
+      }
+    }
     if (it.release && it.release !== '—') {
       if (!DATE.test(it.release)) errors.push(`${it.id}: поле «Выпуск» должно быть «ГГГГ-ММ-ДД» или «—»`);
       else if (it.status === 'в работе' && fixedStart(it) && it.release > today()) {
@@ -240,6 +246,7 @@ function main(argv) {
   if (args.includes('--help') || args.includes('-h')) {
     console.log('node tools/questions.js [--tasks] [--chat <роль>] [--all] [--json] [--check]');
     console.log('роли: ' + ROLES.join(', ') + ' · адресат: ' + OWNER + ' · метки: ' + LABELS.join(', '));
+    console.log('--chat принимает только роль или владельца; активный лок — отдельная строка, а не задача роли');
     console.log('приоритеты (только у незакрытых задач): ' + PRIORITIES.join(', '));
     console.log('«Выпуск» — фиксированная дата выпуска или следующей регулярной проверки, не сдвигается;');
     console.log('«До» — дедлайн: обычную задачу берут раньше срока, если нет блокеров.');
@@ -254,6 +261,15 @@ function main(argv) {
 
   if (!fs.existsSync(FILE)) {
     console.error(`нет файла ${path.relative(process.cwd(), FILE)}`);
+    return 1;
+  }
+
+  if (chatAt >= 0 && !chat) {
+    console.error(`--chat: укажите роль — ${ASSIGNEES.join(', ')}`);
+    return 1;
+  }
+  if (chatAt >= 0 && !ASSIGNEES.includes(chat)) {
+    console.error(`--chat: неизвестная роль «${chat}» — допустимо: ${ASSIGNEES.join(', ')}`);
     return 1;
   }
 
@@ -293,13 +309,15 @@ function main(argv) {
     return 0;
   }
 
-  const mine = (it) => !chat || it.to === chat || (it.kind === 'T' && !it.to && it.from === chat) || isLock(it);
+  // лок — общепроектная пометка: показывается отдельной строкой и не считается задачей роли
+  const mine = (it) => !chat || it.to === chat || (it.kind === 'T' && !it.to && it.from === chat);
   // сначала то, что можно брать сейчас; внутри — по приоритету и сроку.
   // Ждёт своей даты только регулярная проверка: у неё фиксирован период. Плановую статью
   // можно готовить заранее — её держит дедлайн «До», а не дата выхода.
   const waiting = (it) => (it.status === 'открыта' && fixedStart(it) && !ready(it) ? 1 : 0);
   const takeable = (it) => it.status === 'открыта' && !waiting(it);
   const shownTasks = (all ? tasks : activeTasks)
+    .filter((it) => !isLock(it))
     .filter(mine)
     .sort(
       (a, b) =>
@@ -313,7 +331,7 @@ function main(argv) {
   console.log(
     `задачи: ${shownTasks.length}${all ? '' : ' активных'} · вопросы: ${onlyTasks ? 'скрыты (--tasks)' : shownQuestions.length + (all ? '' : ' открытых')}${scope}`
   );
-  if (locks.length) console.log(`⚠ активный лок: ${locks.map((l) => `${l.id} (${l.label}, до ${l.due || 'не указано'})`).join(', ')}`);
+  if (locks.length) console.log(`⚠ активный лок (общепроектный, не задача роли): ${locks.map((l) => `${l.id} (${l.label}, до ${l.due || 'не указано'}, взял: ${l.taken || '—'})`).join(', ')}`);
 
   if (!shownTasks.length && !shownQuestions.length) {
     console.log('  нет');
