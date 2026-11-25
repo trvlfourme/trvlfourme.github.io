@@ -1280,10 +1280,10 @@ window.KD_CATALOG = {
     {
       "slug": "kronshtejn-dlya-monitora-ergonomika-shei",
       "title": "Кронштейн для монитора и эргономика шеи: как избавиться от боли",
-      "block_title": "Кронштейн и подставка для шеи",
+      "block_title": "Кронштейн под шею: один экран или два",
       "product_ids": [
         "onkron-g80",
-        "laptop-stand-aluminum-folding"
+        "onkron-g160"
       ]
     },
     {
@@ -1322,7 +1322,7 @@ window.KD_CATALOG = {
       "title": "Кронштейн для монитора на стол: как выбрать надежный газлифт",
       "block_title": "Газлифт и альтернатива",
       "product_ids": [
-        "onkron-g80",
+        "onkron-g200",
         "laptop-stand-aluminum-folding"
       ]
     },
