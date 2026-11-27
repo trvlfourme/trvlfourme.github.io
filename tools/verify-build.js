@@ -572,6 +572,73 @@ if (exists('sitemap.xml')) {
   if (extraInSitemap.length) fail(`sitemap: адрес без такой canonical — ${extraInSitemap.slice(0, 6).join(', ')}`);
 }
 
+// 5б. Ссылочный граф: страницы не должны висеть без входящих ссылок (T-196).
+// Порог «не меньше пяти» стал ошибкой после T-195: блок «Читайте также» и ссылки
+// на /tables/ дают запас, а новая страница без ссылок снова выпадет из обхода.
+if (exists('sitemap.xml')) {
+  const xml = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  const redirectsFile = path.join(root, '_redirects');
+  const redirectFrom = new Set();
+  if (fs.existsSync(redirectsFile)) {
+    for (const line of fs.readFileSync(redirectsFile, 'utf8').split(/\r?\n/)) {
+      const t = line.trim();
+      if (!t || t.startsWith('#')) continue;
+      const from = t.split(/\s+/)[0];
+      if (from.startsWith('/')) redirectFrom.add(from);
+    }
+  }
+  const routeOf = (file) => {
+    const rel = path.relative(root, file).split(path.sep).join('/');
+    if (rel === 'index.html') return '/';
+    if (rel.endsWith('/index.html')) return '/' + rel.slice(0, -'index.html'.length);
+    return null;
+  };
+  const incoming = new Map(urls.map((u) => [u, new Set()]));
+  const toRedirect = [];
+  const queryLinks = [];
+  for (const page of contentPages) {
+    const rel = path.relative(root, page).split(path.sep).join('/');
+    const html = fs.readFileSync(page, 'utf8');
+    if (/http-equiv="refresh"/i.test(html)) continue;
+    if (html.includes('?article=')) queryLinks.push(rel);
+    const from = routeOf(page);
+    for (const m of html.matchAll(/<a\b[^>]*\shref="([^"]+)"/g)) {
+      const href = m[1];
+      if (!href.startsWith('/') || href.startsWith('//')) continue;
+      const clean = href.split('#')[0].split('?')[0];
+      if (!clean.endsWith('/')) continue;
+      if (redirectFrom.has(clean)) toRedirect.push(`${rel} → ${clean}`);
+      const set = incoming.get(SITE + clean);
+      if (set && from && from !== clean) set.add(from);
+    }
+  }
+  const rows = [...incoming.entries()]
+    .map(([u, set]) => [u.replace(SITE, ''), set.size])
+    .sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0]));
+  console.log('\nссылочный граф (страница → входящих):');
+  for (const [page, n] of rows) console.log(`  ${String(n).padStart(3)} ${page}`);
+  const thin = rows.filter(([, n]) => n < 5);
+  if (thin.length) {
+    fail(
+      `входящих ссылок меньше пяти (${thin.length}): ${thin.slice(0, 8).map(([p, n]) => `${p} — ${n}`).join(', ')}`
+    );
+  } else {
+    note(`ссылочный граф: ${rows.length} страниц, минимум входящих — ${rows[0][1]}`);
+  }
+  if (toRedirect.length) {
+    fail(`ссылки на адреса из _redirects (${toRedirect.length}): ${toRedirect.slice(0, 5).join(', ')}`);
+  } else {
+    note('ссылок на адреса из _redirects нет');
+  }
+  if (queryLinks.length) {
+    fail(`в разметке есть ?article= (${queryLinks.length}): ${queryLinks.slice(0, 5).join(', ')}`);
+  } else {
+    note('адресов ?article= в разметке нет');
+  }
+}
+
+
 // 6б. Публикуемый состав: tools/public-manifest.txt — один список для cPanel, Pages
 // и выкладок (T-090). Проверяем, что всё из списка реально есть в проверяемой папке.
 const HOST = process.env.KD_HOSTING === 'hothat' ? 'hothat' : 'pages';

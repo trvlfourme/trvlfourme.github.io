@@ -3,7 +3,7 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { ArticleCard } from './components/ArticleCard';
 import { ArticleView } from './components/ArticleView';
-import { pickRelated } from './utils/related';
+import { buildRelatedMap } from './utils/related';
 import { ErgonomicsCalculatorView } from './components/ErgonomicsCalculatorView';
 import { WorkspaceBuilderView } from './components/WorkspaceBuilderView';
 import { CatalogView } from './components/CatalogView';
@@ -159,6 +159,9 @@ export default function App() {
     return articlesList.find(a => a.id === selectedArticleId) || null;
   }, [articlesList, selectedArticleId]);
 
+  // Соседи считаются один раз на список статей: ссылки распределяются равномерно (T-196).
+  const relatedMap = useMemo(() => buildRelatedMap(articlesList), [articlesList]);
+
   const handleSelectArticle = (id: string | null) => {
     setSelectedArticleId(id);
     if (id) {
@@ -211,7 +214,7 @@ export default function App() {
             {selectedArticle ? (
               <ArticleView
                 article={selectedArticle}
-                related={pickRelated(selectedArticle, articlesList)}
+                related={relatedMap.get(selectedArticle.id) || []}
                 onBack={() => handleSelectArticle(null)}
                 onOpenCalculator={() => handleNav('calculator')}
                 onOpenTests={() => handleNav('tests')}
