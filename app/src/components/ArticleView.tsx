@@ -25,6 +25,7 @@ import { HERO_SIZES, imageSrcSet } from '../utils/images';
 
 interface ArticleViewProps {
   article: Article;
+  related: Article[];
   onBack: () => void;
   onOpenCalculator: () => void;
   onOpenTests?: () => void;
@@ -33,6 +34,7 @@ interface ArticleViewProps {
 
 export const ArticleView: React.FC<ArticleViewProps> = ({
   article,
+  related,
   onBack,
   onOpenCalculator,
   onOpenTests,
@@ -431,6 +433,28 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
                 ))}
               </div>
             </div>
+          )}
+
+          {/* Соседи выбираются по данным, без ручных списков (T-195) */}
+          {related.length > 0 && (
+            <section aria-labelledby="related-heading" className="pt-8 mt-8 border-t border-stone-200">
+              <h2 id="related-heading" className="text-xl font-bold text-stone-900 mb-4">
+                Читайте также
+              </h2>
+              <ul className="grid gap-3 sm:grid-cols-3 list-none p-0 m-0">
+                {related.map((item) => (
+                  <li key={item.id} className="p-4 bg-white rounded-xl border border-stone-200 hover:border-amber-400 transition-colors">
+                    <a href={`/article/${item.slug}/`} className="font-semibold text-sm text-stone-900 hover:text-amber-700 no-underline">
+                      {item.title}
+                    </a>
+                    <p className="mt-1.5 text-xs text-stone-600 leading-relaxed">{item.excerpt}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-xs text-stone-600">
+                Полезные инструменты: <a href="/tables/" className="underline hover:text-amber-700">таблица высот стола и стула по росту</a> и <a href="/calculator/" className="underline hover:text-amber-700">калькулятор эргономики</a>.
+              </p>
+            </section>
           )}
 
           {/* Bottom Back Button */}

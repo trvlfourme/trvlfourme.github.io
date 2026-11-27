@@ -59,6 +59,9 @@ export const ErgonomicsCalculatorView: React.FC<ErgonomicsCalculatorViewProps> =
           Если считаете рабочее место школьника, переключите режим на «Ребёнок»: высоты стола и
           стула возьмутся из нормативов ученической мебели по группе роста, а не из взрослой формулы.
         </p>
+        <p className="text-xs text-stone-600 mt-3">
+          Готовые высоты по росту — в <a href="/tables/" className="underline hover:text-amber-700">таблице высоты стола и стула</a>.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

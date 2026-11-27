@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { ArticleCard } from './components/ArticleCard';
 import { ArticleView } from './components/ArticleView';
+import { pickRelated } from './utils/related';
 import { ErgonomicsCalculatorView } from './components/ErgonomicsCalculatorView';
 import { WorkspaceBuilderView } from './components/WorkspaceBuilderView';
 import { CatalogView } from './components/CatalogView';
@@ -210,6 +211,7 @@ export default function App() {
             {selectedArticle ? (
               <ArticleView
                 article={selectedArticle}
+                related={pickRelated(selectedArticle, articlesList)}
                 onBack={() => handleSelectArticle(null)}
                 onOpenCalculator={() => handleNav('calculator')}
                 onOpenTests={() => handleNav('tests')}
