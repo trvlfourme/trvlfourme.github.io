@@ -20,6 +20,10 @@
   меняет поля, проверки или вывод, а не состав и текст, это задача разработке.
 - `data/hub.js` — в каком блоке хаба `/articles/` стоит статья и как она там названа;
   саму страницу `articles/index.html` собирает сборка, руками её не править.
+- `data/tables.json` — таблица высот для `/tables/`: твои числа в `rows`, поля `source`, `note`,
+  `lead`, `description` и `links`; генератор `tools/build-tables.js`, шаблон и схему полей держит
+  разработка (нужны новые поля или проверки — задача ей). После правки — `node tools/build-tables.js`
+  и `node tools/build-tables.js --check`. Решение — Q-010 в `docs/questions.md`.
 - `content/*.md` — черновики для внешних площадок.
 
 ## Не твоё
