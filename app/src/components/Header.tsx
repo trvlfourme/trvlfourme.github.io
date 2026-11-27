@@ -40,6 +40,27 @@ export const Header: React.FC<HeaderProps> = ({
     setMobileMenuOpen(false);
   };
 
+  // Ссылки должны быть настоящими <a href>: по кнопкам робот не обходит разделы (T-194).
+  // Переход внутри приложения остаётся без перезагрузки, кроме `/articles/`: это отдельная
+  // статическая страница-хаб, её грузит браузер.
+  const navLink = (tab: NavTab, href: string) => ({
+    href,
+    onClick: (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      handleNav(tab);
+    },
+  });
+
+  const desktopClass = (tab: NavTab) =>
+    `px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 no-underline ${
+      activeTab === tab ? 'text-stone-950 bg-stone-100 font-semibold' : 'hover:text-stone-900 hover:bg-stone-50'
+    }`;
+
+  const mobileClass = (tab: NavTab, extra = '') =>
+    `w-full text-left px-3 py-2 text-sm rounded-lg flex items-center gap-2 no-underline ${extra} ${
+      activeTab === tab ? 'bg-stone-100 font-semibold text-stone-900' : 'text-stone-700'
+    }`;
+
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,76 +104,62 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Navigation Links (Desktop) */}
           <nav className="hidden lg:flex items-center gap-1 text-sm font-medium text-stone-700">
-            <button 
-              onClick={() => handleNav('articles')}
-              className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-                activeTab === 'articles' ? 'text-stone-950 bg-stone-100 font-semibold' : 'hover:text-stone-900 hover:bg-stone-50'
-              }`}
+            <a
+              href="/articles/"
+              className={desktopClass('articles')}
             >
               <BookOpen className="w-4 h-4" />
               Гайды
-            </button>
+            </a>
 
-            <button 
-              onClick={() => handleNav('tests')}
-              className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-                activeTab === 'tests' ? 'text-stone-950 bg-stone-100 font-semibold' : 'hover:text-stone-900 hover:bg-stone-50'
-              }`}
+            <a
+              {...navLink('tests', '/tests/')}
+              className={desktopClass('tests')}
             >
               <Activity className="w-4 h-4 text-purple-600" />
               <span>Тесты</span>
               <span className="text-[10px] font-bold px-1.5 py-0.5 bg-purple-100 text-purple-800 rounded-full">4</span>
-            </button>
+            </a>
 
-            <button 
-              onClick={() => handleNav('calculator')}
-              className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-                activeTab === 'calculator' ? 'text-stone-950 bg-stone-100 font-semibold' : 'hover:text-stone-900 hover:bg-stone-50'
-              }`}
+            <a
+              {...navLink('calculator', '/calculator/')}
+              className={desktopClass('calculator')}
             >
               <Sliders className="w-4 h-4 text-amber-600" />
               Калькулятор
-            </button>
+            </a>
 
-            <button 
-              onClick={() => handleNav('builder')}
-              className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-                activeTab === 'builder' ? 'text-stone-950 bg-stone-100 font-semibold' : 'hover:text-stone-900 hover:bg-stone-50'
-              }`}
+            <a
+              {...navLink('builder', '/builder/')}
+              className={desktopClass('builder')}
             >
               <Compass className="w-4 h-4 text-emerald-600" />
               Конструктор
-            </button>
+            </a>
 
-            <button 
-              onClick={() => handleNav('checklist')}
-              className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-                activeTab === 'checklist' ? 'text-stone-950 bg-stone-100 font-semibold' : 'hover:text-stone-900 hover:bg-stone-50'
-              }`}
+            <a
+              {...navLink('checklist', '/checklist/')}
+              className={desktopClass('checklist')}
             >
               <CheckSquare className="w-4 h-4 text-rose-600" />
               Чек-лист
-            </button>
+            </a>
 
-            <button 
-              onClick={() => handleNav('catalog')}
-              className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-                activeTab === 'catalog' ? 'text-stone-950 bg-stone-100 font-semibold' : 'hover:text-stone-900 hover:bg-stone-50'
-              }`}
+            <a
+              {...navLink('catalog', '/catalog/')}
+              className={desktopClass('catalog')}
             >
               <ShoppingBag className="w-4 h-4 text-stone-600" />
               Каталог
-            </button>
+            </a>
 
-            <button 
-              onClick={() => handleNav('about')}
-              className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-                activeTab === 'about' ? 'text-stone-950 bg-stone-100 font-semibold' : 'hover:text-stone-900 hover:bg-stone-50'
-              }`}
+            <a
+              {...navLink('about', '/about/')}
+              className={desktopClass('about')}
             >
               <Info className="w-4 h-4 text-stone-500" />
               О проекте
-            </button>
+            </a>
           </nav>
 
           {/* Mobile menu button */}
@@ -181,76 +188,61 @@ export const Header: React.FC<HeaderProps> = ({
                 className="w-full px-3 py-2 text-sm bg-stone-100 border border-stone-200 rounded-lg outline-none"
               />
             </div>
-            <button 
-              onClick={() => handleNav('articles')}
-              className={`w-full text-left px-3 py-2 text-sm rounded-lg flex items-center gap-2 ${
-                activeTab === 'articles' ? 'bg-stone-100 font-semibold text-stone-900' : 'text-stone-700'
-              }`}
+            <a
+              href="/articles/"
+              className={mobileClass('articles')}
             >
               <BookOpen className="w-4 h-4" />
               Гайды и статьи
-            </button>
-            <button 
-              onClick={() => handleNav('tests')}
-              className={`w-full text-left px-3 py-2 text-sm rounded-lg flex items-center justify-between ${
-                activeTab === 'tests' ? 'bg-stone-100 font-semibold text-stone-900' : 'text-stone-700'
-              }`}
+            </a>
+            <a
+              {...navLink('tests', '/tests/')}
+              className={mobileClass('tests', 'justify-between')}
             >
               <span className="flex items-center gap-2">
                 <Activity className="w-4 h-4 text-purple-600" />
                 Тесты и диагностика
               </span>
               <span className="text-[10px] font-bold px-1.5 py-0.5 bg-purple-100 text-purple-800 rounded-full">4 теста</span>
-            </button>
-            <button 
-              onClick={() => handleNav('calculator')}
-              className={`w-full text-left px-3 py-2 text-sm rounded-lg flex items-center gap-2 ${
-                activeTab === 'calculator' ? 'bg-stone-100 font-semibold text-stone-900' : 'text-stone-700'
-              }`}
+            </a>
+            <a
+              {...navLink('calculator', '/calculator/')}
+              className={mobileClass('calculator')}
             >
               <Sliders className="w-4 h-4 text-amber-600" />
               Калькулятор высоты стола и стула
-            </button>
-            <button 
-              onClick={() => handleNav('builder')}
-              className={`w-full text-left px-3 py-2 text-sm rounded-lg flex items-center gap-2 ${
-                activeTab === 'builder' ? 'bg-stone-100 font-semibold text-stone-900' : 'text-stone-700'
-              }`}
+            </a>
+            <a
+              {...navLink('builder', '/builder/')}
+              className={mobileClass('builder')}
             >
               <Compass className="w-4 h-4 text-emerald-600" />
               Конструктор сетапа
-            </button>
-            <button 
-              onClick={() => handleNav('checklist')}
-              className={`w-full text-left px-3 py-2 text-sm rounded-lg flex items-center gap-2 ${
-                activeTab === 'checklist' ? 'bg-stone-100 font-semibold text-stone-900' : 'text-stone-700'
-              }`}
+            </a>
+            <a
+              {...navLink('checklist', '/checklist/')}
+              className={mobileClass('checklist')}
             >
               <CheckSquare className="w-4 h-4 text-rose-600" />
               Чек-лист фокуса с детьми
-            </button>
-            <button 
-              onClick={() => handleNav('catalog')}
-              className={`w-full text-left px-3 py-2 text-sm rounded-lg flex items-center gap-2 ${
-                activeTab === 'catalog' ? 'bg-stone-100 font-semibold text-stone-900' : 'text-stone-700'
-              }`}
+            </a>
+            <a
+              {...navLink('catalog', '/catalog/')}
+              className={mobileClass('catalog')}
             >
               <ShoppingBag className="w-4 h-4 text-stone-600" />
               Каталог товаров
-            </button>
-            <button 
-              onClick={() => handleNav('about')}
-              className={`w-full text-left px-3 py-2 text-sm rounded-lg flex items-center gap-2 ${
-                activeTab === 'about' ? 'bg-stone-100 font-semibold text-stone-900' : 'text-stone-700'
-              }`}
+            </a>
+            <a
+              {...navLink('about', '/about/')}
+              className={mobileClass('about')}
             >
               <Info className="w-4 h-4 text-stone-500" />
               О проекте
-            </button>
+            </a>
           </div>
         )}
       </div>
     </header>
   );
 };
-
